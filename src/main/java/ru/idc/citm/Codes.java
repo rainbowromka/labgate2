@@ -9,9 +9,11 @@ public abstract class Codes {
 	public static final char LF = (char) 10;
 	public static final char CR = (char) 13;
 	public static final char NAK = (char) 15;
+	public static final char ETB = (char) 17;
 
 	public static String makePrintable(String msg) {
 		return msg.replace("" + STX, "<STX>")
+			.replace("" + ETB, "<ETB>")
 			.replace("" + ETX, "<ETX>")
 			.replace("" + EOT, "<EOT>")
 			.replace("" + ENQ, "<ENQ>")
@@ -23,6 +25,7 @@ public abstract class Codes {
 
 	public static String makeSendable(String msg) {
 		return msg.replace("<STX>", "" + STX)
+			.replace("<ETB>", "" + ETB)
 			.replace("<ETX>", "" + ETX)
 			.replace("<EOT>", "" + EOT)
 			.replace("<ENQ>", "" + ENQ)

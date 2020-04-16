@@ -1,6 +1,13 @@
 package ru.idc.citm;
 
+import ru.idc.citm.model.Order;
+import ru.idc.citm.model.PacketInfo;
+
 import java.io.*;
+import java.util.List;
+
+import static ru.idc.citm.Codes.*;
+import static ru.idc.citm.Consts.ERROR_TIMEOUT;
 
 public class Driver {
 	private Transport transport;
@@ -14,21 +21,70 @@ public class Driver {
 	}
 
 	private void sendTasks() throws IOException {
-		String msg, answer;
+		String msg;
+		List<Order> orders;
+		boolean hasErrors = false;
+		long taskId;
+		int cnt = 0;
 		int res;
-		msg = protocol.makeOrder(dbManager.getBarcodes());
-		if (!msg.isEmpty()) {
-			transport.sendMessage("<ENQ>");
-			res = transport.readInt();
-			if (res == Codes.ACK) {
-				Utils.logMessage("нас готовы слушать");
-				transport.sendMessage(msg);
+		do {
+			orders = dbManager.getOrders();
+			msg = protocol.makeOrder(orders);
+			if (!msg.isEmpty()) {
+				taskId = orders.get(0).getTaskId();
+				transport.sendMessage("<ENQ>");
 				res = transport.readInt();
-				transport.sendMessage("<EOT>");
-			} else {
-				Utils.logMessage("нас не готовы слушать");
+				if (res == Codes.ACK) {
+					Utils.logMessage("нас готовы слушать");
+					transport.sendMessage(msg);
+					res = transport.readInt();
+					if (res == Codes.ACK) {
+						Utils.logMessage("Наше сообщение приняли");
+						// нужно помечать задание как обработанное в БД
+						dbManager.markOrderAsProcessed(taskId);
+					} else if (res == Codes.NAK) {
+						Utils.logMessage("Наше сообщение не понравилось почему-то");
+						hasErrors = true;
+					} else {
+						Utils.logMessage("ошибка протокола");
+						hasErrors = true;
+					}
+					transport.sendMessage("<EOT>");
+				} else if (res == Codes.NAK) {
+					Utils.logMessage("нас не готовы слушать, ждём 10 секунд");
+					// надо подождать не меньше 10 секунд
+					hasErrors = true;
+				} else {
+					Utils.logMessage("ошибка протокола");
+					hasErrors = true;
+				}
+				cnt++;
 			}
+		} while (!hasErrors && !msg.isEmpty() && cnt < 5);
+	}
+
+	private String receiveResults() throws IOException {
+		StringBuilder sb = new StringBuilder();
+		int res;
+		res = transport.readInt(true);
+		if (res == ERROR_TIMEOUT) {
+			Utils.logMessage("нам никто ничего не прислал");
+		} else if (res == ENQ) {
+			Utils.logMessage("нам хотят что-то прислать");
+			sb.setLength(0);
+			transport.sendMessage("<ACK>");
+		} else if (res == STX) {
+			String msg = transport.readMessage();
+			sb.append(msg);
+			transport.sendMessage("<ACK>");
+		} else if (res == EOT) {
+			Utils.logMessage("мы зафиксировали конец передачи");
+			System.out.println(sb.toString());
+			return sb.toString();
+		}	else {
+			Utils.logMessage("ошибка протокола");
 		}
+		return null;
 	}
 
 	public void loop() throws IOException, InterruptedException {
@@ -38,9 +94,13 @@ public class Driver {
 		int res;
 		while (true) {
 			sendTasks();
-			Utils.logMessage("отключаемся");
-			break;
-			// Thread.sleep(100);
+			msg = receiveResults();
+			if (msg != null) {
+				PacketInfo packetInfo = protocol.parseMessage(msg);
+				dbManager.saveResults(packetInfo);
+			}
+			Thread.sleep(500);
 		}
+		// Utils.logMessage("отключаемся");
 	}
 }

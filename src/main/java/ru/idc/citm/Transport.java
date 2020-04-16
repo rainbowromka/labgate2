@@ -7,6 +7,7 @@ public interface Transport {
 	void close();
 	void sendMessage(String msg) throws IOException;
 	int readInt() throws IOException;
+	int readInt(boolean ignoreTimeout) throws IOException;
 	String readMessage() throws IOException;
 	boolean isReady();
 }

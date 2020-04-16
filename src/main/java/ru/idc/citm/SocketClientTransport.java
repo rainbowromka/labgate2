@@ -10,6 +10,7 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
 
 public class SocketClientTransport implements Transport {
 	private int port;
@@ -82,23 +83,32 @@ public class SocketClientTransport implements Transport {
 
 	@Override
 	public int readInt() throws IOException {
-		int result = in.read();
-		Utils.logMessage("D <- " + Codes.makePrintable(""+(char) Integer.parseInt(Integer.toHexString(result))));
+		return readInt(false);
+	}
 
-		return result;
+	@Override
+	public int readInt(boolean ignoreTimeout) throws IOException {
+		try {
+			int result = in.read();
+			Utils.logMessage("D <- " + Codes.makePrintable("" + (char) Integer.parseInt(Integer.toHexString(result))));
+			return result;
+		} catch (SocketTimeoutException e) {
+			if (!ignoreTimeout) throw e;
+		}
+		return -1;
 	}
 
 	@Override
 	public String readMessage() throws IOException {
-		String msg = Codes.makePrintable(in.readLine());
+		StringBuilder sb = new StringBuilder();
+		int m = -1;
+		while (m != Codes.LF) {
+			m = in.read();
+			sb.append((char) m);
+		}
+
+		String msg = Codes.makePrintable(sb.toString());
 		Utils.logMessage("D <- " + msg);
 		return msg;
-
-//		StringBuilder result = new StringBuilder();
-//		byte[] readByteArray= IOUtils.toByteArray(in, "UTF-8");
-//		for (byte b : readByteArray) {
-//			result.append(b);
-//		}
-//		return Codes.makePrintable(result.toString());
 	}
 }

@@ -8,7 +8,7 @@ public class Main {
 				try {
 					dbManager.init();
 					Protocol protocol = new ProtocolASTM();
-					Transport transport = new SocketClientTransport("citm-serv.dc-local", 1100);
+					Transport transport = new SocketClientTransport("192.168.17.192", 1100); //citm-serv.dc-local
 					transport.init();
 					Driver driver = new Driver(protocol, dbManager, transport);
 					driver.loop();

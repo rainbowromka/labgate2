@@ -23,6 +23,7 @@ public class ProtocolASTM implements Protocol {
 
 	//<STX>1H|\^&|||ASTM-Host|||||CIT||P||20120219111500<CR>P|1<CR>O|1|923501||^^^CL-S\^^^CREA|||||||A<CR>L|1|F<CR><ETX>80<CR><LF>
 	public String makeOrder(List<Order> orders) {
+		frameIdx = 0;
 		if (orders.isEmpty()) return "";
 
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHms");
@@ -34,9 +35,11 @@ public class ProtocolASTM implements Protocol {
 		//msg.append("P|1|").append(order.getCartnum()).append("|||").append(order.getFam()).append("^") .append("<CR>");
 		// заказанные тесты
 		int idx = 1;
-		for(Order order : orders) {
+		for (Order order : orders) {
 			msg.append("O|").append(idx).append("|").append(order.getBarcode()).append("||^^^")
-				.append(order.getTestCode()).append("|||||||A<CR>"); // A - Action Code
+				.append(order.getTestCode())
+				//.append("^^^^").append(order.getDeviceCode())
+				.append("|||||||A<CR>"); // A - Action Code
 			idx++;
 		}
 
@@ -87,13 +90,13 @@ public class ProtocolASTM implements Protocol {
 	public PacketInfo parseMessage(String msg) {
 		PacketInfo packetInfo = new PacketInfo();
 
-		String [] lines = msg.split("\r\n");
+		String[] lines = msg.split("\r\n");
 		final Pattern pattern = Pattern.compile("^\\d(.)", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
-  	Matcher matcher;
+		Matcher matcher;
 
-		for(String line: lines) {
- 			matcher = pattern.matcher(line);
- 			if (matcher.find()) {
+		for (String line : lines) {
+			matcher = pattern.matcher(line);
+			if (matcher.find()) {
 				switch (matcher.group(1)) {
 					case "H":
 						packetInfo.setHeader(parseHeader(line));
@@ -135,6 +138,7 @@ public class ProtocolASTM implements Protocol {
 			result = new ResultInfo();
 			result.setResult(matcher.group(2));
 			result.setNormal_range_flag(matcher.group(5));
+			result.setTest_type("SAMPLE");
 			result.setResult_status(matcher.group(7));
 			result.setInstrument_id(matcher.group(12));
 			s = matcher.group(1); // group - 2

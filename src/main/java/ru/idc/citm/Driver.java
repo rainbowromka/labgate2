@@ -66,24 +66,26 @@ public class Driver {
 	private String receiveResults() throws IOException {
 		StringBuilder sb = new StringBuilder();
 		int res;
-		res = transport.readInt(true);
-		if (res == ERROR_TIMEOUT) {
-			Utils.logMessage("нам никто ничего не прислал");
-		} else if (res == ENQ) {
-			Utils.logMessage("нам хотят что-то прислать");
-			sb.setLength(0);
-			transport.sendMessage("<ACK>");
-		} else if (res == STX) {
-			String msg = transport.readMessage();
-			sb.append(msg);
-			transport.sendMessage("<ACK>");
-		} else if (res == EOT) {
-			Utils.logMessage("мы зафиксировали конец передачи");
-			System.out.println(sb.toString());
-			return sb.toString();
-		}	else {
-			Utils.logMessage("ошибка протокола");
-		}
+		do {
+			res = transport.readInt(true);
+			if (res == ERROR_TIMEOUT) {
+				Utils.logMessage("ждём данных");
+			} else if (res == ENQ) {
+				Utils.logMessage("нам хотят что-то прислать");
+				sb.setLength(0);
+				transport.sendMessage("<ACK>");
+			} else if (res == STX) {
+				String msg = transport.readMessage();
+				sb.append(msg);
+				transport.sendMessage("<ACK>");
+			} else if (res == EOT) {
+				Utils.logMessage("мы зафиксировали конец передачи");
+				System.out.println(sb.toString());
+				return sb.toString();
+			} else {
+				Utils.logMessage("ошибка протокола");
+			}
+		} while (res != ERROR_TIMEOUT);
 		return null;
 	}
 
@@ -96,7 +98,7 @@ public class Driver {
 			sendTasks();
 			msg = receiveResults();
 			if (msg != null) {
-				PacketInfo packetInfo = protocol.parseMessage(msg);
+				PacketInfo packetInfo = protocol.parseMessage(makeSendable(msg));
 				dbManager.saveResults(packetInfo);
 			}
 			Thread.sleep(500);

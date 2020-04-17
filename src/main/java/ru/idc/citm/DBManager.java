@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -83,6 +84,7 @@ public class DBManager {
 							rs.getLong("test"),
 							rs.getString("material"),
 							rs.getString("test_code"),
+							//"Na",
 							rs.getLong("cartnum"),
 							rs.getString("fam"),
 							rs.getString("sex"),
@@ -103,13 +105,17 @@ public class DBManager {
 	}
 
 	private String prepareString(String s) {
-		return s != null && !s.isEmpty() ? s : "NULL";
+		return s != null && !s.isEmpty() ? s : null;
 	}
 
 	private String dateToSqlString(Date date) {
 		if (date == null) return "NULL";
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
 		return dateFormat.format(date);
+	}
+
+	private java.sql.Date dateToSqlDate(Date date) {
+		return date != null ? new java.sql.Date(date.getTime()) : null;
 	}
 
 	private String doubleToSqlString(Double d) {
@@ -129,7 +135,7 @@ public class DBManager {
 	public void saveResult(ResultInfo res) {
 		try {
 			try (CallableStatement st = dbConnection.prepareCall("{call lis.add_raw_result2(" +
-				"?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}")) {
+				"?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}")) {
 
 				st.setString(1, prepareString(res.getDevice_name()));
 				st.setString(2, prepareString(res.getInstrument_id()));
@@ -149,9 +155,11 @@ public class DBManager {
 				st.setString(16, prepareString(res.getSequence_number()));
 				st.setString(17, prepareString(res.getCarrier()));
 				st.setString(18, prepareString(res.getPosition()));
-				st.setString(19, dateToSqlString(res.getTest_started()));
-				st.setString(20, dateToSqlString(res.getTest_completed()));
+				st.setDate(19, dateToSqlDate(res.getTest_started()));
+				st.setDate(20, dateToSqlDate(res.getTest_completed()));
 				st.setString(21, prepareString(res.getComment()));
+
+				st.registerOutParameter(22, Types.BIGINT);
 
 				st.execute();
 			}

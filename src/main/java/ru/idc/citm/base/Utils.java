@@ -1,4 +1,6 @@
-package ru.idc.citm;
+package ru.idc.citm.base;
+
+import ru.idc.citm.base.Codes;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

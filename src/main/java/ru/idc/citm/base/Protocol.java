@@ -1,4 +1,4 @@
-package ru.idc.citm;
+package ru.idc.citm.base;
 
 import ru.idc.citm.model.HeaderInfo;
 import ru.idc.citm.model.Order;

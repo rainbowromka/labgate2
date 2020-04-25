@@ -1,5 +1,8 @@
-package ru.idc.citm;
+package ru.idc.citm.base;
 
+import ru.idc.citm.base.Codes;
+import ru.idc.citm.base.Protocol;
+import ru.idc.citm.base.Utils;
 import ru.idc.citm.model.HeaderInfo;
 import ru.idc.citm.model.Order;
 import ru.idc.citm.model.PacketInfo;
@@ -15,7 +18,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static ru.idc.citm.Codes.*;
+import static ru.idc.citm.base.Codes.*;
 
 public class ProtocolASTM implements Protocol {
 	private int frameIdx = 0;
@@ -127,7 +130,7 @@ public class ProtocolASTM implements Protocol {
 	public ResultInfo parseResult(String msg) {
 		ResultInfo result = null;
 		String s;
-		final Pattern pattern = Pattern.compile("^\\dR\\|\\d+\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\||(.*?)\\r(.*?)",
+		final Pattern pattern = Pattern.compile("^\\dR\\|\\d+\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\R(.*?)",
 			Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
 		final Pattern utiPattern = Pattern.compile("^(.*?)\\^(.*?)\\^(.*?)\\^(.*?)\\^(.*?)\\^(.*?)\\^(.*?)\\^(.*?)\\^(.*?)\\^(.*?)\\^(.*?)$",
 			Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);

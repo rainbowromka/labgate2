@@ -1,4 +1,4 @@
-package ru.idc.citm;
+package ru.idc.citm.base;
 
 import java.io.IOException;
 

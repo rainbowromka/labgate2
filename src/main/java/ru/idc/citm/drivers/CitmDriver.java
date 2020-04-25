@@ -1,24 +1,27 @@
-package ru.idc.citm;
+package ru.idc.citm.drivers;
 
+import ru.idc.citm.base.Codes;
+import ru.idc.citm.base.Configuration;
+import ru.idc.citm.base.DBManager;
+import ru.idc.citm.base.IDriver;
+import ru.idc.citm.base.Protocol;
+import ru.idc.citm.base.ProtocolASTM;
+import ru.idc.citm.base.SocketClientTransport;
+import ru.idc.citm.base.Transport;
+import ru.idc.citm.base.Utils;
 import ru.idc.citm.model.Order;
 import ru.idc.citm.model.PacketInfo;
 
 import java.io.*;
 import java.util.List;
 
-import static ru.idc.citm.Codes.*;
-import static ru.idc.citm.Consts.ERROR_TIMEOUT;
+import static ru.idc.citm.base.Codes.*;
+import static ru.idc.citm.base.Consts.ERROR_TIMEOUT;
 
-public class Driver {
+public class CitmDriver implements IDriver {
 	private Transport transport;
 	private DBManager dbManager;
 	private Protocol protocol;
-
-	public Driver(Protocol protocol, DBManager dbManager, Transport transport) {
-		this.protocol = protocol;
-		this.dbManager = dbManager;
-		this.transport  = transport;
-	}
 
 	private void sendTasks() throws IOException {
 		String msg;
@@ -89,11 +92,11 @@ public class Driver {
 		return null;
 	}
 
+	@Override
 	public void loop() throws IOException, InterruptedException {
 		if (!transport.isReady()) return;
 
-		String msg, answer;
-		int res;
+		String msg;
 		while (true) {
 			sendTasks();
 			msg = receiveResults();
@@ -103,6 +106,13 @@ public class Driver {
 			}
 			Thread.sleep(500);
 		}
-		// Utils.logMessage("отключаемся");
+	}
+
+	@Override
+	public void init(DBManager dbManager, Configuration config) {
+		this.dbManager = dbManager;
+		protocol = new ProtocolASTM();
+		transport = new SocketClientTransport("192.168.17.192", 1100); //citm-serv.dc-local
+		transport.init();
 	}
 }

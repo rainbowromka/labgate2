@@ -1,6 +1,8 @@
 package ru.idc.citm;
 
 import org.junit.Test;
+import ru.idc.citm.base.Codes;
+import ru.idc.citm.base.ProtocolASTM;
 
 
 public class ProtocolASTMTest {

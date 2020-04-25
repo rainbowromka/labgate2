@@ -1,4 +1,4 @@
-package ru.idc.citm;
+package ru.idc.citm.base;
 
 import ru.idc.citm.model.Order;
 import ru.idc.citm.model.PacketInfo;
@@ -18,14 +18,15 @@ import java.util.Date;
 import java.util.List;
 
 public class DBManager {
-	//  Database credentials
-	private static final String DB_URL = "jdbc:postgresql://192.168.17.248:5432/dcdb";
-	private static final String USER = "gis";
-	private static final String PASS = "1";
 
 	public Connection dbConnection = null;
 
-	public void init() {
+	public void init(Configuration config) {
+		//  Database credentials
+		final String db_url = config.getParamValue("db.url");
+		final String user = config.getParamValue("db.user");
+		final String pass = config.getParamValue("db.password");
+
 		System.out.println("Testing connection to PostgreSQL JDBC");
 
 		try {
@@ -40,7 +41,7 @@ public class DBManager {
 		dbConnection = null;
 
 		try {
-			dbConnection = DriverManager.getConnection(DB_URL, USER, PASS);
+			dbConnection = DriverManager.getConnection(db_url, user, pass);
 
 		} catch (SQLException e) {
 			System.out.println("Connection Failed");

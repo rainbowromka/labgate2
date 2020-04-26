@@ -30,4 +30,11 @@ public class ResultInfo implements Serializable {
 	private Date test_started;
 	private Date test_completed;
 	private String comment;
+
+	public ResultInfo() {
+		sample_type = "SAMPLE";
+		priority = "R";
+		result_status = "F";
+		normal_range_flag = "N";
+	}
 }

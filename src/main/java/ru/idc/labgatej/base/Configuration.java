@@ -1,4 +1,7 @@
-package ru.idc.citm.base;
+package ru.idc.labgatej.base;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -6,6 +9,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class Configuration {
+	private static Logger logger = LoggerFactory.getLogger(Configuration.class);
 	private Properties params;
 
 	public Configuration() {
@@ -13,9 +17,8 @@ public class Configuration {
 			params = new Properties();
 			params.load(input);
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error("", e);
 		}
-
 	}
 
 	public String getParamValue(String param) {

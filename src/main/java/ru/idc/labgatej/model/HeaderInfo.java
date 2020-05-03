@@ -1,4 +1,4 @@
-package ru.idc.citm.model;
+package ru.idc.labgatej.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,4 +9,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class HeaderInfo {
 	private String barcode;
+	private boolean isQualityControl;
 }

@@ -1,4 +1,4 @@
-package ru.idc.citm.base;
+package ru.idc.labgatej.base;
 
 public abstract class Codes {
 	public static final char STX = (char) 2;

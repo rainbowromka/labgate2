@@ -1,6 +1,4 @@
-package ru.idc.citm.base;
-
-import ru.idc.citm.base.Codes;
+package ru.idc.labgatej.base;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,13 +22,5 @@ public class Utils {
 		}
 		//String data = "<STX>1H|\\^&|||ASTM-Host|||||CIT||P||20120219111500<CR>P|1<CR>O|1|923501||^^^CL-S\\^^^CREA|||||||A<CR>L|1|F";
 		return "";
-	}
-
-	public static void logMessage(String msg) {
-		System.out.println(msg);
-	}
-
-	public static void logMessage(int msg) {
-		System.out.println(Codes.makePrintable(""+(char) Integer.parseInt(Integer.toHexString(msg))));
 	}
 }

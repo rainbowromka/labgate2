@@ -1,4 +1,4 @@
-package ru.idc.citm.base;
+package ru.idc.labgatej.base;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

@@ -1,8 +1,8 @@
-package ru.idc.citm;
+package ru.idc.labgatej;
 
 import org.junit.Test;
-import ru.idc.citm.base.Codes;
-import ru.idc.citm.base.ProtocolASTM;
+import ru.idc.labgatej.base.Codes;
+import ru.idc.labgatej.base.ProtocolASTM;
 
 
 public class ProtocolASTMTest {
@@ -29,7 +29,7 @@ public class ProtocolASTMTest {
 			"1C|1|L|R^E|G<CR><ETX>2D<CR><LF>" +
 			"2L|1|N<CR><ETX>05<CR><LF>");
 
-		msg = "4R|1|^^^Na^1^^^10101^^^|124.800|||N||F||&S&SYSTEM^System||20200416151944|10101<CR><ETX>A4<CR><LF>";
+		//msg = "4R|1|^^^Na^1^^^10101^^^|124.800|||N||F||&S&SYSTEM^System||20200416151944|10101<CR><ETX>A4<CR><LF>";
 		astm.parseMessage(Codes.makeSendable(msg));
 	}
 }

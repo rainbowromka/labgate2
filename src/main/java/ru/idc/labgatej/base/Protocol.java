@@ -1,9 +1,9 @@
-package ru.idc.citm.base;
+package ru.idc.labgatej.base;
 
-import ru.idc.citm.model.HeaderInfo;
-import ru.idc.citm.model.Order;
-import ru.idc.citm.model.PacketInfo;
-import ru.idc.citm.model.ResultInfo;
+import ru.idc.labgatej.model.HeaderInfo;
+import ru.idc.labgatej.model.Order;
+import ru.idc.labgatej.model.PacketInfo;
+import ru.idc.labgatej.model.ResultInfo;
 
 import java.util.List;
 

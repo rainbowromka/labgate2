@@ -1,4 +1,4 @@
-package ru.idc.citm.model;
+package ru.idc.labgatej.model;
 
 import lombok.Getter;
 import lombok.Setter;

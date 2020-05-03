@@ -1,13 +1,13 @@
-package ru.idc.citm.drivers;
+package ru.idc.labgatej.drivers;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.idc.citm.base.Configuration;
-import ru.idc.citm.base.DBManager;
-import ru.idc.citm.base.IDriver;
-import ru.idc.citm.model.HeaderInfo;
-import ru.idc.citm.model.PacketInfo;
-import ru.idc.citm.model.ResultInfo;
+import ru.idc.labgatej.base.Configuration;
+import ru.idc.labgatej.base.DBManager;
+import ru.idc.labgatej.base.IDriver;
+import ru.idc.labgatej.model.HeaderInfo;
+import ru.idc.labgatej.model.PacketInfo;
+import ru.idc.labgatej.model.ResultInfo;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -16,10 +16,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
-import java.nio.file.StandardCopyOption;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.sql.Date;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -119,7 +117,7 @@ public class Medonic implements IDriver {
 		data.remove("CEXP");
 
 		if (data.get("ID") != null) {
-			packet.setHeader(new HeaderInfo(data.get("ID")));
+			packet.setHeader(new HeaderInfo(data.get("ID"), false));
 		}
 		ResultInfo res = new ResultInfo();
 		packet.addResult(res);

@@ -1,12 +1,11 @@
-package ru.idc.citm.base;
+package ru.idc.labgatej.base;
 
-import ru.idc.citm.base.Codes;
-import ru.idc.citm.base.Protocol;
-import ru.idc.citm.base.Utils;
-import ru.idc.citm.model.HeaderInfo;
-import ru.idc.citm.model.Order;
-import ru.idc.citm.model.PacketInfo;
-import ru.idc.citm.model.ResultInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import ru.idc.labgatej.model.HeaderInfo;
+import ru.idc.labgatej.model.Order;
+import ru.idc.labgatej.model.PacketInfo;
+import ru.idc.labgatej.model.ResultInfo;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -18,15 +17,15 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static ru.idc.citm.base.Codes.*;
+import static ru.idc.labgatej.base.Codes.*;
 
 public class ProtocolASTM implements Protocol {
-	private int frameIdx = 0;
+	private static Logger logger = LoggerFactory.getLogger(ProtocolASTM.class);
 	// 240 символов на сообщение в одном фрейме
 
 	//<STX>1H|\^&|||ASTM-Host|||||CIT||P||20120219111500<CR>P|1<CR>O|1|923501||^^^CL-S\^^^CREA|||||||A<CR>L|1|F<CR><ETX>80<CR><LF>
 	public String makeOrder(List<Order> orders) {
-		frameIdx = 0;
+		int frameIdx = 0;
 		if (orders.isEmpty()) return "";
 
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHms");
@@ -116,12 +115,13 @@ public class ProtocolASTM implements Protocol {
 	@Override
 	public HeaderInfo parseHeader(String msg) {
 		HeaderInfo result = null;
-		final Pattern pattern = Pattern.compile("^\\dH\\|.{3}\\|(\\d*)\\|", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
+		final Pattern pattern = Pattern.compile("^\\dH\\|.{3}\\|(\\d*)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|",
+			Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
 		Matcher matcher = pattern.matcher(msg);
 		// 1H|\^&|26973||^^^|||||||P||20200413110453<CR><ETX>E4<CR><LF>
+		// 1H|\^&|28189||^^^|||||||Q||20200417122246<CR><ETX>ED<CR><LF>
 		if (matcher.find()) {
-			result = new HeaderInfo();
-			result.setBarcode(matcher.group(1));
+			result = new HeaderInfo(matcher.group(1), "Q".equalsIgnoreCase(matcher.group(10)));
 		}
 		return result;
 	}
@@ -152,7 +152,7 @@ public class ProtocolASTM implements Protocol {
 					try {
 						result.setDilution_factor(Double.valueOf(utiMatcher.group(5)));
 					} catch (NumberFormatException e) {
-						e.printStackTrace();
+						logger.error("", e);
 					}
 				}
 			}
@@ -164,7 +164,7 @@ public class ProtocolASTM implements Protocol {
 				Date date = new SimpleDateFormat("yyyyMMddHHmmss").parse(s);
 				result.setTest_completed(date);
 			} catch (ParseException e) {
-				e.printStackTrace();
+				logger.error("", e);
 			}
 		}
 		return result;

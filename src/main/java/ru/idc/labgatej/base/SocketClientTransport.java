@@ -1,4 +1,7 @@
-package ru.idc.citm.base;
+package ru.idc.labgatej.base;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -13,6 +16,7 @@ import java.net.Socket;
 import java.net.SocketTimeoutException;
 
 public class SocketClientTransport implements Transport {
+	private static Logger logger = LoggerFactory.getLogger(SocketClientTransport.class);
 	private int port;
 	private String host;
 	private BufferedReader in;
@@ -27,24 +31,24 @@ public class SocketClientTransport implements Transport {
 	@Override
 	public void init() {
 		try {
-			System.out.println("Connecting to the server\n\t" +
+			logger.info("Подключаемся к \n\t" +
 				"(IP address " + host +
-				", port " + port + ")");
+				", порт " + port + ")");
 			InetAddress ipAddress;
 			ipAddress = InetAddress.getByName(host);
 			socket = new Socket(ipAddress, port);
 			socket.setSoTimeout(10000);
 			socket.setKeepAlive(true);
-			System.out.println("The connection is established.");
+			logger.info("Соединение установлено");
 
-			System.out.println(
-				"\tLocalPort = " +
-					socket.getLocalPort() +
-					"\n\tInetAddress.HostAddress = " +
-					socket.getInetAddress()
-						.getHostAddress() +
-					"\n\tReceiveBufferSize (SO_RCVBUF) = "
-					+ socket.getReceiveBufferSize());
+//			System.out.println(
+//				"\tLocalPort = " +
+//					socket.getLocalPort() +
+//					"\n\tInetAddress.HostAddress = " +
+//					socket.getInetAddress()
+//						.getHostAddress() +
+//					"\n\tReceiveBufferSize (SO_RCVBUF) = "
+//					+ socket.getReceiveBufferSize());
 
 			// Получаем входной и выходной потоки
 			// сокета для обмена сообщениями с сервером
@@ -54,7 +58,7 @@ public class SocketClientTransport implements Transport {
 			in = new BufferedReader(new InputStreamReader(sin)); //new DataInputStream(sin);
 			out = new BufferedWriter(new OutputStreamWriter(sout)); //new DataOutputStream(sout);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("", e);
 		}
 	}
 
@@ -65,7 +69,7 @@ public class SocketClientTransport implements Transport {
 				socket.close();
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error("", e);
 		}
 	}
 
@@ -78,7 +82,7 @@ public class SocketClientTransport implements Transport {
 	public void sendMessage(String msg) throws IOException {
 		out.write(Codes.makeSendable(msg));
 		out.flush();
-		Utils.logMessage("D -> " + msg);
+		logger.debug("D -> " + msg);
 	}
 
 	@Override
@@ -90,7 +94,7 @@ public class SocketClientTransport implements Transport {
 	public int readInt(boolean ignoreTimeout) throws IOException {
 		try {
 			int result = in.read();
-			Utils.logMessage("D <- " + Codes.makePrintable("" + (char) Integer.parseInt(Integer.toHexString(result))));
+			logger.debug("D <- " + Codes.makePrintable("" + (char) Integer.parseInt(Integer.toHexString(result))));
 			return result;
 		} catch (SocketTimeoutException e) {
 			if (!ignoreTimeout) throw e;
@@ -108,7 +112,7 @@ public class SocketClientTransport implements Transport {
 		}
 
 		String msg = Codes.makePrintable(sb.toString());
-		Utils.logMessage("D <- " + msg);
+		logger.debug("D <- " + msg);
 		return msg;
 	}
 }

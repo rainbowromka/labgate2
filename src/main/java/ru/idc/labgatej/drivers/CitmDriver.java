@@ -1,24 +1,26 @@
-package ru.idc.citm.drivers;
+package ru.idc.labgatej.drivers;
 
-import ru.idc.citm.base.Codes;
-import ru.idc.citm.base.Configuration;
-import ru.idc.citm.base.DBManager;
-import ru.idc.citm.base.IDriver;
-import ru.idc.citm.base.Protocol;
-import ru.idc.citm.base.ProtocolASTM;
-import ru.idc.citm.base.SocketClientTransport;
-import ru.idc.citm.base.Transport;
-import ru.idc.citm.base.Utils;
-import ru.idc.citm.model.Order;
-import ru.idc.citm.model.PacketInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import ru.idc.labgatej.base.Codes;
+import ru.idc.labgatej.base.Configuration;
+import ru.idc.labgatej.base.DBManager;
+import ru.idc.labgatej.base.IDriver;
+import ru.idc.labgatej.base.Protocol;
+import ru.idc.labgatej.base.ProtocolASTM;
+import ru.idc.labgatej.base.SocketClientTransport;
+import ru.idc.labgatej.base.Transport;
+import ru.idc.labgatej.model.Order;
+import ru.idc.labgatej.model.PacketInfo;
 
 import java.io.*;
 import java.util.List;
 
-import static ru.idc.citm.base.Codes.*;
-import static ru.idc.citm.base.Consts.ERROR_TIMEOUT;
+import static ru.idc.labgatej.base.Codes.*;
+import static ru.idc.labgatej.base.Consts.ERROR_TIMEOUT;
 
 public class CitmDriver implements IDriver {
+	private static Logger logger = LoggerFactory.getLogger(CitmDriver.class);
 	private Transport transport;
 	private DBManager dbManager;
 	private Protocol protocol;
@@ -38,27 +40,27 @@ public class CitmDriver implements IDriver {
 				transport.sendMessage("<ENQ>");
 				res = transport.readInt();
 				if (res == Codes.ACK) {
-					Utils.logMessage("нас готовы слушать");
+					logger.debug("нас готовы слушать");
 					transport.sendMessage(msg);
 					res = transport.readInt();
 					if (res == Codes.ACK) {
-						Utils.logMessage("Наше сообщение приняли");
+						logger.debug("Наше сообщение приняли");
 						// нужно помечать задание как обработанное в БД
 						dbManager.markOrderAsProcessed(taskId);
 					} else if (res == Codes.NAK) {
-						Utils.logMessage("Наше сообщение не понравилось почему-то");
+						logger.debug("Наше сообщение не понравилось почему-то");
 						hasErrors = true;
 					} else {
-						Utils.logMessage("ошибка протокола");
+						logger.error("ошибка протокола");
 						hasErrors = true;
 					}
 					transport.sendMessage("<EOT>");
 				} else if (res == Codes.NAK) {
-					Utils.logMessage("нас не готовы слушать, ждём 10 секунд");
+					logger.debug("нас не готовы слушать, ждём 10 секунд");
 					// надо подождать не меньше 10 секунд
 					hasErrors = true;
 				} else {
-					Utils.logMessage("ошибка протокола");
+					logger.error("ошибка протокола");
 					hasErrors = true;
 				}
 				cnt++;
@@ -72,9 +74,9 @@ public class CitmDriver implements IDriver {
 		do {
 			res = transport.readInt(true);
 			if (res == ERROR_TIMEOUT) {
-				Utils.logMessage("ждём данных");
+				logger.debug("ждём данных");
 			} else if (res == ENQ) {
-				Utils.logMessage("нам хотят что-то прислать");
+				logger.debug("нам хотят что-то прислать");
 				sb.setLength(0);
 				transport.sendMessage("<ACK>");
 			} else if (res == STX) {
@@ -82,11 +84,11 @@ public class CitmDriver implements IDriver {
 				sb.append(msg);
 				transport.sendMessage("<ACK>");
 			} else if (res == EOT) {
-				Utils.logMessage("мы зафиксировали конец передачи");
+				logger.debug("мы зафиксировали конец передачи");
 				System.out.println(sb.toString());
 				return sb.toString();
 			} else {
-				Utils.logMessage("ошибка протокола");
+				logger.error("ошибка протокола");
 			}
 		} while (res != ERROR_TIMEOUT);
 		return null;
@@ -112,7 +114,7 @@ public class CitmDriver implements IDriver {
 	public void init(DBManager dbManager, Configuration config) {
 		this.dbManager = dbManager;
 		protocol = new ProtocolASTM();
-		transport = new SocketClientTransport("192.168.17.192", 1100); //citm-serv.dc-local
+		transport = new SocketClientTransport(config.getParamValue("citm.server"), Integer.parseInt(config.getParamValue("citm.port")));
 		transport.init();
 	}
 }

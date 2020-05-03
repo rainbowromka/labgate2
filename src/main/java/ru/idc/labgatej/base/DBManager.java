@@ -1,8 +1,11 @@
-package ru.idc.citm.base;
+package ru.idc.labgatej.base;
 
-import ru.idc.citm.model.Order;
-import ru.idc.citm.model.PacketInfo;
-import ru.idc.citm.model.ResultInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import ru.idc.labgatej.model.HeaderInfo;
+import ru.idc.labgatej.model.Order;
+import ru.idc.labgatej.model.PacketInfo;
+import ru.idc.labgatej.model.ResultInfo;
 
 import java.sql.CallableStatement;
 import java.sql.DriverManager;
@@ -18,6 +21,7 @@ import java.util.Date;
 import java.util.List;
 
 public class DBManager {
+	private static Logger logger = LoggerFactory.getLogger(DBManager.class);
 
 	public Connection dbConnection = null;
 
@@ -27,32 +31,29 @@ public class DBManager {
 		final String user = config.getParamValue("db.user");
 		final String pass = config.getParamValue("db.password");
 
-		System.out.println("Testing connection to PostgreSQL JDBC");
+		logger.trace("Проверяем соединение с PostgreSQL JDBC");
 
 		try {
 			Class.forName("org.postgresql.Driver");
 		} catch (ClassNotFoundException e) {
-			System.out.println("PostgreSQL JDBC Driver is not found. Include it in your library path ");
-			e.printStackTrace();
+			logger.error("Не найден PostgreSQL JDBC Driver", e);
 			return;
 		}
 
-		System.out.println("PostgreSQL JDBC Driver successfully connected");
+		logger.trace("PostgreSQL JDBC Driver successfully connected");
 		dbConnection = null;
 
 		try {
 			dbConnection = DriverManager.getConnection(db_url, user, pass);
-
 		} catch (SQLException e) {
-			System.out.println("Connection Failed");
-			e.printStackTrace();
+			logger.error("Не удалось подключиться к БД.", e);
 			return;
 		}
 
 		if (dbConnection != null) {
-			System.out.println("You successfully connected to database now");
+			logger.info("Успешно подключились к БД");
 		} else {
-			System.out.println("Failed to make connection to database");
+			logger.error("Не удалось подключиться к БД.");
 		}
 	}
 
@@ -100,7 +101,7 @@ public class DBManager {
 				statement.close();
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("", e);
 		}
 		return result;
 	}
@@ -125,9 +126,14 @@ public class DBManager {
 	}
 
 	public void saveResults(PacketInfo packetInfo) {
+		HeaderInfo headerInfo = packetInfo.getHeader();
+
 		packetInfo.getResults().forEach(r -> {
-			if (r.getSample_id() == null && packetInfo.getHeader() != null) {
-				r.setSample_id(packetInfo.getHeader().getBarcode());
+			if (headerInfo != null && headerInfo.isQualityControl()) {
+				r.setTest_type("CONTROL");
+			}
+			if (r.getSample_id() == null && headerInfo != null) {
+				r.setSample_id(headerInfo.getBarcode());
 			}
 			saveResult(r);
 		});
@@ -165,7 +171,7 @@ public class DBManager {
 				st.execute();
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("", e);
 		}
 	}
 
@@ -173,7 +179,7 @@ public class DBManager {
 		try (Statement statement = dbConnection.createStatement()) {
 			statement.executeUpdate("UPDATE lis.citm_query SET processed = now() WHERE citm_query_id = " + taskId);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("", e);
 		}
 	}
 }

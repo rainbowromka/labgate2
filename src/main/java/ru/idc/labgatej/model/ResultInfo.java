@@ -9,7 +9,13 @@ import java.util.Date;
 @Getter
 @Setter
 public class ResultInfo implements Serializable {
+	/**
+	 * код прибора
+	 */
 	private String device_name;
+	/**
+	 * код модуля прибора
+	 */
 	private String instrument_id;
 	private String sample_id;
 	private String test_type;

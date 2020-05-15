@@ -143,7 +143,7 @@ public class ProtocolASTM implements Protocol {
 			result.setNormal_range_flag(matcher.group(5));
 			result.setTest_type("SAMPLE");
 			result.setResult_status(matcher.group(7));
-			result.setInstrument_id(matcher.group(12));
+			result.setDevice_name(matcher.group(12));
 			s = matcher.group(1); // group - 2
 			utiMatcher = utiPattern.matcher(s);
 			if (utiMatcher.find()) {

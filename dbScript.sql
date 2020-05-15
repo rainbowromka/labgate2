@@ -139,7 +139,7 @@ BEGIN
                 JOIN lis.scheduled_containers sc ON sc.scheduled_sample = ss.scheduled_sample
                 JOIN lis.rt_technique_positions tp ON tp.investigation = si.investigation AND tp.technique = si.technique
                 JOIN lis.rt_deviceinstances di ON di.device_instance = tp.device_instance
-                JOIN lis.citm c on c.device_instance = tp.device_instance
+                --JOIN lis.citm c on c.device_instance = tp.device_instance
             WHERE sc.barcode = v_barcode
         LOOP
             FOR v_record2 IN
@@ -154,8 +154,10 @@ BEGIN
                        it.sex,
                        it.birthday,
                        it.scheduled_profile,
-                       it.scheduled_invest
+                       it.scheduled_invest,
+                       t.test_code as citm_test_code
                 FROM lis.inquiry_tests(v_record.code, v_record.barcode) it
+                JOIN lis.rt_tests t on t.test = it.test
             LOOP
                 sample_id         = v_record2.sample_id;
                 device_instance   = v_record2.device_instance;
@@ -163,7 +165,7 @@ BEGIN
                 dilution_factor   = v_record2.dilution_factor;
                 test              = v_record2.test;
                 material          = v_record2.material;
-                test_code         = v_record2.test_code;
+                test_code         = v_record2.citm_test_code;
                 cartnum           = v_record2.cartnum;
                 fam               = v_record2.fam;
                 sex               = v_record2.sex;
@@ -221,7 +223,16 @@ select * from LIS.listContainerRoutes2('16123566');
 select * from LIS.listContainerRoutes2('16123567');
 select * from LIS.listContainerRoutes2('16123568');
 
+select * from LIS.listContainerRoutes2('17721771');
+SELECT * FROM LIS.inquiry_tests('COBAS_CCEE', '17721771');
+
 select * from LIS.listContainerRoutes2('575757');
+
+select * from lis.getTasks4CITM();
+
+
+
+
 
 select t.*, tp.test_name, tp.test_desc from lis.getTasks4CITM() t
 JOIN lis.rt_test_properties tp on tp.test = t.test;

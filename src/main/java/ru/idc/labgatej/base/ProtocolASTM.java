@@ -39,7 +39,7 @@ public class ProtocolASTM implements Protocol {
 		int idx = 1;
 		for (Order order : orders) {
 			msg.append("O|").append(idx).append("|").append(order.getBarcode()).append("||^^^")
-				.append(order.getTestCode())
+				.append(order.getTestId())
 				//.append("^^^^").append(order.getDeviceCode())
 				.append("|||||||A<CR>"); // A - Action Code
 			idx++;

@@ -1,0 +1,1911 @@
+16 мая 2020 11:17:27,253 TRACE Manager:20 - main: Запуск приложения
+16 мая 2020 11:17:27,256 TRACE Manager:23 - main: Чтение конфигурации
+16 мая 2020 11:17:27,258 TRACE Manager:30 - main: Инициализация подключения к БД...
+16 мая 2020 11:17:27,258 TRACE DBManager:34 - init: Проверяем соединение с PostgreSQL JDBC
+16 мая 2020 11:17:27,265 TRACE DBManager:43 - init: PostgreSQL JDBC Driver successfully connected
+16 мая 2020 11:17:27,392  INFO DBManager:54 - init: Успешно подключились к БД
+16 мая 2020 11:17:27,398  INFO SocketClientTransport:34 - init: Подключаемся к 
+	(IP address citm-serv.dc-local, порт 1100)
+16 мая 2020 11:17:27,407  INFO SocketClientTransport:42 - init: Соединение установлено
+16 мая 2020 11:17:27,426 ERROR DBManager:104 - getOrders: 
+org.postgresql.util.PSQLException: ERROR: function lis.gettasks4citm() does not exist
+  Подсказка: No function matches the given name and argument types. You might need to add explicit type casts.
+  Позиция: 15
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2103)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:1836)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:257)
+	at org.postgresql.jdbc2.AbstractJdbc2Statement.execute(AbstractJdbc2Statement.java:512)
+	at org.postgresql.jdbc2.AbstractJdbc2Statement.executeWithFlags(AbstractJdbc2Statement.java:374)
+	at org.postgresql.jdbc2.AbstractJdbc2Statement.executeQuery(AbstractJdbc2Statement.java:254)
+	at ru.idc.labgatej.base.DBManager.getOrders(DBManager.java:77)
+	at ru.idc.labgatej.drivers.CitmDriver.sendTasks(CitmDriver.java:36)
+	at ru.idc.labgatej.drivers.CitmDriver.loop(CitmDriver.java:103)
+	at ru.idc.labgatej.Manager.main(Manager.java:36)
+16 мая 2020 11:17:37,439 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:17:37,941 ERROR DBManager:104 - getOrders: 
+org.postgresql.util.PSQLException: ERROR: function lis.gettasks4citm() does not exist
+  Подсказка: No function matches the given name and argument types. You might need to add explicit type casts.
+  Позиция: 15
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2103)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:1836)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:257)
+	at org.postgresql.jdbc2.AbstractJdbc2Statement.execute(AbstractJdbc2Statement.java:512)
+	at org.postgresql.jdbc2.AbstractJdbc2Statement.executeWithFlags(AbstractJdbc2Statement.java:374)
+	at org.postgresql.jdbc2.AbstractJdbc2Statement.executeQuery(AbstractJdbc2Statement.java:254)
+	at ru.idc.labgatej.base.DBManager.getOrders(DBManager.java:77)
+	at ru.idc.labgatej.drivers.CitmDriver.sendTasks(CitmDriver.java:36)
+	at ru.idc.labgatej.drivers.CitmDriver.loop(CitmDriver.java:103)
+	at ru.idc.labgatej.Manager.main(Manager.java:36)
+16 мая 2020 11:20:31,263 TRACE Manager:20 - main: Запуск приложения
+16 мая 2020 11:20:31,267 TRACE Manager:23 - main: Чтение конфигурации
+16 мая 2020 11:20:31,273 TRACE Manager:30 - main: Инициализация подключения к БД...
+16 мая 2020 11:20:31,274 TRACE DBManager:34 - init: Проверяем соединение с PostgreSQL JDBC
+16 мая 2020 11:20:31,284 TRACE DBManager:43 - init: PostgreSQL JDBC Driver successfully connected
+16 мая 2020 11:20:31,414  INFO DBManager:54 - init: Успешно подключились к БД
+16 мая 2020 11:20:31,428  INFO SocketClientTransport:34 - init: Подключаемся к 
+	(IP address citm-serv.dc-local, порт 1100)
+16 мая 2020 11:20:31,438  INFO SocketClientTransport:42 - init: Соединение установлено
+16 мая 2020 11:20:41,491 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:20:51,994 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:21:02,506 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:21:13,016 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:21:23,522 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:21:34,029 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:21:44,535 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:21:55,047 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:22:05,563 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:22:16,067 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:22:26,574 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:22:37,086 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:22:47,596 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:22:58,099 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:23:08,604 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:23:19,115 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:23:29,627 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:23:40,139 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:23:50,645 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:24:01,154 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:24:11,666 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:24:22,177 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:24:32,686 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:24:43,198 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:24:53,701 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:25:04,212 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:25:14,716 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:25:25,219 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:25:35,730 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:25:46,241 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:25:56,746 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:26:07,256 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:26:17,762 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:26:28,264 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:26:38,774 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:26:49,284 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:26:59,787 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:27:10,295 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:27:20,807 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:27:31,324 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:27:41,830 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:27:52,342 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:28:02,855 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:28:13,358 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:28:23,870 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:28:34,380 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:28:44,892 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:28:55,404 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:29:05,916 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:29:16,428 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:29:26,932 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:29:37,442 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:29:47,948 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:29:58,451 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:29:59,178 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 11:29:59,180 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 11:29:59,181 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 11:29:59,181 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||20200516112959<CR>P|1<CR>O|1|20005444||^^^181|||||||A<CR>L|1|F<CR><ETX>EB<CR><LF>
+16 мая 2020 11:29:59,183 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 11:29:59,183 DEBUG CitmDriver:47 - sendTasks: Наше сообщение приняли
+16 мая 2020 11:29:59,185 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 11:29:59,239 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 11:29:59,241 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 11:29:59,241 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 11:29:59,242 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||20200516112959<CR>P|1<CR>O|1|20005445||^^^53|||||||A<CR>L|1|F<CR><ETX>BA<CR><LF>
+16 мая 2020 11:29:59,244 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 11:29:59,244 DEBUG CitmDriver:47 - sendTasks: Наше сообщение приняли
+16 мая 2020 11:29:59,246 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 11:29:59,302 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 11:29:59,304 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 11:29:59,304 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 11:29:59,305 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||20200516112959<CR>P|1<CR>O|1|20005446||^^^1496|||||||A<CR>L|1|F<CR><ETX>27<CR><LF>
+16 мая 2020 11:29:59,306 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 11:29:59,307 DEBUG CitmDriver:47 - sendTasks: Наше сообщение приняли
+16 мая 2020 11:29:59,308 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 11:30:09,343 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:30:19,896 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:30:30,447 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:30:40,989 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:30:51,521 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:31:02,062 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:31:12,612 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:31:23,177 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:31:33,721 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:31:44,266 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:31:54,811 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:32:05,347 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:32:15,894 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:32:26,432 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:32:36,988 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:32:47,535 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:32:58,083 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:33:08,635 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:33:19,177 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:33:29,734 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:33:40,280 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:33:50,818 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:34:01,375 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:34:11,939 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:34:22,480 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:34:33,038 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:34:43,590 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:34:54,118 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:35:04,672 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:35:15,211 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:35:25,756 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:35:36,299 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:35:46,858 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:35:57,404 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:36:07,947 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:36:18,484 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:36:29,040 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:36:39,587 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:36:50,138 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:37:00,683 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:37:11,237 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:37:21,767 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:37:32,307 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:37:42,849 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:37:53,400 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:38:03,950 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:38:14,492 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:38:25,038 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:38:35,569 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:38:46,123 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:38:56,660 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:39:07,195 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:39:17,752 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:39:28,297 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:39:38,839 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:39:49,380 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:39:59,933 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:40:10,469 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:40:21,018 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:40:31,558 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:40:42,116 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:40:52,662 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:41:03,216 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:41:13,754 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:41:24,300 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:41:34,834 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:41:45,377 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:41:55,925 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:42:06,476 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:42:17,023 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:42:27,562 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:42:38,107 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:42:48,656 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:42:59,205 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:43:09,761 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:43:20,298 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:43:30,844 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:43:41,387 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:43:51,927 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:44:02,472 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:44:13,014 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:44:23,550 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:44:34,093 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:44:44,634 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:44:55,179 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:45:05,720 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:45:16,272 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:45:26,817 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:45:37,358 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:45:47,901 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:45:58,438 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:46:08,979 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:46:19,525 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:46:30,061 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:46:40,614 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:46:51,160 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:47:01,712 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:47:12,259 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:47:22,800 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:47:33,356 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:47:43,916 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:47:54,460 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:48:05,004 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:48:15,555 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:48:26,104 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:48:36,660 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:48:47,198 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:48:57,742 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:49:08,289 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:49:18,828 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:49:29,383 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:49:39,932 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:49:50,480 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:50:01,026 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:50:11,554 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:50:22,087 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:50:32,623 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:50:43,170 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:50:53,724 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:51:04,268 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:51:14,823 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:51:25,375 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:51:35,929 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:51:46,472 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:51:57,051 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:52:07,595 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:52:18,148 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:52:28,694 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:52:39,232 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:52:49,791 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:53:00,339 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:53:10,874 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:53:21,411 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:53:31,958 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:53:42,493 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:53:53,039 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:54:03,577 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:54:14,122 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:54:24,666 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:54:35,208 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:54:45,739 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:54:56,276 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:55:06,819 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:55:17,365 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:55:27,916 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:55:38,468 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:55:49,004 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:55:59,546 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:56:10,102 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:56:20,645 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:56:31,194 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:56:41,744 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:56:52,288 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:57:02,829 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:57:13,385 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:57:23,927 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:57:34,468 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:57:45,012 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:57:55,564 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:58:06,115 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:58:16,708 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:58:27,253 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:58:37,797 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:58:48,368 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:58:58,916 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:59:09,455 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:59:19,984 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:59:30,521 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:59:41,078 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 11:59:51,620 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:00:02,158 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:00:12,693 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:00:23,240 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:00:33,766 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:00:44,299 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:00:54,841 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:01:05,377 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:01:15,916 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:01:26,461 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:01:37,008 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:01:47,538 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:01:58,080 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:02:08,631 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:02:19,163 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:02:29,704 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:02:40,250 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:02:50,792 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:03:01,334 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:03:11,887 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:03:22,434 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:03:32,968 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:03:43,516 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:03:54,056 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:04:04,591 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:04:15,137 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:04:25,669 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:04:36,217 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:04:46,757 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:04:57,312 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:05:07,856 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:05:18,400 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:05:28,939 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:05:39,485 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:05:50,024 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:06:00,576 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:06:11,112 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:06:21,661 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:06:32,197 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:06:42,743 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:06:53,285 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:07:03,824 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:07:14,365 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:07:24,919 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:07:35,468 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:07:46,008 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:07:56,563 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:08:07,101 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:08:17,648 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:08:28,188 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:08:38,732 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:08:49,285 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:08:59,831 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:09:10,374 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:09:20,913 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:09:31,455 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:09:42,009 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:09:52,554 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:10:03,096 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:10:13,642 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:10:24,177 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:10:34,728 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:10:45,272 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:10:55,820 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:11:06,373 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:11:16,915 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:11:27,460 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:11:38,001 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:11:48,545 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:11:59,094 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:12:09,643 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:12:20,184 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:12:30,736 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:12:41,280 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:12:51,825 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:13:02,366 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:13:12,905 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:13:23,446 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:13:34,000 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:13:44,540 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:13:55,077 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:14:05,628 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:14:16,163 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:14:26,701 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:14:37,238 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:14:47,788 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:14:58,328 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:15:08,864 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:15:19,410 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:15:29,958 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:15:40,498 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:15:51,051 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:16:01,592 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:16:12,144 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:16:22,688 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:16:33,234 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:16:43,770 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:16:54,310 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:17:04,856 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:17:15,405 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:17:25,940 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:17:36,482 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:17:47,015 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:17:57,553 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:18:08,097 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:18:18,639 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:18:29,179 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:18:39,717 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:18:50,260 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:19:00,799 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:19:11,311 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:19:21,817 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:19:32,328 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:19:42,831 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:19:53,342 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:20:03,855 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:20:14,359 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:20:24,862 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:20:35,371 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:20:45,879 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:20:56,383 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:21:06,895 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:21:17,406 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:21:27,915 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:21:38,424 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:21:48,936 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:21:59,448 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:22:09,955 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:22:20,466 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:22:30,969 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:22:41,480 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:22:51,992 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:23:02,498 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:23:13,011 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:23:23,519 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:23:34,022 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:23:44,534 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:23:55,046 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:24:05,557 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:24:16,068 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:24:26,580 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:24:37,092 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:24:47,605 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:24:58,116 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:25:08,619 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:25:19,126 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:25:29,637 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:25:40,141 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:25:50,652 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:26:01,164 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:26:11,674 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:26:22,187 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:26:32,699 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:26:43,204 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:26:53,706 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:27:04,213 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:27:14,726 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:27:25,232 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:27:35,739 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:27:46,242 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:27:56,752 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:28:07,263 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:28:17,775 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:28:28,279 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:28:38,789 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:28:49,296 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:28:59,807 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:29:10,311 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:29:20,819 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:29:21,456 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 12:29:21,458 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 12:29:21,458 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 12:29:21,458 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||20200516122921<CR>P|1<CR>O|1|20014697||^^^545|||||||A<CR>O|2|20014697||^^^1034|||||||A<CR>O|3|20014697||^^^1025|||||||A<CR>O|4|20014697||^^^1026|||||||A<CR>O|5|20014697||^^^566|||||||A<CR>O|6|20014697||^^^1028|||||||A<CR>O|7|20014697|<ETB>DD<CR><LF><STX>2|^^^534|||||||A<CR>O|8|20014697||^^^1029|||||||A<CR>O|9|20014697||^^^1030|||||||A<CR>O|10|20014697||^^^1031|||||||A<CR>O|11|20014697||^^^1032|||||||A<CR>O|12|20014697||^^^1162|||||||A<CR>O|13|20014697||^^^1163|||||||A<CR>O|14|20014697||^^^1164|||||||A<CR>O|15|2001<ETB>0B<CR><LF><STX>34697||^^^1165|||||||A<CR>O|16|20014697||^^^600|||||||A<CR>O|17|20014697||^^^1166|||||||A<CR>O|18|20014697||^^^1167|||||||A<CR>O|19|20014697||^^^1045|||||||A<CR>O|20|20014697||^^^1044|||||||A<CR>O|21|20014697||^^^1192|||||||A<CR>O|22|20014697||^^^1193|||||||A<CR>O|<ETB>3E<CR><LF><STX>423|20014697||^^^565|||||||A<CR>O|24|20014697||^^^566|||||||A<CR>O|25|20014697||^^^567|||||||A<CR>O|26|20014697||^^^1040|||||||A<CR>O|27|20014697||^^^1036|||||||A<CR>O|28|20014697||^^^1170|||||||A<CR>O|29|20014697||^^^1037|||||||A<CR>O|30|20014697||^^^1169||||||<ETB>02<CR><LF><STX>5|A<CR>O|31|20014697||^^^1038|||||||A<CR>O|32|20014697||^^^1041|||||||A<CR>O|33|20014697||^^^1039|||||||A<CR>O|34|20014697||^^^1171|||||||A<CR>O|35|20014697||^^^1194|||||||A<CR>O|36|20014697||^^^1195|||||||A<CR>O|37|20014697||^^^1196|||||||A<CR>O|38|20014697||^^^11<ETB>D5<CR><LF><STX>697|||||||A<CR>O|39|20014697||^^^1198|||||||A<CR>O|40|20014697||^^^1199|||||||A<CR>O|41|20014697||^^^1200|||||||A<CR>O|42|20014697||^^^1203|||||||A<CR>O|43|20014697||^^^1204|||||||A<CR>L|1|F<CR><ETX>64<CR><LF>
+16 мая 2020 12:29:21,464 DEBUG SocketClientTransport:97 - readInt: D <- <NAK>
+16 мая 2020 12:29:21,464 ERROR CitmDriver:54 - sendTasks: ошибка протокола
+16 мая 2020 12:29:21,465 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 12:29:31,468 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:29:32,112 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 12:29:32,114 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 12:29:32,115 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 12:29:32,115 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||20200516122932<CR>P|1<CR>O|1|20014697||^^^545|||||||A<CR>O|2|20014697||^^^1034|||||||A<CR>O|3|20014697||^^^1025|||||||A<CR>O|4|20014697||^^^1026|||||||A<CR>O|5|20014697||^^^566|||||||A<CR>O|6|20014697||^^^1028|||||||A<CR>O|7|20014697|<ETB>DF<CR><LF><STX>2|^^^534|||||||A<CR>O|8|20014697||^^^1029|||||||A<CR>O|9|20014697||^^^1030|||||||A<CR>O|10|20014697||^^^1031|||||||A<CR>O|11|20014697||^^^1032|||||||A<CR>O|12|20014697||^^^1162|||||||A<CR>O|13|20014697||^^^1163|||||||A<CR>O|14|20014697||^^^1164|||||||A<CR>O|15|2001<ETB>0B<CR><LF><STX>34697||^^^1165|||||||A<CR>O|16|20014697||^^^600|||||||A<CR>O|17|20014697||^^^1166|||||||A<CR>O|18|20014697||^^^1167|||||||A<CR>O|19|20014697||^^^1045|||||||A<CR>O|20|20014697||^^^1044|||||||A<CR>O|21|20014697||^^^1192|||||||A<CR>O|22|20014697||^^^1193|||||||A<CR>O|<ETB>3E<CR><LF><STX>423|20014697||^^^565|||||||A<CR>O|24|20014697||^^^566|||||||A<CR>O|25|20014697||^^^567|||||||A<CR>O|26|20014697||^^^1040|||||||A<CR>O|27|20014697||^^^1036|||||||A<CR>O|28|20014697||^^^1170|||||||A<CR>O|29|20014697||^^^1037|||||||A<CR>O|30|20014697||^^^1169||||||<ETB>02<CR><LF><STX>5|A<CR>O|31|20014697||^^^1038|||||||A<CR>O|32|20014697||^^^1041|||||||A<CR>O|33|20014697||^^^1039|||||||A<CR>O|34|20014697||^^^1171|||||||A<CR>O|35|20014697||^^^1194|||||||A<CR>O|36|20014697||^^^1195|||||||A<CR>O|37|20014697||^^^1196|||||||A<CR>O|38|20014697||^^^11<ETB>D5<CR><LF><STX>697|||||||A<CR>O|39|20014697||^^^1198|||||||A<CR>O|40|20014697||^^^1199|||||||A<CR>O|41|20014697||^^^1200|||||||A<CR>O|42|20014697||^^^1203|||||||A<CR>O|43|20014697||^^^1204|||||||A<CR>L|1|F<CR><ETX>64<CR><LF>
+16 мая 2020 12:29:32,121 DEBUG SocketClientTransport:97 - readInt: D <- <NAK>
+16 мая 2020 12:29:32,121 ERROR CitmDriver:54 - sendTasks: ошибка протокола
+16 мая 2020 12:29:32,121 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 12:29:42,131 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:29:52,642 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:30:03,152 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:30:13,662 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:30:24,176 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:30:34,687 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:30:45,197 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:30:55,706 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:31:06,216 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:31:16,727 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:31:27,240 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:31:37,753 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:31:48,265 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:31:58,776 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:32:09,281 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:32:19,789 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:32:30,301 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:32:40,808 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:32:51,311 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:33:01,823 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:33:12,327 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:33:22,852 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:33:33,361 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:33:43,874 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:33:54,386 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:34:04,891 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:34:15,401 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:34:25,912 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:34:36,425 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:34:46,934 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:34:47,584 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 12:34:47,586 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 12:34:47,586 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 12:34:47,587 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||20200516123447<CR>P|1<CR>O|1|20014697||^^^545|||||||A<CR>O|2|20014697||^^^1034|||||||A<CR>O|3|20014697||^^^1025|||||||A<CR>O|4|20014697||^^^1026|||||||A<CR>O|5|20014697||^^^566|||||||A<CR>O|6|20014697||^^^1028|||||||A<CR>O|7|20014697|<ETB>E1<CR><LF><STX>2|^^^534|||||||A<CR>O|8|20014697||^^^1029|||||||A<CR>O|9|20014697||^^^1030|||||||A<CR>O|10|20014697||^^^1031|||||||A<CR>O|11|20014697||^^^1032|||||||A<CR>O|12|20014697||^^^1162|||||||A<CR>O|13|20014697||^^^1163|||||||A<CR>O|14|20014697||^^^1164|||||||A<CR>O|15|2001<ETB>0B<CR><LF><STX>34697||^^^1165|||||||A<CR>O|16|20014697||^^^600|||||||A<CR>O|17|20014697||^^^1166|||||||A<CR>O|18|20014697||^^^1167|||||||A<CR>O|19|20014697||^^^1045|||||||A<CR>O|20|20014697||^^^1044|||||||A<CR>O|21|20014697||^^^1192|||||||A<CR>O|22|20014697||^^^1193|||||||A<CR>O|<ETB>3E<CR><LF><STX>423|20014697||^^^565|||||||A<CR>O|24|20014697||^^^566|||||||A<CR>O|25|20014697||^^^567|||||||A<CR>O|26|20014697||^^^1040|||||||A<CR>O|27|20014697||^^^1036|||||||A<CR>O|28|20014697||^^^1170|||||||A<CR>O|29|20014697||^^^1037|||||||A<CR>O|30|20014697||^^^1169||||||<ETB>02<CR><LF><STX>5|A<CR>O|31|20014697||^^^1038|||||||A<CR>O|32|20014697||^^^1041|||||||A<CR>O|33|20014697||^^^1039|||||||A<CR>O|34|20014697||^^^1171|||||||A<CR>O|35|20014697||^^^1194|||||||A<CR>O|36|20014697||^^^1195|||||||A<CR>O|37|20014697||^^^1196|||||||A<CR>O|38|20014697||^^^11<ETB>D5<CR><LF><STX>697|||||||A<CR>O|39|20014697||^^^1198|||||||A<CR>O|40|20014697||^^^1199|||||||A<CR>O|41|20014697||^^^1200|||||||A<CR>O|42|20014697||^^^1203|||||||A<CR>O|43|20014697||^^^1204|||||||A<CR>L|1|F<CR><ETX>64<CR><LF>
+16 мая 2020 12:34:47,592 DEBUG SocketClientTransport:97 - readInt: D <- <NAK>
+16 мая 2020 12:34:47,593 ERROR CitmDriver:54 - sendTasks: ошибка протокола
+16 мая 2020 12:34:47,593 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 12:34:57,599 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:34:58,265 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 12:34:58,267 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 12:34:58,270 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 12:34:58,270 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||20200516123458<CR>P|1<CR>O|1|20014697||^^^545|||||||A<CR>O|2|20014697||^^^1034|||||||A<CR>O|3|20014697||^^^1025|||||||A<CR>O|4|20014697||^^^1026|||||||A<CR>O|5|20014697||^^^566|||||||A<CR>O|6|20014697||^^^1028|||||||A<CR>O|7|20014697|<ETB>E3<CR><LF><STX>2|^^^534|||||||A<CR>O|8|20014697||^^^1029|||||||A<CR>O|9|20014697||^^^1030|||||||A<CR>O|10|20014697||^^^1031|||||||A<CR>O|11|20014697||^^^1032|||||||A<CR>O|12|20014697||^^^1162|||||||A<CR>O|13|20014697||^^^1163|||||||A<CR>O|14|20014697||^^^1164|||||||A<CR>O|15|2001<ETB>0B<CR><LF><STX>34697||^^^1165|||||||A<CR>O|16|20014697||^^^600|||||||A<CR>O|17|20014697||^^^1166|||||||A<CR>O|18|20014697||^^^1167|||||||A<CR>O|19|20014697||^^^1045|||||||A<CR>O|20|20014697||^^^1044|||||||A<CR>O|21|20014697||^^^1192|||||||A<CR>O|22|20014697||^^^1193|||||||A<CR>O|<ETB>3E<CR><LF><STX>423|20014697||^^^565|||||||A<CR>O|24|20014697||^^^566|||||||A<CR>O|25|20014697||^^^567|||||||A<CR>O|26|20014697||^^^1040|||||||A<CR>O|27|20014697||^^^1036|||||||A<CR>O|28|20014697||^^^1170|||||||A<CR>O|29|20014697||^^^1037|||||||A<CR>O|30|20014697||^^^1169||||||<ETB>02<CR><LF><STX>5|A<CR>O|31|20014697||^^^1038|||||||A<CR>O|32|20014697||^^^1041|||||||A<CR>O|33|20014697||^^^1039|||||||A<CR>O|34|20014697||^^^1171|||||||A<CR>O|35|20014697||^^^1194|||||||A<CR>O|36|20014697||^^^1195|||||||A<CR>O|37|20014697||^^^1196|||||||A<CR>O|38|20014697||^^^11<ETB>D5<CR><LF><STX>697|||||||A<CR>O|39|20014697||^^^1198|||||||A<CR>O|40|20014697||^^^1199|||||||A<CR>O|41|20014697||^^^1200|||||||A<CR>O|42|20014697||^^^1203|||||||A<CR>O|43|20014697||^^^1204|||||||A<CR>L|1|F<CR><ETX>64<CR><LF>
+16 мая 2020 12:34:58,277 DEBUG SocketClientTransport:97 - readInt: D <- <NAK>
+16 мая 2020 12:34:58,277 ERROR CitmDriver:54 - sendTasks: ошибка протокола
+16 мая 2020 12:34:58,277 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 12:35:08,288 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:35:08,975 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 12:35:08,977 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 12:35:08,978 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 12:35:08,978 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||2020051612358<CR>P|1<CR>O|1|20014697||^^^545|||||||A<CR>O|2|20014697||^^^1034|||||||A<CR>O|3|20014697||^^^1025|||||||A<CR>O|4|20014697||^^^1026|||||||A<CR>O|5|20014697||^^^566|||||||A<CR>O|6|20014697||^^^1028|||||||A<CR>O|7|20014697||<ETB>2B<CR><LF><STX>2^^^534|||||||A<CR>O|8|20014697||^^^1029|||||||A<CR>O|9|20014697||^^^1030|||||||A<CR>O|10|20014697||^^^1031|||||||A<CR>O|11|20014697||^^^1032|||||||A<CR>O|12|20014697||^^^1162|||||||A<CR>O|13|20014697||^^^1163|||||||A<CR>O|14|20014697||^^^1164|||||||A<CR>O|15|20014<ETB>C3<CR><LF><STX>3697||^^^1165|||||||A<CR>O|16|20014697||^^^600|||||||A<CR>O|17|20014697||^^^1166|||||||A<CR>O|18|20014697||^^^1167|||||||A<CR>O|19|20014697||^^^1045|||||||A<CR>O|20|20014697||^^^1044|||||||A<CR>O|21|20014697||^^^1192|||||||A<CR>O|22|20014697||^^^1193|||||||A<CR>O|2<ETB>3C<CR><LF><STX>43|20014697||^^^565|||||||A<CR>O|24|20014697||^^^566|||||||A<CR>O|25|20014697||^^^567|||||||A<CR>O|26|20014697||^^^1040|||||||A<CR>O|27|20014697||^^^1036|||||||A<CR>O|28|20014697||^^^1170|||||||A<CR>O|29|20014697||^^^1037|||||||A<CR>O|30|20014697||^^^1169|||||||<ETB>4C<CR><LF><STX>5A<CR>O|31|20014697||^^^1038|||||||A<CR>O|32|20014697||^^^1041|||||||A<CR>O|33|20014697||^^^1039|||||||A<CR>O|34|20014697||^^^1171|||||||A<CR>O|35|20014697||^^^1194|||||||A<CR>O|36|20014697||^^^1195|||||||A<CR>O|37|20014697||^^^1196|||||||A<CR>O|38|20014697||^^^119<ETB>92<CR><LF><STX>67|||||||A<CR>O|39|20014697||^^^1198|||||||A<CR>O|40|20014697||^^^1199|||||||A<CR>O|41|20014697||^^^1200|||||||A<CR>O|42|20014697||^^^1203|||||||A<CR>O|43|20014697||^^^1204|||||||A<CR>L|1|F<CR><ETX>2B<CR><LF>
+16 мая 2020 12:35:08,984 DEBUG SocketClientTransport:97 - readInt: D <- <NAK>
+16 мая 2020 12:35:08,984 ERROR CitmDriver:54 - sendTasks: ошибка протокола
+16 мая 2020 12:35:08,984 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 12:35:18,991 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:35:19,673 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 12:35:19,675 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 12:35:19,675 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 12:35:19,675 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||20200516123519<CR>P|1<CR>O|1|20014697||^^^545|||||||A<CR>O|2|20014697||^^^1034|||||||A<CR>O|3|20014697||^^^1025|||||||A<CR>O|4|20014697||^^^1026|||||||A<CR>O|5|20014697||^^^566|||||||A<CR>O|6|20014697||^^^1028|||||||A<CR>O|7|20014697|<ETB>E1<CR><LF><STX>2|^^^534|||||||A<CR>O|8|20014697||^^^1029|||||||A<CR>O|9|20014697||^^^1030|||||||A<CR>O|10|20014697||^^^1031|||||||A<CR>O|11|20014697||^^^1032|||||||A<CR>O|12|20014697||^^^1162|||||||A<CR>O|13|20014697||^^^1163|||||||A<CR>O|14|20014697||^^^1164|||||||A<CR>O|15|2001<ETB>0B<CR><LF><STX>34697||^^^1165|||||||A<CR>O|16|20014697||^^^600|||||||A<CR>O|17|20014697||^^^1166|||||||A<CR>O|18|20014697||^^^1167|||||||A<CR>O|19|20014697||^^^1045|||||||A<CR>O|20|20014697||^^^1044|||||||A<CR>O|21|20014697||^^^1192|||||||A<CR>O|22|20014697||^^^1193|||||||A<CR>O|<ETB>3E<CR><LF><STX>423|20014697||^^^565|||||||A<CR>O|24|20014697||^^^566|||||||A<CR>O|25|20014697||^^^567|||||||A<CR>O|26|20014697||^^^1040|||||||A<CR>O|27|20014697||^^^1036|||||||A<CR>O|28|20014697||^^^1170|||||||A<CR>O|29|20014697||^^^1037|||||||A<CR>O|30|20014697||^^^1169||||||<ETB>02<CR><LF><STX>5|A<CR>O|31|20014697||^^^1038|||||||A<CR>O|32|20014697||^^^1041|||||||A<CR>O|33|20014697||^^^1039|||||||A<CR>O|34|20014697||^^^1171|||||||A<CR>O|35|20014697||^^^1194|||||||A<CR>O|36|20014697||^^^1195|||||||A<CR>O|37|20014697||^^^1196|||||||A<CR>O|38|20014697||^^^11<ETB>D5<CR><LF><STX>697|||||||A<CR>O|39|20014697||^^^1198|||||||A<CR>O|40|20014697||^^^1199|||||||A<CR>O|41|20014697||^^^1200|||||||A<CR>O|42|20014697||^^^1203|||||||A<CR>O|43|20014697||^^^1204|||||||A<CR>L|1|F<CR><ETX>64<CR><LF>
+16 мая 2020 12:35:19,679 DEBUG SocketClientTransport:97 - readInt: D <- <NAK>
+16 мая 2020 12:35:19,679 ERROR CitmDriver:54 - sendTasks: ошибка протокола
+16 мая 2020 12:35:19,680 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 12:35:29,690 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:35:30,401 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 12:35:30,403 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 12:35:30,403 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 12:35:30,404 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||20200516123530<CR>P|1<CR>O|1|20014697||^^^545|||||||A<CR>O|2|20014697||^^^1034|||||||A<CR>O|3|20014697||^^^1025|||||||A<CR>O|4|20014697||^^^1026|||||||A<CR>O|5|20014697||^^^566|||||||A<CR>O|6|20014697||^^^1028|||||||A<CR>O|7|20014697|<ETB>DA<CR><LF><STX>2|^^^534|||||||A<CR>O|8|20014697||^^^1029|||||||A<CR>O|9|20014697||^^^1030|||||||A<CR>O|10|20014697||^^^1031|||||||A<CR>O|11|20014697||^^^1032|||||||A<CR>O|12|20014697||^^^1162|||||||A<CR>O|13|20014697||^^^1163|||||||A<CR>O|14|20014697||^^^1164|||||||A<CR>O|15|2001<ETB>0B<CR><LF><STX>34697||^^^1165|||||||A<CR>O|16|20014697||^^^600|||||||A<CR>O|17|20014697||^^^1166|||||||A<CR>O|18|20014697||^^^1167|||||||A<CR>O|19|20014697||^^^1045|||||||A<CR>O|20|20014697||^^^1044|||||||A<CR>O|21|20014697||^^^1192|||||||A<CR>O|22|20014697||^^^1193|||||||A<CR>O|<ETB>3E<CR><LF><STX>423|20014697||^^^565|||||||A<CR>O|24|20014697||^^^566|||||||A<CR>O|25|20014697||^^^567|||||||A<CR>O|26|20014697||^^^1040|||||||A<CR>O|27|20014697||^^^1036|||||||A<CR>O|28|20014697||^^^1170|||||||A<CR>O|29|20014697||^^^1037|||||||A<CR>O|30|20014697||^^^1169||||||<ETB>02<CR><LF><STX>5|A<CR>O|31|20014697||^^^1038|||||||A<CR>O|32|20014697||^^^1041|||||||A<CR>O|33|20014697||^^^1039|||||||A<CR>O|34|20014697||^^^1171|||||||A<CR>O|35|20014697||^^^1194|||||||A<CR>O|36|20014697||^^^1195|||||||A<CR>O|37|20014697||^^^1196|||||||A<CR>O|38|20014697||^^^11<ETB>D5<CR><LF><STX>697|||||||A<CR>O|39|20014697||^^^1198|||||||A<CR>O|40|20014697||^^^1199|||||||A<CR>O|41|20014697||^^^1200|||||||A<CR>O|42|20014697||^^^1203|||||||A<CR>O|43|20014697||^^^1204|||||||A<CR>L|1|F<CR><ETX>64<CR><LF>
+16 мая 2020 12:35:30,409 DEBUG SocketClientTransport:97 - readInt: D <- <NAK>
+16 мая 2020 12:35:30,409 ERROR CitmDriver:54 - sendTasks: ошибка протокола
+16 мая 2020 12:35:30,409 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 12:35:40,416 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:35:41,149 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 12:35:41,150 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 12:35:41,151 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 12:35:41,151 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||20200516123541<CR>P|1<CR>O|1|20014697||^^^545|||||||A<CR>O|2|20014697||^^^1034|||||||A<CR>O|3|20014697||^^^1025|||||||A<CR>O|4|20014697||^^^1026|||||||A<CR>O|5|20014697||^^^566|||||||A<CR>O|6|20014697||^^^1028|||||||A<CR>O|7|20014697|<ETB>DC<CR><LF><STX>2|^^^534|||||||A<CR>O|8|20014697||^^^1029|||||||A<CR>O|9|20014697||^^^1030|||||||A<CR>O|10|20014697||^^^1031|||||||A<CR>O|11|20014697||^^^1032|||||||A<CR>O|12|20014697||^^^1162|||||||A<CR>O|13|20014697||^^^1163|||||||A<CR>O|14|20014697||^^^1164|||||||A<CR>O|15|2001<ETB>0B<CR><LF><STX>34697||^^^1165|||||||A<CR>O|16|20014697||^^^600|||||||A<CR>O|17|20014697||^^^1166|||||||A<CR>O|18|20014697||^^^1167|||||||A<CR>O|19|20014697||^^^1045|||||||A<CR>O|20|20014697||^^^1044|||||||A<CR>O|21|20014697||^^^1192|||||||A<CR>O|22|20014697||^^^1193|||||||A<CR>O|<ETB>3E<CR><LF><STX>423|20014697||^^^565|||||||A<CR>O|24|20014697||^^^566|||||||A<CR>O|25|20014697||^^^567|||||||A<CR>O|26|20014697||^^^1040|||||||A<CR>O|27|20014697||^^^1036|||||||A<CR>O|28|20014697||^^^1170|||||||A<CR>O|29|20014697||^^^1037|||||||A<CR>O|30|20014697||^^^1169||||||<ETB>02<CR><LF><STX>5|A<CR>O|31|20014697||^^^1038|||||||A<CR>O|32|20014697||^^^1041|||||||A<CR>O|33|20014697||^^^1039|||||||A<CR>O|34|20014697||^^^1171|||||||A<CR>O|35|20014697||^^^1194|||||||A<CR>O|36|20014697||^^^1195|||||||A<CR>O|37|20014697||^^^1196|||||||A<CR>O|38|20014697||^^^11<ETB>D5<CR><LF><STX>697|||||||A<CR>O|39|20014697||^^^1198|||||||A<CR>O|40|20014697||^^^1199|||||||A<CR>O|41|20014697||^^^1200|||||||A<CR>O|42|20014697||^^^1203|||||||A<CR>O|43|20014697||^^^1204|||||||A<CR>L|1|F<CR><ETX>64<CR><LF>
+16 мая 2020 12:35:41,156 DEBUG SocketClientTransport:97 - readInt: D <- <NAK>
+16 мая 2020 12:35:41,157 ERROR CitmDriver:54 - sendTasks: ошибка протокола
+16 мая 2020 12:35:41,157 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 12:35:51,165 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:35:51,911 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 12:35:51,913 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 12:35:51,913 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 12:35:51,915 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||20200516123551<CR>P|1<CR>O|1|20014697||^^^545|||||||A<CR>O|2|20014697||^^^1034|||||||A<CR>O|3|20014697||^^^1025|||||||A<CR>O|4|20014697||^^^1026|||||||A<CR>O|5|20014697||^^^566|||||||A<CR>O|6|20014697||^^^1028|||||||A<CR>O|7|20014697|<ETB>DD<CR><LF><STX>2|^^^534|||||||A<CR>O|8|20014697||^^^1029|||||||A<CR>O|9|20014697||^^^1030|||||||A<CR>O|10|20014697||^^^1031|||||||A<CR>O|11|20014697||^^^1032|||||||A<CR>O|12|20014697||^^^1162|||||||A<CR>O|13|20014697||^^^1163|||||||A<CR>O|14|20014697||^^^1164|||||||A<CR>O|15|2001<ETB>0B<CR><LF><STX>34697||^^^1165|||||||A<CR>O|16|20014697||^^^600|||||||A<CR>O|17|20014697||^^^1166|||||||A<CR>O|18|20014697||^^^1167|||||||A<CR>O|19|20014697||^^^1045|||||||A<CR>O|20|20014697||^^^1044|||||||A<CR>O|21|20014697||^^^1192|||||||A<CR>O|22|20014697||^^^1193|||||||A<CR>O|<ETB>3E<CR><LF><STX>423|20014697||^^^565|||||||A<CR>O|24|20014697||^^^566|||||||A<CR>O|25|20014697||^^^567|||||||A<CR>O|26|20014697||^^^1040|||||||A<CR>O|27|20014697||^^^1036|||||||A<CR>O|28|20014697||^^^1170|||||||A<CR>O|29|20014697||^^^1037|||||||A<CR>O|30|20014697||^^^1169||||||<ETB>02<CR><LF><STX>5|A<CR>O|31|20014697||^^^1038|||||||A<CR>O|32|20014697||^^^1041|||||||A<CR>O|33|20014697||^^^1039|||||||A<CR>O|34|20014697||^^^1171|||||||A<CR>O|35|20014697||^^^1194|||||||A<CR>O|36|20014697||^^^1195|||||||A<CR>O|37|20014697||^^^1196|||||||A<CR>O|38|20014697||^^^11<ETB>D5<CR><LF><STX>697|||||||A<CR>O|39|20014697||^^^1198|||||||A<CR>O|40|20014697||^^^1199|||||||A<CR>O|41|20014697||^^^1200|||||||A<CR>O|42|20014697||^^^1203|||||||A<CR>O|43|20014697||^^^1204|||||||A<CR>L|1|F<CR><ETX>64<CR><LF>
+16 мая 2020 12:35:51,921 DEBUG SocketClientTransport:97 - readInt: D <- <NAK>
+16 мая 2020 12:35:51,921 ERROR CitmDriver:54 - sendTasks: ошибка протокола
+16 мая 2020 12:35:51,921 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 12:36:01,927 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:36:02,705 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 12:36:02,708 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 12:36:02,710 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 12:36:02,710 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||2020051612362<CR>P|1<CR>O|1|20014697||^^^545|||||||A<CR>O|2|20014697||^^^1034|||||||A<CR>O|3|20014697||^^^1025|||||||A<CR>O|4|20014697||^^^1026|||||||A<CR>O|5|20014697||^^^566|||||||A<CR>O|6|20014697||^^^1028|||||||A<CR>O|7|20014697||<ETB>26<CR><LF><STX>2^^^534|||||||A<CR>O|8|20014697||^^^1029|||||||A<CR>O|9|20014697||^^^1030|||||||A<CR>O|10|20014697||^^^1031|||||||A<CR>O|11|20014697||^^^1032|||||||A<CR>O|12|20014697||^^^1162|||||||A<CR>O|13|20014697||^^^1163|||||||A<CR>O|14|20014697||^^^1164|||||||A<CR>O|15|20014<ETB>C3<CR><LF><STX>3697||^^^1165|||||||A<CR>O|16|20014697||^^^600|||||||A<CR>O|17|20014697||^^^1166|||||||A<CR>O|18|20014697||^^^1167|||||||A<CR>O|19|20014697||^^^1045|||||||A<CR>O|20|20014697||^^^1044|||||||A<CR>O|21|20014697||^^^1192|||||||A<CR>O|22|20014697||^^^1193|||||||A<CR>O|2<ETB>3C<CR><LF><STX>43|20014697||^^^565|||||||A<CR>O|24|20014697||^^^566|||||||A<CR>O|25|20014697||^^^567|||||||A<CR>O|26|20014697||^^^1040|||||||A<CR>O|27|20014697||^^^1036|||||||A<CR>O|28|20014697||^^^1170|||||||A<CR>O|29|20014697||^^^1037|||||||A<CR>O|30|20014697||^^^1169|||||||<ETB>4C<CR><LF><STX>5A<CR>O|31|20014697||^^^1038|||||||A<CR>O|32|20014697||^^^1041|||||||A<CR>O|33|20014697||^^^1039|||||||A<CR>O|34|20014697||^^^1171|||||||A<CR>O|35|20014697||^^^1194|||||||A<CR>O|36|20014697||^^^1195|||||||A<CR>O|37|20014697||^^^1196|||||||A<CR>O|38|20014697||^^^119<ETB>92<CR><LF><STX>67|||||||A<CR>O|39|20014697||^^^1198|||||||A<CR>O|40|20014697||^^^1199|||||||A<CR>O|41|20014697||^^^1200|||||||A<CR>O|42|20014697||^^^1203|||||||A<CR>O|43|20014697||^^^1204|||||||A<CR>L|1|F<CR><ETX>2B<CR><LF>
+16 мая 2020 12:36:02,716 DEBUG SocketClientTransport:97 - readInt: D <- <NAK>
+16 мая 2020 12:36:02,716 ERROR CitmDriver:54 - sendTasks: ошибка протокола
+16 мая 2020 12:36:02,716 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 12:36:12,724 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:36:13,526 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 12:36:13,528 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 12:36:13,529 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 12:36:13,529 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||20200516123613<CR>P|1<CR>O|1|20014697||^^^545|||||||A<CR>O|2|20014697||^^^1034|||||||A<CR>O|3|20014697||^^^1025|||||||A<CR>O|4|20014697||^^^1026|||||||A<CR>O|5|20014697||^^^566|||||||A<CR>O|6|20014697||^^^1028|||||||A<CR>O|7|20014697|<ETB>DC<CR><LF><STX>2|^^^534|||||||A<CR>O|8|20014697||^^^1029|||||||A<CR>O|9|20014697||^^^1030|||||||A<CR>O|10|20014697||^^^1031|||||||A<CR>O|11|20014697||^^^1032|||||||A<CR>O|12|20014697||^^^1162|||||||A<CR>O|13|20014697||^^^1163|||||||A<CR>O|14|20014697||^^^1164|||||||A<CR>O|15|2001<ETB>0B<CR><LF><STX>34697||^^^1165|||||||A<CR>O|16|20014697||^^^600|||||||A<CR>O|17|20014697||^^^1166|||||||A<CR>O|18|20014697||^^^1167|||||||A<CR>O|19|20014697||^^^1045|||||||A<CR>O|20|20014697||^^^1044|||||||A<CR>O|21|20014697||^^^1192|||||||A<CR>O|22|20014697||^^^1193|||||||A<CR>O|<ETB>3E<CR><LF><STX>423|20014697||^^^565|||||||A<CR>O|24|20014697||^^^566|||||||A<CR>O|25|20014697||^^^567|||||||A<CR>O|26|20014697||^^^1040|||||||A<CR>O|27|20014697||^^^1036|||||||A<CR>O|28|20014697||^^^1170|||||||A<CR>O|29|20014697||^^^1037|||||||A<CR>O|30|20014697||^^^1169||||||<ETB>02<CR><LF><STX>5|A<CR>O|31|20014697||^^^1038|||||||A<CR>O|32|20014697||^^^1041|||||||A<CR>O|33|20014697||^^^1039|||||||A<CR>O|34|20014697||^^^1171|||||||A<CR>O|35|20014697||^^^1194|||||||A<CR>O|36|20014697||^^^1195|||||||A<CR>O|37|20014697||^^^1196|||||||A<CR>O|38|20014697||^^^11<ETB>D5<CR><LF><STX>697|||||||A<CR>O|39|20014697||^^^1198|||||||A<CR>O|40|20014697||^^^1199|||||||A<CR>O|41|20014697||^^^1200|||||||A<CR>O|42|20014697||^^^1203|||||||A<CR>O|43|20014697||^^^1204|||||||A<CR>L|1|F<CR><ETX>64<CR><LF>
+16 мая 2020 12:36:13,534 DEBUG SocketClientTransport:97 - readInt: D <- <NAK>
+16 мая 2020 12:36:13,535 ERROR CitmDriver:54 - sendTasks: ошибка протокола
+16 мая 2020 12:36:13,535 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 12:36:23,544 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:36:24,318 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 12:36:24,320 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 12:36:24,320 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 12:36:24,320 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||20200516123624<CR>P|1<CR>O|1|20014697||^^^545|||||||A<CR>O|2|20014697||^^^1034|||||||A<CR>O|3|20014697||^^^1025|||||||A<CR>O|4|20014697||^^^1026|||||||A<CR>O|5|20014697||^^^566|||||||A<CR>O|6|20014697||^^^1028|||||||A<CR>O|7|20014697|<ETB>DE<CR><LF><STX>2|^^^534|||||||A<CR>O|8|20014697||^^^1029|||||||A<CR>O|9|20014697||^^^1030|||||||A<CR>O|10|20014697||^^^1031|||||||A<CR>O|11|20014697||^^^1032|||||||A<CR>O|12|20014697||^^^1162|||||||A<CR>O|13|20014697||^^^1163|||||||A<CR>O|14|20014697||^^^1164|||||||A<CR>O|15|2001<ETB>0B<CR><LF><STX>34697||^^^1165|||||||A<CR>O|16|20014697||^^^600|||||||A<CR>O|17|20014697||^^^1166|||||||A<CR>O|18|20014697||^^^1167|||||||A<CR>O|19|20014697||^^^1045|||||||A<CR>O|20|20014697||^^^1044|||||||A<CR>O|21|20014697||^^^1192|||||||A<CR>O|22|20014697||^^^1193|||||||A<CR>O|<ETB>3E<CR><LF><STX>423|20014697||^^^565|||||||A<CR>O|24|20014697||^^^566|||||||A<CR>O|25|20014697||^^^567|||||||A<CR>O|26|20014697||^^^1040|||||||A<CR>O|27|20014697||^^^1036|||||||A<CR>O|28|20014697||^^^1170|||||||A<CR>O|29|20014697||^^^1037|||||||A<CR>O|30|20014697||^^^1169||||||<ETB>02<CR><LF><STX>5|A<CR>O|31|20014697||^^^1038|||||||A<CR>O|32|20014697||^^^1041|||||||A<CR>O|33|20014697||^^^1039|||||||A<CR>O|34|20014697||^^^1171|||||||A<CR>O|35|20014697||^^^1194|||||||A<CR>O|36|20014697||^^^1195|||||||A<CR>O|37|20014697||^^^1196|||||||A<CR>O|38|20014697||^^^11<ETB>D5<CR><LF><STX>697|||||||A<CR>O|39|20014697||^^^1198|||||||A<CR>O|40|20014697||^^^1199|||||||A<CR>O|41|20014697||^^^1200|||||||A<CR>O|42|20014697||^^^1203|||||||A<CR>O|43|20014697||^^^1204|||||||A<CR>L|1|F<CR><ETX>64<CR><LF>
+16 мая 2020 12:36:24,326 DEBUG SocketClientTransport:97 - readInt: D <- <NAK>
+16 мая 2020 12:36:24,326 ERROR CitmDriver:54 - sendTasks: ошибка протокола
+16 мая 2020 12:36:24,326 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 12:36:34,332 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:36:35,138 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 12:36:35,140 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 12:36:35,140 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 12:36:35,140 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||20200516123635<CR>P|1<CR>O|1|20014697||^^^545|||||||A<CR>O|2|20014697||^^^1034|||||||A<CR>O|3|20014697||^^^1025|||||||A<CR>O|4|20014697||^^^1026|||||||A<CR>O|5|20014697||^^^566|||||||A<CR>O|6|20014697||^^^1028|||||||A<CR>O|7|20014697|<ETB>E0<CR><LF><STX>2|^^^534|||||||A<CR>O|8|20014697||^^^1029|||||||A<CR>O|9|20014697||^^^1030|||||||A<CR>O|10|20014697||^^^1031|||||||A<CR>O|11|20014697||^^^1032|||||||A<CR>O|12|20014697||^^^1162|||||||A<CR>O|13|20014697||^^^1163|||||||A<CR>O|14|20014697||^^^1164|||||||A<CR>O|15|2001<ETB>0B<CR><LF><STX>34697||^^^1165|||||||A<CR>O|16|20014697||^^^600|||||||A<CR>O|17|20014697||^^^1166|||||||A<CR>O|18|20014697||^^^1167|||||||A<CR>O|19|20014697||^^^1045|||||||A<CR>O|20|20014697||^^^1044|||||||A<CR>O|21|20014697||^^^1192|||||||A<CR>O|22|20014697||^^^1193|||||||A<CR>O|<ETB>3E<CR><LF><STX>423|20014697||^^^565|||||||A<CR>O|24|20014697||^^^566|||||||A<CR>O|25|20014697||^^^567|||||||A<CR>O|26|20014697||^^^1040|||||||A<CR>O|27|20014697||^^^1036|||||||A<CR>O|28|20014697||^^^1170|||||||A<CR>O|29|20014697||^^^1037|||||||A<CR>O|30|20014697||^^^1169||||||<ETB>02<CR><LF><STX>5|A<CR>O|31|20014697||^^^1038|||||||A<CR>O|32|20014697||^^^1041|||||||A<CR>O|33|20014697||^^^1039|||||||A<CR>O|34|20014697||^^^1171|||||||A<CR>O|35|20014697||^^^1194|||||||A<CR>O|36|20014697||^^^1195|||||||A<CR>O|37|20014697||^^^1196|||||||A<CR>O|38|20014697||^^^11<ETB>D5<CR><LF><STX>697|||||||A<CR>O|39|20014697||^^^1198|||||||A<CR>O|40|20014697||^^^1199|||||||A<CR>O|41|20014697||^^^1200|||||||A<CR>O|42|20014697||^^^1203|||||||A<CR>O|43|20014697||^^^1204|||||||A<CR>L|1|F<CR><ETX>64<CR><LF>
+16 мая 2020 12:36:35,146 DEBUG SocketClientTransport:97 - readInt: D <- <NAK>
+16 мая 2020 12:36:35,146 ERROR CitmDriver:54 - sendTasks: ошибка протокола
+16 мая 2020 12:36:35,146 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 12:36:45,153 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:36:45,966 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 12:36:45,967 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 12:36:45,968 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 12:36:45,968 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||20200516123645<CR>P|1<CR>O|1|20014697||^^^545|||||||A<CR>O|2|20014697||^^^1034|||||||A<CR>O|3|20014697||^^^1025|||||||A<CR>O|4|20014697||^^^1026|||||||A<CR>O|5|20014697||^^^566|||||||A<CR>O|6|20014697||^^^1028|||||||A<CR>O|7|20014697|<ETB>E1<CR><LF><STX>2|^^^534|||||||A<CR>O|8|20014697||^^^1029|||||||A<CR>O|9|20014697||^^^1030|||||||A<CR>O|10|20014697||^^^1031|||||||A<CR>O|11|20014697||^^^1032|||||||A<CR>O|12|20014697||^^^1162|||||||A<CR>O|13|20014697||^^^1163|||||||A<CR>O|14|20014697||^^^1164|||||||A<CR>O|15|2001<ETB>0B<CR><LF><STX>34697||^^^1165|||||||A<CR>O|16|20014697||^^^600|||||||A<CR>O|17|20014697||^^^1166|||||||A<CR>O|18|20014697||^^^1167|||||||A<CR>O|19|20014697||^^^1045|||||||A<CR>O|20|20014697||^^^1044|||||||A<CR>O|21|20014697||^^^1192|||||||A<CR>O|22|20014697||^^^1193|||||||A<CR>O|<ETB>3E<CR><LF><STX>423|20014697||^^^565|||||||A<CR>O|24|20014697||^^^566|||||||A<CR>O|25|20014697||^^^567|||||||A<CR>O|26|20014697||^^^1040|||||||A<CR>O|27|20014697||^^^1036|||||||A<CR>O|28|20014697||^^^1170|||||||A<CR>O|29|20014697||^^^1037|||||||A<CR>O|30|20014697||^^^1169||||||<ETB>02<CR><LF><STX>5|A<CR>O|31|20014697||^^^1038|||||||A<CR>O|32|20014697||^^^1041|||||||A<CR>O|33|20014697||^^^1039|||||||A<CR>O|34|20014697||^^^1171|||||||A<CR>O|35|20014697||^^^1194|||||||A<CR>O|36|20014697||^^^1195|||||||A<CR>O|37|20014697||^^^1196|||||||A<CR>O|38|20014697||^^^11<ETB>D5<CR><LF><STX>697|||||||A<CR>O|39|20014697||^^^1198|||||||A<CR>O|40|20014697||^^^1199|||||||A<CR>O|41|20014697||^^^1200|||||||A<CR>O|42|20014697||^^^1203|||||||A<CR>O|43|20014697||^^^1204|||||||A<CR>L|1|F<CR><ETX>64<CR><LF>
+16 мая 2020 12:36:45,974 DEBUG SocketClientTransport:97 - readInt: D <- <NAK>
+16 мая 2020 12:36:45,974 ERROR CitmDriver:54 - sendTasks: ошибка протокола
+16 мая 2020 12:36:45,974 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 12:36:55,983 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:36:56,789 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 12:36:56,791 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 12:36:56,791 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 12:36:56,792 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||20200516123656<CR>P|1<CR>O|1|20014697||^^^545|||||||A<CR>O|2|20014697||^^^1034|||||||A<CR>O|3|20014697||^^^1025|||||||A<CR>O|4|20014697||^^^1026|||||||A<CR>O|5|20014697||^^^566|||||||A<CR>O|6|20014697||^^^1028|||||||A<CR>O|7|20014697|<ETB>E3<CR><LF><STX>2|^^^534|||||||A<CR>O|8|20014697||^^^1029|||||||A<CR>O|9|20014697||^^^1030|||||||A<CR>O|10|20014697||^^^1031|||||||A<CR>O|11|20014697||^^^1032|||||||A<CR>O|12|20014697||^^^1162|||||||A<CR>O|13|20014697||^^^1163|||||||A<CR>O|14|20014697||^^^1164|||||||A<CR>O|15|2001<ETB>0B<CR><LF><STX>34697||^^^1165|||||||A<CR>O|16|20014697||^^^600|||||||A<CR>O|17|20014697||^^^1166|||||||A<CR>O|18|20014697||^^^1167|||||||A<CR>O|19|20014697||^^^1045|||||||A<CR>O|20|20014697||^^^1044|||||||A<CR>O|21|20014697||^^^1192|||||||A<CR>O|22|20014697||^^^1193|||||||A<CR>O|<ETB>3E<CR><LF><STX>423|20014697||^^^565|||||||A<CR>O|24|20014697||^^^566|||||||A<CR>O|25|20014697||^^^567|||||||A<CR>O|26|20014697||^^^1040|||||||A<CR>O|27|20014697||^^^1036|||||||A<CR>O|28|20014697||^^^1170|||||||A<CR>O|29|20014697||^^^1037|||||||A<CR>O|30|20014697||^^^1169||||||<ETB>02<CR><LF><STX>5|A<CR>O|31|20014697||^^^1038|||||||A<CR>O|32|20014697||^^^1041|||||||A<CR>O|33|20014697||^^^1039|||||||A<CR>O|34|20014697||^^^1171|||||||A<CR>O|35|20014697||^^^1194|||||||A<CR>O|36|20014697||^^^1195|||||||A<CR>O|37|20014697||^^^1196|||||||A<CR>O|38|20014697||^^^11<ETB>D5<CR><LF><STX>697|||||||A<CR>O|39|20014697||^^^1198|||||||A<CR>O|40|20014697||^^^1199|||||||A<CR>O|41|20014697||^^^1200|||||||A<CR>O|42|20014697||^^^1203|||||||A<CR>O|43|20014697||^^^1204|||||||A<CR>L|1|F<CR><ETX>64<CR><LF>
+16 мая 2020 12:36:56,797 DEBUG SocketClientTransport:97 - readInt: D <- <NAK>
+16 мая 2020 12:36:56,797 ERROR CitmDriver:54 - sendTasks: ошибка протокола
+16 мая 2020 12:36:56,797 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 12:37:06,807 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:37:07,363 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 12:37:07,365 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 12:37:07,365 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 12:37:07,365 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||2020051612377<CR>P|1<CR>O|1|20005316||^^^276|||||||A<CR>L|1|F<CR><ETX>B7<CR><LF>
+16 мая 2020 12:37:07,367 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 12:37:07,367 DEBUG CitmDriver:47 - sendTasks: Наше сообщение приняли
+16 мая 2020 12:37:07,368 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 12:37:07,693 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 12:37:07,695 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 12:37:07,695 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 12:37:07,696 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||2020051612377<CR>P|1<CR>O|1|20014697||^^^545|||||||A<CR>O|2|20014697||^^^1034|||||||A<CR>O|3|20014697||^^^1025|||||||A<CR>O|4|20014697||^^^1026|||||||A<CR>O|5|20014697||^^^566|||||||A<CR>O|6|20014697||^^^1028|||||||A<CR>O|7|20014697||<ETB>2C<CR><LF><STX>2^^^534|||||||A<CR>O|8|20014697||^^^1029|||||||A<CR>O|9|20014697||^^^1030|||||||A<CR>O|10|20014697||^^^1031|||||||A<CR>O|11|20014697||^^^1032|||||||A<CR>O|12|20014697||^^^1162|||||||A<CR>O|13|20014697||^^^1163|||||||A<CR>O|14|20014697||^^^1164|||||||A<CR>O|15|20014<ETB>C3<CR><LF><STX>3697||^^^1165|||||||A<CR>O|16|20014697||^^^600|||||||A<CR>O|17|20014697||^^^1166|||||||A<CR>O|18|20014697||^^^1167|||||||A<CR>O|19|20014697||^^^1045|||||||A<CR>O|20|20014697||^^^1044|||||||A<CR>O|21|20014697||^^^1192|||||||A<CR>O|22|20014697||^^^1193|||||||A<CR>O|2<ETB>3C<CR><LF><STX>43|20014697||^^^565|||||||A<CR>O|24|20014697||^^^566|||||||A<CR>O|25|20014697||^^^567|||||||A<CR>O|26|20014697||^^^1040|||||||A<CR>O|27|20014697||^^^1036|||||||A<CR>O|28|20014697||^^^1170|||||||A<CR>O|29|20014697||^^^1037|||||||A<CR>O|30|20014697||^^^1169|||||||<ETB>4C<CR><LF><STX>5A<CR>O|31|20014697||^^^1038|||||||A<CR>O|32|20014697||^^^1041|||||||A<CR>O|33|20014697||^^^1039|||||||A<CR>O|34|20014697||^^^1171|||||||A<CR>O|35|20014697||^^^1194|||||||A<CR>O|36|20014697||^^^1195|||||||A<CR>O|37|20014697||^^^1196|||||||A<CR>O|38|20014697||^^^119<ETB>92<CR><LF><STX>67|||||||A<CR>O|39|20014697||^^^1198|||||||A<CR>O|40|20014697||^^^1199|||||||A<CR>O|41|20014697||^^^1200|||||||A<CR>O|42|20014697||^^^1203|||||||A<CR>O|43|20014697||^^^1204|||||||A<CR>L|1|F<CR><ETX>2B<CR><LF>
+16 мая 2020 12:37:07,701 DEBUG SocketClientTransport:97 - readInt: D <- <NAK>
+16 мая 2020 12:37:07,701 ERROR CitmDriver:54 - sendTasks: ошибка протокола
+16 мая 2020 12:37:07,701 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 12:37:17,711 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:37:18,571 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 12:37:18,573 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 12:37:18,574 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 12:37:18,574 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||20200516123718<CR>P|1<CR>O|1|20014697||^^^545|||||||A<CR>O|2|20014697||^^^1034|||||||A<CR>O|3|20014697||^^^1025|||||||A<CR>O|4|20014697||^^^1026|||||||A<CR>O|5|20014697||^^^566|||||||A<CR>O|6|20014697||^^^1028|||||||A<CR>O|7|20014697|<ETB>E2<CR><LF><STX>2|^^^534|||||||A<CR>O|8|20014697||^^^1029|||||||A<CR>O|9|20014697||^^^1030|||||||A<CR>O|10|20014697||^^^1031|||||||A<CR>O|11|20014697||^^^1032|||||||A<CR>O|12|20014697||^^^1162|||||||A<CR>O|13|20014697||^^^1163|||||||A<CR>O|14|20014697||^^^1164|||||||A<CR>O|15|2001<ETB>0B<CR><LF><STX>34697||^^^1165|||||||A<CR>O|16|20014697||^^^600|||||||A<CR>O|17|20014697||^^^1166|||||||A<CR>O|18|20014697||^^^1167|||||||A<CR>O|19|20014697||^^^1045|||||||A<CR>O|20|20014697||^^^1044|||||||A<CR>O|21|20014697||^^^1192|||||||A<CR>O|22|20014697||^^^1193|||||||A<CR>O|<ETB>3E<CR><LF><STX>423|20014697||^^^565|||||||A<CR>O|24|20014697||^^^566|||||||A<CR>O|25|20014697||^^^567|||||||A<CR>O|26|20014697||^^^1040|||||||A<CR>O|27|20014697||^^^1036|||||||A<CR>O|28|20014697||^^^1170|||||||A<CR>O|29|20014697||^^^1037|||||||A<CR>O|30|20014697||^^^1169||||||<ETB>02<CR><LF><STX>5|A<CR>O|31|20014697||^^^1038|||||||A<CR>O|32|20014697||^^^1041|||||||A<CR>O|33|20014697||^^^1039|||||||A<CR>O|34|20014697||^^^1171|||||||A<CR>O|35|20014697||^^^1194|||||||A<CR>O|36|20014697||^^^1195|||||||A<CR>O|37|20014697||^^^1196|||||||A<CR>O|38|20014697||^^^11<ETB>D5<CR><LF><STX>697|||||||A<CR>O|39|20014697||^^^1198|||||||A<CR>O|40|20014697||^^^1199|||||||A<CR>O|41|20014697||^^^1200|||||||A<CR>O|42|20014697||^^^1203|||||||A<CR>O|43|20014697||^^^1204|||||||A<CR>L|1|F<CR><ETX>64<CR><LF>
+16 мая 2020 12:37:18,578 DEBUG SocketClientTransport:97 - readInt: D <- <NAK>
+16 мая 2020 12:37:18,578 ERROR CitmDriver:54 - sendTasks: ошибка протокола
+16 мая 2020 12:37:18,578 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 12:37:28,581 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:37:29,445 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 12:37:29,448 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 12:37:29,449 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 12:37:29,449 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||20200516123729<CR>P|1<CR>O|1|20014697||^^^545|||||||A<CR>O|2|20014697||^^^1034|||||||A<CR>O|3|20014697||^^^1025|||||||A<CR>O|4|20014697||^^^1026|||||||A<CR>O|5|20014697||^^^566|||||||A<CR>O|6|20014697||^^^1028|||||||A<CR>O|7|20014697|<ETB>E4<CR><LF><STX>2|^^^534|||||||A<CR>O|8|20014697||^^^1029|||||||A<CR>O|9|20014697||^^^1030|||||||A<CR>O|10|20014697||^^^1031|||||||A<CR>O|11|20014697||^^^1032|||||||A<CR>O|12|20014697||^^^1162|||||||A<CR>O|13|20014697||^^^1163|||||||A<CR>O|14|20014697||^^^1164|||||||A<CR>O|15|2001<ETB>0B<CR><LF><STX>34697||^^^1165|||||||A<CR>O|16|20014697||^^^600|||||||A<CR>O|17|20014697||^^^1166|||||||A<CR>O|18|20014697||^^^1167|||||||A<CR>O|19|20014697||^^^1045|||||||A<CR>O|20|20014697||^^^1044|||||||A<CR>O|21|20014697||^^^1192|||||||A<CR>O|22|20014697||^^^1193|||||||A<CR>O|<ETB>3E<CR><LF><STX>423|20014697||^^^565|||||||A<CR>O|24|20014697||^^^566|||||||A<CR>O|25|20014697||^^^567|||||||A<CR>O|26|20014697||^^^1040|||||||A<CR>O|27|20014697||^^^1036|||||||A<CR>O|28|20014697||^^^1170|||||||A<CR>O|29|20014697||^^^1037|||||||A<CR>O|30|20014697||^^^1169||||||<ETB>02<CR><LF><STX>5|A<CR>O|31|20014697||^^^1038|||||||A<CR>O|32|20014697||^^^1041|||||||A<CR>O|33|20014697||^^^1039|||||||A<CR>O|34|20014697||^^^1171|||||||A<CR>O|35|20014697||^^^1194|||||||A<CR>O|36|20014697||^^^1195|||||||A<CR>O|37|20014697||^^^1196|||||||A<CR>O|38|20014697||^^^11<ETB>D5<CR><LF><STX>697|||||||A<CR>O|39|20014697||^^^1198|||||||A<CR>O|40|20014697||^^^1199|||||||A<CR>O|41|20014697||^^^1200|||||||A<CR>O|42|20014697||^^^1203|||||||A<CR>O|43|20014697||^^^1204|||||||A<CR>L|1|F<CR><ETX>64<CR><LF>
+16 мая 2020 12:37:29,453 DEBUG SocketClientTransport:97 - readInt: D <- <NAK>
+16 мая 2020 12:37:29,453 ERROR CitmDriver:54 - sendTasks: ошибка протокола
+16 мая 2020 12:37:29,454 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 12:37:39,455 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:37:40,351 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 12:37:40,353 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 12:37:40,353 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 12:37:40,354 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||20200516123740<CR>P|1<CR>O|1|20014697||^^^545|||||||A<CR>O|2|20014697||^^^1034|||||||A<CR>O|3|20014697||^^^1025|||||||A<CR>O|4|20014697||^^^1026|||||||A<CR>O|5|20014697||^^^566|||||||A<CR>O|6|20014697||^^^1028|||||||A<CR>O|7|20014697|<ETB>DD<CR><LF><STX>2|^^^534|||||||A<CR>O|8|20014697||^^^1029|||||||A<CR>O|9|20014697||^^^1030|||||||A<CR>O|10|20014697||^^^1031|||||||A<CR>O|11|20014697||^^^1032|||||||A<CR>O|12|20014697||^^^1162|||||||A<CR>O|13|20014697||^^^1163|||||||A<CR>O|14|20014697||^^^1164|||||||A<CR>O|15|2001<ETB>0B<CR><LF><STX>34697||^^^1165|||||||A<CR>O|16|20014697||^^^600|||||||A<CR>O|17|20014697||^^^1166|||||||A<CR>O|18|20014697||^^^1167|||||||A<CR>O|19|20014697||^^^1045|||||||A<CR>O|20|20014697||^^^1044|||||||A<CR>O|21|20014697||^^^1192|||||||A<CR>O|22|20014697||^^^1193|||||||A<CR>O|<ETB>3E<CR><LF><STX>423|20014697||^^^565|||||||A<CR>O|24|20014697||^^^566|||||||A<CR>O|25|20014697||^^^567|||||||A<CR>O|26|20014697||^^^1040|||||||A<CR>O|27|20014697||^^^1036|||||||A<CR>O|28|20014697||^^^1170|||||||A<CR>O|29|20014697||^^^1037|||||||A<CR>O|30|20014697||^^^1169||||||<ETB>02<CR><LF><STX>5|A<CR>O|31|20014697||^^^1038|||||||A<CR>O|32|20014697||^^^1041|||||||A<CR>O|33|20014697||^^^1039|||||||A<CR>O|34|20014697||^^^1171|||||||A<CR>O|35|20014697||^^^1194|||||||A<CR>O|36|20014697||^^^1195|||||||A<CR>O|37|20014697||^^^1196|||||||A<CR>O|38|20014697||^^^11<ETB>D5<CR><LF><STX>697|||||||A<CR>O|39|20014697||^^^1198|||||||A<CR>O|40|20014697||^^^1199|||||||A<CR>O|41|20014697||^^^1200|||||||A<CR>O|42|20014697||^^^1203|||||||A<CR>O|43|20014697||^^^1204|||||||A<CR>L|1|F<CR><ETX>64<CR><LF>
+16 мая 2020 12:37:40,358 DEBUG SocketClientTransport:97 - readInt: D <- <NAK>
+16 мая 2020 12:37:40,358 ERROR CitmDriver:54 - sendTasks: ошибка протокола
+16 мая 2020 12:37:40,358 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 12:37:50,364 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:37:51,250 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 12:37:51,252 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 12:37:51,252 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 12:37:51,252 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||20200516123751<CR>P|1<CR>O|1|20014697||^^^545|||||||A<CR>O|2|20014697||^^^1034|||||||A<CR>O|3|20014697||^^^1025|||||||A<CR>O|4|20014697||^^^1026|||||||A<CR>O|5|20014697||^^^566|||||||A<CR>O|6|20014697||^^^1028|||||||A<CR>O|7|20014697|<ETB>DF<CR><LF><STX>2|^^^534|||||||A<CR>O|8|20014697||^^^1029|||||||A<CR>O|9|20014697||^^^1030|||||||A<CR>O|10|20014697||^^^1031|||||||A<CR>O|11|20014697||^^^1032|||||||A<CR>O|12|20014697||^^^1162|||||||A<CR>O|13|20014697||^^^1163|||||||A<CR>O|14|20014697||^^^1164|||||||A<CR>O|15|2001<ETB>0B<CR><LF><STX>34697||^^^1165|||||||A<CR>O|16|20014697||^^^600|||||||A<CR>O|17|20014697||^^^1166|||||||A<CR>O|18|20014697||^^^1167|||||||A<CR>O|19|20014697||^^^1045|||||||A<CR>O|20|20014697||^^^1044|||||||A<CR>O|21|20014697||^^^1192|||||||A<CR>O|22|20014697||^^^1193|||||||A<CR>O|<ETB>3E<CR><LF><STX>423|20014697||^^^565|||||||A<CR>O|24|20014697||^^^566|||||||A<CR>O|25|20014697||^^^567|||||||A<CR>O|26|20014697||^^^1040|||||||A<CR>O|27|20014697||^^^1036|||||||A<CR>O|28|20014697||^^^1170|||||||A<CR>O|29|20014697||^^^1037|||||||A<CR>O|30|20014697||^^^1169||||||<ETB>02<CR><LF><STX>5|A<CR>O|31|20014697||^^^1038|||||||A<CR>O|32|20014697||^^^1041|||||||A<CR>O|33|20014697||^^^1039|||||||A<CR>O|34|20014697||^^^1171|||||||A<CR>O|35|20014697||^^^1194|||||||A<CR>O|36|20014697||^^^1195|||||||A<CR>O|37|20014697||^^^1196|||||||A<CR>O|38|20014697||^^^11<ETB>D5<CR><LF><STX>697|||||||A<CR>O|39|20014697||^^^1198|||||||A<CR>O|40|20014697||^^^1199|||||||A<CR>O|41|20014697||^^^1200|||||||A<CR>O|42|20014697||^^^1203|||||||A<CR>O|43|20014697||^^^1204|||||||A<CR>L|1|F<CR><ETX>64<CR><LF>
+16 мая 2020 12:37:51,257 DEBUG SocketClientTransport:97 - readInt: D <- <NAK>
+16 мая 2020 12:37:51,257 ERROR CitmDriver:54 - sendTasks: ошибка протокола
+16 мая 2020 12:37:51,257 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 12:38:01,258 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:38:02,175 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 12:38:02,178 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 12:38:02,178 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 12:38:02,178 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||2020051612382<CR>P|1<CR>O|1|20014697||^^^545|||||||A<CR>O|2|20014697||^^^1034|||||||A<CR>O|3|20014697||^^^1025|||||||A<CR>O|4|20014697||^^^1026|||||||A<CR>O|5|20014697||^^^566|||||||A<CR>O|6|20014697||^^^1028|||||||A<CR>O|7|20014697||<ETB>28<CR><LF><STX>2^^^534|||||||A<CR>O|8|20014697||^^^1029|||||||A<CR>O|9|20014697||^^^1030|||||||A<CR>O|10|20014697||^^^1031|||||||A<CR>O|11|20014697||^^^1032|||||||A<CR>O|12|20014697||^^^1162|||||||A<CR>O|13|20014697||^^^1163|||||||A<CR>O|14|20014697||^^^1164|||||||A<CR>O|15|20014<ETB>C3<CR><LF><STX>3697||^^^1165|||||||A<CR>O|16|20014697||^^^600|||||||A<CR>O|17|20014697||^^^1166|||||||A<CR>O|18|20014697||^^^1167|||||||A<CR>O|19|20014697||^^^1045|||||||A<CR>O|20|20014697||^^^1044|||||||A<CR>O|21|20014697||^^^1192|||||||A<CR>O|22|20014697||^^^1193|||||||A<CR>O|2<ETB>3C<CR><LF><STX>43|20014697||^^^565|||||||A<CR>O|24|20014697||^^^566|||||||A<CR>O|25|20014697||^^^567|||||||A<CR>O|26|20014697||^^^1040|||||||A<CR>O|27|20014697||^^^1036|||||||A<CR>O|28|20014697||^^^1170|||||||A<CR>O|29|20014697||^^^1037|||||||A<CR>O|30|20014697||^^^1169|||||||<ETB>4C<CR><LF><STX>5A<CR>O|31|20014697||^^^1038|||||||A<CR>O|32|20014697||^^^1041|||||||A<CR>O|33|20014697||^^^1039|||||||A<CR>O|34|20014697||^^^1171|||||||A<CR>O|35|20014697||^^^1194|||||||A<CR>O|36|20014697||^^^1195|||||||A<CR>O|37|20014697||^^^1196|||||||A<CR>O|38|20014697||^^^119<ETB>92<CR><LF><STX>67|||||||A<CR>O|39|20014697||^^^1198|||||||A<CR>O|40|20014697||^^^1199|||||||A<CR>O|41|20014697||^^^1200|||||||A<CR>O|42|20014697||^^^1203|||||||A<CR>O|43|20014697||^^^1204|||||||A<CR>L|1|F<CR><ETX>2B<CR><LF>
+16 мая 2020 12:38:02,185 DEBUG SocketClientTransport:97 - readInt: D <- <NAK>
+16 мая 2020 12:38:02,185 ERROR CitmDriver:54 - sendTasks: ошибка протокола
+16 мая 2020 12:38:02,185 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 12:38:12,195 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:38:13,093 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 12:38:13,095 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 12:38:13,095 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 12:38:13,095 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||20200516123813<CR>P|1<CR>O|1|20014697||^^^545|||||||A<CR>O|2|20014697||^^^1034|||||||A<CR>O|3|20014697||^^^1025|||||||A<CR>O|4|20014697||^^^1026|||||||A<CR>O|5|20014697||^^^566|||||||A<CR>O|6|20014697||^^^1028|||||||A<CR>O|7|20014697|<ETB>DE<CR><LF><STX>2|^^^534|||||||A<CR>O|8|20014697||^^^1029|||||||A<CR>O|9|20014697||^^^1030|||||||A<CR>O|10|20014697||^^^1031|||||||A<CR>O|11|20014697||^^^1032|||||||A<CR>O|12|20014697||^^^1162|||||||A<CR>O|13|20014697||^^^1163|||||||A<CR>O|14|20014697||^^^1164|||||||A<CR>O|15|2001<ETB>0B<CR><LF><STX>34697||^^^1165|||||||A<CR>O|16|20014697||^^^600|||||||A<CR>O|17|20014697||^^^1166|||||||A<CR>O|18|20014697||^^^1167|||||||A<CR>O|19|20014697||^^^1045|||||||A<CR>O|20|20014697||^^^1044|||||||A<CR>O|21|20014697||^^^1192|||||||A<CR>O|22|20014697||^^^1193|||||||A<CR>O|<ETB>3E<CR><LF><STX>423|20014697||^^^565|||||||A<CR>O|24|20014697||^^^566|||||||A<CR>O|25|20014697||^^^567|||||||A<CR>O|26|20014697||^^^1040|||||||A<CR>O|27|20014697||^^^1036|||||||A<CR>O|28|20014697||^^^1170|||||||A<CR>O|29|20014697||^^^1037|||||||A<CR>O|30|20014697||^^^1169||||||<ETB>02<CR><LF><STX>5|A<CR>O|31|20014697||^^^1038|||||||A<CR>O|32|20014697||^^^1041|||||||A<CR>O|33|20014697||^^^1039|||||||A<CR>O|34|20014697||^^^1171|||||||A<CR>O|35|20014697||^^^1194|||||||A<CR>O|36|20014697||^^^1195|||||||A<CR>O|37|20014697||^^^1196|||||||A<CR>O|38|20014697||^^^11<ETB>D5<CR><LF><STX>697|||||||A<CR>O|39|20014697||^^^1198|||||||A<CR>O|40|20014697||^^^1199|||||||A<CR>O|41|20014697||^^^1200|||||||A<CR>O|42|20014697||^^^1203|||||||A<CR>O|43|20014697||^^^1204|||||||A<CR>L|1|F<CR><ETX>64<CR><LF>
+16 мая 2020 12:38:13,102 DEBUG SocketClientTransport:97 - readInt: D <- <NAK>
+16 мая 2020 12:38:13,102 ERROR CitmDriver:54 - sendTasks: ошибка протокола
+16 мая 2020 12:38:13,102 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 12:38:23,112 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:38:33,623 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:38:44,136 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:38:54,646 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:39:05,159 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:39:15,671 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:39:26,183 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:39:36,693 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:39:47,204 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:39:57,711 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:40:08,219 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:40:18,727 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:40:29,235 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:40:39,747 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:40:50,251 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:41:00,764 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:41:11,277 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:41:21,789 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:41:32,301 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:41:42,810 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:41:53,315 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:42:03,828 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:42:14,333 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:42:24,845 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:42:35,349 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:42:45,862 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:42:56,374 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:43:06,883 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:43:17,396 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:43:27,903 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:43:38,414 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:43:48,925 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:43:59,438 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:44:09,950 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:44:10,495 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 12:44:10,497 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 12:44:10,497 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 12:44:10,497 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||20200516124410<CR>P|1<CR>O|1|20005316||^^^276|||||||A<CR>L|1|F<CR><ETX>DF<CR><LF>
+16 мая 2020 12:44:10,499 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 12:44:10,499 DEBUG CitmDriver:47 - sendTasks: Наше сообщение приняли
+16 мая 2020 12:44:10,500 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 12:44:20,511 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:44:31,017 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:44:41,530 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:44:52,037 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:45:02,539 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:45:13,050 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:45:23,553 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:45:34,056 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:45:44,559 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:45:55,071 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:46:05,581 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:46:16,093 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:46:26,598 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:46:37,110 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:46:47,624 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:46:58,134 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:47:08,637 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:47:19,149 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:47:29,663 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:47:40,175 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:47:50,677 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:48:01,189 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:48:11,699 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:48:22,208 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:48:32,721 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:48:43,226 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:48:53,736 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:49:04,244 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:49:14,756 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:49:25,268 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:49:35,776 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:49:46,287 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:49:56,790 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:50:07,302 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:50:17,812 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:50:28,324 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:50:38,834 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:50:49,344 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:50:59,853 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:51:10,363 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:51:20,875 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:51:31,385 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:51:41,896 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:51:52,407 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:52:02,920 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:52:13,429 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:52:23,946 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:52:34,457 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:52:44,969 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:52:55,472 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:53:05,982 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:53:16,495 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:53:27,007 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:53:37,516 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:53:48,027 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:53:58,536 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:54:09,048 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:54:19,560 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:54:30,066 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:54:40,572 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:54:51,077 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:55:01,590 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:55:12,099 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:55:22,612 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:55:33,115 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:55:43,628 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:55:54,132 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:56:04,643 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:56:15,146 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:56:25,654 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:56:36,162 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:56:46,674 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:56:57,180 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:57:07,683 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:57:18,189 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:57:28,692 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:57:39,204 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:57:49,717 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:58:00,220 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:58:10,732 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:58:21,244 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:58:31,756 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:58:42,259 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:58:52,764 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:59:03,276 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:59:13,788 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:59:24,299 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:59:34,802 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:59:45,311 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 12:59:55,824 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:00:06,327 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:00:16,832 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:00:27,335 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:00:37,844 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:00:48,356 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:00:58,866 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:01:09,379 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:01:19,891 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:01:30,398 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:01:40,907 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:01:51,410 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:02:01,919 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:02:12,429 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:02:22,932 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:02:33,435 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:02:43,948 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:02:54,456 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:03:04,962 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:03:15,470 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:03:25,980 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:03:36,492 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:03:47,000 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:03:57,512 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:04:08,024 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:04:18,536 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:04:29,048 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:04:39,552 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:04:50,055 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:05:00,558 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:05:11,065 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:05:21,581 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:05:32,094 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:05:42,604 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:05:53,116 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:06:03,628 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:06:14,135 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:06:24,643 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:06:35,150 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:06:45,660 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:06:56,166 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:07:06,678 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:07:17,188 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:07:27,700 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:07:38,203 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:07:48,707 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:07:59,214 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:08:09,726 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:08:20,231 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:08:30,738 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:08:41,248 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:08:51,756 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:09:02,260 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:09:12,768 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:09:23,278 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:09:33,789 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:09:44,300 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:09:54,811 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:10:05,323 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:10:15,832 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:10:26,335 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:10:36,844 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:10:47,347 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:10:57,853 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:11:08,364 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:11:18,877 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:11:29,381 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:11:39,892 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:11:50,396 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:12:00,908 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:12:11,420 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:12:21,932 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:12:32,436 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:12:42,938 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:12:53,449 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:13:03,960 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:13:14,471 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:13:24,977 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:13:35,488 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:13:46,000 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:13:56,509 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:14:07,021 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:14:17,525 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:14:28,035 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:14:38,543 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:14:49,046 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:14:59,556 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:15:10,061 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:15:20,572 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:15:31,084 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:15:41,594 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:15:52,107 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:16:02,614 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:16:13,124 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:16:23,630 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:16:34,140 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:16:44,644 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:16:55,156 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:17:05,667 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:17:16,177 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:17:26,680 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:17:27,268 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 13:17:27,270 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 13:17:27,270 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 13:17:27,270 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||20200516131727<CR>P|1<CR>O|1|20005317||^^^44|||||||A<CR>L|1|F<CR><ETX>B2<CR><LF>
+16 мая 2020 13:17:27,272 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 13:17:27,272 DEBUG CitmDriver:47 - sendTasks: Наше сообщение приняли
+16 мая 2020 13:17:27,273 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 13:17:37,282 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:17:47,795 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:17:58,305 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:18:08,809 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:18:19,315 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:18:29,820 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:18:40,331 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:18:50,839 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:19:01,348 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:19:11,861 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:19:22,373 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:19:32,886 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:19:43,395 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:19:53,909 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:20:04,417 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:20:14,928 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:20:25,437 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:20:35,945 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:20:46,456 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:20:56,969 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:21:07,473 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:21:17,983 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:21:28,493 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:21:38,999 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:21:39,549 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 13:21:39,551 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 13:21:39,551 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 13:21:39,551 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||20200516132139<CR>P|1<CR>O|1|20005317||^^^44|||||||A<CR>L|1|F<CR><ETX>B0<CR><LF>
+16 мая 2020 13:21:39,553 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 13:21:39,553 DEBUG CitmDriver:47 - sendTasks: Наше сообщение приняли
+16 мая 2020 13:21:39,554 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 13:21:49,563 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:22:00,068 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:22:10,576 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:22:21,087 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:22:31,599 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:22:42,106 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:22:52,610 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:23:03,118 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:23:13,624 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:23:24,133 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:23:34,641 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:23:45,152 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:23:55,655 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:24:06,160 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:24:16,671 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:24:27,180 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:24:37,693 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:24:48,205 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:24:58,717 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:25:09,229 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:25:19,738 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:25:30,250 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:25:40,760 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:25:51,273 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:26:01,784 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:26:12,292 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:26:22,804 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:26:33,316 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:26:43,829 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:26:54,341 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:27:04,854 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:27:15,357 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:27:25,867 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:27:36,375 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:27:46,881 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:27:57,389 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:28:07,895 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:28:18,406 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:28:28,916 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:28:39,428 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:28:49,936 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:29:00,448 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:29:10,960 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:29:21,472 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:29:31,982 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:29:42,487 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:29:52,999 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:30:03,507 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:30:14,012 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:30:24,525 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:30:35,036 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:30:45,545 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:30:56,057 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:31:06,569 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:31:17,082 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:31:17,642 DEBUG SocketClientTransport:85 - sendMessage: D -> <ENQ>
+16 мая 2020 13:31:17,644 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 13:31:17,644 DEBUG CitmDriver:43 - sendTasks: нас готовы слушать
+16 мая 2020 13:31:17,644 DEBUG SocketClientTransport:85 - sendMessage: D -> <STX>1H|\^&|||ASTM-Host|||||CIT||P||20200516133117<CR>P|1<CR>O|1|20005318||^^^32|||||||A<CR>O|2|20005318||^^^108|||||||A<CR>O|3|20005318||^^^74|||||||A<CR>O|4|20005318||^^^40|||||||A<CR>L|1|F<CR><ETX>86<CR><LF>
+16 мая 2020 13:31:17,646 DEBUG SocketClientTransport:97 - readInt: D <- <ACK>
+16 мая 2020 13:31:17,647 DEBUG CitmDriver:47 - sendTasks: Наше сообщение приняли
+16 мая 2020 13:31:17,647 DEBUG SocketClientTransport:85 - sendMessage: D -> <EOT>
+16 мая 2020 13:31:27,655 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:31:38,164 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:31:48,672 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:31:59,184 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:32:09,696 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:32:20,208 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:32:30,720 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:32:41,225 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:32:51,737 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:33:02,248 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:33:12,760 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:33:23,272 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:33:33,775 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:33:44,287 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:33:54,791 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:34:05,304 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:34:15,810 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:34:26,316 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:34:36,821 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:34:47,329 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:34:57,835 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:35:08,344 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:35:18,856 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:35:29,361 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:35:39,870 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:35:50,382 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:36:00,892 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:36:11,404 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:36:21,915 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:36:32,425 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:36:42,934 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:36:53,445 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:37:03,956 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:37:14,468 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:37:24,975 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:37:35,485 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:37:45,998 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:37:56,507 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:38:07,019 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:38:17,522 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:38:28,028 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:38:38,530 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:38:49,036 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:38:59,538 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:39:10,047 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:39:20,553 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:39:31,064 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:39:41,571 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:39:52,076 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:40:02,588 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:40:13,101 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:40:23,611 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:40:34,119 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:40:44,632 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:40:55,138 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:41:05,648 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:41:16,161 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:41:26,671 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:41:37,183 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:41:47,696 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:41:58,208 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:42:08,711 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:42:19,224 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:42:29,736 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:42:40,241 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:42:50,750 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:43:01,260 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:43:11,769 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:43:22,282 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:43:32,794 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:43:43,304 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:43:53,816 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:44:04,323 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:44:14,832 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:44:25,336 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:44:35,842 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:44:46,352 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:44:56,862 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:45:07,373 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:45:17,881 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:45:28,384 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:45:38,889 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:45:49,400 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:45:59,906 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:46:10,417 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:46:20,930 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:46:31,440 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:46:41,952 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:46:52,464 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:47:02,977 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:47:13,487 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:47:23,999 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:47:34,512 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:47:45,016 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:47:55,528 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:48:06,040 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:48:16,546 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:48:27,051 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:48:37,554 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:48:48,065 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:48:58,577 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:49:09,089 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:49:19,594 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:49:30,103 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:49:40,615 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:49:51,128 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:50:01,632 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:50:12,145 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:50:22,655 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:50:33,166 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:50:43,678 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:50:54,190 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:51:04,697 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:51:15,208 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:51:25,713 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:51:36,222 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:51:46,732 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:51:57,244 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:52:07,756 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:52:18,269 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:52:28,782 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:52:39,294 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:52:49,800 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:53:00,312 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:53:10,823 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:53:21,336 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:53:31,845 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:53:42,357 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:53:52,868 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:54:03,374 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:54:13,886 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:54:24,392 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:54:34,903 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:54:45,412 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:54:55,924 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:55:06,429 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:55:16,942 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:55:27,450 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:55:37,959 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:55:48,471 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:55:58,984 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:56:09,490 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:56:19,997 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:56:30,508 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:56:41,020 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:56:51,531 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:57:02,035 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:57:12,546 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:57:23,053 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:57:33,564 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:57:44,076 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:57:54,589 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:58:05,100 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:58:15,611 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:58:26,125 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:58:36,637 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:58:47,148 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:58:57,653 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:59:08,164 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:59:18,671 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:59:29,179 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:59:39,691 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 13:59:50,200 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:00:00,706 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:00:11,212 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:00:21,723 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:00:32,232 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:00:42,741 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:00:53,252 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:01:03,762 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:01:14,272 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:01:24,778 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:01:35,287 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:01:45,799 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:01:56,309 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:02:06,818 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:02:17,328 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:02:27,840 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:02:38,346 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:02:48,851 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:02:59,362 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:03:09,873 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:03:20,383 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:03:30,892 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:03:41,402 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:03:51,909 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:04:02,414 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:04:12,927 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:04:23,439 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:04:33,952 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:04:44,465 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:04:54,974 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:05:05,486 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:05:15,996 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:05:26,509 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:05:37,021 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:05:47,530 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:05:58,040 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:06:08,552 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:06:19,056 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:06:29,561 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:06:40,065 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:06:50,578 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:07:01,088 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:07:11,593 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:07:22,104 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:07:32,607 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:07:43,119 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:07:53,628 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:08:04,140 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:08:14,644 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:08:25,152 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:08:35,665 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:08:46,178 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:08:56,687 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:09:07,200 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:09:17,711 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:09:28,222 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:09:38,734 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:09:49,241 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:09:59,752 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:10:10,264 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:10:20,776 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:10:31,283 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:10:41,795 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:10:52,308 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:11:02,818 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:11:13,330 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:11:23,834 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:11:34,346 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:11:44,856 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:11:55,369 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:12:05,878 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:12:16,391 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:12:26,901 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:12:37,413 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:12:47,924 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:12:58,436 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:13:08,948 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:13:19,460 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:13:29,968 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:13:40,480 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:13:50,992 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:14:01,494 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:14:12,007 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:14:22,519 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:14:33,031 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:14:43,541 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:14:54,054 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:15:04,566 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:15:15,076 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:15:25,583 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:15:36,090 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:15:46,593 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:15:57,104 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:16:07,616 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:16:18,129 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:16:28,638 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:16:39,149 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:16:49,661 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:17:00,173 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:17:10,681 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:17:21,192 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:17:31,705 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:17:42,216 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:17:52,728 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:18:03,237 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:18:13,745 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:18:24,257 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:18:34,768 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:18:45,271 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:18:55,783 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:19:06,294 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:19:16,802 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:19:27,307 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:19:37,816 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:19:48,328 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:19:58,841 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:20:09,354 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:20:19,866 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:20:30,370 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:20:40,883 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:20:51,395 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:21:01,907 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:21:12,416 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:21:22,928 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:21:33,433 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:21:43,945 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:21:54,457 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:22:04,969 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:22:15,481 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:22:25,994 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:22:36,506 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:22:47,019 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:22:57,531 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:23:08,035 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:23:18,548 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:23:29,060 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:23:39,570 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:23:50,082 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:24:00,595 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:24:11,103 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:24:21,611 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:24:32,123 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:24:42,635 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:24:53,140 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:25:03,653 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:25:14,157 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:25:24,669 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:25:35,181 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:25:45,692 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:25:56,204 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:26:06,712 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:26:17,220 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:26:27,731 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:26:38,235 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:26:48,746 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:26:59,258 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:27:09,770 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:27:20,283 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:27:30,793 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:27:41,305 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:27:51,812 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:28:02,316 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:28:12,819 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:28:23,330 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:28:33,837 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:28:44,346 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:28:54,858 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:29:05,366 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:29:15,874 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:29:26,387 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:29:36,900 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:29:47,409 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:29:57,918 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:30:08,424 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:30:18,932 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:30:29,441 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:30:39,952 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:30:50,465 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:31:00,972 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:31:11,482 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:31:21,995 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:31:32,499 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:31:43,002 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:31:53,515 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:32:04,025 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:32:14,536 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:32:25,048 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:32:35,561 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:32:46,066 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:32:56,578 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:33:07,090 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:33:17,600 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:33:28,109 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:33:38,615 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:33:49,124 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:33:59,635 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:34:10,144 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:34:20,649 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:34:31,157 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:34:41,663 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:34:52,172 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:35:02,679 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:35:13,188 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:35:15,443 DEBUG SocketClientTransport:97 - readInt: D <- <ENQ>
+16 мая 2020 14:35:15,444 DEBUG CitmDriver:79 - receiveResults: нам хотят что-то прислать
+16 мая 2020 14:35:15,444 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,446 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,446 DEBUG SocketClientTransport:115 - readMessage: D <- 1H|\^&|5545||^^^|||||||Q||20200516143515<CR><ETX>B6<CR><LF>
+16 мая 2020 14:35:15,446 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,448 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,448 DEBUG SocketClientTransport:115 - readMessage: D <- 2P|1<CR><ETX>3F<CR><LF>
+16 мая 2020 14:35:15,448 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,451 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,451 DEBUG SocketClientTransport:115 - readMessage: D <- 3O|1|LQLIPC L1||ALL|||||||X\Q||||||||||||||F<CR><ETX>65<CR><LF>
+16 мая 2020 14:35:15,451 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,453 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,453 DEBUG SocketClientTransport:115 - readMessage: D <- 4R|1|^^^1325^^^^COBAS_CCEE^^^^^^|20.960|nmol/L||||F||&S&SYSTEM^||20200516064008|COBAS_CCEE<CR><ETX>9C<CR><LF>
+16 мая 2020 14:35:15,454 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,455 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,456 DEBUG SocketClientTransport:115 - readMessage: D <- 5R|2|^^^176^^^^COBAS_CCEE^^^^^^|3.790|pmol/L||||F||&S&SYSTEM^||20200516064048|COBAS_CCEE<CR><ETX>49<CR><LF>
+16 мая 2020 14:35:15,456 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,457 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,458 DEBUG SocketClientTransport:115 - readMessage: D <- 6R|3|^^^134^^^^COBAS_CCEE^^^^^^|273.000|pg/mL||||F||&S&SYSTEM^||20200516065038|COBAS_CCEE<CR><ETX>2A<CR><LF>
+16 мая 2020 14:35:15,458 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,459 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,460 DEBUG SocketClientTransport:115 - readMessage: D <- 7P|2<CR><ETX>45<CR><LF>
+16 мая 2020 14:35:15,460 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,462 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,462 DEBUG SocketClientTransport:115 - readMessage: D <- 0O|1|LQLIPC L3||ALL|||||||X\Q||||||||||||||F<CR><ETX>64<CR><LF>
+16 мая 2020 14:35:15,462 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,464 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,464 DEBUG SocketClientTransport:115 - readMessage: D <- 1R|1|^^^1325^^^^COBAS_CCEE^^^^^^|32.680|nmol/L||||F||&S&SYSTEM^||20200516064213|COBAS_CCEE<CR><ETX>99<CR><LF>
+16 мая 2020 14:35:15,464 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,466 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,466 DEBUG SocketClientTransport:115 - readMessage: D <- 2R|2|^^^176^^^^COBAS_CCEE^^^^^^|19.080|pmol/L||||F||&S&SYSTEM^||20200516064253|COBAS_CCEE<CR><ETX>73<CR><LF>
+16 мая 2020 14:35:15,466 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,468 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,468 DEBUG SocketClientTransport:115 - readMessage: D <- 3R|3|^^^134^^^^COBAS_CCEE^^^^^^|684.700|pg/mL||||F||&S&SYSTEM^||20200516065243|COBAS_CCEE<CR><ETX>32<CR><LF>
+16 мая 2020 14:35:15,468 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,470 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,470 DEBUG SocketClientTransport:115 - readMessage: D <- 4P|3<CR><ETX>43<CR><LF>
+16 мая 2020 14:35:15,470 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,472 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,472 DEBUG SocketClientTransport:115 - readMessage: D <- 5O|1|TMCO L1||ALL|||||||X\Q||||||||||||||F<CR><ETX>D5<CR><LF>
+16 мая 2020 14:35:15,472 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,474 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,474 DEBUG SocketClientTransport:115 - readMessage: D <- 6R|1|^^^220^^^^COBAS_CCEE^^^^^^|0.080|ng/mL||||F||&S&SYSTEM^||20200516063553|COBAS_CCEE<CR><ETX>BE<CR><LF>
+16 мая 2020 14:35:15,474 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,476 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,476 DEBUG SocketClientTransport:115 - readMessage: D <- 7R|2|^^^174^^^^COBAS_CCEE^^^^^^|0.034|ng/mL||||F||&S&SYSTEM^||20200516063638|COBAS_CCEE<CR><ETX>CB<CR><LF>
+16 мая 2020 14:35:15,476 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,478 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,478 DEBUG SocketClientTransport:115 - readMessage: D <- 0P|4<CR><ETX>40<CR><LF>
+16 мая 2020 14:35:15,478 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,480 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,480 DEBUG SocketClientTransport:115 - readMessage: D <- 1O|1|TMCO L2||ALL|||||||X\Q||||||||||||||F<CR><ETX>D2<CR><LF>
+16 мая 2020 14:35:15,480 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,482 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,482 DEBUG SocketClientTransport:115 - readMessage: D <- 2R|1|^^^220^^^^COBAS_CCEE^^^^^^|14.620|ng/mL||||F||&S&SYSTEM^||20200516063843|COBAS_CCEE<CR><ETX>F1<CR><LF>
+16 мая 2020 14:35:15,482 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,484 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,484 DEBUG SocketClientTransport:115 - readMessage: D <- 3R|2|^^^174^^^^COBAS_CCEE^^^^^^|11.010|ng/mL||||F||&S&SYSTEM^||20200516063923|COBAS_CCEE<CR><ETX>F0<CR><LF>
+16 мая 2020 14:35:15,484 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,486 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,486 DEBUG SocketClientTransport:115 - readMessage: D <- 4P|5<CR><ETX>45<CR><LF>
+16 мая 2020 14:35:15,486 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,488 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,488 DEBUG SocketClientTransport:115 - readMessage: D <- 5O|1|LQLIPC L1||ALL|||||||X\Q||||||||||||||F<CR><ETX>67<CR><LF>
+16 мая 2020 14:35:15,488 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,490 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,490 DEBUG SocketClientTransport:115 - readMessage: D <- 6R|1|^^^1325^^^^COBAS_CCEE^^^^^^|21.130|nmol/L||||F||&S&SYSTEM^||20200516063943|COBAS_CCEE<CR><ETX>9B<CR><LF>
+16 мая 2020 14:35:15,490 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,492 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,493 DEBUG SocketClientTransport:115 - readMessage: D <- 7R|2|^^^176^^^^COBAS_CCEE^^^^^^|3.840|pmol/L||||F||&S&SYSTEM^||20200516064108|COBAS_CCEE<CR><ETX>44<CR><LF>
+16 мая 2020 14:35:15,493 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,494 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,495 DEBUG SocketClientTransport:115 - readMessage: D <- 0R|3|^^^134^^^^COBAS_CCEE^^^^^^|290.800|pg/mL||||F||&S&SYSTEM^||20200516065058|COBAS_CCEE<CR><ETX>2D<CR><LF>
+16 мая 2020 14:35:15,495 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,497 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,497 DEBUG SocketClientTransport:115 - readMessage: D <- 1P|6<CR><ETX>43<CR><LF>
+16 мая 2020 14:35:15,497 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,499 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,499 DEBUG SocketClientTransport:115 - readMessage: D <- 2O|1|LQLIPC L3||ALL|||||||X\Q||||||||||||||F<CR><ETX>66<CR><LF>
+16 мая 2020 14:35:15,499 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,501 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,501 DEBUG SocketClientTransport:115 - readMessage: D <- 3R|1|^^^1325^^^^COBAS_CCEE^^^^^^|32.720|nmol/L||||F||&S&SYSTEM^||20200516064233|COBAS_CCEE<CR><ETX>98<CR><LF>
+16 мая 2020 14:35:15,501 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,503 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,503 DEBUG SocketClientTransport:115 - readMessage: D <- 4R|2|^^^176^^^^COBAS_CCEE^^^^^^|19.530|pmol/L||||F||&S&SYSTEM^||20200516064313|COBAS_CCEE<CR><ETX>72<CR><LF>
+16 мая 2020 14:35:15,503 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,505 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,505 DEBUG SocketClientTransport:115 - readMessage: D <- 5R|3|^^^134^^^^COBAS_CCEE^^^^^^|712.300|pg/mL||||F||&S&SYSTEM^||20200516065303|COBAS_CCEE<CR><ETX>25<CR><LF>
+16 мая 2020 14:35:15,505 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,507 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,507 DEBUG SocketClientTransport:115 - readMessage: D <- 6P|7<CR><ETX>49<CR><LF>
+16 мая 2020 14:35:15,507 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,509 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,509 DEBUG SocketClientTransport:115 - readMessage: D <- 7O|1|TMCO L1||ALL|||||||X\Q||||||||||||||F<CR><ETX>D7<CR><LF>
+16 мая 2020 14:35:15,509 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,511 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,511 DEBUG SocketClientTransport:115 - readMessage: D <- 0R|1|^^^220^^^^COBAS_CCEE^^^^^^|0.083|ng/mL||||F||&S&SYSTEM^||20200516063533|COBAS_CCEE<CR><ETX>B9<CR><LF>
+16 мая 2020 14:35:15,511 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,513 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,513 DEBUG SocketClientTransport:115 - readMessage: D <- 1R|2|^^^174^^^^COBAS_CCEE^^^^^^|0.030|ng/mL||||F||&S&SYSTEM^||20200516063613|COBAS_CCEE<CR><ETX>BA<CR><LF>
+16 мая 2020 14:35:15,513 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,515 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,515 DEBUG SocketClientTransport:115 - readMessage: D <- 2P|8<CR><ETX>46<CR><LF>
+16 мая 2020 14:35:15,515 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,517 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,517 DEBUG SocketClientTransport:115 - readMessage: D <- 3O|1|TMCO L2||ALL|||||||X\Q||||||||||||||F<CR><ETX>D4<CR><LF>
+16 мая 2020 14:35:15,517 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,520 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,520 DEBUG SocketClientTransport:115 - readMessage: D <- 4R|1|^^^220^^^^COBAS_CCEE^^^^^^|14.830|ng/mL||||F||&S&SYSTEM^||20200516063658|COBAS_CCEE<CR><ETX>FA<CR><LF>
+16 мая 2020 14:35:15,520 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,521 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,522 DEBUG SocketClientTransport:115 - readMessage: D <- 5R|2|^^^174^^^^COBAS_CCEE^^^^^^|10.860|ng/mL||||F||&S&SYSTEM^||20200516063903|COBAS_CCEE<CR><ETX>FC<CR><LF>
+16 мая 2020 14:35:15,522 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,523 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:15,523 DEBUG SocketClientTransport:115 - readMessage: D <- 6L|1|N<CR><ETX>09<CR><LF>
+16 мая 2020 14:35:15,524 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:15,525 DEBUG SocketClientTransport:97 - readInt: D <- <EOT>
+16 мая 2020 14:35:15,525 DEBUG CitmDriver:87 - receiveResults: мы зафиксировали конец передачи
+16 мая 2020 14:35:28,595 DEBUG SocketClientTransport:97 - readInt: D <- <ENQ>
+16 мая 2020 14:35:28,595 DEBUG CitmDriver:79 - receiveResults: нам хотят что-то прислать
+16 мая 2020 14:35:28,596 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,597 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,597 DEBUG SocketClientTransport:115 - readMessage: D <- 1H|\^&|5546||^^^|||||||Q||20200516143528<CR><ETX>BB<CR><LF>
+16 мая 2020 14:35:28,598 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,599 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,599 DEBUG SocketClientTransport:115 - readMessage: D <- 2P|1<CR><ETX>3F<CR><LF>
+16 мая 2020 14:35:28,600 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,601 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,602 DEBUG SocketClientTransport:115 - readMessage: D <- 3O|1|Cardio L3||ALL|||||||X\Q||||||||||||||F<CR><ETX>F4<CR><LF>
+16 мая 2020 14:35:28,602 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,603 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,603 DEBUG SocketClientTransport:115 - readMessage: D <- 4R|1|^^^236^^^^COBAS_CCEE^^^^^^|6.700|ng/mL||||F||&S&SYSTEM^||20200516062703|COBAS_CCEE<CR><ETX>C4<CR><LF>
+16 мая 2020 14:35:28,604 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,605 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,605 DEBUG SocketClientTransport:115 - readMessage: D <- 5P|2<CR><ETX>43<CR><LF>
+16 мая 2020 14:35:28,605 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,607 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,607 DEBUG SocketClientTransport:115 - readMessage: D <- 6O|1|LQLIPC L1||ALL|||||||X\Q||||||||||||||F<CR><ETX>68<CR><LF>
+16 мая 2020 14:35:28,607 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,609 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,609 DEBUG SocketClientTransport:115 - readMessage: D <- 7R|1|^^^230^^^^COBAS_CCEE^^^^^^|98.930|nmol/L||||F||&S&SYSTEM^||20200516064553|COBAS_CCEE<CR><ETX>7A<CR><LF>
+16 мая 2020 14:35:28,609 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,611 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,611 DEBUG SocketClientTransport:115 - readMessage: D <- 0R|2|^^^229^^^^COBAS_CCEE^^^^^^|1.820|nmol/L||||F||&S&SYSTEM^||20200516064718|COBAS_CCEE<CR><ETX>3D<CR><LF>
+16 мая 2020 14:35:28,611 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,613 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,613 DEBUG SocketClientTransport:115 - readMessage: D <- 1R|3|^^^134^^^^COBAS_CCEE^^^^^^|274.800|pg/mL||||F||&S&SYSTEM^||20200516065543|COBAS_CCEE<CR><ETX>2F<CR><LF>
+16 мая 2020 14:35:28,613 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,615 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,615 DEBUG SocketClientTransport:115 - readMessage: D <- 2P|3<CR><ETX>41<CR><LF>
+16 мая 2020 14:35:28,615 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,616 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,616 DEBUG SocketClientTransport:115 - readMessage: D <- 3O|1|LQLIPC L3||ALL|||||||X\Q||||||||||||||F<CR><ETX>67<CR><LF>
+16 мая 2020 14:35:28,617 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,618 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,618 DEBUG SocketClientTransport:115 - readMessage: D <- 4R|1|^^^230^^^^COBAS_CCEE^^^^^^|159.700|nmol/L||||F||&S&SYSTEM^||20200516064843|COBAS_CCEE<CR><ETX>A2<CR><LF>
+16 мая 2020 14:35:28,618 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,620 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,620 DEBUG SocketClientTransport:115 - readMessage: D <- 5R|2|^^^229^^^^COBAS_CCEE^^^^^^|4.730|nmol/L||||F||&S&SYSTEM^||20200516064923|COBAS_CCEE<CR><ETX>43<CR><LF>
+16 мая 2020 14:35:28,620 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,622 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,622 DEBUG SocketClientTransport:115 - readMessage: D <- 6R|3|^^^150^^^^COBAS_CCEE^^^^^^|1042.000|nmol/L||||F||&S&SYSTEM^||20200516065008|COBAS_CCEE<CR><ETX>C2<CR><LF>
+16 мая 2020 14:35:28,622 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,624 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,624 DEBUG SocketClientTransport:115 - readMessage: D <- 7R|4|^^^134^^^^COBAS_CCEE^^^^^^|752.400|pg/mL||||F||&S&SYSTEM^||20200516065953|COBAS_CCEE<CR><ETX>38<CR><LF>
+16 мая 2020 14:35:28,624 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,625 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,625 DEBUG SocketClientTransport:115 - readMessage: D <- 0P|4<CR><ETX>40<CR><LF>
+16 мая 2020 14:35:28,626 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,627 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,627 DEBUG SocketClientTransport:115 - readMessage: D <- 1O|1|Cardio L3||ALL|||||||X\Q||||||||||||||F<CR><ETX>F2<CR><LF>
+16 мая 2020 14:35:28,627 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,629 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,629 DEBUG SocketClientTransport:115 - readMessage: D <- 2R|1|^^^236^^^^COBAS_CCEE^^^^^^|6.760|ng/mL||||F||&S&SYSTEM^||20200516062558|COBAS_CCEE<CR><ETX>D0<CR><LF>
+16 мая 2020 14:35:28,629 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,631 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,631 DEBUG SocketClientTransport:115 - readMessage: D <- 3P|5<CR><ETX>44<CR><LF>
+16 мая 2020 14:35:28,631 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,633 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,633 DEBUG SocketClientTransport:115 - readMessage: D <- 4O|1|LQLIPC L1||ALL|||||||X\Q||||||||||||||F<CR><ETX>66<CR><LF>
+16 мая 2020 14:35:28,633 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,634 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,634 DEBUG SocketClientTransport:115 - readMessage: D <- 5R|1|^^^230^^^^COBAS_CCEE^^^^^^|98.270|nmol/L||||F||&S&SYSTEM^||20200516064618|COBAS_CCEE<CR><ETX>77<CR><LF>
+16 мая 2020 14:35:28,634 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,636 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,636 DEBUG SocketClientTransport:115 - readMessage: D <- 6R|2|^^^229^^^^COBAS_CCEE^^^^^^|1.750|nmol/L||||F||&S&SYSTEM^||20200516064738|COBAS_CCEE<CR><ETX>47<CR><LF>
+16 мая 2020 14:35:28,636 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,638 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,638 DEBUG SocketClientTransport:115 - readMessage: D <- 7R|3|^^^134^^^^COBAS_CCEE^^^^^^|291.100|pg/mL||||F||&S&SYSTEM^||20200516065728|COBAS_CCEE<CR><ETX>32<CR><LF>
+16 мая 2020 14:35:28,638 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,640 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,640 DEBUG SocketClientTransport:115 - readMessage: D <- 0P|6<CR><ETX>42<CR><LF>
+16 мая 2020 14:35:28,640 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,641 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,641 DEBUG SocketClientTransport:115 - readMessage: D <- 1O|1|LQLIPC L3||ALL|||||||X\Q||||||||||||||F<CR><ETX>65<CR><LF>
+16 мая 2020 14:35:28,641 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,643 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,643 DEBUG SocketClientTransport:115 - readMessage: D <- 2R|1|^^^230^^^^COBAS_CCEE^^^^^^|159.400|nmol/L||||F||&S&SYSTEM^||20200516064903|COBAS_CCEE<CR><ETX>9A<CR><LF>
+16 мая 2020 14:35:28,643 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,645 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,645 DEBUG SocketClientTransport:115 - readMessage: D <- 3R|2|^^^229^^^^COBAS_CCEE^^^^^^|4.720|nmol/L||||F||&S&SYSTEM^||20200516064948|COBAS_CCEE<CR><ETX>47<CR><LF>
+16 мая 2020 14:35:28,645 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,646 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,647 DEBUG SocketClientTransport:115 - readMessage: D <- 4R|3|^^^150^^^^COBAS_CCEE^^^^^^|1050.000|nmol/L||||F||&S&SYSTEM^||20200516065028|COBAS_CCEE<CR><ETX>C1<CR><LF>
+16 мая 2020 14:35:28,647 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,648 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,648 DEBUG SocketClientTransport:115 - readMessage: D <- 5R|4|^^^134^^^^COBAS_CCEE^^^^^^|748.200|pg/mL||||F||&S&SYSTEM^||20200516070018|COBAS_CCEE<CR><ETX>2D<CR><LF>
+16 мая 2020 14:35:28,648 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,650 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:35:28,650 DEBUG SocketClientTransport:115 - readMessage: D <- 6L|1|N<CR><ETX>09<CR><LF>
+16 мая 2020 14:35:28,650 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:35:28,652 DEBUG SocketClientTransport:97 - readInt: D <- <EOT>
+16 мая 2020 14:35:28,652 DEBUG CitmDriver:87 - receiveResults: мы зафиксировали конец передачи
+16 мая 2020 14:35:39,224 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:35:49,731 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:36:00,243 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:36:10,749 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:36:21,260 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:36:31,770 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:36:42,280 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:36:52,792 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:37:03,303 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:37:13,812 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:37:24,324 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:37:34,836 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:37:45,347 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:37:55,859 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:38:06,368 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:38:16,872 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:38:27,375 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:38:37,880 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:38:48,385 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:38:58,896 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:39:09,404 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:39:19,914 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:39:30,421 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:39:40,932 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:39:51,440 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:40:01,953 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:40:12,459 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:40:22,969 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:40:33,480 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:40:43,992 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:40:54,504 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:41:05,017 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:41:15,528 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:41:26,038 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:41:36,550 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:41:47,056 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:41:57,569 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:42:08,081 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:42:18,593 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:42:29,105 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:42:39,609 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:42:50,120 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:43:00,630 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:43:11,142 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:43:21,644 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:43:32,155 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:43:42,662 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:43:53,173 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:44:03,684 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:44:14,196 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:44:24,710 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:44:35,222 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:44:45,735 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:44:56,239 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:45:06,744 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:45:17,255 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:45:27,764 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:45:38,277 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:45:48,790 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:45:59,293 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:46:09,804 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:46:20,310 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:46:30,818 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:46:41,325 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:46:43,337 DEBUG SocketClientTransport:97 - readInt: D <- <ENQ>
+16 мая 2020 14:46:43,337 DEBUG CitmDriver:79 - receiveResults: нам хотят что-то прислать
+16 мая 2020 14:46:43,338 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:46:43,339 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:46:43,340 DEBUG SocketClientTransport:115 - readMessage: D <- 1H|\^&|5648||^^^|||||||Q||20200516144643<CR><ETX>BD<CR><LF>
+16 мая 2020 14:46:43,340 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:46:43,341 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:46:43,342 DEBUG SocketClientTransport:115 - readMessage: D <- 2P|1<CR><ETX>3F<CR><LF>
+16 мая 2020 14:46:43,342 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:46:43,343 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:46:43,344 DEBUG SocketClientTransport:115 - readMessage: D <- 3O|1|MULTI-1||ALL|||||||X\Q||||||||||||||F<CR><ETX>EC<CR><LF>
+16 мая 2020 14:46:43,344 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:46:43,346 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:46:43,346 DEBUG SocketClientTransport:115 - readMessage: D <- 4R|1|^^^492^^^^COBAS_CCEE^^^^^^|40.400|g/L||||F||&S&SYSTEM^||20200516063720|COBAS_CCEE<CR><ETX>18<CR><LF>
+16 мая 2020 14:46:43,347 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:46:43,348 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:46:43,349 DEBUG SocketClientTransport:115 - readMessage: D <- 5P|2<CR><ETX>43<CR><LF>
+16 мая 2020 14:46:43,349 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:46:43,351 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:46:43,351 DEBUG SocketClientTransport:115 - readMessage: D <- 6O|1|MULTI-3||ALL|||||||X\Q||||||||||||||F<CR><ETX>F1<CR><LF>
+16 мая 2020 14:46:43,351 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:46:43,371 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:46:43,371 DEBUG SocketClientTransport:115 - readMessage: D <- 7R|1|^^^492^^^^COBAS_CCEE^^^^^^|72.000|g/L||||F||&S&SYSTEM^||20200516063723|COBAS_CCEE<CR><ETX>1F<CR><LF>
+16 мая 2020 14:46:43,371 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:46:43,372 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:46:43,373 DEBUG SocketClientTransport:115 - readMessage: D <- 0P|3<CR><ETX>3F<CR><LF>
+16 мая 2020 14:46:43,373 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:46:43,375 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:46:43,375 DEBUG SocketClientTransport:115 - readMessage: D <- 1O|1|Cardio L1||ALL|||||||X\Q||||||||||||||F<CR><ETX>F0<CR><LF>
+16 мая 2020 14:46:43,375 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:46:43,377 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:46:43,377 DEBUG SocketClientTransport:115 - readMessage: D <- 2R|1|^^^146^^^^COBAS_CCEE^^^^^^|2.320|ng/mL||||F||&S&SYSTEM^||20200516063143|COBAS_CCEE<CR><ETX>BB<CR><LF>
+16 мая 2020 14:46:43,377 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:46:43,379 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:46:43,379 DEBUG SocketClientTransport:115 - readMessage: D <- 3P|4<CR><ETX>43<CR><LF>
+16 мая 2020 14:46:43,379 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:46:43,381 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:46:43,381 DEBUG SocketClientTransport:115 - readMessage: D <- 4O|1|Cardio L3||ALL|||||||X\Q||||||||||||||F<CR><ETX>F5<CR><LF>
+16 мая 2020 14:46:43,381 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:46:43,383 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:46:43,383 DEBUG SocketClientTransport:115 - readMessage: D <- 5R|1|^^^146^^^^COBAS_CCEE^^^^^^|45.360|ng/mL||||F||&S&SYSTEM^||20200516063223|COBAS_CCEE<CR><ETX>F8<CR><LF>
+16 мая 2020 14:46:43,383 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:46:43,385 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:46:43,385 DEBUG SocketClientTransport:115 - readMessage: D <- 6P|5<CR><ETX>47<CR><LF>
+16 мая 2020 14:46:43,385 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:46:43,387 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:46:43,387 DEBUG SocketClientTransport:115 - readMessage: D <- 7O|1|Cardio L1||ALL|||||||X\Q||||||||||||||F<CR><ETX>F6<CR><LF>
+16 мая 2020 14:46:43,387 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:46:43,389 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:46:43,389 DEBUG SocketClientTransport:115 - readMessage: D <- 0R|1|^^^146^^^^COBAS_CCEE^^^^^^|2.300|ng/mL||||F||&S&SYSTEM^||20200516063203|COBAS_CCEE<CR><ETX>B4<CR><LF>
+16 мая 2020 14:46:43,389 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:46:43,391 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:46:43,391 DEBUG SocketClientTransport:115 - readMessage: D <- 1P|6<CR><ETX>43<CR><LF>
+16 мая 2020 14:46:43,391 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:46:43,393 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:46:43,393 DEBUG SocketClientTransport:115 - readMessage: D <- 2O|1|Cardio L3||ALL|||||||X\Q||||||||||||||F<CR><ETX>F3<CR><LF>
+16 мая 2020 14:46:43,394 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:46:43,395 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:46:43,395 DEBUG SocketClientTransport:115 - readMessage: D <- 3R|1|^^^146^^^^COBAS_CCEE^^^^^^|44.550|ng/mL||||F||&S&SYSTEM^||20200516063243|COBAS_CCEE<CR><ETX>F8<CR><LF>
+16 мая 2020 14:46:43,395 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:46:43,397 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:46:43,397 DEBUG SocketClientTransport:115 - readMessage: D <- 4L|1|N<CR><ETX>07<CR><LF>
+16 мая 2020 14:46:43,397 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:46:43,399 DEBUG SocketClientTransport:97 - readInt: D <- <EOT>
+16 мая 2020 14:46:43,399 DEBUG CitmDriver:87 - receiveResults: мы зафиксировали конец передачи
+16 мая 2020 14:46:53,936 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:47:04,447 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:47:14,951 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:47:25,463 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:47:35,972 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:47:46,485 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:47:56,990 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:48:07,498 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:48:18,006 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:48:28,519 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:48:39,033 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:48:49,542 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:49:00,055 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:49:10,562 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:49:21,073 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:49:31,586 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:49:42,095 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:49:47,171 DEBUG SocketClientTransport:97 - readInt: D <- <ENQ>
+16 мая 2020 14:49:47,171 DEBUG CitmDriver:79 - receiveResults: нам хотят что-то прислать
+16 мая 2020 14:49:47,172 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:49:47,173 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:49:47,173 DEBUG SocketClientTransport:115 - readMessage: D <- 1H|\^&|5649||^^^|||||||P||20200516144946<CR><ETX>C3<CR><LF>
+16 мая 2020 14:49:47,174 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:49:47,175 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:49:47,175 DEBUG SocketClientTransport:115 - readMessage: D <- 2P|1||?||^||||||||||||||||||20200516131727||<CR><ETX>41<CR><LF>
+16 мая 2020 14:49:47,176 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:49:47,177 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:49:47,177 DEBUG SocketClientTransport:115 - readMessage: D <- 3O|1|20005317||ALL|?|20200516131727|||||X||||1||||||||||F<CR><ETX>1D<CR><LF>
+16 мая 2020 14:49:47,177 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:49:47,179 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:49:47,180 DEBUG SocketClientTransport:115 - readMessage: D <- 4R|1|^^^44^1^^^COBAS_CCEE^^^^^^|49.000|umol/l||N||F||&S&SYSTEM^System||20200516092429|COBAS_CCEE<CR><ETX>68<CR><LF>
+16 мая 2020 14:49:47,180 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:49:47,182 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:49:47,182 DEBUG SocketClientTransport:115 - readMessage: D <- 5L|1|N<CR><ETX>08<CR><LF>
+16 мая 2020 14:49:47,183 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:49:47,184 DEBUG SocketClientTransport:97 - readInt: D <- <EOT>
+16 мая 2020 14:49:47,184 DEBUG CitmDriver:87 - receiveResults: мы зафиксировали конец передачи
+16 мая 2020 14:49:57,693 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:50:08,206 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:50:18,719 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:50:29,228 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:50:39,737 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:50:40,660 DEBUG SocketClientTransport:97 - readInt: D <- <ENQ>
+16 мая 2020 14:50:40,661 DEBUG CitmDriver:79 - receiveResults: нам хотят что-то прислать
+16 мая 2020 14:50:40,661 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:50:40,662 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:50:40,663 DEBUG SocketClientTransport:115 - readMessage: D <- 1H|\^&|5651||^^^|||||||P||20200516145040<CR><ETX>AE<CR><LF>
+16 мая 2020 14:50:40,663 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:50:40,664 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:50:40,665 DEBUG SocketClientTransport:115 - readMessage: D <- 2P|1||?||^||||||||||||||||||20200516131727||<CR><ETX>41<CR><LF>
+16 мая 2020 14:50:40,665 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:50:40,666 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:50:40,666 DEBUG SocketClientTransport:115 - readMessage: D <- 3O|1|20005317||ALL|?|20200516131727|||||X||||1||||||||||F<CR><ETX>1D<CR><LF>
+16 мая 2020 14:50:40,667 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:50:40,668 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:50:40,669 DEBUG SocketClientTransport:115 - readMessage: D <- 4R|1|^^^44^1^^^COBAS_CCEE^^^^^^|49.000|umol/l||N||C||&S&SYSTEM^System||20200516092429|COBAS_CCEE<CR><ETX>65<CR><LF>
+16 мая 2020 14:50:40,669 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:50:40,670 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:50:40,670 DEBUG SocketClientTransport:115 - readMessage: D <- 5L|1|N<CR><ETX>08<CR><LF>
+16 мая 2020 14:50:40,671 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:50:40,672 DEBUG SocketClientTransport:97 - readInt: D <- <EOT>
+16 мая 2020 14:50:40,672 DEBUG CitmDriver:87 - receiveResults: мы зафиксировали конец передачи
+16 мая 2020 14:50:49,264 DEBUG SocketClientTransport:97 - readInt: D <- <ENQ>
+16 мая 2020 14:50:49,265 DEBUG CitmDriver:79 - receiveResults: нам хотят что-то прислать
+16 мая 2020 14:50:49,265 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:50:49,266 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:50:49,266 DEBUG SocketClientTransport:115 - readMessage: D <- 1H|\^&|5653||^^^|||||||P||20200516145049<CR><ETX>B9<CR><LF>
+16 мая 2020 14:50:49,267 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:50:49,268 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:50:49,268 DEBUG SocketClientTransport:115 - readMessage: D <- 2P|1||?||^||||||||||||||||||20200516131727||<CR><ETX>41<CR><LF>
+16 мая 2020 14:50:49,268 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:50:49,270 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:50:49,270 DEBUG SocketClientTransport:115 - readMessage: D <- 3O|1|20005317||ALL|?|20200516131727|||||X||||1||||||||||F<CR><ETX>1D<CR><LF>
+16 мая 2020 14:50:49,270 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:50:49,272 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:50:49,272 DEBUG SocketClientTransport:115 - readMessage: D <- 4R|1|^^^44^1^^^COBAS_CCEE^^^^^^|49.000|umol/l||N||C||&S&SYSTEM^System||20200516092429|COBAS_CCEE<CR><ETX>65<CR><LF>
+16 мая 2020 14:50:49,272 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:50:49,273 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:50:49,274 DEBUG SocketClientTransport:115 - readMessage: D <- 5L|1|N<CR><ETX>08<CR><LF>
+16 мая 2020 14:50:49,274 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:50:49,275 DEBUG SocketClientTransport:97 - readInt: D <- <EOT>
+16 мая 2020 14:50:49,275 DEBUG CitmDriver:87 - receiveResults: мы зафиксировали конец передачи
+16 мая 2020 14:50:59,793 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:51:00,407 DEBUG SocketClientTransport:97 - readInt: D <- <ENQ>
+16 мая 2020 14:51:00,407 DEBUG CitmDriver:79 - receiveResults: нам хотят что-то прислать
+16 мая 2020 14:51:00,407 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:51:00,409 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:51:00,409 DEBUG SocketClientTransport:115 - readMessage: D <- 1H|\^&|5654||^^^|||||||P||20200516145100<CR><ETX>AE<CR><LF>
+16 мая 2020 14:51:00,409 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:51:00,411 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:51:00,411 DEBUG SocketClientTransport:115 - readMessage: D <- 2P|1||?||^||||||||||||||||||20200516133117||<CR><ETX>3C<CR><LF>
+16 мая 2020 14:51:00,411 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:51:00,413 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:51:00,413 DEBUG SocketClientTransport:115 - readMessage: D <- 3O|1|20005318||ALL|?|20200516133117|||||X||||1||||||||||F<CR><ETX>19<CR><LF>
+16 мая 2020 14:51:00,413 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:51:00,415 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:51:00,415 DEBUG SocketClientTransport:115 - readMessage: D <- 4R|1|^^^40^1^^^COBAS_CCEE^^^^^^|100.200|mmol/l||N||F||&S&SYSTEM^System||20200516091356|COBAS_CCEE<CR><ETX>80<CR><LF>
+16 мая 2020 14:51:00,415 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:51:00,417 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:51:00,417 DEBUG SocketClientTransport:115 - readMessage: D <- 5R|2|^^^108^1^^^COBAS_CCEE^^^^^^|4.620|mmol/l||N||F||&S&SYSTEM^System||20200516091356|COBAS_CCEE<CR><ETX>60<CR><LF>
+16 мая 2020 14:51:00,418 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:51:00,419 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:51:00,419 DEBUG SocketClientTransport:115 - readMessage: D <- 6R|3|^^^74^1^^^COBAS_CCEE^^^^^^|140.800|mmol/l||N||F||&S&SYSTEM^System||20200516091356|COBAS_CCEE<CR><ETX>95<CR><LF>
+16 мая 2020 14:51:00,420 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:51:00,421 DEBUG SocketClientTransport:97 - readInt: D <- <STX>
+16 мая 2020 14:51:00,421 DEBUG SocketClientTransport:115 - readMessage: D <- 7L|1|N<CR><ETX>0A<CR><LF>
+16 мая 2020 14:51:00,421 DEBUG SocketClientTransport:85 - sendMessage: D -> <ACK>
+16 мая 2020 14:51:00,423 DEBUG SocketClientTransport:97 - readInt: D <- <EOT>
+16 мая 2020 14:51:00,423 DEBUG CitmDriver:87 - receiveResults: мы зафиксировали конец передачи
+16 мая 2020 14:51:10,936 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:51:21,448 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:51:31,959 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:51:42,466 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:51:52,978 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:52:03,488 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:52:13,998 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:52:24,508 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:52:35,017 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:52:45,522 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:52:56,029 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:53:06,535 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:53:17,043 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:53:27,552 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:53:38,060 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:53:48,571 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:53:59,083 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:54:09,591 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:54:20,103 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:54:30,611 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:54:41,121 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:54:51,632 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:55:02,145 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:55:12,652 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:55:23,162 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:55:33,667 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:55:44,177 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:55:54,682 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:56:05,192 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:56:15,700 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:56:26,205 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:56:36,718 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:56:47,228 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:56:57,736 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:57:08,248 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:57:18,759 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:57:29,269 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:57:39,781 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:57:50,288 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:58:00,794 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:58:11,298 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:58:21,808 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:58:32,317 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:58:42,829 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:58:53,332 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:59:03,842 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:59:14,354 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:59:24,859 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:59:35,367 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:59:45,870 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 14:59:56,374 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:00:06,886 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:00:17,399 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:00:27,906 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:00:38,409 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:00:48,915 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:00:59,426 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:01:09,936 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:01:20,449 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:01:30,953 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:01:41,465 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:01:51,976 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:02:02,488 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:02:12,993 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:02:23,505 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:02:34,017 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:02:44,525 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:02:55,031 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:03:05,561 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:03:16,068 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:03:26,581 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:03:37,085 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:03:47,597 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:03:58,106 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:04:08,618 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:04:19,128 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:04:29,633 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:04:40,146 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:04:50,651 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:05:01,161 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:05:11,673 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:05:22,185 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:05:32,698 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:05:43,210 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:05:53,713 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:06:04,219 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:06:14,729 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:06:25,232 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:06:35,744 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:06:46,257 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:06:56,764 DEBUG CitmDriver:77 - receiveResults: ждём данных
+16 мая 2020 15:07:07,274 DEBUG CitmDriver:77 - receiveResults: ждём данных

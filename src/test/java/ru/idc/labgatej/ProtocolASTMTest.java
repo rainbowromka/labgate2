@@ -4,7 +4,6 @@ import org.junit.Test;
 import ru.idc.labgatej.base.Codes;
 import ru.idc.labgatej.base.ProtocolASTM;
 
-
 public class ProtocolASTMTest {
 
 	@Test

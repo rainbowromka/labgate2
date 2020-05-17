@@ -8,6 +8,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class HeaderInfo {
-	private String barcode;
+	/**
+	 * A unique number or other ID that uniquely identifies the transmission for use in network.
+	 */
+	private String transmissionId;
 	private boolean isQualityControl;
 }

@@ -10,6 +10,7 @@ import java.util.List;
 @Setter
 public class PacketInfo {
 	HeaderInfo header;
+	OrderInfo order;
 	List<ResultInfo> results = new ArrayList<>();
 
 	public void addResult(ResultInfo res) {

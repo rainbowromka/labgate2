@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.idc.labgatej.model.HeaderInfo;
 import ru.idc.labgatej.model.Order;
+import ru.idc.labgatej.model.OrderInfo;
 import ru.idc.labgatej.model.PacketInfo;
 import ru.idc.labgatej.model.ResultInfo;
 
@@ -74,7 +75,7 @@ public class DBManager {
 		try {
 			statement = dbConnection.createStatement();
 			try {
-				ResultSet rs = statement.executeQuery("SELECT * FROM lis.getTasks4CITM()");
+				ResultSet rs = statement.executeQuery("SELECT * FROM lis.getTasks4CITM() ORDER BY is_aliquot, device_instance, test");
 				try {
 					while (rs.next()) {
 						result.add(new Order(
@@ -86,13 +87,16 @@ public class DBManager {
 							rs.getLong("test"),
 							rs.getString("material"),
 							rs.getString("test_code"),
-							//"Na",
 							rs.getLong("cartnum"),
 							rs.getString("fam"),
 							rs.getString("sex"),
 							rs.getDate("birthday"),
 							rs.getLong("scheduled_profile"),
-							rs.getLong("scheduled_invest")));
+							rs.getLong("scheduled_invest"),
+						  rs.getBoolean("is_aliquot"),
+							rs.getLong("route"),
+							rs.getLong("scheduled_container")
+							));
 					}
 				} finally {
 					rs.close();
@@ -103,7 +107,29 @@ public class DBManager {
 		} catch (SQLException e) {
 			logger.error("", e);
 		}
+
+		fillAliquots(result);
+
 		return result;
+	}
+
+	private void fillAliquots(List<Order> orders) {
+		if (orders.isEmpty()) return;
+
+		String mainBarcode = orders.get(0).getBarcode();
+		String aliquotBarcode = null;
+		long devInst = -1;
+		int idx = 1;
+		for (Order order : orders) {
+			if (order.getIsAliquot()) {
+				if (order.getDeviceInstanceId() != devInst) {
+					devInst = order.getDeviceInstanceId();
+					aliquotBarcode = mainBarcode + ".ALIQ" + idx;
+					idx++;
+				}
+				order.setAliquotBarcode(aliquotBarcode);
+			}
+		}
 	}
 
 	private String prepareString(String s) {
@@ -112,7 +138,7 @@ public class DBManager {
 
 	private String dateToSqlString(Date date) {
 		if (date == null) return "NULL";
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		return dateFormat.format(date);
 	}
 
@@ -125,17 +151,22 @@ public class DBManager {
 		return String.valueOf(d);
 	}
 
-	public void saveResults(PacketInfo packetInfo) {
+	public void saveResults(PacketInfo packetInfo, boolean isCitm) {
 		HeaderInfo headerInfo = packetInfo.getHeader();
+		OrderInfo orderInfo = packetInfo.getOrder();
 
 		packetInfo.getResults().forEach(r -> {
 			if (headerInfo != null && headerInfo.isQualityControl()) {
 				r.setTest_type("CONTROL");
 			}
-			if (r.getSample_id() == null && headerInfo != null) {
-				r.setSample_id(headerInfo.getBarcode());
+			if (r.getSample_id() == null && orderInfo != null) {
+				r.setSample_id(orderInfo.getBarcode());
 			}
-			saveResult(r);
+			if (isCitm) {
+				saveResultCITM(r);
+			} else {
+				saveResult(r);
+			}
 		});
 	}
 
@@ -175,11 +206,83 @@ public class DBManager {
 		}
 	}
 
+	public void saveResultCITM(ResultInfo res) {
+		try {
+			try (CallableStatement st = dbConnection.prepareCall("{call lis.add_raw_result_citm(" +
+				"?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}")) {
+
+				st.setString(1, prepareString(res.getDevice_name()));
+				st.setString(2, prepareString(res.getInstrument_id()));
+				st.setString(3, prepareString(res.getSample_id()));
+				st.setString(4, prepareString(res.getTest_type()));
+				st.setLong(5,  Long.parseLong(res.getTest_code()));
+				st.setString(6, prepareString(res.getSample_type()));
+				st.setString(7, prepareString(res.getPriority()));
+				st.setString(8, prepareString(res.getResult()));
+				st.setString(9, doubleToSqlString(res.getDilution_factor()));
+				st.setString(10, prepareString(res.getNormal_range_flag()));
+				st.setString(11, prepareString(res.getContainer_type()));
+				st.setString(12, prepareString(res.getUnits()));
+				st.setString(13, prepareString(res.getResult_status()));
+				st.setString(14, prepareString(res.getReagent_serial()));
+				st.setString(15, prepareString(res.getReagent_lot()));
+				st.setString(16, prepareString(res.getSequence_number()));
+				st.setString(17, prepareString(res.getCarrier()));
+				st.setString(18, prepareString(res.getPosition()));
+				st.setDate(19, dateToSqlDate(res.getTest_started()));
+				st.setDate(20, dateToSqlDate(res.getTest_completed()));
+				st.setString(21, prepareString(res.getComment()));
+
+				st.registerOutParameter(22, Types.BIGINT);
+
+				st.execute();
+			}
+		} catch (SQLException e) {
+			logger.error("", e);
+		}
+	}
+
 	public void markOrderAsProcessed(long taskId) {
 		try (Statement statement = dbConnection.createStatement()) {
 			statement.executeUpdate("UPDATE lis.citm_query SET processed = now() WHERE citm_query_id = " + taskId);
 		} catch (SQLException e) {
 			logger.error("", e);
+		}
+	}
+
+	public void markOrderAsFailed(long taskId, String msg) {
+		try (Statement statement = dbConnection.createStatement()) {
+			statement.executeUpdate("UPDATE lis.citm_query SET error_msg = " + msg + " WHERE citm_query_id = " + taskId);
+		} catch (SQLException e) {
+			logger.error("", e);
+		}
+	}
+
+	public void registerAliquot(long scheduledContainerId, String barcode, long routeId) {
+		try {
+			try (CallableStatement st = dbConnection.prepareCall("{call lis.registersecondarycontainer(?, ?, ?, ?)}")) {
+
+				st.setLong(1, scheduledContainerId);
+				st.setString(2, prepareString(barcode));
+				st.setNull(3, Types.BIGINT);
+				st.setLong(4, routeId);
+
+				st.execute();
+			}
+		} catch (SQLException e) {
+			logger.error("", e);
+		}
+	}
+
+	public void registerAliquots(List<Order> orders) {
+		String aliquotBarcode = null;
+		for (Order order: orders) {
+			if (order.getIsAliquot()) {
+				if (!order.getAliquotBarcode().equalsIgnoreCase(aliquotBarcode)) {
+					aliquotBarcode = order.getAliquotBarcode();
+					registerAliquot(order.getScheduledContainerId(), order.getAliquotBarcode(), order.getRouteId());
+				}
+			}
 		}
 	}
 }

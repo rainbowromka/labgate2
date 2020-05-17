@@ -24,4 +24,8 @@ public class Order {
 	private final Date birthday;
 	private final Long scheduledProfileId;
 	private final Long scheduledInvestId;
+	private final Boolean isAliquot;
+	private final Long routeId;
+	private String aliquotBarcode;
+	private final Long scheduledContainerId;
 }

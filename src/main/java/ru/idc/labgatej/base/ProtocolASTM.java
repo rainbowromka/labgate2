@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.idc.labgatej.model.HeaderInfo;
 import ru.idc.labgatej.model.Order;
+import ru.idc.labgatej.model.OrderInfo;
 import ru.idc.labgatej.model.PacketInfo;
 import ru.idc.labgatej.model.ResultInfo;
 
@@ -37,12 +38,36 @@ public class ProtocolASTM implements Protocol {
 		//msg.append("P|1|").append(order.getCartnum()).append("|||").append(order.getFam()).append("^") .append("<CR>");
 		// заказанные тесты
 		int idx = 1;
+		// Для первичного образца нужно отправить все-все тесты
+		String mainBarcode = orders.get(0).getBarcode();
+		msg.append("O|").append(idx).append("|").append(mainBarcode).append("||^^^");
 		for (Order order : orders) {
-			msg.append("O|").append(idx).append("|").append(order.getBarcode()).append("||^^^")
-				.append(order.getTestId())
-				//.append("^^^^").append(order.getDeviceCode())
-				.append("|||||||A<CR>"); // A - Action Code
-			idx++;
+			msg.append(order.getTestId()).append("^..\\");
+		}
+		msg.append("|||||||A<CR>"); // A - Action Code
+		idx++;
+
+		long devInst = -1;
+		// добавляем задания на аликвоты
+		for (Order order : orders) {
+			if (order.getIsAliquot()) {
+				if (order.getDeviceInstanceId() != devInst) {
+					devInst = order.getDeviceInstanceId();
+					if (idx != 2) {
+						// закрываем предыдущую O-запись
+						msg.append("|||||||A<CR>");
+					}
+					order.setAliquotBarcode(mainBarcode + ".ALIQ" + (idx - 1));
+					msg.append("O|").append(idx).append("|").append(order.getAliquotBarcode())
+						.append("|").append(mainBarcode).append("|^^^");
+					idx++;
+				}
+				msg.append(order.getTestId()).append("^..\\");
+			}
+		}
+		if (devInst != -1) {
+			// закрываем последнюю O-запись
+			msg.append("|||||||A<CR>");
 		}
 
 		// терминатор
@@ -103,6 +128,11 @@ public class ProtocolASTM implements Protocol {
 					case "H":
 						packetInfo.setHeader(parseHeader(line));
 						break;
+
+					case "O":
+						packetInfo.setOrder(parseOrder(line));
+						break;
+
 					case "R":
 						packetInfo.addResult(parseResult(line));
 						break;
@@ -122,6 +152,19 @@ public class ProtocolASTM implements Protocol {
 		// 1H|\^&|28189||^^^|||||||Q||20200417122246<CR><ETX>ED<CR><LF>
 		if (matcher.find()) {
 			result = new HeaderInfo(matcher.group(1), "Q".equalsIgnoreCase(matcher.group(10)));
+		}
+		return result;
+	}
+
+	// 3O|1|20005317||ALL|?|20200516131727|||||X||||1||||||||||F<CR><ETX>1D<CR><LF>
+	@Override
+	public OrderInfo parseOrder(String msg) {
+		OrderInfo result = null;
+		final Pattern pattern = Pattern.compile("^\\dO\\|(\\d*)\\|(.*?)\\|",
+			Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
+		Matcher matcher = pattern.matcher(msg);
+		if (matcher.find()) {
+			result = new OrderInfo((matcher.group(2)));
 		}
 		return result;
 	}

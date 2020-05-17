@@ -79,7 +79,7 @@ public class Medonic implements IDriver {
 	private void processFile (Path file) throws IOException {
 		PacketInfo packetInfo = parseFile(file);
 		if (packetInfo != null) {
-			dbManager.saveResults(packetInfo);
+			dbManager.saveResults(packetInfo, false);
 //			Files.move(file, Paths.get(dirProcessed.toFile().getPath() + "\\" + file.getFileName()),
 //				StandardCopyOption.REPLACE_EXISTING);
 //			System.out.println(file.toAbsolutePath());

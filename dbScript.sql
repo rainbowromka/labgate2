@@ -42,7 +42,8 @@ CREATE TABLE lis.citm_query (
     CONSTRAINT ref2containers
       REFERENCES lis.scheduled_containers,
   added timestamp,
-  processed timestamp
+  processed timestamp,
+  error_msg text
 );
 
 alter table lis.citm_query drop constraint ref2containers;
@@ -51,11 +52,11 @@ ALTER TABLE lis.citm_query owner to gis;
 
 
 
-CREATE FUNCTION lis.query_container_to_citm() RETURNS trigger AS $$
+CREATE OR REPLACE FUNCTION lis.query_container_to_citm() RETURNS trigger AS $$
 BEGIN
     -- Проверить, что указаны имя сотрудника и зарплата
-    IF NEW.container_state = 'registered' AND NEW.barcode IS NOT NULL THEN
-      INSERT INTO lis.citm_query(scheduled_container, added) VALUES(NEW.scheduled_container, current_timestamp);
+    IF NEW.container_state = 'registered' AND NEW.barcode IS NOT NULL AND position('.ALIQ' in NEW.barcode) = 0 THEN
+        INSERT INTO lis.citm_query(scheduled_container, added) VALUES(NEW.scheduled_container, current_timestamp);
     END IF;
 
     RETURN NEW;
@@ -80,19 +81,6 @@ select sc.barcode, si.device_instance from lis.scheduled_invests si
 --join lis.citm c on si.device_instance = c.device_instance
 join lis.scheduled_containers sc on sc.scheduled_sample = si.scheduled_sample and sc.barcode is not null
 where si.invest_state = 'scheduled';
-
-
--- ЗАПРОС вынести в хранимку
---si.investigation, si.technique, tp.device_instance,
-select di.code, sc.barcode from lis.scheduled_invests si
-join lis.scheduled_samples ss on ss.scheduled_sample = si.scheduled_sample
-join lis.scheduled_containers sc on sc.scheduled_sample = ss.scheduled_sample
-join lis.rt_technique_positions tp on tp.investigation = si.investigation and tp.technique = si.technique
-join lis.rt_deviceinstances di on di.device_instance = tp.device_instance
---join lis.citm c on c.device_instance = tp.device_instance
-where si.scheduled_invest = 29289861;
---sc.barcode = '06004481';
-
 
 
 -- При регистрации образца добавляется запись в lis.citm_query. Сейчас все, не только для CITM предназначенные
@@ -123,61 +111,73 @@ CREATE OR REPLACE FUNCTION lis.getTasks4CITM(
     OUT sex character varying,
     OUT birthday date,
     OUT scheduled_profile bigint,
-    OUT scheduled_invest bigint) returns SETOF record AS
+    OUT scheduled_invest bigint,
+    OUT is_aliquot boolean,
+    OUT route bigint,
+    OUT scheduled_container bigint) returns SETOF record AS
 $$
 DECLARE
-    v_barcode   VARCHAR;
-    v_record    RECORD;
-    v_record2   RECORD;
+    v_barcode VARCHAR;
+    v_record2 RECORD;
+    v_record  RECORD;
+    v_has_results BOOLEAN;
 BEGIN
-    SELECT cq.citm_query_id, sc.barcode INTO task_id, v_barcode FROM lis.citm_query cq
-    JOIN lis.scheduled_containers sc on sc.scheduled_container = cq.scheduled_container
+    v_has_results = FALSE;
+    SELECT cq.citm_query_id, sc.barcode, cq.scheduled_container
+    INTO task_id, v_barcode
+    FROM lis.citm_query cq
+             LEFT JOIN lis.scheduled_containers sc on sc.scheduled_container = cq.scheduled_container
     WHERE processed IS NULL
-    ORDER BY citm_query_id LIMIT 1;
+    ORDER BY citm_query_id
+    LIMIT 1;
 
-    IF FOUND THEN
-        FOR v_record IN
-            SELECT DISTINCT di.code, sc.barcode FROM lis.scheduled_invests si
-                JOIN lis.scheduled_samples ss ON ss.scheduled_sample = si.scheduled_sample
-                JOIN lis.scheduled_containers sc ON sc.scheduled_sample = ss.scheduled_sample
-                JOIN lis.rt_technique_positions tp ON tp.investigation = si.investigation AND tp.technique = si.technique
-                JOIN lis.rt_deviceinstances di ON di.device_instance = tp.device_instance
-                --JOIN lis.citm c on c.device_instance = tp.device_instance
-            WHERE sc.barcode = v_barcode
-        LOOP
-            FOR v_record2 IN
-                SELECT it.sample_id,
-                       it.device_instance,
-                       it.dilution_factor,
-                       it.test,
-                       it.material,
-                       it.test_code,
-                       it.cartnum,
-                       it.fam,
-                       it.sex,
-                       it.birthday,
-                       it.scheduled_profile,
-                       it.scheduled_invest,
-                       t.test_code as citm_test_code
-                FROM lis.inquiry_tests(v_record.code, v_record.barcode) it
-                JOIN lis.rt_tests t on t.test = it.test
+    IF FOUND AND v_barcode IS NOT NULL THEN
+        FOR v_record IN SELECT * FROM LIS.listContainerRoutes2(v_barcode)
             LOOP
-                sample_id         = v_record2.sample_id;
-                device_instance   = v_record2.device_instance;
-                device_code       = v_record.code;
-                dilution_factor   = v_record2.dilution_factor;
-                test              = v_record2.test;
-                material          = v_record2.material;
-                test_code         = v_record2.citm_test_code;
-                cartnum           = v_record2.cartnum;
-                fam               = v_record2.fam;
-                sex               = v_record2.sex;
-                birthday          = v_record2.birthday;
-                scheduled_profile = v_record2.scheduled_profile;
-                scheduled_invest  = v_record2.scheduled_invest;
-                RETURN NEXT;
+                FOR v_record2 IN
+                    SELECT it.sample_id,
+                           it.device_instance,
+                           it.dilution_factor,
+                           it.test,
+                           it.material,
+                           it.test_code,
+                           it.cartnum,
+                           it.fam,
+                           it.sex,
+                           it.birthday,
+                           it.scheduled_profile,
+                           it.scheduled_invest,
+                           t.test_code as citm_test_code
+                    FROM lis.inquiry_tests(v_record.device_code, v_record.barcode) it
+                             JOIN lis.rt_tests t on t.test = it.test
+                    LOOP
+                        sample_id = v_record2.sample_id;
+                        device_instance = v_record2.device_instance;
+                        device_code = v_record.device_code;
+                        dilution_factor = v_record2.dilution_factor;
+                        test = v_record2.test;
+                        material = v_record2.material;
+                        test_code = v_record2.citm_test_code;
+                        cartnum = v_record2.cartnum;
+                        fam = v_record2.fam;
+                        sex = v_record2.sex;
+                        birthday = v_record2.birthday;
+                        scheduled_profile = v_record2.scheduled_profile;
+                        scheduled_invest = v_record2.scheduled_invest;
+                        is_aliquot = v_record.sample_container != 'primary_container';
+                        route = v_record.route;
+                        scheduled_container = v_record.scheduled_container;
+
+                        v_has_results = TRUE;
+                        RETURN NEXT;
+                    END LOOP;
             END LOOP;
-        END LOOP;
+    END IF;
+
+    IF v_has_results = FALSE THEN
+        UPDATE lis.citm_query
+        SET error_msg = 'Тесты не найдены'
+        WHERE citm_query_id = task_id;
     END IF;
     RETURN;
 END
@@ -185,6 +185,295 @@ $$ LANGUAGE plpgsql;
 
 alter function lis.getTasks4CITM() owner to gis;
 
+
+
+
+CREATE OR REPLACE FUNCTION lis.add_raw_result_citm(
+    p_device_code character varying, p_instance_module character varying,
+    p_sample_id character varying, p_test_type character varying,
+    p_test_id bigint, p_sample_type character varying,
+    p_priority character varying, p_result character varying,
+    p_dilution_factor character varying, p_normal_range_flag character varying,
+    p_container_type character varying, p_unit character varying,
+    p_result_status character varying, p_reagent_serial character varying,
+    p_reagent_lot character varying, p_sequence_number character varying,
+    p_carrier character varying, p_position character varying,
+    p_test_started timestamp without time zone,
+    p_test_completed timestamp without time zone, p_device_comment character varying,
+    OUT o_raw_result bigint) returns bigint
+    SECURITY DEFINER
+    LANGUAGE PLPGSQL
+AS
+$$
+DECLARE
+    v_log_msg               VARCHAR;
+
+    v_device                BIGINT;
+    v_device_instance       BIGINT;
+    v_scheduled_test        BIGINT;
+
+    v_technique             BIGINT;
+    v_technique_name        VARCHAR;
+
+    v_material              BIGINT;
+    v_scheduled_sample      BIGINT;
+    v_scheduled_container   BIGINT;
+    v_AtomId                BIGINT;
+    v_raw_result_status     VARCHAR(1);
+    v_operator              VARCHAR(10);
+    v_sample_id             VARCHAR(100);
+
+    v_err                   VARCHAR;
+    v_record                RECORD;
+    v_count                 BIGINT;
+    v_instance_module       VARCHAR(32);
+    v_sequence_number       VARCHAR(10);
+    v_test_code             VARCHAR(35);
+
+BEGIN
+    v_raw_result_status = 'S';
+    v_scheduled_test  = NULL;
+    v_technique    = NULL;
+    v_test_code    = NULL;
+
+    v_instance_module = p_instance_module;
+
+    IF p_sequence_number IS NOT NULL THEN
+        v_sequence_number = SUBSTRING(p_sequence_number, 1, 10);
+    END IF;
+
+    IF p_sample_id IS NULL THEN
+        v_sample_id = 'UNKNOWN';
+    ELSE
+        v_sample_id = p_sample_id;
+    END IF;
+
+    IF p_result_status = 'F' THEN
+        v_raw_result_status = 'S';
+    ELSEIF p_result_status = 'X' THEN
+        v_raw_result_status = 'F';
+    ELSE
+        v_raw_result_status = 'S';
+    END IF;
+
+    -- findDeviceInstance
+    BEGIN
+        SELECT * INTO v_device_instance, v_device
+        FROM LIS.findDeviceInstance( p_device_code);
+    EXCEPTION
+        WHEN raise_exception THEN
+            v_err = ERROR.EXTRACT_ERROR_ALIAS(SQLERRM);
+            IF NOT v_err = 'invalid_argument' THEN
+                RAISE EXCEPTION '%',SQLERRM;
+            END IF;
+    END;
+
+    IF v_device_instance IS NOT NULL AND v_instance_module IS NOT NULL THEN
+        --  проверить если такой модуль в справочниках
+        PERFORM * FROM LIS.rt_instancemodules
+        WHERE device_instance = v_device_instance AND instance_module = TRIM(v_instance_module);
+
+        IF NOT FOUND THEN
+            v_instance_module = NULL;
+        END IF;
+    END IF;
+
+    IF v_device IS NOT NULL THEN
+
+        BEGIN
+            SELECT * INTO v_operator
+            FROM LIS.findInstanceOperator(v_device_instance);
+        EXCEPTION
+            WHEN raise_exception THEN
+                v_err = ERROR.EXTRACT_ERROR_ALIAS(SQLERRM);
+                IF NOT v_err = 'invalid_argument' THEN
+                    RAISE EXCEPTION '%',SQLERRM;
+                END IF;
+        END;
+
+        v_count = 0;
+
+        <<LOOP1>>
+        FOR v_record IN
+            SELECT technique, material, test_code
+            FROM LIS.rt_technique_testcodes a
+            WHERE device = v_device AND test = p_test_id
+            LOOP
+                v_technique := v_record.technique;
+                v_material := v_record.material;
+                v_test_code := v_record.test_code;
+
+                v_count = v_count + 1;
+
+                BEGIN
+                    SELECT * INTO v_scheduled_sample
+                    FROM LIS.findScheduledSample(v_sample_id, v_material);
+
+                    IF v_scheduled_sample IS NOT NULL THEN
+                        BEGIN
+
+                            SELECT * INTO v_scheduled_test
+                            FROM LIS.findScheduledTest(v_scheduled_sample, v_technique);
+
+                            EXIT LOOP1;
+
+                        EXCEPTION
+                            WHEN raise_exception THEN
+                                v_err = ERROR.EXTRACT_ERROR_ALIAS(SQLERRM);
+                                IF NOT v_err = 'scheduled_test_notfound' THEN
+                                    RAISE EXCEPTION '%',SQLERRM;
+                                END IF;
+                        END;
+
+                    END IF;
+
+                EXCEPTION
+                    WHEN raise_exception THEN
+                        v_err = ERROR.EXTRACT_ERROR_ALIAS(SQLERRM);
+                        IF NOT v_err = 'barcode_notfound' THEN
+                            RAISE EXCEPTION '%',SQLERRM;
+                        END IF;
+                END;
+
+                IF v_count > 1 THEN
+                    v_technique = NULL;
+                END IF;
+
+            END LOOP;
+
+    END IF;
+
+    --  insert
+
+    INSERT INTO LIS.raw_results
+    ( raw_result_state
+    , raw_result_status
+    , result_source
+
+    , device_instance
+    , instance_module
+
+    , device_code
+
+    , sample_id
+
+    , test_type
+    , test_code
+    , sample_type
+    , priority
+    , result
+    , normal_range_flag
+    , unit
+    , result_status
+    , sequence_number
+    , carrier
+    , position
+    , test_started
+    , test_completed
+    , device_comment
+    , dilution_factor
+    , container_type
+    , reagent_serial
+    , reagent_lot
+
+    , scheduled_test
+    , technique
+
+    , operator
+
+    )
+    values
+    ( 'unplanned'
+    , v_raw_result_status
+    , 'analyser'
+
+    , v_device_instance
+    , v_instance_module
+
+    , p_device_code
+
+    , v_sample_id
+
+    , p_test_type
+    , v_test_code
+    , p_sample_type
+    , p_priority
+    , p_result
+    , p_normal_range_flag
+    , p_unit
+    , p_result_status
+    , v_sequence_number
+    , p_carrier
+    , p_position
+    , p_test_started
+    , p_test_completed
+    , p_device_comment
+    , p_dilution_factor
+    , p_container_type
+    , p_reagent_serial
+    , p_reagent_lot
+
+    , v_scheduled_test
+    , v_technique
+
+    , v_operator
+    );
+
+    o_raw_result = CURRVAL('LIS.raw_results_SEQ');
+
+    SELECT * INTO v_scheduled_container
+    FROM LIS.findScheduledContainer(v_sample_id, v_material);
+
+    IF v_technique IS NOT NULL THEN
+        select technique_name into v_technique_name
+        from lis.all_techniques
+        where technique = v_technique;
+    END IF;
+
+    IF v_scheduled_test IS NOT NULL THEN
+        PERFORM * FROM LIS.completeScheduledTest(v_scheduled_test, o_raw_result);
+
+        IF v_scheduled_container IS NOT NULL THEN
+            v_log_msg = 'get result from device '                            || E'\n' ||
+                        '  device_code:'   || p_device_code                  || E'\n' ||
+                        '  sample_id:'     || v_sample_id                    || E'\n' ||
+                        '  technique:'     || COALESCE(v_technique_name, '') || E'\n' ||
+                        '  result:'        || COALESCE(p_result, '')         || E'\n' ||
+                        '  result_status:' || COALESCE(p_result_status, '')  || E'\n';
+
+            PERFORM LOGS.LogEvent('LIS.LABGATE.ADDRESULT',
+                                  'info',
+                                  NULL,
+                                  v_log_msg,
+                                  'LIS.CONTAINER',
+                                  v_scheduled_container);
+        END IF;
+    ELSE
+        UPDATE LIS.raw_results
+        SET raw_result_state = 'unsupported'
+        WHERE raw_result = o_raw_result;
+
+        IF v_scheduled_test IS NOT NULL THEN
+            v_log_msg = 'get result from device '                            || E'\n' ||
+                        '  device_code:'   || p_device_code                  || E'\n' ||
+                        '  sample_id:'     || v_sample_id                    || E'\n' ||
+                        '  technique:'     || COALESCE(v_technique_name, '') || E'\n' ||
+                        '  result:'        || COALESCE(p_result, '')         || E'\n' ||
+                        '  result_status:' || COALESCE(p_result_status, '')  || E'\n';
+
+            PERFORM LOGS.LogEvent('LIS.LABGATE.ADDRESULT',
+                                  'info',
+                                  NULL,
+                                  v_log_msg,
+                                  'LIS.CONTAINER',
+                                  v_scheduled_container);
+        END IF;
+    END IF;
+
+END;
+$$;
+
+ALTER FUNCTION lis.add_raw_result_citm(varchar, varchar, varchar, varchar, bigint, varchar, varchar, varchar, varchar, varchar, varchar, varchar, varchar, varchar, varchar, varchar, varchar, varchar, timestamp, timestamp, varchar, out bigint) OWNER TO gis;
 
 
 

@@ -26,6 +26,7 @@ public class ProtocolASTM implements Protocol {
 
 	//<STX>1H|\^&|||ASTM-Host|||||CIT||P||20120219111500<CR>P|1<CR>O|1|923501||^^^CL-S\^^^CREA|||||||A<CR>L|1|F<CR><ETX>80<CR><LF>
 	public String makeOrder(List<Order> orders) {
+		final int maxSize = 6900;
 		int frameIdx = 0;
 		if (orders.isEmpty()) return "";
 
@@ -40,9 +41,9 @@ public class ProtocolASTM implements Protocol {
 		int idx = 1;
 		// Для первичного образца нужно отправить все-все тесты
 		String mainBarcode = orders.get(0).getBarcode();
-		msg.append("O|").append(idx).append("|").append(mainBarcode).append("||^^^");
+		msg.append("O|").append(idx).append("|").append(mainBarcode).append("||");
 		for (Order order : orders) {
-			msg.append(order.getTestId()).append("^..\\");
+			msg.append("^^^").append(order.getTestId()).append("\\");
 		}
 		msg.append("|||||||A<CR>"); // A - Action Code
 		idx++;
@@ -57,12 +58,12 @@ public class ProtocolASTM implements Protocol {
 						// закрываем предыдущую O-запись
 						msg.append("|||||||A<CR>");
 					}
-					order.setAliquotBarcode(mainBarcode + ".ALIQ" + (idx - 1));
+					order.setAliquotBarcode(mainBarcode + "." + (idx - 1));
 					msg.append("O|").append(idx).append("|").append(order.getAliquotBarcode())
-						.append("|").append(mainBarcode).append("|^^^");
+						.append("|").append(mainBarcode).append("|");
 					idx++;
 				}
-				msg.append(order.getTestId()).append("^..\\");
+				msg.append("^^^").append(order.getTestId()).append("\\");
 			}
 		}
 		if (devInst != -1) {
@@ -81,9 +82,9 @@ public class ProtocolASTM implements Protocol {
 			if (frameIdx > 7) {
 				frameIdx = 0;
 			}
-			if (bigMsg.length() >= 240) {
-				s = bigMsg.substring(0, 240);
-				bigMsg = bigMsg.substring(240);
+			if (bigMsg.length() >= maxSize) {
+				s = bigMsg.substring(0, maxSize);
+				bigMsg = bigMsg.substring(maxSize);
 			} else {
 				s = bigMsg;
 				bigMsg = "";
@@ -116,9 +117,12 @@ public class ProtocolASTM implements Protocol {
 	@Override
 	public PacketInfo parseMessage(String msg) {
 		PacketInfo packetInfo = new PacketInfo();
+		while (msg.indexOf(""+ ETB_) > 0) {
+			msg = msg.replace(msg.substring(msg.indexOf(""+ ETB_), msg.indexOf(""+ ETB_) + 5), "");
+		}
 
-		String[] lines = msg.split("\r\n");
-		final Pattern pattern = Pattern.compile("^\\d(.)", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
+		String[] lines = msg.replace(""+ ETB_, "").replace("\r\n", "\r").split("\r");
+		final Pattern pattern = Pattern.compile("^\\d?(.)", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
 		Matcher matcher;
 
 		for (String line : lines) {
@@ -160,7 +164,7 @@ public class ProtocolASTM implements Protocol {
 	@Override
 	public OrderInfo parseOrder(String msg) {
 		OrderInfo result = null;
-		final Pattern pattern = Pattern.compile("^\\dO\\|(\\d*)\\|(.*?)\\|",
+		final Pattern pattern = Pattern.compile("^O\\|(\\d*)\\|(.*?)\\|",
 			Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
 		Matcher matcher = pattern.matcher(msg);
 		if (matcher.find()) {
@@ -173,7 +177,7 @@ public class ProtocolASTM implements Protocol {
 	public ResultInfo parseResult(String msg) {
 		ResultInfo result = null;
 		String s;
-		final Pattern pattern = Pattern.compile("^\\dR\\|\\d+\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\R(.*?)",
+		final Pattern pattern = Pattern.compile("^R\\|\\d+\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)$",
 			Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
 		final Pattern utiPattern = Pattern.compile("^(.*?)\\^(.*?)\\^(.*?)\\^(.*?)\\^(.*?)\\^(.*?)\\^(.*?)\\^(.*?)\\^(.*?)\\^(.*?)\\^(.*?)$",
 			Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);

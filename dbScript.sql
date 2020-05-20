@@ -55,7 +55,7 @@ ALTER TABLE lis.citm_query owner to gis;
 CREATE OR REPLACE FUNCTION lis.query_container_to_citm() RETURNS trigger AS $$
 BEGIN
     -- Проверить, что указаны имя сотрудника и зарплата
-    IF NEW.container_state = 'registered' AND NEW.barcode IS NOT NULL AND position('.ALIQ' in NEW.barcode) = 0 THEN
+    IF NEW.container_state = 'registered' AND NEW.barcode IS NOT NULL AND position('.' in NEW.barcode) = 0 THEN
         INSERT INTO lis.citm_query(scheduled_container, added) VALUES(NEW.scheduled_container, current_timestamp);
     END IF;
 
@@ -97,24 +97,14 @@ where si.invest_state = 'scheduled';
 
 --drop FUNCTION lis.getTasks4CITM();
 
-CREATE OR REPLACE FUNCTION lis.getTasks4CITM(
-    OUT task_id bigint,
-    OUT sample_id character varying,
-    OUT device_instance bigint,
-    OUT device_code character varying,
-    OUT dilution_factor real,
-    OUT test bigint,
-    OUT material character varying,
-    OUT test_code character varying,
-    OUT cartnum bigint,
-    OUT fam character varying,
-    OUT sex character varying,
-    OUT birthday date,
-    OUT scheduled_profile bigint,
-    OUT scheduled_invest bigint,
-    OUT is_aliquot boolean,
-    OUT route bigint,
-    OUT scheduled_container bigint) returns SETOF record AS
+CREATE OR REPLACE FUNCTION lis.gettasks4citm(OUT task_id bigint, OUT sample_id character varying, OUT device_instance bigint,
+                                             OUT p_device_code character varying, OUT dilution_factor real, OUT test bigint,
+                                             OUT material character varying, OUT test_code character varying, OUT cartnum bigint,
+                                             OUT fam character varying, OUT sex character varying, OUT birthday date,
+                                             OUT scheduled_profile bigint, OUT p_scheduled_invest bigint, OUT is_aliquot boolean,
+                                             OUT p_route bigint, OUT p_scheduled_container bigint) returns SETOF record
+    language plpgsql
+as
 $$
 DECLARE
     v_barcode VARCHAR;
@@ -123,16 +113,16 @@ DECLARE
     v_has_results BOOLEAN;
 BEGIN
     v_has_results = FALSE;
-    SELECT cq.citm_query_id, sc.barcode, cq.scheduled_container
+    SELECT cq.citm_query_id, sc.barcode
     INTO task_id, v_barcode
     FROM lis.citm_query cq
              LEFT JOIN lis.scheduled_containers sc on sc.scheduled_container = cq.scheduled_container
-    WHERE processed IS NULL
+    WHERE processed IS NULL and error_msg IS NULL
     ORDER BY citm_query_id
     LIMIT 1;
 
     IF FOUND AND v_barcode IS NOT NULL THEN
-        FOR v_record IN SELECT * FROM LIS.listContainerRoutes2(v_barcode)
+        FOR v_record IN SELECT DISTINCT device_code, barcode, route, sample_container, scheduled_container, scheduled_invest FROM LIS.listContainerRoutes2(v_barcode)
             LOOP
                 FOR v_record2 IN
                     SELECT it.sample_id,
@@ -150,10 +140,11 @@ BEGIN
                            t.test_code as citm_test_code
                     FROM lis.inquiry_tests(v_record.device_code, v_record.barcode) it
                              JOIN lis.rt_tests t on t.test = it.test
+                    WHERE it.scheduled_invest = v_record.scheduled_invest
                     LOOP
                         sample_id = v_record2.sample_id;
                         device_instance = v_record2.device_instance;
-                        device_code = v_record.device_code;
+                        p_device_code = v_record.device_code;
                         dilution_factor = v_record2.dilution_factor;
                         test = v_record2.test;
                         material = v_record2.material;
@@ -163,10 +154,10 @@ BEGIN
                         sex = v_record2.sex;
                         birthday = v_record2.birthday;
                         scheduled_profile = v_record2.scheduled_profile;
-                        scheduled_invest = v_record2.scheduled_invest;
+                        p_scheduled_invest = v_record2.scheduled_invest;
                         is_aliquot = v_record.sample_container != 'primary_container';
-                        route = v_record.route;
-                        scheduled_container = v_record.scheduled_container;
+                        p_route = v_record.route;
+                        p_scheduled_container= v_record.scheduled_container;
 
                         v_has_results = TRUE;
                         RETURN NEXT;
@@ -181,7 +172,7 @@ BEGIN
     END IF;
     RETURN;
 END
-$$ LANGUAGE plpgsql;
+$$;
 
 alter function lis.getTasks4CITM() owner to gis;
 

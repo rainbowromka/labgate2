@@ -3,41 +3,48 @@ package ru.idc.labgatej;
 import org.junit.Test;
 import ru.idc.labgatej.base.Codes;
 import ru.idc.labgatej.base.ProtocolASTM;
+import ru.idc.labgatej.model.PacketInfo;
 
 public class ProtocolASTMTest {
+	@Test
+	public void testString() {
+		String t = "0517" +
+			"258|COBAS_CCEE" +
+			"L|1|N";
+
+		System.out.println(t.replace(""+ (char) 23, "F"));
+	}
 
 	@Test
 	public void testParseMessage() {
 		ProtocolASTM astm = new ProtocolASTM();
-		String msg = Codes.makeSendable("1H|\\^&|26973||^^^|||||||P||20200413110453<CR><ETX>E4<CR><LF>" +
-			"2P|1||PID_1||Surname^Name||19700101|M|||||||||||||||20200413095339||0||||||||00001<CR><ETX>B0<CR><LF>" +
-			"3O|1|99900001||ALL|R|20200413095339|||||X||||1||||||||||F<CR><ETX>3E<CR><LF>" +
-			"4R|1|^^^0030^^^^COBAS_CCEE^^^^^^|73.000|Вµmol/L||||F||&S&SYSTEM^||20200515051512|COBAS_CCEE<CR><ETX>F3<CR><LF>" +
-			"5L|1|N<CR><ETX>03<CR><LF>");
-
 //		String msg = Codes.makeSendable("1H|\\^&|26973||^^^|||||||P||20200413110453<CR><ETX>E4<CR><LF>" +
 //			"2P|1||PID_1||Surname^Name||19700101|M|||||||||||||||20200413095339||0||||||||00001<CR><ETX>B0<CR><LF>" +
 //			"3O|1|99900001||ALL|R|20200413095339|||||X||||1||||||||||F<CR><ETX>3E<CR><LF>" +
-//			"4R|1|^^^ALB2^^^^^^^|100.000|||N||F||^ROCHE||20200413110103|<CR><ETX>24<CR><LF>" +
-//			"5C|1|L|R^E|G<CR><ETX>31<CR><LF>" +
-//			"6R|2|^^^ALTL^^^^^^^|12.000|||N||F||^ROCHE||20200413110103|<CR><ETX>25<CR><LF>" +
-//			"7C|1|L|R^E|G<CR><ETX>33<CR><LF>" +
-//			"0R|3|^^^AMYL2^^^^^^^|56.000|||N||F||^ROCHE||20200413110103|<CR><ETX>60<CR><LF>" +
-//			"1C|1|L|R^E|G<CR><ETX>2D<CR><LF>" +
-//			"2R|4|^^^BILD2^^^^^^^|78.000|||N||F||^ROCHE||20200413110103|<CR><ETX>4F<CR><LF>" +
-//			"3C|1|L|R^E|G<CR><ETX>2F<CR><LF>" +
-//			"4R|5|^^^BILT2^^^^^^^|135.000|||N||F||^ROCHE||20200413110103|<CR><ETX>8C<CR><LF>" +
-//			"5C|1|L|R^E|G<CR><ETX>31<CR><LF>" +
-//			"6R|6|^^^CHO2L^^^^^^^|66.000|||N||F||^ROCHE||20200413110103|<CR><ETX>5D<CR><LF>" +
-//			"7C|1|L|R^E|G<CR><ETX>33<CR><LF>" +
-//			"0R|7|^^^TSH^^^^^^^|89.000|||N||F||^ROCHE||20200413110103|<CR><ETX>F4<CR><LF>" +
-//			"1C|1|L|R^E|G<CR><ETX>2D<CR><LF>" +
-//			"2L|1|N<CR><ETX>05<CR><LF>");
+//			"4R|1|^^^0030^^^^COBAS_CCEE^^^^^^|73.000|Вµmol/L||||F||&S&SYSTEM^||       20200515051512|COBAS_CCEE<CR><ETX>F3<CR><LF>" +
+// 	     "R|1|^^^240^1^^^COBAS_CCEE^^^^^^|0.592 |uIU/ml ||N||F||&S&SYSTEM^System||202005200705258|COBAS_CCEE<CR>"+
+//			"5L|1|N<CR><ETX>03<CR><LF>");
 
-		//msg = "4R|1|^^^Na^1^^^10101^^^|124.800|||N||F||&S&SYSTEM^System||20200416151944|10101<CR><ETX>A4<CR><LF>";
-		astm.parseMessage(Codes.makeSendable(msg));
+//		String msg = "1H|\\^&|10713||^^^|||||||P||20200520100128<CR>" +
+//			"P|1||?||^||||||||||||||||||20200520081727|||||||||<CR>" +
+//			"O|1|20004840|^1^1|^^^^^^^COBAS_P612|||||||X|||20200520100128|1|||||||||COBAS_P612|P<CR>" +
+//			"M|1|EQU^RO^^1.0|COBAS_P612^^^cobas p612^LAB1^SAMPLEEVENT^SORT|20\u0017D6<CR><LF>2200520100128<CR>" +
+//			"M|2|SAC^RO^^1.0|||20004840|||1|20200520100128|U||1|1||||{cobas p612} {P612.CEE} {0001 (1)}<CR>" +
+//			"L|1|N<CR>" +
+//			"<ETX>21<CR><LF>";
+//
+//		String msg = "1H|\\^&|11091||^^^|||||||P||20200520120557<CR>" +
+//			"P|1||?||^||||||||||||||||||20200520104352||<CR>"+
+//			"O|1|200420028642|200420028642|ALL|?|20200520104352|||||X||||1||||||||||F<CR>"+
+//			"R|1|^^^240^1^^^COBAS_CCEE^^^^^^|0.592|uIU/ml||N||F||&S&SYSTEM^System||202005200705<ETB_>17<CR><LF>258|COBAS_CCEE<CR>"+
+//			"L|1|N<CR><ETX>D2<CR><LF>";
+
+		String msg = "1H|\\^&|12040||^^^|||||||P||20200520152832<CR>P|1||?||^||||||||||||||||||20200520120719|||||||||<CR>O|1|0780147573|^4^2|^^^^^^^COBAS_P612|||||||X|||20200520152832|1|||||||||COBAS_P612|P<CR>M|1|EQU^RO^^1.0|COBAS_P612^^^cobas p612^LAB1^SAMPLEEVENT^SORT|<ETB_>F8<CR><LF>220200520152832<CR>M|2|SAC^RO^^1.0|||0780147573|||1|20200520152832|U||4|2||||{cobas p612} {P612.CEE} {0004 (2)}<CR>L|1|N<CR><ETX>15<CR><LF>";
+		PacketInfo p = astm.parseMessage(Codes.makeSendable(msg));
+		System.out.print(p.toString());
 	}
 }
+
 
 
 //

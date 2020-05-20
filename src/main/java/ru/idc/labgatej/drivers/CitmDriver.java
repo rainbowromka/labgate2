@@ -51,9 +51,11 @@ public class CitmDriver implements IDriver {
 					} else if (res == Codes.NAK) {
 						logger.debug("Наше сообщение не понравилось почему-то");
 						hasErrors = true;
+						dbManager.markOrderAsFailed(taskId, "Наше сообщение не понравилось почему-то");
 					} else {
 						logger.error("ошибка протокола");
 						hasErrors = true;
+						dbManager.markOrderAsFailed(taskId, "ошибка протокола");
 					}
 					transport.sendMessage("<EOT>");
 				} else if (res == Codes.NAK) {

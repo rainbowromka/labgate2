@@ -82,7 +82,7 @@ public class DBManager {
 							rs.getLong("task_id"),
 							rs.getString("sample_id"),
 							rs.getLong("device_instance"),
-							rs.getString("device_code"),
+							rs.getString("p_device_code"),
 							rs.getDouble("dilution_factor"),
 							rs.getLong("test"),
 							rs.getString("material"),
@@ -92,10 +92,10 @@ public class DBManager {
 							rs.getString("sex"),
 							rs.getDate("birthday"),
 							rs.getLong("scheduled_profile"),
-							rs.getLong("scheduled_invest"),
+							rs.getLong("p_scheduled_invest"),
 						  rs.getBoolean("is_aliquot"),
-							rs.getLong("route"),
-							rs.getLong("scheduled_container")
+							rs.getLong("p_route"),
+							rs.getLong("p_scheduled_container")
 							));
 					}
 				} finally {
@@ -124,7 +124,7 @@ public class DBManager {
 			if (order.getIsAliquot()) {
 				if (order.getDeviceInstanceId() != devInst) {
 					devInst = order.getDeviceInstanceId();
-					aliquotBarcode = mainBarcode + ".ALIQ" + idx;
+					aliquotBarcode = mainBarcode + "." + idx;
 					idx++;
 				}
 				order.setAliquotBarcode(aliquotBarcode);

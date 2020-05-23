@@ -118,7 +118,7 @@ public class ProtocolASTM implements Protocol {
 	public PacketInfo parseMessage(String msg) {
 		PacketInfo packetInfo = new PacketInfo();
 		while (msg.indexOf(""+ ETB_) > 0) {
-			msg = msg.replace(msg.substring(msg.indexOf(""+ ETB_), msg.indexOf(""+ ETB_) + 5), "");
+			msg = msg.replace(msg.substring(msg.indexOf(""+ ETB_), msg.indexOf(""+ ETB_) + 6), "");
 		}
 
 		String[] lines = msg.replace(""+ ETB_, "").replace("\r\n", "\r").split("\r");

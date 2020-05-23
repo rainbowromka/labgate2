@@ -124,7 +124,7 @@ public class DBManager {
 			if (order.getIsAliquot()) {
 				if (order.getDeviceInstanceId() != devInst) {
 					devInst = order.getDeviceInstanceId();
-					aliquotBarcode = mainBarcode + "." + idx;
+					aliquotBarcode = mainBarcode + "." + idx; // genNewAliquotBarcode()
 					idx++;
 				}
 				order.setAliquotBarcode(aliquotBarcode);
@@ -256,6 +256,27 @@ public class DBManager {
 		} catch (SQLException e) {
 			logger.error("", e);
 		}
+	}
+
+	public String genNewAliquotBarcode() {
+		Statement statement = null;
+		try {
+			statement = dbConnection.createStatement();
+			try {
+				ResultSet rs = statement.executeQuery("select '0' || NEXTVAL('LIS.seqSecondBarcode')");
+				rs.next();
+				try {
+					return rs.getString(1);
+				} finally {
+					rs.close();
+				}
+			} finally {
+				statement.close();
+			}
+		} catch (SQLException e) {
+			logger.error("", e);
+		}
+		return null;
 	}
 
 	public void registerAliquot(long scheduledContainerId, String barcode, long routeId) {

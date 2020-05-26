@@ -37,7 +37,7 @@ public class SocketClientTransport implements Transport {
 			InetAddress ipAddress;
 			ipAddress = InetAddress.getByName(host);
 			socket = new Socket(ipAddress, port);
-			socket.setSoTimeout(10000);
+			socket.setSoTimeout(5000);
 			socket.setKeepAlive(true);
 			logger.info("Соединение установлено");
 

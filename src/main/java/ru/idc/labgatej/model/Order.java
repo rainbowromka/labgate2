@@ -28,4 +28,5 @@ public class Order {
 	private final Long routeId;
 	private String aliquotBarcode;
 	private final Long scheduledContainerId;
+	private final boolean manualAliquot;
 }

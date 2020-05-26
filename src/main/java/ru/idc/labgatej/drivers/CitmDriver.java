@@ -24,6 +24,7 @@ public class CitmDriver implements IDriver {
 	private Transport transport;
 	private DBManager dbManager;
 	private Protocol protocol;
+	private boolean createAliquot;
 
 	private void sendTasks() throws IOException {
 		String msg;
@@ -47,7 +48,9 @@ public class CitmDriver implements IDriver {
 						logger.debug("Наше сообщение приняли");
 						// нужно помечать задание как обработанное в БД
 						dbManager.markOrderAsProcessed(taskId);
-						dbManager.registerAliquots(orders);
+						if (createAliquot) {
+							dbManager.registerAliquots(orders);
+						}
 					} else if (res == Codes.NAK) {
 						logger.debug("Наше сообщение не понравилось почему-то");
 						hasErrors = true;
@@ -77,7 +80,7 @@ public class CitmDriver implements IDriver {
 		do {
 			res = transport.readInt(true);
 			if (res == ERROR_TIMEOUT) {
-				logger.debug("ждём данных");
+				logger.trace("ждём данных");
 			} else if (res == ENQ) {
 				logger.debug("нам хотят что-то прислать");
 				sb.setLength(0);
@@ -120,6 +123,7 @@ public class CitmDriver implements IDriver {
 		protocol = new ProtocolASTM();
 		transport = new SocketClientTransport(config.getParamValue("citm.server"), Integer.parseInt(config.getParamValue("citm.port")));
 		transport.init();
+		createAliquot = !"off".equalsIgnoreCase(config.getParamValue("citm.aliquot"));
 	}
 
 	// для отладки

@@ -48,12 +48,12 @@ public class ProtocolASTMTest {
 			"2EE<CR>L|1|N<CR><ETX>9C<CR><LF>";
 		PacketInfo p = astm.parseMessage(Codes.makeSendable(msg));
 //
-		Configuration config;
-		config = new Configuration();
-		DBManager dbManager = new DBManager();
-		dbManager.init(config);
+//		Configuration config;
+//		config = new Configuration();
+//		DBManager dbManager = new DBManager();
+//		dbManager.init(config);
 
-		System.out.println(dbManager.genNewAliquotBarcode());
+//		System.out.println(dbManager.genNewAliquotBarcode());
 //		dbManager.saveResults(p, true);
 
 		System.out.print(p.toString());

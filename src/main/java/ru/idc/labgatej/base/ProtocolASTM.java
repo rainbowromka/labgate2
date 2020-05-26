@@ -24,6 +24,16 @@ public class ProtocolASTM implements Protocol {
 	private static Logger logger = LoggerFactory.getLogger(ProtocolASTM.class);
 	// 240 символов на сообщение в одном фрейме
 
+
+	private String getTestPostfix(String material) {
+		if (material == null) return "";
+		switch (material.toUpperCase()) {
+			case "UR": return "_U";
+
+			default: return "";
+		}
+	}
+
 	//<STX>1H|\^&|||ASTM-Host|||||CIT||P||20120219111500<CR>P|1<CR>O|1|923501||^^^CL-S\^^^CREA|||||||A<CR>L|1|F<CR><ETX>80<CR><LF>
 	public String makeOrder(List<Order> orders) {
 		final int maxSize = 6900;
@@ -43,17 +53,22 @@ public class ProtocolASTM implements Protocol {
 		String mainBarcode = orders.get(0).getBarcode();
 		msg.append("O|").append(idx).append("|").append(mainBarcode).append("||");
 		for (Order order : orders) {
-			msg.append("^^^").append(order.getTestId()).append("\\");
+			if (order.getIsAliquot() && order.isManualAliquot()) {
+				continue;
+			}
+			msg.append("^^^").append(order.getTestId()).append(getTestPostfix(order.getMaterial())).append("\\");
 		}
 		msg.append("|||||||A<CR>"); // A - Action Code
 		idx++;
 
 		long devInst = -1;
+		long routeId = -1;
 		// добавляем задания на аликвоты
 		for (Order order : orders) {
-			if (order.getIsAliquot()) {
-				if (order.getDeviceInstanceId() != devInst) {
+			if (order.getIsAliquot() && !order.isManualAliquot()) {
+				if (order.getDeviceInstanceId() != devInst || order.getRouteId() != routeId) {
 					devInst = order.getDeviceInstanceId();
+					routeId = order.getRouteId();
 					if (idx != 2) {
 						// закрываем предыдущую O-запись
 						msg.append("|||||||A<CR>");
@@ -63,7 +78,7 @@ public class ProtocolASTM implements Protocol {
 						.append("|").append(mainBarcode).append("|");
 					idx++;
 				}
-				msg.append("^^^").append(order.getTestId()).append("\\");
+				msg.append("^^^").append(order.getTestId()).append(getTestPostfix(order.getMaterial())).append("\\");
 			}
 		}
 		if (devInst != -1) {

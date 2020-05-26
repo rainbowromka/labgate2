@@ -75,7 +75,7 @@ public class DBManager {
 		try {
 			statement = dbConnection.createStatement();
 			try {
-				ResultSet rs = statement.executeQuery("SELECT * FROM lis.getTasks4CITM() ORDER BY is_aliquot, device_instance, test");
+				ResultSet rs = statement.executeQuery("SELECT * FROM lis.getTasks4CITM() ORDER BY is_aliquot, device_instance, p_route, test");
 				try {
 					while (rs.next()) {
 						result.add(new Order(
@@ -95,7 +95,8 @@ public class DBManager {
 							rs.getLong("p_scheduled_invest"),
 						  rs.getBoolean("is_aliquot"),
 							rs.getLong("p_route"),
-							rs.getLong("p_scheduled_container")
+							rs.getLong("p_scheduled_container"),
+							rs.getBoolean("p_manual_aliquot")
 							));
 					}
 				} finally {
@@ -119,11 +120,13 @@ public class DBManager {
 		String mainBarcode = orders.get(0).getBarcode();
 		String aliquotBarcode = null;
 		long devInst = -1;
+		long routeId = -1;
 		int idx = 1;
 		for (Order order : orders) {
 			if (order.getIsAliquot()) {
-				if (order.getDeviceInstanceId() != devInst) {
+				if (order.getDeviceInstanceId() != devInst || routeId != order.getRouteId()) {
 					devInst = order.getDeviceInstanceId();
+					routeId = order.getRouteId();
 					aliquotBarcode = mainBarcode + "." + idx; // genNewAliquotBarcode()
 					idx++;
 				}
@@ -298,7 +301,7 @@ public class DBManager {
 	public void registerAliquots(List<Order> orders) {
 		String aliquotBarcode = null;
 		for (Order order: orders) {
-			if (order.getIsAliquot()) {
+			if (order.getIsAliquot() && !order.isManualAliquot()) {
 				if (!order.getAliquotBarcode().equalsIgnoreCase(aliquotBarcode)) {
 					aliquotBarcode = order.getAliquotBarcode();
 					registerAliquot(order.getScheduledContainerId(), order.getAliquotBarcode(), order.getRouteId());

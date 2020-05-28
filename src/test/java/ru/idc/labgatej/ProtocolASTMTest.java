@@ -6,15 +6,17 @@ import ru.idc.labgatej.base.Configuration;
 import ru.idc.labgatej.base.DBManager;
 import ru.idc.labgatej.base.ProtocolASTM;
 import ru.idc.labgatej.model.PacketInfo;
+import ru.idc.labgatej.model.ResultInfo;
 
 public class ProtocolASTMTest {
+
 	@Test
 	public void testString() {
-		String t = "0517" +
-			"258|COBAS_CCEE" +
-			"L|1|N";
+		ProtocolASTM astm = new ProtocolASTM();
+		String t = "R|1|^^^174^1^^^COBAS_8000^^^^^^|< 0.01|ng/ml||N||F||&S&SYSTEM^System||20200527090724|COBAS_8000";
+		ResultInfo r =  astm.parseResult(t);
 
-		System.out.println(t.replace(""+ (char) 23, "F"));
+		System.out.println(r);
 	}
 
 	@Test
@@ -41,12 +43,11 @@ public class ProtocolASTMTest {
 //			"R|1|^^^240^1^^^COBAS_CCEE^^^^^^|0.592|uIU/ml||N||F||&S&SYSTEM^System||202005200705<ETB_>17<CR><LF>258|COBAS_CCEE<CR>"+
 //			"L|1|N<CR><ETX>D2<CR><LF>";
 		//                "1H|\\^&|11091||^^^|||||||P||20200520120557<CR>"
-		String msg = "1H|\\^&|22206||^^^|||||||P||20200523123312<CR>" +
-			"P|1||?||^||||||||||||||||||20200520144850||<CR>" +
-			"O|1|0930113342|0930113342|ALL|?|20200520144850|||||X||||1||||||||||F<CR>" +
-			"R|1|^^^1403^1^^^COBAS_CEE^^^^^^|3.080|||N||F||&S&SYSTEM^System||20200522162339|COBAS_C<ETB_>1B<CR><LF>" +
-			"2EE<CR>L|1|N<CR><ETX>9C<CR><LF>";
-		PacketInfo p = astm.parseMessage(Codes.makeSendable(msg));
+		String msg = "1H|\\^&|52866||^^^|||||||P||20200527133110<CR>" +
+			"P|1||?||^||||||||||||||||||20200526094501||<CR>" +
+			"O|1|19259129|19259129|ALL|?|20200526094501|||||X||||1||||||||||F<CR>" +
+			"R|1|^^^177^1^^^COBAS_8000^^^^^^|14.580|pmol/l||N||F||&S&SYSTEM^System||20200527082809|COBA<ETB_>F8<CR><LF>";
+		//PacketInfo p = astm.parseMessage(Codes.makeSendable(msg));
 //
 //		Configuration config;
 //		config = new Configuration();
@@ -56,7 +57,7 @@ public class ProtocolASTMTest {
 //		System.out.println(dbManager.genNewAliquotBarcode());
 //		dbManager.saveResults(p, true);
 
-		System.out.print(p.toString());
+		//System.out.print(p.toString());
 	}
 }
 

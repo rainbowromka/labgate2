@@ -29,7 +29,7 @@ public class SocketClientTransport implements Transport {
 	}
 
 	@Override
-	public void init() {
+	public void init(int timeout) {
 		try {
 			logger.info("Подключаемся к \n\t" +
 				"(IP address " + host +
@@ -37,7 +37,7 @@ public class SocketClientTransport implements Transport {
 			InetAddress ipAddress;
 			ipAddress = InetAddress.getByName(host);
 			socket = new Socket(ipAddress, port);
-			socket.setSoTimeout(5000);
+			socket.setSoTimeout(timeout);
 			socket.setKeepAlive(true);
 			logger.info("Соединение установлено");
 

@@ -135,4 +135,9 @@ public class Medonic implements IDriver {
 
 		return packet;
 	}
+
+	@Override
+	public void close() {
+
+	}
 }

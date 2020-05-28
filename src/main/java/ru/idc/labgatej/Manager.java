@@ -19,6 +19,7 @@ public class Manager {
 		System.out.println("ТЕстовый текст !!!!!!!!!!!!!!!!!!!!!!!!");
 		logger.trace("Запуск приложения");
 		Configuration config;
+		IDriver driver = null;
 		while (true) {
 			logger.trace("Чтение конфигурации");
 			config = new Configuration();
@@ -30,7 +31,7 @@ public class Manager {
 					logger.trace("Инициализация подключения к БД...");
 					dbManager.init(config);
 
-					IDriver driver = getDriverByName(config.getParamValue("driver"));
+					driver = getDriverByName(config.getParamValue("driver"));
 					if (driver != null) {
 						driver.init(dbManager, config);
 						driver.loop();
@@ -41,9 +42,13 @@ public class Manager {
 					dbManager.close();
 				}
 			} catch (Exception e) {
+				if (driver != null) {
+					driver.close();
+				}
 				logger.error("", e);
-				logger.debug("Ждём 10 секунд перед перезапуском...");
-				Thread.sleep(10000);
+				logger.debug("Ждём 60 секунд перед перезапуском...");
+				Thread.sleep(60000);
+
 			}
 		}
 	}

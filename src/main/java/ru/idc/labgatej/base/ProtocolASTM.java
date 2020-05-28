@@ -201,8 +201,21 @@ public class ProtocolASTM implements Protocol {
 		// R|1|^^^BE(B)||mmol/L||C||||||20150819144937 \n"
 		if (matcher.find()) {
 			result = new ResultInfo();
-			result.setResult(matcher.group(2));
-			result.setNormal_range_flag(matcher.group(5));
+			result.setResult(matcher.group(2).trim());
+			String outofrange = null;
+			if (result.getResult().contains("<")) {
+				outofrange = "<";
+				result.setResult(result.getResult().replace("<", "").trim());
+			} else if (result.getResult().contains(">")) {
+				outofrange = ">";
+				result.setResult(result.getResult().replace(">", "").trim());
+			}
+			if (!matcher.group(5).isEmpty()) {
+				result.setNormal_range_flag(matcher.group(5));
+			}
+			if (outofrange != null) {
+				result.setNormal_range_flag(outofrange);
+			}
 			result.setTest_type("SAMPLE");
 			result.setResult_status(matcher.group(7));
 			result.setDevice_name(matcher.group(12));

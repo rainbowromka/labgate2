@@ -55,7 +55,7 @@ public class CitmDriver implements IDriver {
 						logger.debug("Наше сообщение не понравилось почему-то");
 						hasErrors = true;
 						dbManager.markOrderAsFailed(taskId, "Наше сообщение не понравилось почему-то");
-					} else {
+					}	else {
 						logger.error("ошибка протокола");
 						hasErrors = true;
 						dbManager.markOrderAsFailed(taskId, "ошибка протокола");
@@ -66,7 +66,11 @@ public class CitmDriver implements IDriver {
 					// надо подождать не меньше 10 секунд
 					hasErrors = true;
 				} else {
-					logger.error("ошибка протокола");
+					if (res == Codes.ENQ) {
+						logger.error("нас перебили");
+					} else {
+						logger.error("ошибка протокола");
+					}
 					hasErrors = true;
 				}
 				cnt++;
@@ -108,8 +112,8 @@ public class CitmDriver implements IDriver {
 		while (true) {
 			sendTasks();
 			msg = receiveResults();
-			//msg = makeResults();
-			if (msg != null) {
+
+			if (msg != null && !msg.isEmpty()) {
 				PacketInfo packetInfo = protocol.parseMessage(makeSendable(msg));
 				dbManager.saveResults(packetInfo, true);
 			}
@@ -124,6 +128,12 @@ public class CitmDriver implements IDriver {
 		transport = new SocketClientTransport(config.getParamValue("citm.server"), Integer.parseInt(config.getParamValue("citm.port")));
 		transport.init();
 		createAliquot = !"off".equalsIgnoreCase(config.getParamValue("citm.aliquot"));
+	}
+
+	@Override
+	public void close() {
+		transport4tasks.close();
+		transport4results.close();
 	}
 
 	// для отладки

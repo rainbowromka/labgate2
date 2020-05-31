@@ -61,30 +61,30 @@ public class ProtocolASTM implements Protocol {
 		msg.append("|||||||A<CR>"); // A - Action Code
 		idx++;
 
-		long devInst = -1;
-		long routeId = -1;
-		// добавляем задания на аликвоты
-		for (Order order : orders) {
-			if (order.getIsAliquot() && !order.isManualAliquot()) {
-				if (order.getDeviceInstanceId() != devInst || order.getRouteId() != routeId) {
-					devInst = order.getDeviceInstanceId();
-					routeId = order.getRouteId();
-					if (idx != 2) {
-						// закрываем предыдущую O-запись
-						msg.append("|||||||A<CR>");
-					}
-					order.setAliquotBarcode(mainBarcode + "." + (idx - 1));
-					msg.append("O|").append(idx).append("|").append(order.getAliquotBarcode())
-						.append("|").append(mainBarcode).append("|");
-					idx++;
-				}
-				msg.append("^^^").append(order.getTestId()).append(getTestPostfix(order.getMaterial())).append("\\");
-			}
-		}
-		if (devInst != -1) {
-			// закрываем последнюю O-запись
-			msg.append("|||||||A<CR>");
-		}
+//		long devInst = -1;
+//		long routeId = -1;
+//		// добавляем задания на аликвоты
+//		for (Order order : orders) {
+//			if (order.getIsAliquot() && !order.isManualAliquot()) {
+//				if (order.getDeviceInstanceId() != devInst || order.getRouteId() != routeId) {
+//					devInst = order.getDeviceInstanceId();
+//					routeId = order.getRouteId();
+//					if (idx != 2) {
+//						// закрываем предыдущую O-запись
+//						msg.append("|||||||A<CR>");
+//					}
+//					order.setAliquotBarcode(mainBarcode + "." + (idx - 1));
+//					msg.append("O|").append(idx).append("|").append(order.getAliquotBarcode())
+//						.append("|").append(mainBarcode).append("|");
+//					idx++;
+//				}
+//				msg.append("^^^").append(order.getTestId()).append(getTestPostfix(order.getMaterial())).append("\\");
+//			}
+//		}
+//		if (devInst != -1) {
+//			// закрываем последнюю O-запись
+//			msg.append("|||||||A<CR>");
+//		}
 
 		// терминатор
 		msg.append("L|1|F<CR>");

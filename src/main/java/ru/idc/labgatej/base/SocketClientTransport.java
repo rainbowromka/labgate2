@@ -3,11 +3,9 @@ package ru.idc.labgatej.base;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
@@ -19,7 +17,7 @@ public class SocketClientTransport implements Transport {
 	private static Logger logger = LoggerFactory.getLogger(SocketClientTransport.class);
 	private int port;
 	private String host;
-	private BufferedReader in;
+	private InputStream in;
 	private Writer out;
 	private Socket socket = null;
 
@@ -55,8 +53,8 @@ public class SocketClientTransport implements Transport {
 			InputStream sin = socket.getInputStream();
 			OutputStream sout = socket.getOutputStream();
 
-			in = new BufferedReader(new InputStreamReader(sin)); //new DataInputStream(sin);
-			out = new BufferedWriter(new OutputStreamWriter(sout)); //new DataOutputStream(sout);
+			in = sin; //new BufferedReader(new InputStreamReader(sin)); //new DataInputStream(sin);
+			out =  new BufferedWriter(new OutputStreamWriter(sout)); //new DataOutputStream(sout);
 		} catch (Exception e) {
 			logger.error("", e);
 		}
@@ -82,7 +80,7 @@ public class SocketClientTransport implements Transport {
 	public void sendMessage(String msg) throws IOException {
 		out.write(Codes.makeSendable(msg));
 		out.flush();
-		logger.debug("D -> " + msg);
+		logger.debug(msg);
 	}
 
 	@Override
@@ -94,7 +92,7 @@ public class SocketClientTransport implements Transport {
 	public int readInt(boolean ignoreTimeout) throws IOException {
 		try {
 			int result = in.read();
-			logger.debug("D <- " + Codes.makePrintable("" + (char) Integer.parseInt(Integer.toHexString(result))));
+			logger.debug(Codes.makePrintable("" + (char) Integer.parseInt(Integer.toHexString(result))));
 			return result;
 		} catch (SocketTimeoutException e) {
 			if (!ignoreTimeout) throw e;
@@ -112,7 +110,7 @@ public class SocketClientTransport implements Transport {
 		}
 
 		String msg = Codes.makePrintable(sb.toString());
-		logger.debug("D <- " + msg);
+		logger.debug(msg);
 		return msg;
 	}
 }

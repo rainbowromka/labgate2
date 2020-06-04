@@ -132,8 +132,13 @@ public class ProtocolASTM implements Protocol {
 	@Override
 	public PacketInfo parseMessage(String msg) {
 		PacketInfo packetInfo = new PacketInfo();
+		int idx;
 		while (msg.indexOf(""+ ETB_) > 0) {
-			msg = msg.replace(msg.substring(msg.indexOf(""+ ETB_), msg.indexOf(""+ ETB_) + 6), "");
+			idx = msg.indexOf(""+ ETB_) + 6;
+			if (idx > msg.length()) {
+				idx = msg.length() - 1;
+			}
+			msg = msg.replace(msg.substring(msg.indexOf(""+ ETB_), idx), "");
 		}
 
 		String[] lines = msg.replace(""+ ETB_, "").replace("\r\n", "\r").split("\r");

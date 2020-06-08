@@ -21,8 +21,11 @@ import static ru.idc.labgatej.base.Consts.ERROR_TIMEOUT;
 
 public class CitmDriver implements IDriver {
 	private static Logger logger = LoggerFactory.getLogger(CitmDriver.class);
-	private Transport transport;
-	private DBManager dbManager;
+
+	private Transport transport4tasks;
+	private Transport transport4results;
+	private DBManager dbManager4results;
+	private DBManager dbManager4tasks;
 	private Protocol protocol;
 	private boolean createAliquot;
 
@@ -34,33 +37,33 @@ public class CitmDriver implements IDriver {
 		int cnt = 0;
 		int res;
 		do {
-			orders = dbManager.getOrders();
+			orders = dbManager4tasks.getOrders();
 			msg = protocol.makeOrder(orders);
 			if (!msg.isEmpty()) {
 				taskId = orders.get(0).getTaskId();
-				transport.sendMessage("<ENQ>");
-				res = transport.readInt();
+				transport4tasks.sendMessage("<ENQ>");
+				res = transport4tasks.readInt();
 				if (res == Codes.ACK) {
 					logger.debug("нас готовы слушать");
-					transport.sendMessage(msg);
-					res = transport.readInt();
+					transport4tasks.sendMessage(msg);
+					res = transport4tasks.readInt();
 					if (res == Codes.ACK) {
 						logger.debug("Наше сообщение приняли");
 						// нужно помечать задание как обработанное в БД
-						dbManager.markOrderAsProcessed(taskId);
+						dbManager4tasks.markOrderAsProcessed(taskId);
 						if (createAliquot) {
-							dbManager.registerAliquots(orders);
+							dbManager4tasks.registerAliquots(orders);
 						}
 					} else if (res == Codes.NAK) {
 						logger.debug("Наше сообщение не понравилось почему-то");
 						hasErrors = true;
-						dbManager.markOrderAsFailed(taskId, "Наше сообщение не понравилось почему-то");
+						dbManager4tasks.markOrderAsFailed(taskId, "Наше сообщение не понравилось почему-то");
 					}	else {
 						logger.error("ошибка протокола");
 						hasErrors = true;
-						dbManager.markOrderAsFailed(taskId, "ошибка протокола");
+						dbManager4tasks.markOrderAsFailed(taskId, "ошибка протокола");
 					}
-					transport.sendMessage("<EOT>");
+					transport4tasks.sendMessage("<EOT>");
 				} else if (res == Codes.NAK) {
 					logger.debug("нас не готовы слушать, ждём 10 секунд");
 					// надо подождать не меньше 10 секунд
@@ -82,17 +85,17 @@ public class CitmDriver implements IDriver {
 		StringBuilder sb = new StringBuilder();
 		int res;
 		do {
-			res = transport.readInt(true);
+			res = transport4results.readInt(true);
 			if (res == ERROR_TIMEOUT) {
 				logger.trace("ждём данных");
 			} else if (res == ENQ) {
 				logger.debug("нам хотят что-то прислать");
 				sb.setLength(0);
-				transport.sendMessage("<ACK>");
+				transport4results.sendMessage("<ACK>");
 			} else if (res == STX) {
-				String msg = transport.readMessage();
+				String msg = transport4results.readMessage();
 				sb.append(msg);
-				transport.sendMessage("<ACK>");
+				transport4results.sendMessage("<ACK>");
 			} else if (res == EOT) {
 				logger.debug("мы зафиксировали конец передачи");
 				System.out.println(sb.toString());
@@ -106,16 +109,33 @@ public class CitmDriver implements IDriver {
 
 	@Override
 	public void loop() throws IOException, InterruptedException {
-		if (!transport.isReady()) return;
+		if (!transport4tasks.isReady()) return;
+		if (!transport4results.isReady()) return;
 
-		String msg;
+		Runnable task = () -> {
+			try {
+				while (! Thread.currentThread().isInterrupted()) {
+					sendTasks();
+				}
+			} catch (IOException e) {
+				logger.error("Ошибка в потоке отправки заданий", e);
+			}
+		};
+
+		Thread thread = new Thread(task);
+		thread.start();
+
+		String msg = null;
 		while (true) {
-			sendTasks();
+			if (!thread.isAlive()) {
+				throw new IOException();
+			}
+
 			msg = receiveResults();
 
 			if (msg != null && !msg.isEmpty()) {
 				PacketInfo packetInfo = protocol.parseMessage(makeSendable(msg));
-				dbManager.saveResults(packetInfo, true);
+				dbManager4results.saveResults(packetInfo, true);
 			}
 			Thread.sleep(500);
 		}
@@ -123,10 +143,17 @@ public class CitmDriver implements IDriver {
 
 	@Override
 	public void init(DBManager dbManager, Configuration config) {
-		this.dbManager = dbManager;
+		this.dbManager4results = dbManager;
+		this.dbManager4tasks = new DBManager();
+		logger.trace("Инициализация второго подключения к БД...");
+		dbManager4tasks.init(config);
+
 		protocol = new ProtocolASTM();
-		transport = new SocketClientTransport(config.getParamValue("citm.server"), Integer.parseInt(config.getParamValue("citm.port")));
-		transport.init();
+		transport4tasks = new SocketClientTransport(config.getParamValue("citm.server"), Integer.parseInt(config.getParamValue("citm.port.task")));
+		transport4tasks.init(2000);
+		transport4results = new SocketClientTransport(config.getParamValue("citm.server"), Integer.parseInt(config.getParamValue("citm.port.result")));
+		transport4results.init(10000);
+
 		createAliquot = !"off".equalsIgnoreCase(config.getParamValue("citm.aliquot"));
 	}
 
@@ -134,6 +161,7 @@ public class CitmDriver implements IDriver {
 	public void close() {
 		transport4tasks.close();
 		transport4results.close();
+		dbManager4tasks.close();
 	}
 
 	// для отладки

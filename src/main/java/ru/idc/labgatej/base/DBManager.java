@@ -23,7 +23,6 @@ import java.util.List;
 
 public class DBManager {
 	private static Logger logger = LoggerFactory.getLogger(DBManager.class);
-
 	public Connection dbConnection = null;
 
 	public void init(Configuration config) {

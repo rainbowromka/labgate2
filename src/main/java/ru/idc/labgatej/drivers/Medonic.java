@@ -48,7 +48,6 @@ public class Medonic implements IDriver {
 	public void loop() throws IOException, InterruptedException {
 		while (true) {
 			scanFiles(dir2scan);
-			//dbManager.saveResults(packetInfo);
 			Thread.sleep(30000);
 		}
 	}
@@ -105,33 +104,39 @@ public class Medonic implements IDriver {
 				}
 			}
 		}
-		data.remove("SNO");
-		data.remove("SEQ");
-		data.remove("ASPM");
-		data.remove("ASPS");
-		data.remove("APNA");
-		data.remove("BLNK");
-		data.remove("ASWP"); // wheel position
-		data.remove("WDMA");
-		data.remove("CLVL");
-		data.remove("CEXP");
+
+		String[] codes = {"RBC", "MCV", "HCT", "MCH", "MCHC", "RDWR", "RDWA", "PLT", "MPV", "PCT", "PDW", "LPCR", "HGB", "WBC",
+			"LA", "MA", "GA", "LR", "MR", "GR", "", "", "", "", ""};
 
 		if (data.get("ID") != null) {
 			packet.setHeader(new HeaderInfo(data.get("ID"), false));
 		}
-		ResultInfo res = new ResultInfo();
-		packet.addResult(res);
+		ResultInfo res;
+		Date date = null;
 		if (data.get("DATE") != null) {
-			res.setTest_completed(Date.valueOf(data.get("DATE")));
+			date = Date.valueOf(data.get("DATE"));
 		}
+		String testType = "SAMPLE";
 		if (data.get("SORC") != null) {
 			if (!data.get("SORC").equals("0")) {
-				res.setTest_type("CONTROL");
+				testType = "CONTROL";
 			}
 		}
-		res.setSample_type("SE");
 
+		for (String code: codes) {
+			if (data.get(code) != null) {
+				res = new ResultInfo();
+				packet.addResult(res);
+				if (date != null) {
+					res.setTest_completed(date);
+				}
+				res.setTest_type(testType);
+				res.setSample_type("SE");
 
+				res.setResult(data.get(code));
+				res.setTest_code(code);
+			}
+		}
 
 		return packet;
 	}

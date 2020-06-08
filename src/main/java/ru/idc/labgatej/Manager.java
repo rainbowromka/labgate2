@@ -16,7 +16,6 @@ public class Manager {
 	private static Logger logger = LoggerFactory.getLogger(Manager.class);
 
 	public static void main(String[] args) throws InterruptedException {
-		System.out.println("ТЕстовый текст !!!!!!!!!!!!!!!!!!!!!!!!");
 		logger.trace("Запуск приложения");
 		Configuration config;
 		IDriver driver = null;
@@ -43,7 +42,11 @@ public class Manager {
 				}
 			} catch (Exception e) {
 				if (driver != null) {
-					driver.close();
+					try {
+						driver.close();
+					} catch (Exception e2) {
+						logger.error("Ошибка при завершении работы драйвера", e2);
+					}
 				}
 				logger.error("", e);
 				logger.debug("Ждём 60 секунд перед перезапуском...");

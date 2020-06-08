@@ -6,6 +6,7 @@ import ru.idc.labgatej.base.Configuration;
 import ru.idc.labgatej.base.DBManager;
 import ru.idc.labgatej.base.IDriver;
 import ru.idc.labgatej.model.HeaderInfo;
+import ru.idc.labgatej.model.OrderInfo;
 import ru.idc.labgatej.model.PacketInfo;
 import ru.idc.labgatej.model.ResultInfo;
 
@@ -18,6 +19,8 @@ import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -30,11 +33,13 @@ public class Medonic implements IDriver {
 	private DBManager dbManager;
 	private Path dir2scan;
 	private Path dirProcessed;
+	private String deviceCode;
 
 	@Override
 	public void init(DBManager dbManager, Configuration config) {
 		dir2scan = Paths.get(config.getParamValue("dir2scan"));
 		dirProcessed = dir2scan.resolve("processedFiles");
+		deviceCode = config.getParamValue("code");
 		try {
 			if (!Files.exists(dirProcessed)) {
 				Files.createDirectory(dirProcessed);
@@ -106,15 +111,20 @@ public class Medonic implements IDriver {
 		}
 
 		String[] codes = {"RBC", "MCV", "HCT", "MCH", "MCHC", "RDWR", "RDWA", "PLT", "MPV", "PCT", "PDW", "LPCR", "HGB", "WBC",
-			"LA", "MA", "GA", "LR", "MR", "GR", "", "", "", "", ""};
+			"LA", "MA", "GA", "LR", "MR", "GR"};
 
 		if (data.get("ID") != null) {
 			packet.setHeader(new HeaderInfo(data.get("ID"), false));
+			packet.setOrder(new OrderInfo(data.get("ID").trim()));
 		}
 		ResultInfo res;
-		Date date = null;
+		java.util.Date date = null;
 		if (data.get("DATE") != null) {
-			date = Date.valueOf(data.get("DATE"));
+			try {
+				date = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss").parse(data.get("DATE"));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 		}
 		String testType = "SAMPLE";
 		if (data.get("SORC") != null) {
@@ -127,6 +137,7 @@ public class Medonic implements IDriver {
 			if (data.get(code) != null) {
 				res = new ResultInfo();
 				packet.addResult(res);
+				res.setDevice_name(deviceCode);
 				if (date != null) {
 					res.setTest_completed(date);
 				}

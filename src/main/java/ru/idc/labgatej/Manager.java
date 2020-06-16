@@ -9,6 +9,7 @@ import ru.idc.labgatej.base.Configuration;
 import ru.idc.labgatej.base.DBManager;
 import ru.idc.labgatej.base.IDriver;
 import ru.idc.labgatej.drivers.Medonic;
+import ru.idc.labgatej.drivers.RealBest;
 
 import static org.apache.log4j.Level.INFO;
 
@@ -60,6 +61,7 @@ public class Manager {
 		switch (name) {
 			case "CITM": return new CitmDriver();
 			case "MEDONIC":	return new Medonic();
+			case "REALBEST": return new RealBest();
 			default: return null;
 		}
 	}

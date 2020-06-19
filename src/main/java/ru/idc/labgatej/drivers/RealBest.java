@@ -32,7 +32,7 @@ extends SharedFolderDriver {
 		Map<String, String> data = new HashMap<>();
 		List<PacketInfo> packets = new ArrayList<>();
 
-		try (Scanner sc = new Scanner(file.toFile()))
+		try (Scanner sc = new Scanner(file.toFile(),"UTF-8"))
 		{
 			java.util.Date date = null;
 			try {

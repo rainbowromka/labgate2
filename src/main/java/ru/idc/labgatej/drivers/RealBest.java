@@ -24,6 +24,8 @@ extends SharedFolderDriver {
 
 	final Logger log = LoggerFactory.getLogger(RealBest.class);
 
+	public static final String UTF8_BOM = "\uFEFF";
+
 	@Override
 	public List<PacketInfo> parseFile(Path file) throws FileNotFoundException
 	{
@@ -53,6 +55,10 @@ extends SharedFolderDriver {
 				if (words.length == 3) {
 
 					String id = words[0];
+
+					if (id.startsWith(UTF8_BOM)) {
+						id = id.substring(1);
+					}
 
 					if (id != null) {
 						packet.setHeader(new HeaderInfo(id, false));

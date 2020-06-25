@@ -50,7 +50,7 @@ extends SharedFolderDriver {
 				PacketInfo packet = new PacketInfo();
 
 				line = sc.nextLine();
-				words = line.split("\\s+");
+				words = line.split("\\t");
 				//System.out.println(Arrays.toString(line.split("\\s")));
 				if (words.length == 3) {
 
@@ -75,7 +75,7 @@ extends SharedFolderDriver {
 					res.setTest_type("SAMPLE");
 
 					res.setResult(words[2]);
-					res.setTest_code("5580");
+					res.setTest_code(words[1]);
 				}
 				packets.add(packet);
 			}

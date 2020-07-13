@@ -8,6 +8,7 @@ import ru.idc.labgatej.drivers.CitmDriver;
 import ru.idc.labgatej.base.Configuration;
 import ru.idc.labgatej.base.DBManager;
 import ru.idc.labgatej.base.IDriver;
+import ru.idc.labgatej.drivers.DNATechnologyDriver.DNATechnplogyDriver;
 import ru.idc.labgatej.drivers.CsvImporter;
 import ru.idc.labgatej.drivers.Medonic;
 import ru.idc.labgatej.drivers.MultiskanFC;
@@ -66,6 +67,7 @@ public class Manager {
 			case "MULTISKANFC":	return new MultiskanFC();
 			case "URISKAN": return new UriskanProDriver();
 			case "REALBEST": return new RealBest();
+			case "DNATEACH": return new DNATechnplogyDriver();
 			case "CSVIMPORTER": return new CsvImporter();
 			default: return null;
 		}

@@ -27,7 +27,7 @@ extends SharedFolderDriver {
 	public static final String UTF8_BOM = "\uFEFF";
 
 	@Override
-	public List<PacketInfo> parseFile(Path file) throws FileNotFoundException
+	public List<PacketInfo> parseFile(Path file)
 	{
 		String line;
 		String[] words;
@@ -79,6 +79,8 @@ extends SharedFolderDriver {
 				}
 				packets.add(packet);
 			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
 		}
 
 		return packets;

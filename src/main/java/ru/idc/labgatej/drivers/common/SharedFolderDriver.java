@@ -18,6 +18,9 @@ import java.nio.file.StandardCopyOption;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 import static java.nio.file.FileVisitResult.CONTINUE;
 import static java.nio.file.FileVisitResult.SKIP_SUBTREE;
@@ -27,7 +30,7 @@ implements IDriver
 {
     final Logger log = LoggerFactory.getLogger(SharedFolderDriver.class);
 
-    private DBManager dbManager;
+    protected DBManager dbManager;
     private Path dir2scan;
     private Path dirProcessed;
     protected String deviceCode;
@@ -50,16 +53,20 @@ implements IDriver
     @Override
     public void loop() throws IOException, InterruptedException, SQLException {
         while (true) {
-            scanFiles(dir2scan);
+            scanFiles(dir2scan, this::processFile);
             Thread.sleep(30000);
         }
     }
 
-    private void scanFiles(Path dir2scan) throws IOException, SQLException {
-        Files.walkFileTree(dir2scan, new SimpleFileVisitor<Path>() {
+    protected void scanFiles(
+        Path directory,
+        Consumer<Path> consumer)
+    throws IOException
+    {
+        Files.walkFileTree(directory, new SimpleFileVisitor<Path>() {
             @Override
             public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
-                if (dir2scan.equals(dir)) {
+                if (directory.equals(dir)) {
                     return CONTINUE;
                 } else {
                     return SKIP_SUBTREE;
@@ -83,7 +90,9 @@ implements IDriver
         });
     }
 
-    private void processFile (Path file) throws IOException, SQLException
+    private void processFile (
+        Path file)
+    throws IOException, SQLException
     {
         List<PacketInfo> packets = parseFile(file);
 
@@ -95,7 +104,7 @@ implements IDriver
     }
 
     public abstract List<PacketInfo> parseFile(Path file)
-      throws IOException;
+    throws IOException;
 
     @Override
     public void close() {

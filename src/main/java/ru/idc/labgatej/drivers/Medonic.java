@@ -25,7 +25,6 @@ extends SharedFolderDriver
 
 	@Override
 	public List<PacketInfo> parseFile(Path file)
-	throws FileNotFoundException
 	{
 		String line;
 		String[] words;
@@ -42,6 +41,8 @@ extends SharedFolderDriver
 					data.put(words[0].trim().toUpperCase(), words[1].trim());
 				}
 			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
 		}
 
 		String[] codes = {"RBC", "MCV", "HCT", "MCH", "MCHC", "RDWR", "RDWA", "PLT", "MPV", "PCT", "PDW", "LPCR", "HGB", "WBC",

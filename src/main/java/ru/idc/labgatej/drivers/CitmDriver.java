@@ -109,7 +109,7 @@ public class CitmDriver implements IDriver {
 	}
 
 	@Override
-	public void loop() throws IOException, InterruptedException {
+	public void loop() throws IOException, InterruptedException, SQLException {
 		if (!transport4tasks.isReady()) return;
 		if (!transport4results.isReady()) return;
 

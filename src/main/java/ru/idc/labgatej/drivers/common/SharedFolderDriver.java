@@ -1,5 +1,6 @@
 package ru.idc.labgatej.drivers.common;
 
+import lombok.SneakyThrows;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.idc.labgatej.base.Configuration;
@@ -16,6 +17,7 @@ import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.StandardCopyOption;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.sql.SQLException;
 import java.util.List;
 
 import static java.nio.file.FileVisitResult.CONTINUE;
@@ -42,19 +44,19 @@ implements IDriver
                 Files.createDirectory(dirProcessed);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("Ошибка инициализации", e);
         }
     }
 
     @Override
-    public void loop() throws IOException, InterruptedException {
+    public void loop() throws IOException, InterruptedException, SQLException {
         while (true) {
             scanFiles(dir2scan);
             Thread.sleep(30000);
         }
     }
 
-    private void scanFiles(Path dir2scan) throws IOException {
+    private void scanFiles(Path dir2scan) throws IOException, SQLException {
         Files.walkFileTree(dir2scan, new SimpleFileVisitor<Path>() {
             @Override
             public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
@@ -65,19 +67,24 @@ implements IDriver
                 }
             }
 
+            @SneakyThrows(SQLException.class)
             @Override
             public FileVisitResult visitFile(Path file,	BasicFileAttributes attr) {
                 try {
                     processFile(file);
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    log.error("Ошибка обработки файла", e);
+                } catch (SQLException e) {
+                    log.error("Ошибка обработки файла", e);
+                    throw e;
                 }
+
                 return CONTINUE;
             }
         });
     }
 
-    private void processFile (Path file) throws IOException, FileNotFoundException {
+    private void processFile (Path file) throws IOException, SQLException {
         List<PacketInfo> packets = parseFile(file);
         for (PacketInfo packetInfo: packets) {
             if (packetInfo != null) {

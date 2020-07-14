@@ -68,7 +68,7 @@ public class DBManager {
 		}
 	}
 
-	public List<Order> getOrders() {
+	public List<Order> getOrders() throws SQLException {
 		List<Order> result = new ArrayList<>();
 		Statement statement = null;
 		try {
@@ -106,6 +106,9 @@ public class DBManager {
 			}
 		} catch (SQLException e) {
 			logger.error("", e);
+			if ("This connection has been closed.".equals(e.getMessage())) {
+				throw e;
+			}
 		}
 
 		fillAliquots(result);
@@ -118,15 +121,13 @@ public class DBManager {
 
 		String mainBarcode = orders.get(0).getBarcode();
 		String aliquotBarcode = null;
-		long devInst = -1;
 		long routeId = -1;
 		int idx = 1;
 		for (Order order : orders) {
 			if (order.getIsAliquot()) {
-				if (order.getDeviceInstanceId() != devInst || routeId != order.getRouteId()) {
-					devInst = order.getDeviceInstanceId();
+				if (routeId != order.getRouteId()) {
 					routeId = order.getRouteId();
-					aliquotBarcode = mainBarcode + "." + idx; // genNewAliquotBarcode()
+					aliquotBarcode = mainBarcode + "." + idx;
 					idx++;
 				}
 				order.setAliquotBarcode(aliquotBarcode);

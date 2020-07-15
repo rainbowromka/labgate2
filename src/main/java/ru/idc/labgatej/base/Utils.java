@@ -23,4 +23,7 @@ public class Utils {
 		//String data = "<STX>1H|\\^&|||ASTM-Host|||||CIT||P||20120219111500<CR>P|1<CR>O|1|923501||^^^CL-S\\^^^CREA|||||||A<CR>L|1|F";
 		return "";
 	}
+
+
+
 }

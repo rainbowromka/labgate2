@@ -1,9 +1,15 @@
 package ru.idc.labgatej.drivers.DNATechnologyDriver;
 
+import com.fasterxml.uuid.Generators;
+import com.google.common.collect.ImmutableList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.idc.labgatej.base.Configuration;
 import ru.idc.labgatej.base.DBManager;
+import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.orders.InquryOrders;
+import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.orders.RootOrders;
+import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.orders.SampleOrder;
+import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.orders.ServiceOrder;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.results.Inquiry;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.results.Result;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.results.Root;
@@ -20,8 +26,12 @@ import ru.idc.labgatej.model.ResultInfo;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.stream.StreamResult;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -31,9 +41,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Scanner;
+import java.util.UUID;
 import java.util.function.Consumer;
 
 public class DNATechnplogyDriver
@@ -62,6 +72,14 @@ extends SharedFolderDriver {
         super.init(dbManager, config);
         symphonyDir = Paths.get(config.getParamValue("simphonyDir"));
         dirSymphonyProcessed = symphonyDir.resolve("processedFiles");
+        try {
+            if (!Files.exists(dirSymphonyProcessed)) {
+                Files.createDirectory(dirSymphonyProcessed);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         ordersDir = Paths.get(config.getParamValue("ordersDir"));
     }
 
@@ -70,13 +88,10 @@ extends SharedFolderDriver {
 
         final Logger log = LoggerFactory.getLogger(RealBest.class);
 
-        String line;
-        String[] words;
-        Map<String, String> data = new HashMap<>();
         List<PacketInfo> packets = new ArrayList<>();
 
         File f = new File(file.toFile().getAbsolutePath());
-        JAXBContext jaxbContext = null;
+        JAXBContext jaxbContext;
         try {
             jaxbContext = JAXBContext.newInstance(Root.class);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
@@ -165,29 +180,86 @@ extends SharedFolderDriver {
     private void processSymphonyFile (
         Path file)
     {
+
+        String line;
+        String[] words;
         SymphonyRack rack = new SymphonyRack();
-        try {
-            for (SymphonyTestTube testTube : rack.getTestTubes()) {
-                if (testTube != null) {
-                    .... здесь мы формируем задание для нашей пробирки
-                } else {
-                    log.error("Ошибка разбора файла " + file.getFileName());
+
+        try (
+                Scanner sc = new Scanner(file.toFile(),"UTF-8")
+        ) {
+
+            List<SymphonyTestTube> listTubes = new ArrayList<>();
+            rack.setTestTubes(listTubes);
+
+            while (sc.hasNextLine()) {
+                line = sc.nextLine();
+                words = line.split("[\\t\\s]");
+                if (words.length >= 2) {
+                    listTubes.add(new SymphonyTestTube(words[0], words[1]));
                 }
             }
 
+            makeDNKTechnologyOrders(rack);
+
             Files.move(file, Paths.get(dirSymphonyProcessed.toFile().getPath() + "/" + file.getFileName()),
                     StandardCopyOption.REPLACE_EXISTING);
-            System.out.println(file.toAbsolutePath());
+        } catch (FileNotFoundException e) {
+            log.error("Ошибка открытия файла", e);
         } catch (IOException e) {
             e.printStackTrace();
+            log.error("Нельзя переместить файл", e);
         }
     }
 
-    private List<PacketInfo> parseSimphonyFile(
-        Path file)
+    private void makeDNKTechnologyOrders(
+        SymphonyRack rack)
     {
+        RootOrders root = new RootOrders();
+        List<InquryOrders> inquries = new ArrayList<>();
+        root.setInquryOrders(inquries);
 
+        for (SymphonyTestTube tube: rack.getTestTubes()){
+            InquryOrders inqury = new InquryOrders();
+            inquries.add(inqury);
 
+            UUID id = Generators.timeBasedGenerator().generate();
+            inqury.setId(id.toString());
+
+            SampleOrder sample = new SampleOrder();
+            inqury.setSampleOrder(sample);
+            sample.setId(id.toString());
+            sample.setCode(tube.getId());
+            sample.setMatID("21");
+
+            ServiceOrder service = new ServiceOrder();
+            sample.setServiceOrders(ImmutableList.of(service));
+            String serviceId;
+            switch (tube.getTestCode()) {
+                case "222": serviceId = "13";
+                default: serviceId = "12";
+            }
+            service.setId(serviceId);
+        }
+
+        JAXBContext jaxbContext;
+
+        String filename = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss_SSS")
+            .format(new Date()) + ".xml";
+
+        File file = new File(ordersDir.toString(), filename);
+
+        try (FileOutputStream os = new FileOutputStream(file)){
+            jaxbContext = JAXBContext.newInstance(RootOrders.class);
+            Marshaller marshaller = jaxbContext.createMarshaller();
+            marshaller.marshal(root, new StreamResult(os));
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 

@@ -1,11 +1,13 @@
 package ru.idc.labgatej;
 
+import com.fasterxml.uuid.Generators;
 import org.junit.Test;
 import org.junit.Assert;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 public class RealBestTest {
 
@@ -25,5 +27,4 @@ public class RealBestTest {
 
 		Assert.assertEquals(actual, excepted);
 	}
-
 }

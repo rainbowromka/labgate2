@@ -8,6 +8,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
+/**
+ * Корневой элемент файла XML результатов исследований.
+ */
 @XmlRootElement(name = "root")
 @XmlAccessorType(XmlAccessType.FIELD)
 @Data

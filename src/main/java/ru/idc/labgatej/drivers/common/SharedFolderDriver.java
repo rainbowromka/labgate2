@@ -84,18 +84,15 @@ implements IDriver
         });
     }
 
-    private void processFile (Path file) throws IOException, SQLException {
+    private void processFile (Path file) throws IOException, SQLException
+    {
         List<PacketInfo> packets = parseFile(file);
-        for (PacketInfo packetInfo: packets) {
-            if (packetInfo != null) {
-                dbManager.saveResults(packetInfo, false);
-            } else {
-                log.error("Ошибка разбора файла " + file.getFileName());
-            }
-        }
+
+        dbManager.savePakets(packets, false);
+
         Files.move(file, Paths.get(dirProcessed.toFile().getPath() + "/" + file.getFileName()),
             StandardCopyOption.REPLACE_EXISTING);
-        System.out.println(file.toAbsolutePath());
+        log.debug(file.toAbsolutePath().toString());
     }
 
     public abstract List<PacketInfo> parseFile(Path file)
@@ -105,5 +102,4 @@ implements IDriver
     public void close() {
 
     }
-
 }

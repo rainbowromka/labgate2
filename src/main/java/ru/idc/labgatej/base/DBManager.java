@@ -315,4 +315,23 @@ public class DBManager {
 			}
 		}
 	}
+
+    public void savePakets(List<PacketInfo> packets, boolean isCitm) throws SQLException
+    {
+	    try {
+
+	        dbConnection.setAutoCommit(false);
+
+            for (PacketInfo packetInfo: packets) {
+                saveResults(packetInfo, isCitm);
+            }
+
+            dbConnection.commit();
+            dbConnection.setAutoCommit(true);
+        } catch (SQLException e) {
+	        dbConnection.rollback();
+            logger.error("", e);
+            throw e;
+        }
+    }
 }

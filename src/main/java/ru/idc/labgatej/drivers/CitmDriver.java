@@ -14,6 +14,7 @@ import ru.idc.labgatej.model.Order;
 import ru.idc.labgatej.model.PacketInfo;
 
 import java.io.*;
+import java.sql.SQLException;
 import java.util.List;
 
 import static ru.idc.labgatej.base.Codes.*;
@@ -29,7 +30,7 @@ public class CitmDriver implements IDriver {
 	private Protocol protocol;
 	private boolean createAliquot;
 
-	private void sendTasks() throws IOException {
+	private void sendTasks() throws IOException, SQLException {
 		String msg;
 		List<Order> orders;
 		boolean hasErrors = false;
@@ -108,7 +109,7 @@ public class CitmDriver implements IDriver {
 	}
 
 	@Override
-	public void loop() throws IOException, InterruptedException {
+	public void loop() throws IOException, InterruptedException, SQLException {
 		if (!transport4tasks.isReady()) return;
 		if (!transport4results.isReady()) return;
 
@@ -117,8 +118,9 @@ public class CitmDriver implements IDriver {
 				while (! Thread.currentThread().isInterrupted()) {
 					sendTasks();
 				}
-			} catch (IOException e) {
+			} catch (Exception e) {
 				logger.error("Ошибка в потоке отправки заданий", e);
+				Thread.currentThread().interrupt();
 			}
 		};
 

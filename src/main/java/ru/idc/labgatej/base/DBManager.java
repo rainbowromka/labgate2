@@ -68,7 +68,7 @@ public class DBManager {
 		}
 	}
 
-	public List<Order> getOrders() {
+	public List<Order> getOrders() throws SQLException {
 		List<Order> result = new ArrayList<>();
 		Statement statement = null;
 		try {
@@ -106,6 +106,9 @@ public class DBManager {
 			}
 		} catch (SQLException e) {
 			logger.error("", e);
+			if ("This connection has been closed.".equals(e.getMessage())) {
+				throw e;
+			}
 		}
 
 		fillAliquots(result);
@@ -118,15 +121,13 @@ public class DBManager {
 
 		String mainBarcode = orders.get(0).getBarcode();
 		String aliquotBarcode = null;
-		long devInst = -1;
 		long routeId = -1;
 		int idx = 1;
 		for (Order order : orders) {
 			if (order.getIsAliquot()) {
-				if (order.getDeviceInstanceId() != devInst || routeId != order.getRouteId()) {
-					devInst = order.getDeviceInstanceId();
+				if (routeId != order.getRouteId()) {
 					routeId = order.getRouteId();
-					aliquotBarcode = mainBarcode + "." + idx; // genNewAliquotBarcode()
+					aliquotBarcode = mainBarcode + "." + idx;
 					idx++;
 				}
 				order.setAliquotBarcode(aliquotBarcode);
@@ -153,11 +154,11 @@ public class DBManager {
 		return String.valueOf(d);
 	}
 
-	public void saveResults(PacketInfo packetInfo, boolean isCitm) {
+	public void saveResults(PacketInfo packetInfo, boolean isCitm) throws SQLException {
 		HeaderInfo headerInfo = packetInfo.getHeader();
 		OrderInfo orderInfo = packetInfo.getOrder();
 
-		packetInfo.getResults().forEach(r -> {
+		for (ResultInfo r: packetInfo.getResults()) {
 			if (headerInfo != null && headerInfo.isQualityControl()) {
 				r.setTest_type("CONTROL");
 			}
@@ -169,10 +170,10 @@ public class DBManager {
 			} else {
 				saveResult(r);
 			}
-		});
+		}
 	}
 
-	public void saveResult(ResultInfo res) {
+	public void saveResult(ResultInfo res) throws SQLException {
 		try {
 			try (CallableStatement st = dbConnection.prepareCall("{call lis.add_raw_result2(" +
 				"?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}")) {
@@ -205,10 +206,13 @@ public class DBManager {
 			}
 		} catch (SQLException e) {
 			logger.error("", e);
+			if ("This connection has been closed.".equals(e.getMessage())) {
+				throw e;
+			}
 		}
 	}
 
-	public void saveResultCITM(ResultInfo res) {
+	public void saveResultCITM(ResultInfo res) throws SQLException {
 		try {
 			try (CallableStatement st = dbConnection.prepareCall("{call lis.add_raw_result_citm(" +
 				"?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}")) {
@@ -241,6 +245,9 @@ public class DBManager {
 			}
 		} catch (SQLException e) {
 			logger.error("", e);
+			if ("This connection has been closed.".equals(e.getMessage())) {
+				throw e;
+			}
 		}
 	}
 
@@ -308,4 +315,23 @@ public class DBManager {
 			}
 		}
 	}
+
+    public void savePakets(List<PacketInfo> packets, boolean isCitm) throws SQLException
+    {
+	    try {
+
+	        dbConnection.setAutoCommit(false);
+
+            for (PacketInfo packetInfo: packets) {
+                saveResults(packetInfo, isCitm);
+            }
+
+            dbConnection.commit();
+            dbConnection.setAutoCommit(true);
+        } catch (SQLException e) {
+	        dbConnection.rollback();
+            logger.error("", e);
+            throw e;
+        }
+    }
 }

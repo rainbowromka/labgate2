@@ -52,7 +52,6 @@ public class Manager {
 				logger.error("", e);
 				logger.debug("Ждём 60 секунд перед перезапуском...");
 				Thread.sleep(60000);
-
 			}
 		}
 	}

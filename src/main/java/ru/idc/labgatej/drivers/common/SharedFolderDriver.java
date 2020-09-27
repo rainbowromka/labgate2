@@ -96,7 +96,7 @@ implements IDriver
     }
 
     public abstract List<PacketInfo> parseFile(Path file)
-    throws FileNotFoundException;
+      throws IOException;
 
     @Override
     public void close() {

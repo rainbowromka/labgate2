@@ -3,6 +3,8 @@ package ru.idc.labgatej.base;
 import org.openmuc.jrxtx.DataBits;
 import org.openmuc.jrxtx.FlowControl;
 import org.openmuc.jrxtx.Parity;
+import org.openmuc.jrxtx.SerialPort;
+import org.openmuc.jrxtx.SerialPortBuilder;
 import org.openmuc.jrxtx.StopBits;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,66 +12,54 @@ import org.slf4j.LoggerFactory;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.SocketTimeoutException;
 
-public class SocketClientTransport implements Transport {
-	private static Logger logger = LoggerFactory.getLogger(SocketClientTransport.class);
-	private int port;
-	private String host;
+public class Rs232ClientTransport implements Transport {
+	private static Logger logger = LoggerFactory.getLogger(Rs232ClientTransport.class);
+	private String port;
 	private InputStream in;
+	private SerialPort serialPort;
 	private Writer out;
-	private Socket socket = null;
 
-	public SocketClientTransport(String host, int port) {
-		this.host = host;
+	public Rs232ClientTransport(String port) {
 		this.port = port;
 	}
 
 	@Override
-	public void init(int timeout, int baudRate, DataBits dataBits, Parity parity, StopBits stopBits, FlowControl flowControl) {
+	public void init(int timeout) {
 	}
 
 	@Override
-	public void init(int timeout) {
+	public void init(int timeout, int baudRate, DataBits dataBits, Parity parity, StopBits stopBits, FlowControl flowControl) {
 		try {
 			logger.info("Подключаемся к \n\t" +
-				"(IP address " + host +
-				", порт " + port + ")");
-			InetAddress ipAddress;
-			ipAddress = InetAddress.getByName(host);
-			socket = new Socket(ipAddress, port);
-			socket.setSoTimeout(timeout);
-			socket.setKeepAlive(true);
+				", порту " + port + ")");
+
+			serialPort = SerialPortBuilder.newBuilder(port)
+				.setBaudRate(baudRate)
+				.setDataBits(dataBits)
+				.setParity(parity)
+				.setStopBits(stopBits)
+				.setFlowControl(flowControl)
+				.build();
+			serialPort.setSerialPortTimeout(timeout);
+
 			logger.info("Соединение установлено");
 
 			// Получаем входной и выходной потоки
-			// сокета для обмена сообщениями с сервером
-			InputStream sin = socket.getInputStream();
-			OutputStream sout = socket.getOutputStream();
-
-			in = sin; //new BufferedReader(new InputStreamReader(sin)); //new DataInputStream(sin);
-			out =  new BufferedWriter(new OutputStreamWriter(sout)); //new DataOutputStream(sout);
+			in = serialPort.getInputStream();
+			out =  new BufferedWriter(new OutputStreamWriter(serialPort.getOutputStream()));
 		} catch (Exception e) {
 			logger.error("", e);
-			logger.debug("Ждём 60 секунд...");
-			try {
-				Thread.sleep(60000);
-			} catch (InterruptedException interruptedException) {
-				logger.error("", interruptedException);
-			}
 		}
 	}
 
 	@Override
 	public void close() {
 		try {
-			if (socket != null) {
-				socket.close();
+			if (serialPort != null) {
+				serialPort.close();
 			}
 		} catch (IOException e) {
 			logger.error("", e);
@@ -78,7 +68,7 @@ public class SocketClientTransport implements Transport {
 
 	@Override
 	public boolean isReady() {
-		return socket != null && socket.isConnected();
+		return serialPort != null && !serialPort.isClosed();
 	}
 
 	@Override
@@ -99,7 +89,7 @@ public class SocketClientTransport implements Transport {
 			int result = in.read();
 			logger.debug(Codes.makePrintable("" + (char) Integer.parseInt(Integer.toHexString(result))));
 			return result;
-		} catch (SocketTimeoutException e) {
+		} catch (org.openmuc.jrxtx.SerialPortTimeoutException e) {
 			if (!ignoreTimeout) throw e;
 		}
 		return -1;
@@ -119,3 +109,4 @@ public class SocketClientTransport implements Transport {
 		return msg;
 	}
 }
+

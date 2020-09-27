@@ -9,7 +9,9 @@ import ru.idc.labgatej.base.Configuration;
 import ru.idc.labgatej.base.DBManager;
 import ru.idc.labgatej.base.IDriver;
 import ru.idc.labgatej.drivers.Medonic;
+import ru.idc.labgatej.drivers.MultiskanFC;
 import ru.idc.labgatej.drivers.RealBest;
+import ru.idc.labgatej.drivers.UriskanProDriver;
 
 import static org.apache.log4j.Level.INFO;
 
@@ -57,9 +59,11 @@ public class Manager {
 	}
 
 	private static IDriver getDriverByName(String name) {
-		switch (name) {
+		switch (name.toUpperCase().trim()) {
 			case "CITM": return new CitmDriver();
 			case "MEDONIC":	return new Medonic();
+			case "MULTISKANFC":	return new MultiskanFC();
+			case "URISKAN": return new UriskanProDriver();
 			case "REALBEST": return new RealBest();
 			default: return null;
 		}

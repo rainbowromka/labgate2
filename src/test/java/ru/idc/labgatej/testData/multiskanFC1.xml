@@ -1,0 +1,2367 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Sessions>
+	<Session name="измерение поглощения (506)" time="02.07.2020 11:57:33">
+		<ResultStep name="Абсорбция 1">
+			<Plate name="Планшет 1">
+				<Wells>
+					<Coordinate column="1" row="A">
+						<Sample name="Ктрл0001">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="true" disabled="false" time="0,00" value="4,417" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="A">
+						<Sample name="Обр0001">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,02" value="0,055" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="A">
+						<Sample name="Обр0002">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,04" value="0,052" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="A">
+						<Sample name="Обр0003">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,06" value="0,053" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="A">
+						<Sample name="Обр0004">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,07" value="0,055" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="A">
+						<Sample name="Обр0005">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,09" value="0,059" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="A">
+						<Sample name="Обр0006">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,11" value="0,054" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="A">
+						<Sample name="Обр0007">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,13" value="0,055" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="A">
+						<Sample name="Обр0008">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,15" value="0,060" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="A">
+						<Sample name="Обр0009">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,17" value="0,061" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="A">
+						<Sample name="Обр0010">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,19" value="0,064" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="A">
+						<Sample name="Обр0011">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,21" value="0,051" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="1" row="B">
+						<Sample name="Ктрл0002">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,88" value="3,970" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="B">
+						<Sample name="Обр0012">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,86" value="0,052" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="B">
+						<Sample name="Обр0013">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,84" value="0,052" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="B">
+						<Sample name="Обр0014">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,82" value="0,065" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="B">
+						<Sample name="Обр0015">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,80" value="0,063" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="B">
+						<Sample name="Обр0016">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,79" value="0,051" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="B">
+						<Sample name="Обр0017">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,77" value="0,059" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="B">
+						<Sample name="Обр0018">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,75" value="0,053" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="B">
+						<Sample name="Обр0019">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,73" value="0,070" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="B">
+						<Sample name="Обр0020">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,71" value="0,051" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="B">
+						<Sample name="Обр0021">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,69" value="0,052" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="B">
+						<Sample name="Обр0022">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,67" value="0,047" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="1" row="C">
+						<Sample name="Ктрл0003">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,43" value="0,086" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="C">
+						<Sample name="Обр0023">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,45" value="0,050" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="C">
+						<Sample name="Обр0024">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,47" value="0,047" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="C">
+						<Sample name="Обр0025">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,49" value="0,052" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="C">
+						<Sample name="Обр0026">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,51" value="0,047" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="C">
+						<Sample name="Обр0027">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,53" value="0,047" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="C">
+						<Sample name="Обр0028">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,55" value="0,049" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="C">
+						<Sample name="Обр0029">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,56" value="0,049" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="C">
+						<Sample name="Обр0030">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,58" value="0,053" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="C">
+						<Sample name="Обр0031">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,60" value="0,046" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="C">
+						<Sample name="Обр0032">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,62" value="0,055" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="C">
+						<Sample name="Обр0033">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,64" value="0,047" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="1" row="D">
+						<Sample name="Ктрл0004">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,31" value="0,057" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="D">
+						<Sample name="Обр0034">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,29" value="0,049" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="D">
+						<Sample name="Обр0035">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,28" value="0,047" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="D">
+						<Sample name="Обр0036">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,26" value="0,048" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="D">
+						<Sample name="Обр0037">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,24" value="0,048" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="D">
+						<Sample name="Обр0038">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,22" value="0,048" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="D">
+						<Sample name="Обр0039">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,20" value="0,045" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="D">
+						<Sample name="Обр0040">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,18" value="0,047" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="D">
+						<Sample name="Обр0041">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,16" value="0,049" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="D">
+						<Sample name="Обр0042">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,14" value="0,047" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="D">
+						<Sample name="Обр0043">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,12" value="0,046" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="D">
+						<Sample name="Обр0044">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,10" value="0,045" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="1" row="E">
+						<Sample name="Обр0089">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,86" value="0,536" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="E">
+						<Sample name="Обр0045">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,88" value="0,053" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="E">
+						<Sample name="Обр0046">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,90" value="0,047" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="E">
+						<Sample name="Обр0047">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,92" value="0,054" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="E">
+						<Sample name="Обр0048">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,94" value="0,046" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="E">
+						<Sample name="Обр0049">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,96" value="0,051" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="E">
+						<Sample name="Обр0050">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,98" value="0,050" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="E">
+						<Sample name="Обр0051">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,00" value="0,047" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="E">
+						<Sample name="Обр0052">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,01" value="0,047" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="E">
+						<Sample name="Обр0053">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,03" value="0,047" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="E">
+						<Sample name="Обр0054">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,05" value="0,050" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="E">
+						<Sample name="Обр0055">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,07" value="0,049" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="1" row="F">
+						<Sample name="Обр0090">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,74" value="0,056" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="F">
+						<Sample name="Обр0056">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,73" value="0,049" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="F">
+						<Sample name="Обр0057">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,71" value="0,051" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="F">
+						<Sample name="Обр0058">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,69" value="0,049" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="F">
+						<Sample name="Обр0059">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,67" value="0,048" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="F">
+						<Sample name="Обр0060">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,65" value="0,061" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="F">
+						<Sample name="Обр0061">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,63" value="0,094" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="F">
+						<Sample name="Обр0062">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,61" value="0,047" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="F">
+						<Sample name="Обр0063">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,59" value="0,047" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="F">
+						<Sample name="Обр0064">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,57" value="0,048" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="F">
+						<Sample name="Обр0065">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,55" value="0,046" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="F">
+						<Sample name="Обр0066">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,53" value="0,047" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="1" row="G">
+						<Sample name="Обр0091">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,29" value="0,078" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="G">
+						<Sample name="Обр0067">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,31" value="0,053" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="G">
+						<Sample name="Обр0068">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,33" value="0,063" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="G">
+						<Sample name="Обр0069">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,35" value="0,056" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="G">
+						<Sample name="Обр0070">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,37" value="0,058" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="G">
+						<Sample name="Обр0071">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,39" value="0,059" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="G">
+						<Sample name="Обр0072">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,41" value="0,048" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="G">
+						<Sample name="Обр0073">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,43" value="0,052" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="G">
+						<Sample name="Обр0074">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,45" value="0,048" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="G">
+						<Sample name="Обр0075">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,47" value="0,051" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="G">
+						<Sample name="Обр0076">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,48" value="0,101" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="G">
+						<Sample name="Обр0077">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="true" disabled="false" time="4,50" value="4,013" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="1" row="H">
+						<Sample name="Обр0092">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,18" value="0,068" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="H">
+						<Sample name="Обр0078">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,16" value="0,060" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="H">
+						<Sample name="Обр0079">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,14" value="0,050" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="H">
+						<Sample name="Обр0080">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,12" value="0,052" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="H">
+						<Sample name="Обр0081">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,10" value="0,147" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="H">
+						<Sample name="Обр0082">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,08" value="0,059" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="H">
+						<Sample name="Обр0083">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="true" disabled="false" time="5,06" value="4,321" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="H">
+						<Sample name="Обр0084">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,04" value="1,532" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="H">
+						<Sample name="Обр0085">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,02" value="0,149" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="H">
+						<Sample name="Обр0086">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,00" value="0,069" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="H">
+						<Sample name="Обр0087">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,98" value="0,113" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="H">
+						<Sample name="Обр0088">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="true" disabled="false" time="4,97" value="4,324" wavelength_ex="450" wavelength_em="0" />
+					</Coordinate>
+				</Wells>
+			</Plate>
+		</ResultStep>
+		<ResultsSummary>
+			<Общие>
+				<Plate name="Планшет 1">
+					<Well address="A01">
+						<Sample name="Ктрл0001" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="4,417" backgroundcolor="default" foregroundcolor="default" disabled="True" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="B01">
+						<Sample name="Ктрл0002" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="3,970" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="C01">
+						<Sample name="Ктрл0003" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,086" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="D01">
+						<Sample name="Ктрл0004" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,057" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="E01">
+						<Sample name="Обр0089" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,536" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="F01">
+						<Sample name="Обр0090" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,056" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="G01">
+						<Sample name="Обр0091" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,078" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="H01">
+						<Sample name="Обр0092" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,068" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="A02">
+						<Sample name="Обр0001" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,055" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="B02">
+						<Sample name="Обр0012" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,052" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="C02">
+						<Sample name="Обр0023" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,050" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="D02">
+						<Sample name="Обр0034" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,049" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="E02">
+						<Sample name="Обр0045" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,053" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="F02">
+						<Sample name="Обр0056" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,049" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="G02">
+						<Sample name="Обр0067" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,053" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="H02">
+						<Sample name="Обр0078" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,060" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="A03">
+						<Sample name="Обр0002" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,052" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="B03">
+						<Sample name="Обр0013" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,052" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="C03">
+						<Sample name="Обр0024" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,047" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="D03">
+						<Sample name="Обр0035" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,047" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="E03">
+						<Sample name="Обр0046" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,047" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="F03">
+						<Sample name="Обр0057" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,051" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="G03">
+						<Sample name="Обр0068" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,063" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="H03">
+						<Sample name="Обр0079" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,050" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="A04">
+						<Sample name="Обр0003" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,053" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="B04">
+						<Sample name="Обр0014" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,065" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="C04">
+						<Sample name="Обр0025" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,052" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="D04">
+						<Sample name="Обр0036" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,048" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="E04">
+						<Sample name="Обр0047" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,054" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="F04">
+						<Sample name="Обр0058" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,049" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="G04">
+						<Sample name="Обр0069" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,056" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="H04">
+						<Sample name="Обр0080" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,052" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="A05">
+						<Sample name="Обр0004" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,055" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="B05">
+						<Sample name="Обр0015" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,063" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="C05">
+						<Sample name="Обр0026" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,047" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="D05">
+						<Sample name="Обр0037" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,048" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="E05">
+						<Sample name="Обр0048" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,046" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="F05">
+						<Sample name="Обр0059" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,048" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="G05">
+						<Sample name="Обр0070" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,058" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="H05">
+						<Sample name="Обр0081" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,147" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="A06">
+						<Sample name="Обр0005" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,059" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="B06">
+						<Sample name="Обр0016" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,051" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="C06">
+						<Sample name="Обр0027" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,047" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="D06">
+						<Sample name="Обр0038" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,048" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="E06">
+						<Sample name="Обр0049" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,051" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="F06">
+						<Sample name="Обр0060" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,061" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="G06">
+						<Sample name="Обр0071" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,059" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="H06">
+						<Sample name="Обр0082" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,059" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="A07">
+						<Sample name="Обр0006" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,054" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="B07">
+						<Sample name="Обр0017" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,059" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="C07">
+						<Sample name="Обр0028" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,049" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="D07">
+						<Sample name="Обр0039" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,045" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="E07">
+						<Sample name="Обр0050" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,050" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="F07">
+						<Sample name="Обр0061" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,094" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="G07">
+						<Sample name="Обр0072" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,048" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="H07">
+						<Sample name="Обр0083" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="4,321" backgroundcolor="default" foregroundcolor="default" disabled="True" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="A08">
+						<Sample name="Обр0007" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,055" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="B08">
+						<Sample name="Обр0018" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,053" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="C08">
+						<Sample name="Обр0029" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,049" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="D08">
+						<Sample name="Обр0040" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,047" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="E08">
+						<Sample name="Обр0051" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,047" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="F08">
+						<Sample name="Обр0062" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,047" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="G08">
+						<Sample name="Обр0073" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,052" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="H08">
+						<Sample name="Обр0084" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="1,532" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="A09">
+						<Sample name="Обр0008" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,060" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="B09">
+						<Sample name="Обр0019" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,070" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="C09">
+						<Sample name="Обр0030" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,053" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="D09">
+						<Sample name="Обр0041" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,049" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="E09">
+						<Sample name="Обр0052" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,047" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="F09">
+						<Sample name="Обр0063" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,047" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="G09">
+						<Sample name="Обр0074" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,048" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="H09">
+						<Sample name="Обр0085" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,149" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="A10">
+						<Sample name="Обр0009" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,061" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="B10">
+						<Sample name="Обр0020" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,051" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="C10">
+						<Sample name="Обр0031" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,046" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="D10">
+						<Sample name="Обр0042" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,047" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="E10">
+						<Sample name="Обр0053" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,047" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="F10">
+						<Sample name="Обр0064" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,048" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="G10">
+						<Sample name="Обр0075" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,051" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="H10">
+						<Sample name="Обр0086" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,069" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="A11">
+						<Sample name="Обр0010" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,064" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="B11">
+						<Sample name="Обр0021" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,052" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="C11">
+						<Sample name="Обр0032" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,055" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="D11">
+						<Sample name="Обр0043" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,046" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="E11">
+						<Sample name="Обр0054" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,050" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="F11">
+						<Sample name="Обр0065" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,046" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="G11">
+						<Sample name="Обр0076" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,101" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="H11">
+						<Sample name="Обр0087" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,113" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="A12">
+						<Sample name="Обр0011" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,051" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="B12">
+						<Sample name="Обр0022" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,047" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="C12">
+						<Sample name="Обр0033" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,047" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="D12">
+						<Sample name="Обр0044" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,045" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="E12">
+						<Sample name="Обр0055" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,049" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="F12">
+						<Sample name="Обр0066" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="0,047" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="G12">
+						<Sample name="Обр0077" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="4,013" backgroundcolor="default" foregroundcolor="default" disabled="True" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="H12">
+						<Sample name="Обр0088" group="Группа 1">
+							<Result name="Абсорбция 1&#xD;&#xA;450nm" value="4,324" backgroundcolor="default" foregroundcolor="default" disabled="True" extrapolated="False" />
+						</Sample>
+					</Well>
+				</Plate>
+			</Общие>
+		</ResultsSummary>
+		<GeneralInformation>
+			<SoftwareVersion>SkanIt Software 4.1 for Microplate Readers RE, ver. 4.1.0.43</SoftwareVersion>
+			<OpticalResponseCompensation>True</OpticalResponseCompensation>
+		</GeneralInformation>
+		<SessionInformation>
+			<SessionName>измерение поглощения (506)</SessionName>
+			<SessionDescription />
+			<SoftwareVersion>SkanIt Software 4.1 for Microplate Readers RE, ver. 4.1.0.43</SoftwareVersion>
+			<SessionExecutedTime>02.07.2020 11:57:33</SessionExecutedTime>
+			<SessionUser>1-ПК\1</SessionUser>
+		</SessionInformation>
+		<InstrumentInformation>
+			<Name>Multiskan FC</Name>
+			<ESWVersion>1.01.6</ESWVersion>
+			<InstrumentSerialNumber>357-909723T</InstrumentSerialNumber>
+			<InstrumentModules />
+			<Incubator>Yes</Incubator>
+		</InstrumentInformation>
+		<ProtocolSteps>
+			<CheckTemperature>Нет</CheckTemperature>
+			<ProtocolStep name="Абсорбция 1">
+				<MeasurementTechnology>Photometric</MeasurementTechnology>
+				<MeasurementMode>Fast</MeasurementMode>
+				<Filter />
+				<Name>
+					<Wavelength>450</Wavelength>
+					<Position>4</Position>
+				</Name>
+				<PathlengthCorrection>False</PathlengthCorrection>
+			</ProtocolStep>
+		</ProtocolSteps>
+		<RunLog>
+			<Log entrytime="02.07.2020 11:57:35" event="Сессия измерение поглощения (506) начата" information="" />
+			<Log entrytime="02.07.2020 11:57:35" event="Температура" information="24,8°C" />
+			<Log entrytime="02.07.2020 11:57:35" event="Этап Абсорбция 1 начата" information="" />
+			<Log entrytime="02.07.2020 11:57:42" event="Этап Абсорбция 1 завершено" information="" />
+			<Log entrytime="02.07.2020 11:57:42" event="Температура" information="24,8°C" />
+			<Log entrytime="02.07.2020 11:57:44" event="Сессия измерение поглощения (506) завершено" information="" />
+		</RunLog>
+		<Plates>
+			<Plate name="Планшет 1">
+				<PlateTemplate>ANSI/SBS Standard, 96-well</PlateTemplate>
+				<Wells>
+					<Coordinate column="1" row="A">
+						<Sample name="Ктрл0001">
+							<Type>Control</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Concentration>
+								<value>0</value>
+							</Concentration>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="2" row="A">
+						<Sample name="Обр0001">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="3" row="A">
+						<Sample name="Обр0002">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="4" row="A">
+						<Sample name="Обр0003">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="5" row="A">
+						<Sample name="Обр0004">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="6" row="A">
+						<Sample name="Обр0005">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="7" row="A">
+						<Sample name="Обр0006">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="8" row="A">
+						<Sample name="Обр0007">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="9" row="A">
+						<Sample name="Обр0008">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="10" row="A">
+						<Sample name="Обр0009">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="11" row="A">
+						<Sample name="Обр0010">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="12" row="A">
+						<Sample name="Обр0011">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="1" row="B">
+						<Sample name="Ктрл0002">
+							<Type>Control</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Concentration>
+								<value>0</value>
+							</Concentration>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="2" row="B">
+						<Sample name="Обр0012">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="3" row="B">
+						<Sample name="Обр0013">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="4" row="B">
+						<Sample name="Обр0014">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="5" row="B">
+						<Sample name="Обр0015">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="6" row="B">
+						<Sample name="Обр0016">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="7" row="B">
+						<Sample name="Обр0017">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="8" row="B">
+						<Sample name="Обр0018">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="9" row="B">
+						<Sample name="Обр0019">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="10" row="B">
+						<Sample name="Обр0020">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="11" row="B">
+						<Sample name="Обр0021">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="12" row="B">
+						<Sample name="Обр0022">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="1" row="C">
+						<Sample name="Ктрл0003">
+							<Type>Control</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Concentration>
+								<value>0</value>
+							</Concentration>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="2" row="C">
+						<Sample name="Обр0023">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="3" row="C">
+						<Sample name="Обр0024">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="4" row="C">
+						<Sample name="Обр0025">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="5" row="C">
+						<Sample name="Обр0026">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="6" row="C">
+						<Sample name="Обр0027">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="7" row="C">
+						<Sample name="Обр0028">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="8" row="C">
+						<Sample name="Обр0029">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="9" row="C">
+						<Sample name="Обр0030">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="10" row="C">
+						<Sample name="Обр0031">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="11" row="C">
+						<Sample name="Обр0032">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="12" row="C">
+						<Sample name="Обр0033">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="1" row="D">
+						<Sample name="Ктрл0004">
+							<Type>Control</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Concentration>
+								<value>0</value>
+							</Concentration>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="2" row="D">
+						<Sample name="Обр0034">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="3" row="D">
+						<Sample name="Обр0035">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="4" row="D">
+						<Sample name="Обр0036">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="5" row="D">
+						<Sample name="Обр0037">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="6" row="D">
+						<Sample name="Обр0038">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="7" row="D">
+						<Sample name="Обр0039">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="8" row="D">
+						<Sample name="Обр0040">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="9" row="D">
+						<Sample name="Обр0041">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="10" row="D">
+						<Sample name="Обр0042">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="11" row="D">
+						<Sample name="Обр0043">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="12" row="D">
+						<Sample name="Обр0044">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="1" row="E">
+						<Sample name="Обр0089">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="2" row="E">
+						<Sample name="Обр0045">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="3" row="E">
+						<Sample name="Обр0046">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="4" row="E">
+						<Sample name="Обр0047">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="5" row="E">
+						<Sample name="Обр0048">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="6" row="E">
+						<Sample name="Обр0049">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="7" row="E">
+						<Sample name="Обр0050">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="8" row="E">
+						<Sample name="Обр0051">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="9" row="E">
+						<Sample name="Обр0052">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="10" row="E">
+						<Sample name="Обр0053">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="11" row="E">
+						<Sample name="Обр0054">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="12" row="E">
+						<Sample name="Обр0055">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="1" row="F">
+						<Sample name="Обр0090">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="2" row="F">
+						<Sample name="Обр0056">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="3" row="F">
+						<Sample name="Обр0057">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="4" row="F">
+						<Sample name="Обр0058">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="5" row="F">
+						<Sample name="Обр0059">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="6" row="F">
+						<Sample name="Обр0060">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="7" row="F">
+						<Sample name="Обр0061">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="8" row="F">
+						<Sample name="Обр0062">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="9" row="F">
+						<Sample name="Обр0063">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="10" row="F">
+						<Sample name="Обр0064">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="11" row="F">
+						<Sample name="Обр0065">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="12" row="F">
+						<Sample name="Обр0066">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="1" row="G">
+						<Sample name="Обр0091">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="2" row="G">
+						<Sample name="Обр0067">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="3" row="G">
+						<Sample name="Обр0068">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="4" row="G">
+						<Sample name="Обр0069">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="5" row="G">
+						<Sample name="Обр0070">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="6" row="G">
+						<Sample name="Обр0071">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="7" row="G">
+						<Sample name="Обр0072">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="8" row="G">
+						<Sample name="Обр0073">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="9" row="G">
+						<Sample name="Обр0074">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="10" row="G">
+						<Sample name="Обр0075">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="11" row="G">
+						<Sample name="Обр0076">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="12" row="G">
+						<Sample name="Обр0077">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="1" row="H">
+						<Sample name="Обр0092">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="2" row="H">
+						<Sample name="Обр0078">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="3" row="H">
+						<Sample name="Обр0079">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="4" row="H">
+						<Sample name="Обр0080">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="5" row="H">
+						<Sample name="Обр0081">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="6" row="H">
+						<Sample name="Обр0082">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="7" row="H">
+						<Sample name="Обр0083">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="8" row="H">
+						<Sample name="Обр0084">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="9" row="H">
+						<Sample name="Обр0085">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="10" row="H">
+						<Sample name="Обр0086">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="11" row="H">
+						<Sample name="Обр0087">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+					<Coordinate column="12" row="H">
+						<Sample name="Обр0088">
+							<Type>Unknown</Type>
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+							<Dilution>
+								<value>1:1</value>
+							</Dilution>
+						</Sample>
+					</Coordinate>
+				</Wells>
+			</Plate>
+		</Plates>
+	</Session>
+</Sessions>

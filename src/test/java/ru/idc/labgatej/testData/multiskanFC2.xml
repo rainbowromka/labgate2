@@ -1,0 +1,4068 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Sessions>
+	<Session name="ПСА Общий_ ИФА_ Бест_ вариант 1Набор Т_8454 (10)" time="17.09.2019 12:38:41">
+		<ResultStep name="450nm">
+			<Plate name="Планшет 1">
+				<Wells>
+					<Coordinate column="1" row="A">
+						<Sample name="Стд0001">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,00" value="0,045" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="A">
+						<Sample name="Стд0001">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,02" value="0,045" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="A">
+						<Sample name="Обр0002">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,04" value="0,063" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="A">
+						<Sample name="Обр0010">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,06" value="0,161" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="A">
+						<Sample name="Обр0018">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,07" value="0,069" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="A">
+						<Sample name="Обр0026">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,09" value="0,071" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="A">
+						<Sample name="Обр0034">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,11" value="0,077" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="A">
+						<Sample name="Обр0042">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,13" value="0,064" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="A">
+						<Sample name="Обр0050">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,15" value="0,000" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="A">
+						<Sample name="Обр0058">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,17" value="0,000" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="A">
+						<Sample name="Обр0066">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,19" value="0,000" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="A">
+						<Sample name="Обр0074">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,21" value="0" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="1" row="B">
+						<Sample name="Стд0002">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,88" value="0,108" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="B">
+						<Sample name="Стд0002">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,86" value="0,113" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="B">
+						<Sample name="Обр0003">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,84" value="0,102" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="B">
+						<Sample name="Обр0011">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,82" value="0,101" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="B">
+						<Sample name="Обр0019">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,80" value="0,085" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="B">
+						<Sample name="Обр0027">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,79" value="0,205" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="B">
+						<Sample name="Обр0035">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,77" value="0,077" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="B">
+						<Sample name="Обр0043">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,75" value="0,060" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="B">
+						<Sample name="Обр0051">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,73" value="0" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="B">
+						<Sample name="Обр0059">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,71" value="0" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="B">
+						<Sample name="Обр0067">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,69" value="0,000" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="B">
+						<Sample name="Обр0075">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,67" value="0,000" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="1" row="C">
+						<Sample name="Стд0003">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,43" value="0,235" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="C">
+						<Sample name="Стд0003">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,45" value="0,219" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="C">
+						<Sample name="Обр0004">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,47" value="0,099" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="C">
+						<Sample name="Обр0012">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,49" value="0,075" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="C">
+						<Sample name="Обр0020">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,51" value="0,073" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="C">
+						<Sample name="Обр0028">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,53" value="0,068" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="C">
+						<Sample name="Обр0036">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,55" value="0,082" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="C">
+						<Sample name="Обр0044">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,57" value="0,215" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="C">
+						<Sample name="Обр0052">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,58" value="0,000" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="C">
+						<Sample name="Обр0060">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,60" value="0" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="C">
+						<Sample name="Обр0068">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,62" value="0" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="C">
+						<Sample name="Обр0076">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,64" value="0" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="1" row="D">
+						<Sample name="Стд0004">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,31" value="0,365" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="D">
+						<Sample name="Стд0004">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,30" value="0,344" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="D">
+						<Sample name="Обр0005">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,28" value="0,062" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="D">
+						<Sample name="Обр0013">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,26" value="0,109" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="D">
+						<Sample name="Обр0021">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,24" value="0,081" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="D">
+						<Sample name="Обр0029">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,22" value="0,069" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="D">
+						<Sample name="Обр0037">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,20" value="0,120" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="D">
+						<Sample name="Обр0045">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,18" value="0,229" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="D">
+						<Sample name="Обр0053">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,16" value="0" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="D">
+						<Sample name="Обр0061">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,14" value="0,000" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="D">
+						<Sample name="Обр0069">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,12" value="0,000" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="D">
+						<Sample name="Обр0077">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,10" value="0,000" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="1" row="E">
+						<Sample name="Стд0005">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,86" value="0,558" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="E">
+						<Sample name="Стд0005">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,88" value="0,529" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="E">
+						<Sample name="Обр0006">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,90" value="0,065" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="E">
+						<Sample name="Обр0014">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,92" value="0,095" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="E">
+						<Sample name="Обр0022">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,94" value="0,105" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="E">
+						<Sample name="Обр0030">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,96" value="0,066" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="E">
+						<Sample name="Обр0038">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,98" value="0,058" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="E">
+						<Sample name="Обр0046">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,00" value="0,044" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="E">
+						<Sample name="Обр0054">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,02" value="0,000" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="E">
+						<Sample name="Обр0062">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,04" value="0" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="E">
+						<Sample name="Обр0070">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,06" value="0,000" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="E">
+						<Sample name="Обр0078">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,07" value="0,000" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="1" row="F">
+						<Sample name="Стд0006">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,75" value="0,909" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="F">
+						<Sample name="Стд0006">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,73" value="0,872" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="F">
+						<Sample name="Обр0007">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,71" value="0,069" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="F">
+						<Sample name="Обр0015">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,69" value="0,086" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="F">
+						<Sample name="Обр0023">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,67" value="0,090" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="F">
+						<Sample name="Обр0031">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,65" value="0,055" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="F">
+						<Sample name="Обр0039">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,63" value="0,078" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="F">
+						<Sample name="Обр0047">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,61" value="0,046" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="F">
+						<Sample name="Обр0055">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,59" value="0,000" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="F">
+						<Sample name="Обр0063">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,57" value="0,000" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="F">
+						<Sample name="Обр0071">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,56" value="0,000" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="F">
+						<Sample name="Обр0079">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,54" value="0,000" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="1" row="G">
+						<Sample name="Ктрл0001">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,30" value="0,157" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="G">
+						<Sample name="Ктрл0001">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,32" value="0,169" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="G">
+						<Sample name="Обр0008">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,34" value="0,086" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="G">
+						<Sample name="Обр0016">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,35" value="0,208" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="G">
+						<Sample name="Обр0024">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,37" value="0,156" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="G">
+						<Sample name="Обр0032">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,39" value="0,062" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="G">
+						<Sample name="Обр0040">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,41" value="0,124" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="G">
+						<Sample name="Обр0048">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,43" value="0,044" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="G">
+						<Sample name="Обр0056">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,45" value="0,000" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="G">
+						<Sample name="Обр0064">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,47" value="0" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="G">
+						<Sample name="Обр0072">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,49" value="0,000" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="G">
+						<Sample name="Обр0080">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,51" value="0,000" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="1" row="H">
+						<Sample name="Обр0082">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,18" value="0,088" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="H">
+						<Sample name="Обр0001">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,16" value="0,545" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="H">
+						<Sample name="Обр0009">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,14" value="0,128" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="H">
+						<Sample name="Обр0017">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,12" value="0,064" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="H">
+						<Sample name="Обр0025">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,10" value="0,094" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="H">
+						<Sample name="Обр0033">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,08" value="0,063" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="H">
+						<Sample name="Обр0041">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,06" value="0,097" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="H">
+						<Sample name="Обр0049">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,05" value="0,046" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="H">
+						<Sample name="Обр0057">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,03" value="0,000" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="H">
+						<Sample name="Обр0065">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,01" value="0,000" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="H">
+						<Sample name="Обр0073">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,99" value="0,000" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="H">
+						<Sample name="Обр0081">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,97" value="0,000" wavelength_ex="405" wavelength_em="0" />
+					</Coordinate>
+				</Wells>
+			</Plate>
+		</ResultStep>
+		<ResultStep name="620nm">
+			<Plate name="Планшет 1">
+				<Wells>
+					<Coordinate column="1" row="A">
+						<Sample name="Стд0001">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="7,21" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="A">
+						<Sample name="Стд0001">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="7,23" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="A">
+						<Sample name="Обр0002">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="7,25" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="A">
+						<Sample name="Обр0010">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="7,27" value="0,037" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="A">
+						<Sample name="Обр0018">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="7,29" value="0,037" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="A">
+						<Sample name="Обр0026">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="7,30" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="A">
+						<Sample name="Обр0034">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="7,32" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="A">
+						<Sample name="Обр0042">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="7,34" value="0,039" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="A">
+						<Sample name="Обр0050">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="7,36" value="0" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="A">
+						<Sample name="Обр0058">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="7,38" value="0" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="A">
+						<Sample name="Обр0066">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="7,40" value="0" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="A">
+						<Sample name="Обр0074">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="7,42" value="0" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="1" row="B">
+						<Sample name="Стд0002">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="8,09" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="B">
+						<Sample name="Стд0002">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="8,07" value="0,042" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="B">
+						<Sample name="Обр0003">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="8,05" value="0,037" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="B">
+						<Sample name="Обр0011">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="8,03" value="0,039" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="B">
+						<Sample name="Обр0019">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="8,01" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="B">
+						<Sample name="Обр0027">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="8,00" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="B">
+						<Sample name="Обр0035">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="7,98" value="0,037" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="B">
+						<Sample name="Обр0043">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="7,96" value="0,037" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="B">
+						<Sample name="Обр0051">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="7,94" value="0,000" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="B">
+						<Sample name="Обр0059">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="7,92" value="0" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="B">
+						<Sample name="Обр0067">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="7,90" value="0,000" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="B">
+						<Sample name="Обр0075">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="7,88" value="0,000" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="1" row="C">
+						<Sample name="Стд0003">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="8,64" value="0,037" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="C">
+						<Sample name="Стд0003">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="8,66" value="0,039" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="C">
+						<Sample name="Обр0004">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="8,68" value="0,035" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="C">
+						<Sample name="Обр0012">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="8,70" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="C">
+						<Sample name="Обр0020">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="8,72" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="C">
+						<Sample name="Обр0028">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="8,74" value="0,035" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="C">
+						<Sample name="Обр0036">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="8,76" value="0,035" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="C">
+						<Sample name="Обр0044">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="8,78" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="C">
+						<Sample name="Обр0052">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="8,79" value="0,000" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="C">
+						<Sample name="Обр0060">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="8,81" value="0,000" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="C">
+						<Sample name="Обр0068">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="8,83" value="0,000" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="C">
+						<Sample name="Обр0076">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="8,85" value="0,000" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="1" row="D">
+						<Sample name="Стд0004">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="9,52" value="0,037" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="D">
+						<Sample name="Стд0004">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="9,50" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="D">
+						<Sample name="Обр0005">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="9,49" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="D">
+						<Sample name="Обр0013">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="9,47" value="0,038" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="D">
+						<Sample name="Обр0021">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="9,45" value="0,037" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="D">
+						<Sample name="Обр0029">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="9,43" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="D">
+						<Sample name="Обр0037">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="9,41" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="D">
+						<Sample name="Обр0045">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="9,39" value="0,037" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="D">
+						<Sample name="Обр0053">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="9,37" value="0,000" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="D">
+						<Sample name="Обр0061">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="9,35" value="0,000" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="D">
+						<Sample name="Обр0069">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="9,33" value="0,000" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="D">
+						<Sample name="Обр0077">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="9,31" value="0,000" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="1" row="E">
+						<Sample name="Стд0005">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="10,07" value="0,039" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="E">
+						<Sample name="Стд0005">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="10,09" value="0,037" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="E">
+						<Sample name="Обр0006">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="10,11" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="E">
+						<Sample name="Обр0014">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="10,13" value="0,035" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="E">
+						<Sample name="Обр0022">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="10,15" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="E">
+						<Sample name="Обр0030">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="10,17" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="E">
+						<Sample name="Обр0038">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="10,19" value="0,035" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="E">
+						<Sample name="Обр0046">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="10,21" value="0,035" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="E">
+						<Sample name="Обр0054">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="10,23" value="0" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="E">
+						<Sample name="Обр0062">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="10,25" value="0,000" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="E">
+						<Sample name="Обр0070">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="10,26" value="0" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="E">
+						<Sample name="Обр0078">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="10,28" value="0,000" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="1" row="F">
+						<Sample name="Стд0006">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="10,96" value="0,038" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="F">
+						<Sample name="Стд0006">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="10,94" value="0,037" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="F">
+						<Sample name="Обр0007">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="10,92" value="0,037" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="F">
+						<Sample name="Обр0015">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="10,90" value="0,037" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="F">
+						<Sample name="Обр0023">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="10,88" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="F">
+						<Sample name="Обр0031">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="10,86" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="F">
+						<Sample name="Обр0039">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="10,84" value="0,039" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="F">
+						<Sample name="Обр0047">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="10,82" value="0,037" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="F">
+						<Sample name="Обр0055">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="10,80" value="0,000" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="F">
+						<Sample name="Обр0063">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="10,78" value="0" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="F">
+						<Sample name="Обр0071">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="10,76" value="0,000" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="F">
+						<Sample name="Обр0079">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="10,75" value="0,000" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="1" row="G">
+						<Sample name="Ктрл0001">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="11,51" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="G">
+						<Sample name="Ктрл0001">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="11,53" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="G">
+						<Sample name="Обр0008">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="11,54" value="0,037" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="G">
+						<Sample name="Обр0016">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="11,56" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="G">
+						<Sample name="Обр0024">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="11,58" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="G">
+						<Sample name="Обр0032">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="11,60" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="G">
+						<Sample name="Обр0040">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="11,62" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="G">
+						<Sample name="Обр0048">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="11,64" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="G">
+						<Sample name="Обр0056">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="11,66" value="0,000" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="G">
+						<Sample name="Обр0064">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="11,68" value="0,000" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="G">
+						<Sample name="Обр0072">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="11,70" value="0" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="G">
+						<Sample name="Обр0080">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="11,72" value="0,000" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="1" row="H">
+						<Sample name="Обр0082">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="12,39" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="H">
+						<Sample name="Обр0001">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="12,37" value="0,037" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="H">
+						<Sample name="Обр0009">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="12,35" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="H">
+						<Sample name="Обр0017">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="12,33" value="0,037" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="H">
+						<Sample name="Обр0025">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="12,31" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="H">
+						<Sample name="Обр0033">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="12,29" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="H">
+						<Sample name="Обр0041">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="12,27" value="0,036" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="H">
+						<Sample name="Обр0049">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="12,25" value="0,037" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="H">
+						<Sample name="Обр0057">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="12,24" value="0,000" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="H">
+						<Sample name="Обр0065">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="12,22" value="0" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="H">
+						<Sample name="Обр0073">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="12,20" value="0,000" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="H">
+						<Sample name="Обр0081">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="12,18" value="0,000" wavelength_ex="690" wavelength_em="0" />
+					</Coordinate>
+				</Wells>
+			</Plate>
+		</ResultStep>
+		<ResultStep name="Предвар Расчет 1">
+			<CalculationStep name="BasicCalculation" type="substraction" dataSourceA="450nm" wavelengthA="405" dataSourceB="620nm" wavelengthB="690" />
+			<Plate name="Планшет 1">
+				<Wells>
+					<Coordinate column="1" row="A">
+						<Sample name="Стд0001">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,00" calculated="0,009100" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="A">
+						<Sample name="Стд0001">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,02" calculated="0,008900" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="A">
+						<Sample name="Обр0002">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,04" calculated="0,02700" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="A">
+						<Sample name="Обр0010">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,06" calculated="0,1240" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="A">
+						<Sample name="Обр0018">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,07" calculated="0,03200" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="A">
+						<Sample name="Обр0026">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,09" calculated="0,03500" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="A">
+						<Sample name="Обр0034">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,11" calculated="0,04030" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="A">
+						<Sample name="Обр0042">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,13" calculated="0,02470" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="A">
+						<Sample name="Обр0050">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,15" calculated="0,0001000" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="A">
+						<Sample name="Обр0058">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,17" calculated="0,0001000" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="A">
+						<Sample name="Обр0066">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,19" calculated="0,0002000" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="A">
+						<Sample name="Обр0074">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,21" calculated="0" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="1" row="B">
+						<Sample name="Стд0002">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,88" calculated="0,07220" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="B">
+						<Sample name="Стд0002">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,86" calculated="0,07080" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="B">
+						<Sample name="Обр0003">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,84" calculated="0,06530" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="B">
+						<Sample name="Обр0011">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,82" calculated="0,06190" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="B">
+						<Sample name="Обр0019">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,80" calculated="0,04910" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="B">
+						<Sample name="Обр0027">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,79" calculated="0,1688" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="B">
+						<Sample name="Обр0035">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,77" calculated="0,03960" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="B">
+						<Sample name="Обр0043">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,75" calculated="0,02320" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="B">
+						<Sample name="Обр0051">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,73" calculated="0,0001000" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="B">
+						<Sample name="Обр0059">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,71" calculated="0" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="B">
+						<Sample name="Обр0067">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,69" calculated="0,0001000" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="B">
+						<Sample name="Обр0075">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="0,67" calculated="0" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="1" row="C">
+						<Sample name="Стд0003">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,43" calculated="0,1982" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="C">
+						<Sample name="Стд0003">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,45" calculated="0,1796" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="C">
+						<Sample name="Обр0004">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,47" calculated="0,06340" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="C">
+						<Sample name="Обр0012">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,49" calculated="0,03940" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="C">
+						<Sample name="Обр0020">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,51" calculated="0,03660" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="C">
+						<Sample name="Обр0028">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,53" calculated="0,03280" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="C">
+						<Sample name="Обр0036">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,55" calculated="0,04690" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="C">
+						<Sample name="Обр0044">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,57" calculated="0,1781" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="C">
+						<Sample name="Обр0052">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,58" calculated="0,0001000" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="C">
+						<Sample name="Обр0060">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,60" calculated="0,0001000" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="C">
+						<Sample name="Обр0068">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,62" calculated="0,0001000" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="C">
+						<Sample name="Обр0076">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="1,64" calculated="0,0001000" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="1" row="D">
+						<Sample name="Стд0004">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,31" calculated="0,3286" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="D">
+						<Sample name="Стд0004">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,30" calculated="0,3074" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="D">
+						<Sample name="Обр0005">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,28" calculated="0,02590" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="D">
+						<Sample name="Обр0013">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,26" calculated="0,07120" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="D">
+						<Sample name="Обр0021">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,24" calculated="0,04380" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="D">
+						<Sample name="Обр0029">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,22" calculated="0,03360" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="D">
+						<Sample name="Обр0037">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,20" calculated="0,08410" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="D">
+						<Sample name="Обр0045">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,18" calculated="0,1918" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="D">
+						<Sample name="Обр0053">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,16" calculated="-0,0001000" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="D">
+						<Sample name="Обр0061">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,14" calculated="0" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="D">
+						<Sample name="Обр0069">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,12" calculated="0,0001000" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="D">
+						<Sample name="Обр0077">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,10" calculated="0" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="1" row="E">
+						<Sample name="Стд0005">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,86" calculated="0,5198" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="E">
+						<Sample name="Стд0005">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,88" calculated="0,4916" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="E">
+						<Sample name="Обр0006">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,90" calculated="0,02880" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="E">
+						<Sample name="Обр0014">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,92" calculated="0,05970" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="E">
+						<Sample name="Обр0022">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,94" calculated="0,06870" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="E">
+						<Sample name="Обр0030">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,96" calculated="0,03020" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="E">
+						<Sample name="Обр0038">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="2,98" calculated="0,02280" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="E">
+						<Sample name="Обр0046">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,00" calculated="0,008900" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="E">
+						<Sample name="Обр0054">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,02" calculated="-0,0001000" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="E">
+						<Sample name="Обр0062">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,04" calculated="-0,0001000" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="E">
+						<Sample name="Обр0070">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,06" calculated="-0,0001000" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="E">
+						<Sample name="Обр0078">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,07" calculated="0" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="1" row="F">
+						<Sample name="Стд0006">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,75" calculated="0,8711" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="F">
+						<Sample name="Стд0006">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,73" calculated="0,8350" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="F">
+						<Sample name="Обр0007">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,71" calculated="0,03270" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="F">
+						<Sample name="Обр0015">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,69" calculated="0,04930" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="F">
+						<Sample name="Обр0023">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,67" calculated="0,05390" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="F">
+						<Sample name="Обр0031">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,65" calculated="0,01890" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="F">
+						<Sample name="Обр0039">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,63" calculated="0,03890" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="F">
+						<Sample name="Обр0047">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,61" calculated="0,008900" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="F">
+						<Sample name="Обр0055">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,59" calculated="-0,0002000" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="F">
+						<Sample name="Обр0063">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,57" calculated="-0,0001000" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="F">
+						<Sample name="Обр0071">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,56" calculated="0" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="F">
+						<Sample name="Обр0079">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="3,54" calculated="-0,0001000" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="1" row="G">
+						<Sample name="Ктрл0001">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,30" calculated="0,1211" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="G">
+						<Sample name="Ктрл0001">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,32" calculated="0,1327" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="G">
+						<Sample name="Обр0008">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,34" calculated="0,04940" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="G">
+						<Sample name="Обр0016">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,35" calculated="0,1726" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="G">
+						<Sample name="Обр0024">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,37" calculated="0,1202" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="G">
+						<Sample name="Обр0032">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,39" calculated="0,02650" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="G">
+						<Sample name="Обр0040">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,41" calculated="0,08790" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="G">
+						<Sample name="Обр0048">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,43" calculated="0,008700" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="G">
+						<Sample name="Обр0056">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,45" calculated="0" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="G">
+						<Sample name="Обр0064">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,47" calculated="-0,0001000" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="G">
+						<Sample name="Обр0072">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,49" calculated="-0,0001000" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="G">
+						<Sample name="Обр0080">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,51" calculated="0" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="1" row="H">
+						<Sample name="Обр0082">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,18" calculated="0,05160" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="2" row="H">
+						<Sample name="Обр0001">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,16" calculated="0,5082" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="3" row="H">
+						<Sample name="Обр0009">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,14" calculated="0,09170" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="4" row="H">
+						<Sample name="Обр0017">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,12" calculated="0,02700" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="5" row="H">
+						<Sample name="Обр0025">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,10" calculated="0,05810" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="6" row="H">
+						<Sample name="Обр0033">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,08" calculated="0,02660" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="7" row="H">
+						<Sample name="Обр0041">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,06" calculated="0,06080" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="8" row="H">
+						<Sample name="Обр0049">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,05" calculated="0,009200" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="9" row="H">
+						<Sample name="Обр0057">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,03" calculated="-0,0003000" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="10" row="H">
+						<Sample name="Обр0065">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="5,01" calculated="-0,0001000" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="11" row="H">
+						<Sample name="Обр0073">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,99" calculated="0" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+					<Coordinate column="12" row="H">
+						<Sample name="Обр0081">
+							<Groups>
+								<SampleGroup name="Группа 1" />
+							</Groups>
+						</Sample>
+						<Result saturated="false" disabled="false" time="4,97" calculated="-0,0002000" wavelength_ex="0" wavelength_em="0" />
+					</Coordinate>
+				</Wells>
+			</Plate>
+		</ResultStep>
+		<ResultStep name="Калибровочная кривая 1">
+			<CalculationStep name="StandardCurve" wavelength="" fitType="LinearRegression" UseExtrapolation="false" ForceLineThroughOrigin="false" concentrationTransformation="Linear" SignalTransformation="Linear" />
+			<SampleGroup name="Группа 1">
+				<Formulas equation="y = 0,0205355x + 0,0625306 " rSquared="0,983" />
+				<Standards type="abs">
+					<Sample name="Стд0001">
+						<Concentration>
+							<unit>нг/мл</unit>
+							<value>0</value>
+						</Concentration>
+						<originalSignal>0,009000</originalSignal>
+						<cv>1,571</cv>
+						<fittedSignal>0,06253</fittedSignal>
+						<residual>-0,05353</residual>
+						<Wells>
+							<Coordinate column="1" row="A">
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>0</value>
+								</Concentration>
+								<originalSignal>0,009100</originalSignal>
+								<fittedSignal>0,06253</fittedSignal>
+								<residual>-0,05343</residual>
+							</Coordinate>
+							<Coordinate column="2" row="A">
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>0</value>
+								</Concentration>
+								<originalSignal>0,008900</originalSignal>
+								<fittedSignal>0,06253</fittedSignal>
+								<residual>-0,05363</residual>
+							</Coordinate>
+						</Wells>
+					</Sample>
+					<Sample name="Стд0002">
+						<Concentration>
+							<unit>нг/мл</unit>
+							<value>1,500</value>
+						</Concentration>
+						<originalSignal>0,07150</originalSignal>
+						<cv>1,385</cv>
+						<fittedSignal>0,09333</fittedSignal>
+						<residual>-0,02183</residual>
+						<Wells>
+							<Coordinate column="1" row="B">
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>1,500</value>
+								</Concentration>
+								<originalSignal>0,07220</originalSignal>
+								<fittedSignal>0,09333</fittedSignal>
+								<residual>-0,02113</residual>
+							</Coordinate>
+							<Coordinate column="2" row="B">
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>1,500</value>
+								</Concentration>
+								<originalSignal>0,07080</originalSignal>
+								<fittedSignal>0,09333</fittedSignal>
+								<residual>-0,02253</residual>
+							</Coordinate>
+						</Wells>
+					</Sample>
+					<Sample name="Стд0003">
+						<Concentration>
+							<unit>нг/мл</unit>
+							<value>5,000</value>
+						</Concentration>
+						<originalSignal>0,1889</originalSignal>
+						<cv>6,963</cv>
+						<fittedSignal>0,1652</fittedSignal>
+						<residual>0,02369</residual>
+						<Wells>
+							<Coordinate column="1" row="C">
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>5,000</value>
+								</Concentration>
+								<originalSignal>0,1982</originalSignal>
+								<fittedSignal>0,1652</fittedSignal>
+								<residual>0,03299</residual>
+							</Coordinate>
+							<Coordinate column="2" row="C">
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>5,000</value>
+								</Concentration>
+								<originalSignal>0,1796</originalSignal>
+								<fittedSignal>0,1652</fittedSignal>
+								<residual>0,01439</residual>
+							</Coordinate>
+						</Wells>
+					</Sample>
+					<Sample name="Стд0004">
+						<Concentration>
+							<unit>нг/мл</unit>
+							<value>10,00</value>
+						</Concentration>
+						<originalSignal>0,3180</originalSignal>
+						<cv>4,714</cv>
+						<fittedSignal>0,2679</fittedSignal>
+						<residual>0,05011</residual>
+						<Wells>
+							<Coordinate column="1" row="D">
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>10,00</value>
+								</Concentration>
+								<originalSignal>0,3286</originalSignal>
+								<fittedSignal>0,2679</fittedSignal>
+								<residual>0,06071</residual>
+							</Coordinate>
+							<Coordinate column="2" row="D">
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>10,00</value>
+								</Concentration>
+								<originalSignal>0,3074</originalSignal>
+								<fittedSignal>0,2679</fittedSignal>
+								<residual>0,03951</residual>
+							</Coordinate>
+						</Wells>
+					</Sample>
+					<Sample name="Стд0005">
+						<Concentration>
+							<unit>нг/мл</unit>
+							<value>20,00</value>
+						</Concentration>
+						<originalSignal>0,5057</originalSignal>
+						<cv>3,943</cv>
+						<fittedSignal>0,4732</fittedSignal>
+						<residual>0,03246</residual>
+						<Wells>
+							<Coordinate column="1" row="E">
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>20,00</value>
+								</Concentration>
+								<originalSignal>0,5198</originalSignal>
+								<fittedSignal>0,4732</fittedSignal>
+								<residual>0,04656</residual>
+							</Coordinate>
+							<Coordinate column="2" row="E">
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>20,00</value>
+								</Concentration>
+								<originalSignal>0,4916</originalSignal>
+								<fittedSignal>0,4732</fittedSignal>
+								<residual>0,01836</residual>
+							</Coordinate>
+						</Wells>
+					</Sample>
+					<Sample name="Стд0006">
+						<Concentration>
+							<unit>нг/мл</unit>
+							<value>40,00</value>
+						</Concentration>
+						<originalSignal>0,8531</originalSignal>
+						<cv>2,992</cv>
+						<fittedSignal>0,8840</fittedSignal>
+						<residual>-0,03090</residual>
+						<Wells>
+							<Coordinate column="1" row="F">
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>40,00</value>
+								</Concentration>
+								<originalSignal>0,8711</originalSignal>
+								<fittedSignal>0,8840</fittedSignal>
+								<residual>-0,01285</residual>
+							</Coordinate>
+							<Coordinate column="2" row="F">
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>40,00</value>
+								</Concentration>
+								<originalSignal>0,8350</originalSignal>
+								<fittedSignal>0,8840</fittedSignal>
+								<residual>-0,04895</residual>
+							</Coordinate>
+						</Wells>
+					</Sample>
+				</Standards>
+				<Results>
+					<Plate name="Планшет 1">
+						<Wells>
+							<Coordinate column="3" row="A">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0002" type="Unknown" />
+								<signal>0,02700</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="4" row="A">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0010" type="Unknown" />
+								<signal>0,1240</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>2,993</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="5" row="A">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0018" type="Unknown" />
+								<signal>0,03200</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="6" row="A">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0026" type="Unknown" />
+								<signal>0,03500</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="7" row="A">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0034" type="Unknown" />
+								<signal>0,04030</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="8" row="A">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0042" type="Unknown" />
+								<signal>0,02470</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="9" row="A">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0050" type="Unknown" />
+								<signal>0,0001000</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="10" row="A">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0058" type="Unknown" />
+								<signal>0,0001000</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="11" row="A">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0066" type="Unknown" />
+								<signal>0,0002000</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="12" row="A">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0074" type="Unknown" />
+								<signal>0</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="12" row="B">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0075" type="Unknown" />
+								<signal>0</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="11" row="B">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0067" type="Unknown" />
+								<signal>0,0001000</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="10" row="B">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0059" type="Unknown" />
+								<signal>0</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="9" row="B">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0051" type="Unknown" />
+								<signal>0,0001000</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="8" row="B">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0043" type="Unknown" />
+								<signal>0,02320</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="7" row="B">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0035" type="Unknown" />
+								<signal>0,03960</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="6" row="B">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0027" type="Unknown" />
+								<signal>0,1688</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>5,175</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="5" row="B">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0019" type="Unknown" />
+								<signal>0,04910</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="4" row="B">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0011" type="Unknown" />
+								<signal>0,06190</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="3" row="B">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0003" type="Unknown" />
+								<signal>0,06530</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>0,1349</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="3" row="C">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0004" type="Unknown" />
+								<signal>0,06340</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>0,04234</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="4" row="C">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0012" type="Unknown" />
+								<signal>0,03940</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="5" row="C">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0020" type="Unknown" />
+								<signal>0,03660</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="6" row="C">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0028" type="Unknown" />
+								<signal>0,03280</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="7" row="C">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0036" type="Unknown" />
+								<signal>0,04690</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="8" row="C">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0044" type="Unknown" />
+								<signal>0,1781</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>5,628</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="9" row="C">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0052" type="Unknown" />
+								<signal>0,0001000</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="10" row="C">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0060" type="Unknown" />
+								<signal>0,0001000</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="11" row="C">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0068" type="Unknown" />
+								<signal>0,0001000</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="12" row="C">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0076" type="Unknown" />
+								<signal>0,0001000</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="12" row="D">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0077" type="Unknown" />
+								<signal>0</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="11" row="D">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0069" type="Unknown" />
+								<signal>0,0001000</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="10" row="D">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0061" type="Unknown" />
+								<signal>0</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="9" row="D">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0053" type="Unknown" />
+								<signal>-0,0001000</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="8" row="D">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0045" type="Unknown" />
+								<signal>0,1918</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>6,295</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="7" row="D">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0037" type="Unknown" />
+								<signal>0,08410</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>1,050</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="6" row="D">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0029" type="Unknown" />
+								<signal>0,03360</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="5" row="D">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0021" type="Unknown" />
+								<signal>0,04380</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="4" row="D">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0013" type="Unknown" />
+								<signal>0,07120</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>0,4222</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="3" row="D">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0005" type="Unknown" />
+								<signal>0,02590</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="3" row="E">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0006" type="Unknown" />
+								<signal>0,02880</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="4" row="E">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0014" type="Unknown" />
+								<signal>0,05970</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="5" row="E">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0022" type="Unknown" />
+								<signal>0,06870</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>0,3004</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="6" row="E">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0030" type="Unknown" />
+								<signal>0,03020</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="7" row="E">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0038" type="Unknown" />
+								<signal>0,02280</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="8" row="E">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0046" type="Unknown" />
+								<signal>0,008900</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="9" row="E">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0054" type="Unknown" />
+								<signal>-0,0001000</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="10" row="E">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0062" type="Unknown" />
+								<signal>-0,0001000</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="11" row="E">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0070" type="Unknown" />
+								<signal>-0,0001000</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="12" row="E">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0078" type="Unknown" />
+								<signal>0</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="12" row="F">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0079" type="Unknown" />
+								<signal>-0,0001000</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="11" row="F">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0071" type="Unknown" />
+								<signal>0</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="10" row="F">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0063" type="Unknown" />
+								<signal>-0,0001000</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="9" row="F">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0055" type="Unknown" />
+								<signal>-0,0002000</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="8" row="F">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0047" type="Unknown" />
+								<signal>0,008900</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="7" row="F">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0039" type="Unknown" />
+								<signal>0,03890</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="6" row="F">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0031" type="Unknown" />
+								<signal>0,01890</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="5" row="F">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0023" type="Unknown" />
+								<signal>0,05390</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="4" row="F">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0015" type="Unknown" />
+								<signal>0,04930</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="3" row="F">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0007" type="Unknown" />
+								<signal>0,03270</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="1" row="G">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Ктрл0001" type="Control" />
+								<signal>0,1211</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>2,852</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="2" row="G">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Ктрл0001" type="Control" />
+								<signal>0,1327</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>3,417</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="3" row="G">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0008" type="Unknown" />
+								<signal>0,04940</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="4" row="G">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0016" type="Unknown" />
+								<signal>0,1726</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>5,360</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="5" row="G">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0024" type="Unknown" />
+								<signal>0,1202</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>2,808</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="6" row="G">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0032" type="Unknown" />
+								<signal>0,02650</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="7" row="G">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0040" type="Unknown" />
+								<signal>0,08790</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>1,235</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="8" row="G">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0048" type="Unknown" />
+								<signal>0,008700</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="9" row="G">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0056" type="Unknown" />
+								<signal>0</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="10" row="G">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0064" type="Unknown" />
+								<signal>-0,0001000</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="11" row="G">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0072" type="Unknown" />
+								<signal>-0,0001000</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="12" row="G">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0080" type="Unknown" />
+								<signal>0</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="12" row="H">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0081" type="Unknown" />
+								<signal>-0,0002000</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="11" row="H">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0073" type="Unknown" />
+								<signal>0</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="10" row="H">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0065" type="Unknown" />
+								<signal>-0,0001000</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="9" row="H">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0057" type="Unknown" />
+								<signal>-0,0003000</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="8" row="H">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0049" type="Unknown" />
+								<signal>0,009200</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="7" row="H">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0041" type="Unknown" />
+								<signal>0,06080</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="6" row="H">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0033" type="Unknown" />
+								<signal>0,02660</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="5" row="H">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0025" type="Unknown" />
+								<signal>0,05810</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="4" row="H">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0017" type="Unknown" />
+								<signal>0,02700</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="3" row="H">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0009" type="Unknown" />
+								<signal>0,09170</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>1,420</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="2" row="H">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0001" type="Unknown" />
+								<signal>0,5082</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>21,70</value>
+								</Concentration>
+							</Coordinate>
+							<Coordinate column="1" row="H">
+								<Result disabled="false" saturated="false" extrapolated="false" />
+								<Sample name="Обр0082" type="Unknown" />
+								<signal>0,05160</signal>
+								<Concentration>
+									<unit>нг/мл</unit>
+									<value>&lt; Min</value>
+								</Concentration>
+							</Coordinate>
+						</Wells>
+					</Plate>
+				</Results>
+			</SampleGroup>
+		</ResultStep>
+		<ResultStep name="Контроль качества 1">
+			<Expressions />
+			<Rules>
+				<Rule value="Каждая реплика [Ктрл0001] - между 2.7 и 3.5 " passed="False">
+					<Result sample="Ктрл0001 G01" value="0,1211" passed="false" />
+					<Result sample="Ктрл0001 G02" value="0,1327" passed="false" />
+				</Rule>
+			</Rules>
+		</ResultStep>
+		<ResultsSummary>
+			<Общие>
+				<Plate name="Планшет 1">
+					<Well address="A01">
+						<Sample name="Стд0001" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,045" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,009100" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="B01">
+						<Sample name="Стд0002" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,108" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,07220" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="C01">
+						<Sample name="Стд0003" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,235" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,037" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,1982" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="D01">
+						<Sample name="Стд0004" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,365" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,037" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,3286" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="E01">
+						<Sample name="Стд0005" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,558" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,039" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,5198" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="F01">
+						<Sample name="Стд0006" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,909" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,038" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,8711" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="G01">
+						<Sample name="Ктрл0001" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,157" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,1211" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="2,852" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="H01">
+						<Sample name="Обр0082" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,088" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,05160" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="A02">
+						<Sample name="Стд0001" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,045" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,008900" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="B02">
+						<Sample name="Стд0002" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,113" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,042" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,07080" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="C02">
+						<Sample name="Стд0003" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,219" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,039" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,1796" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="D02">
+						<Sample name="Стд0004" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,344" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,3074" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="E02">
+						<Sample name="Стд0005" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,529" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,037" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,4916" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="F02">
+						<Sample name="Стд0006" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,872" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,037" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,8350" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="G02">
+						<Sample name="Ктрл0001" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,169" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,1327" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="3,417" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="H02">
+						<Sample name="Обр0001" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,545" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,037" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,5082" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="21,70" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="A03">
+						<Sample name="Обр0002" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,063" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,02700" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="B03">
+						<Sample name="Обр0003" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,102" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,037" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,06530" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="0,1349" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="C03">
+						<Sample name="Обр0004" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,099" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,035" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,06340" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="0,04234" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="D03">
+						<Sample name="Обр0005" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,062" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,02590" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="E03">
+						<Sample name="Обр0006" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,065" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,02880" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="F03">
+						<Sample name="Обр0007" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,069" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,037" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,03270" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="G03">
+						<Sample name="Обр0008" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,086" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,037" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,04940" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="H03">
+						<Sample name="Обр0009" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,128" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,09170" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="1,420" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="A04">
+						<Sample name="Обр0010" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,161" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,037" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,1240" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="2,993" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="B04">
+						<Sample name="Обр0011" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,101" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,039" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,06190" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="C04">
+						<Sample name="Обр0012" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,075" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,03940" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="D04">
+						<Sample name="Обр0013" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,109" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,038" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,07120" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="0,4222" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="E04">
+						<Sample name="Обр0014" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,095" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,035" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,05970" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="F04">
+						<Sample name="Обр0015" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,086" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,037" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,04930" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="G04">
+						<Sample name="Обр0016" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,208" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,1726" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="5,360" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="H04">
+						<Sample name="Обр0017" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,064" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,037" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,02700" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="A05">
+						<Sample name="Обр0018" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,069" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,037" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,03200" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="B05">
+						<Sample name="Обр0019" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,085" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,04910" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="C05">
+						<Sample name="Обр0020" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,073" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,03660" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="D05">
+						<Sample name="Обр0021" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,081" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,037" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,04380" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="E05">
+						<Sample name="Обр0022" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,105" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,06870" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="0,3004" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="F05">
+						<Sample name="Обр0023" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,090" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,05390" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="G05">
+						<Sample name="Обр0024" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,156" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,1202" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="2,808" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="H05">
+						<Sample name="Обр0025" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,094" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,05810" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="A06">
+						<Sample name="Обр0026" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,071" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,03500" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="B06">
+						<Sample name="Обр0027" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,205" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,1688" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="5,175" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="C06">
+						<Sample name="Обр0028" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,068" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,035" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,03280" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="D06">
+						<Sample name="Обр0029" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,069" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,03360" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="E06">
+						<Sample name="Обр0030" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,066" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,03020" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="F06">
+						<Sample name="Обр0031" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,055" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,01890" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="G06">
+						<Sample name="Обр0032" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,062" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,02650" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="H06">
+						<Sample name="Обр0033" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,063" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,02660" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="A07">
+						<Sample name="Обр0034" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,077" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,04030" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="B07">
+						<Sample name="Обр0035" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,077" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,037" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,03960" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="C07">
+						<Sample name="Обр0036" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,082" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,035" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,04690" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="D07">
+						<Sample name="Обр0037" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,120" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,08410" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="1,050" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="E07">
+						<Sample name="Обр0038" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,058" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,035" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,02280" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="F07">
+						<Sample name="Обр0039" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,078" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,039" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,03890" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="G07">
+						<Sample name="Обр0040" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,124" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,08790" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="1,235" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="H07">
+						<Sample name="Обр0041" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,097" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,06080" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="A08">
+						<Sample name="Обр0042" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,064" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,039" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,02470" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="B08">
+						<Sample name="Обр0043" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,060" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,037" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,02320" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="C08">
+						<Sample name="Обр0044" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,215" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,1781" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="5,628" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="D08">
+						<Sample name="Обр0045" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,229" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,037" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,1918" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="6,295" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="E08">
+						<Sample name="Обр0046" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,044" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,035" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,008900" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="F08">
+						<Sample name="Обр0047" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,046" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,037" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,008900" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="G08">
+						<Sample name="Обр0048" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,044" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,036" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,008700" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="H08">
+						<Sample name="Обр0049" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,046" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,037" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,009200" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="A09">
+						<Sample name="Обр0050" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,0001000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="B09">
+						<Sample name="Обр0051" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,0001000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="C09">
+						<Sample name="Обр0052" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,0001000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="D09">
+						<Sample name="Обр0053" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="-0,0001000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="E09">
+						<Sample name="Обр0054" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="-0,0001000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="F09">
+						<Sample name="Обр0055" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="-0,0002000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="G09">
+						<Sample name="Обр0056" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="H09">
+						<Sample name="Обр0057" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="-0,0003000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="A10">
+						<Sample name="Обр0058" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,0001000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="B10">
+						<Sample name="Обр0059" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="C10">
+						<Sample name="Обр0060" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,0001000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="D10">
+						<Sample name="Обр0061" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="E10">
+						<Sample name="Обр0062" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="-0,0001000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="F10">
+						<Sample name="Обр0063" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="-0,0001000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="G10">
+						<Sample name="Обр0064" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="-0,0001000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="H10">
+						<Sample name="Обр0065" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="-0,0001000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="A11">
+						<Sample name="Обр0066" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,0002000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="B11">
+						<Sample name="Обр0067" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,0001000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="C11">
+						<Sample name="Обр0068" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,0001000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="D11">
+						<Sample name="Обр0069" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,0001000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="E11">
+						<Sample name="Обр0070" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="-0,0001000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="F11">
+						<Sample name="Обр0071" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="G11">
+						<Sample name="Обр0072" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="-0,0001000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="H11">
+						<Sample name="Обр0073" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="A12">
+						<Sample name="Обр0074" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="B12">
+						<Sample name="Обр0075" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="C12">
+						<Sample name="Обр0076" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0,0001000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="D12">
+						<Sample name="Обр0077" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="E12">
+						<Sample name="Обр0078" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="F12">
+						<Sample name="Обр0079" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="-0,0001000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="G12">
+						<Sample name="Обр0080" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="0" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+					<Well address="H12">
+						<Sample name="Обр0081" group="Группа 1">
+							<Result name="450nm&#xD;&#xA;405nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="620nm&#xD;&#xA;690nm" value="0,000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Предвар Расчет 1" value="-0,0002000" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+							<Result name="Калибровочная кривая 1" value="&lt; Мин" backgroundcolor="default" foregroundcolor="default" disabled="False" extrapolated="False" />
+						</Sample>
+					</Well>
+				</Plate>
+			</Общие>
+			<Особый>
+				<Item name="Контроль качества 1" type="QualityControl">
+					<Rule name="Каждая реплика [Ктрл0001] - между 2.7 и 3.5 " value="Сбой" />
+				</Item>
+				<Item name="Калибровочная кривая 1 - Группа 1" type="StandardCurve">
+					<Standards>
+						<Result Plate="Планшет 1" Sample="Стд0001" Concentration="0" AverageSignal="0,009000" CV="1,571" FittedSignal="0,06253" Residual="-0,05353" disabled="false" />
+						<Result Plate="Планшет 1" Sample="Стд0002" Concentration="1,500" AverageSignal="0,07150" CV="1,385" FittedSignal="0,09333" Residual="-0,02183" disabled="false" />
+						<Result Plate="Планшет 1" Sample="Стд0003" Concentration="5,000" AverageSignal="0,1889" CV="6,963" FittedSignal="0,1652" Residual="0,02369" disabled="false" />
+						<Result Plate="Планшет 1" Sample="Стд0004" Concentration="10,00" AverageSignal="0,3180" CV="4,714" FittedSignal="0,2679" Residual="0,05011" disabled="false" />
+						<Result Plate="Планшет 1" Sample="Стд0005" Concentration="20,00" AverageSignal="0,5057" CV="3,943" FittedSignal="0,4732" Residual="0,03246" disabled="false" />
+						<Result Plate="Планшет 1" Sample="Стд0006" Concentration="40,00" AverageSignal="0,8531" CV="2,992" FittedSignal="0,8840" Residual="-0,03090" disabled="false" />
+					</Standards>
+					<Equations>
+						<Equation value="y = 0,0205355x + 0,0625306 " />
+						<Equation value="R²: 0,982954576446272" />
+					</Equations>
+				</Item>
+			</Особый>
+		</ResultsSummary>
+	</Session>
+</Sessions>

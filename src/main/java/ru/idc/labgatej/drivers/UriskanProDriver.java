@@ -39,13 +39,17 @@ public class UriskanProDriver implements IDriver {
 			res = transport.readInt(true);
 			if (res == ERROR_TIMEOUT) {
 				logger.trace("ждём данных");
-			} else {
-				logger.debug("нам хотят что-то прислать");
+			} else if (res == STX) {
+				logger.debug("начинается пакет данных");
 				sb.setLength(0);
-				String msg = transport.readMessage();
-				sb.append(msg);
-				System.out.println(sb.toString());
+				for (int i = 0; i < 17; i++) {
+					String msg = transport.readMessage();
+					sb.append(msg);
+					//System.out.println(msg);
+				}
 				return sb.toString();
+			} else {
+				logger.debug("нам что-то не то прислали");
 			}
 		} while (res != ERROR_TIMEOUT);
 		return null;

@@ -24,6 +24,9 @@ public class Utils {
 		return "";
 	}
 
-
+	public static Byte letteToNumnber(char letter)
+	{
+		return (byte)(letter - 'A' + 1);
+	}
 
 }

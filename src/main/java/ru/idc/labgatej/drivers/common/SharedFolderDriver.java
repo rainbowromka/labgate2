@@ -49,7 +49,7 @@ implements IDriver
     }
 
     @Override
-    public void loop() throws IOException, InterruptedException, SQLException {
+    public void loop() throws IOException, InterruptedException {
         while (true) {
             scanFiles(dir2scan, this::processFile);
             Thread.sleep(30000);

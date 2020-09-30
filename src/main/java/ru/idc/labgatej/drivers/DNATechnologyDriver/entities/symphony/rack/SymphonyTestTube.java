@@ -1,4 +1,4 @@
-package ru.idc.labgatej.drivers.DNATechnologyDriver.entities.symphony;
+package ru.idc.labgatej.drivers.DNATechnologyDriver.entities.symphony.rack;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

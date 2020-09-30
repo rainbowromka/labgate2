@@ -6,6 +6,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.idc.labgatej.base.Configuration;
 import ru.idc.labgatej.base.DBManager;
+import ru.idc.labgatej.base.Utils;
+import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.RealTimePcr.RealTimePcrCell;
+import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.RealTimePcr.RealTimePcrCreatePlate;
+import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.RealTimePcr.RealTimePcrPackage;
+import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.RealTimePcr.RealTimePcrTest;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.orders.InquryOrders;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.orders.RootOrders;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.orders.SampleOrder;
@@ -15,9 +20,11 @@ import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.results.Result;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.results.Root;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.results.Sample;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.results.Service;
-import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.symphony.SymphonyRack;
-import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.symphony.SymphonyTestTube;
-import ru.idc.labgatej.drivers.RealBest;
+import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.symphony.fullPlateTrack.BatchTrack;
+import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.symphony.fullPlateTrack.FullPlateTrack;
+import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.symphony.fullPlateTrack.SampleTrack;
+import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.symphony.rack.SymphonyRackOld;
+import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.symphony.rack.SymphonyTestTube;
 import ru.idc.labgatej.drivers.common.SharedFolderDriver;
 import ru.idc.labgatej.model.HeaderInfo;
 import ru.idc.labgatej.model.OrderInfo;
@@ -33,6 +40,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -49,10 +58,16 @@ import java.util.function.Consumer;
 public class DNATechnplogyDriver
 extends SharedFolderDriver {
 
+    private static final String DNK_TEST_COVID19 = "COV";
     final Logger log = LoggerFactory.getLogger(DNATechnplogyDriver.class);
 
     /**
-     * Путь к результатам от Symphony
+     * Путь к результатам от Symphony сформированных вручную сканером штрихкода.
+     */
+    Path symphonyDirHand;
+
+    /**
+     * Путь к результатам от Symphony полученных напрямую от прибора.
      */
     Path symphonyDir;
 
@@ -62,7 +77,14 @@ extends SharedFolderDriver {
     Path ordersDir;
 
     /**
-     * Путь к обработанным файлам Symhony, после обработки файлов,
+     * Путь к обработанным файлам Symhony, после обработки файлов, обработанных
+     * вручную сканером штрихкода.
+     */
+    Path dirSymphonyHandProcessed;
+
+    /**
+     * Путь к обработанным файлам Symhony, после обработки файлов, полученных
+     * напрямую с прибора.
      */
     Path dirSymphonyProcessed;
 
@@ -70,9 +92,14 @@ extends SharedFolderDriver {
     @Override
     public void init(DBManager dbManager, Configuration config) {
         super.init(dbManager, config);
+        symphonyDirHand = Paths.get(config.getParamValue("simphonyDirHand"));
+        dirSymphonyHandProcessed = symphonyDirHand.resolve("processedFiles");
         symphonyDir = Paths.get(config.getParamValue("simphonyDir"));
         dirSymphonyProcessed = symphonyDir.resolve("processedFiles");
         try {
+            if (!Files.exists(dirSymphonyHandProcessed)) {
+                Files.createDirectory(dirSymphonyHandProcessed);
+            }
             if (!Files.exists(dirSymphonyProcessed)) {
                 Files.createDirectory(dirSymphonyProcessed);
             }
@@ -83,10 +110,19 @@ extends SharedFolderDriver {
         ordersDir = Paths.get(config.getParamValue("ordersDir"));
     }
 
+    protected void scanFiles(
+            Path directory,
+            Consumer<Path> consumer)
+            throws IOException
+    {
+        // сам драйвер проверяет, есть ли уже выполненые задания амплификатором.
+        super.scanFiles(directory, consumer);
+//        super.scanFiles(symphonyDirHand, this::processSymphonyHandFile);
+        super.scanFiles(symphonyDir, this::processSymphonyFile);
+    }
+
     @Override
     public List<PacketInfo> parseFile(Path file) {
-
-        final Logger log = LoggerFactory.getLogger(RealBest.class);
 
         List<PacketInfo> packets = new ArrayList<>();
 
@@ -167,23 +203,120 @@ extends SharedFolderDriver {
         }
     }
 
-    protected void scanFiles(
-        Path directory,
-        Consumer<Path> consumer)
-    throws IOException
-    {
-        // сам драйвер проверяет, есть ли уже выполненые задания амплификатором.
-        super.scanFiles(directory, consumer);
-        super.scanFiles(symphonyDir, this::processSymphonyFile);
-    }
-
-    private void processSymphonyFile (
+    private void processSymphonyFile(
         Path file)
     {
+        FullPlateTrack fullPlateTrack = null;
+        try {
+            if ((fullPlateTrack = parseSymphonyFile(file)) != null ) {
+                makeDNKTechnologyOrdersFromFullPlateTrack(fullPlateTrack);
+            }
+            Files.move(file, Paths.get(dirSymphonyProcessed.toFile().getPath() + "/" + file.getFileName()),
+                    StandardCopyOption.REPLACE_EXISTING);
+            System.out.println(file.toAbsolutePath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    /**
+     * Создает XML файл задания для программы realtime_PCR(ДНК "Технологии")
+     *
+     * @param fullPlateTrack результат раскапки пробирок в приборе Symphony.
+     */
+    private void makeDNKTechnologyOrdersFromFullPlateTrack(
+        FullPlateTrack fullPlateTrack)
+    {
+        List<BatchTrack> batchTracks = fullPlateTrack.getBatchTrack();
+        if (batchTracks == null) return;
+
+        RealTimePcrPackage root = new RealTimePcrPackage();
+        RealTimePcrCreatePlate plate = new RealTimePcrCreatePlate();
+        root.setRealTimePcrCreatePlate(plate);
+
+        for (BatchTrack batchTrack: batchTracks)
+        {
+            if (batchTrack == null) continue;
+            List<SampleTrack> sampleTracks = batchTrack.getSampleTracks();
+            if (sampleTracks == null) continue;
+
+            plate.setPlate(fullPlateTrack.getPlateID());
+            plate.setSize_x(fullPlateTrack.getNofCols());
+            plate.setSize_y(fullPlateTrack.getNofRows());
+            List<RealTimePcrCell> cells = new ArrayList<>();
+            plate.setRealTimePcrCells(cells);
+
+            for (SampleTrack sampleTrack: sampleTracks)
+            {
+//                if (sampleTrack == null) continue;
+                String[] samplePosition = sampleTrack.getSampleOutputPos()
+                    .split(":");
+                RealTimePcrCell cell = new RealTimePcrCell();
+                cells.add(cell);
+
+                cell.setName(sampleTrack.getSampleCode());
+                cell.setX(samplePosition[1]);
+                cell.setY(Utils.letteToNumnber(samplePosition[0]
+                    .toCharArray()[0]).toString());
+
+                List<RealTimePcrTest> tests = new ArrayList<>();
+                cell.setRealTimePcrTests(tests);
+                tests.add(new RealTimePcrTest("SARS2,SARS_RNA-IC\\Коронавирусы подобные SARS-CoV", null, null));
+                tests.add(new RealTimePcrTest("SARS2,SARS_RNA-IC\\ВК", null, null));
+                tests.add(new RealTimePcrTest("SARS2,SARS_RNA-IC\\Коронавирус SARS-CoV-2, ген E", null, null));
+                tests.add(new RealTimePcrTest("SARS2,SARS_RNA-IC\\Коронавирус SARS-CoV-2, ген N", null, null));
+            }
+        }
+
+        JAXBContext jaxbContext;
+
+
+        String filename = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss_SSS")
+                .format(new Date()) + "_"
+                + Generators.timeBasedGenerator().generate().toString()
+                + ".xml";
+
+        File file = new File(ordersDir.toString(), filename);
+
+        try (FileOutputStream os = new FileOutputStream(file)){
+            StreamResult sr = new StreamResult(os);
+            jaxbContext = JAXBContext.newInstance(RealTimePcrPackage.class);
+            Marshaller marshaller = jaxbContext.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_ENCODING, "windows-1251");
+            marshaller.marshal(root, sr);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private FullPlateTrack parseSymphonyFile(
+        Path file)
+    {
+        FullPlateTrack fullPlateTrack = null
+                ;
+        File f = new File(file.toFile().getAbsolutePath());
+        JAXBContext jaxbContext;
+        try
+        {
+            jaxbContext = JAXBContext.newInstance(FullPlateTrack.class);
+            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+            fullPlateTrack = (FullPlateTrack) jaxbUnmarshaller.unmarshal(f);
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+        return fullPlateTrack;
+    }
+
+    private void processSymphonyHandFile(
+        Path file)
+    {
         String line;
         String[] words;
-        SymphonyRack rack = new SymphonyRack();
+        SymphonyRackOld rack = new SymphonyRackOld();
 
         try (
                 Scanner sc = new Scanner(file.toFile(),"UTF-8")
@@ -200,9 +333,9 @@ extends SharedFolderDriver {
                 }
             }
 
-            makeDNKTechnologyOrders(rack);
+            makeDNKTechnologyOrdersFromHand(rack);
 
-            Files.move(file, Paths.get(dirSymphonyProcessed.toFile().getPath() + "/" + file.getFileName()),
+            Files.move(file, Paths.get(dirSymphonyHandProcessed.toFile().getPath() + "/" + file.getFileName()),
                     StandardCopyOption.REPLACE_EXISTING);
         } catch (FileNotFoundException e) {
             log.error("Ошибка открытия файла", e);
@@ -212,8 +345,8 @@ extends SharedFolderDriver {
         }
     }
 
-    private void makeDNKTechnologyOrders(
-        SymphonyRack rack)
+    private void makeDNKTechnologyOrdersFromHand(
+        SymphonyRackOld rack)
     {
         RootOrders root = new RootOrders();
         List<InquryOrders> inquries = new ArrayList<>();
@@ -237,7 +370,7 @@ extends SharedFolderDriver {
             String serviceId;
             switch (tube.getTestCode()) {
                 case "222": serviceId = "13";
-                default: serviceId = "12";
+                default: serviceId = DNK_TEST_COVID19;
             }
             service.setId(serviceId);
         }
@@ -253,12 +386,8 @@ extends SharedFolderDriver {
             jaxbContext = JAXBContext.newInstance(RootOrders.class);
             Marshaller marshaller = jaxbContext.createMarshaller();
             marshaller.marshal(root, new StreamResult(os));
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (JAXBException | IOException e) {
+            log.error("", e);
         }
     }
 }

@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -159,7 +160,7 @@ public class ProtocolASTM implements Protocol {
 						break;
 
 					case "R":
-						packetInfo.addResult(parseResult(line));
+						packetInfo.addResult(parseResults(line));
 						break;
 				}
 			}
@@ -195,7 +196,7 @@ public class ProtocolASTM implements Protocol {
 	}
 
 	@Override
-	public ResultInfo parseResult(String msg) {
+	public List<ResultInfo> parseResults(String msg) {
 		ResultInfo result = null;
 		String s;
 		final Pattern pattern = Pattern.compile("^R\\|\\d+\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)$",
@@ -248,6 +249,6 @@ public class ProtocolASTM implements Protocol {
 				logger.error("", e);
 			}
 		}
-		return result;
+		return Collections.singletonList(result);
 	}
 }

@@ -8,13 +8,15 @@ import ru.idc.labgatej.base.ProtocolASTM;
 import ru.idc.labgatej.model.PacketInfo;
 import ru.idc.labgatej.model.ResultInfo;
 
+import java.util.List;
+
 public class ProtocolASTMTest {
 
 	@Test
 	public void testString() {
 		ProtocolASTM astm = new ProtocolASTM();
 		String t = "R|1|^^^174^1^^^COBAS_8000^^^^^^|< 0.01|ng/ml||N||F||&S&SYSTEM^System||20200527090724|COBAS_8000";
-		ResultInfo r =  astm.parseResult(t);
+		List<ResultInfo> r = astm.parseResults(t);
 
 		System.out.println(r);
 	}

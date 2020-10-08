@@ -13,5 +13,5 @@ public interface Protocol {
 	PacketInfo parseMessage(String msg);
 	HeaderInfo parseHeader(String msg);
 	OrderInfo parseOrder(String msg);
-	ResultInfo parseResult(String msg);
+	List<ResultInfo> parseResults(String msg);
 }

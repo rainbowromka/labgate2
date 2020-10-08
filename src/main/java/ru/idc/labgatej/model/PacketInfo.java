@@ -16,4 +16,12 @@ public class PacketInfo {
 	public void addResult(ResultInfo res) {
 		results.add(res);
 	}
+
+	public void addResult(List<ResultInfo> results) {
+		this.results.addAll(results);
+	}
+
+	public void setDeviceCode(String code) {
+		results.forEach(r -> r.setDevice_name(code));
+	}
 }

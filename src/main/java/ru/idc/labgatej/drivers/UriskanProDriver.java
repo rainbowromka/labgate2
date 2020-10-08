@@ -12,6 +12,7 @@ import ru.idc.labgatej.base.DBManager;
 import ru.idc.labgatej.base.IDriver;
 import ru.idc.labgatej.base.Protocol;
 import ru.idc.labgatej.base.ProtocolASTM;
+import ru.idc.labgatej.base.ProtocolUriskanPro;
 import ru.idc.labgatej.base.Rs232ClientTransport;
 import ru.idc.labgatej.base.SocketClientTransport;
 import ru.idc.labgatej.base.Transport;
@@ -31,28 +32,48 @@ public class UriskanProDriver implements IDriver {
 	private Transport transport;
 	private DBManager dbManager;
 	private Protocol protocol;
+	private String deviceCode;
 
 	private String receiveResults() throws IOException {
-		StringBuilder sb = new StringBuilder();
-		int res;
-		do {
-			res = transport.readInt(true);
-			if (res == ERROR_TIMEOUT) {
-				logger.trace("ждём данных");
-			} else if (res == STX) {
-				logger.debug("начинается пакет данных");
-				sb.setLength(0);
-				for (int i = 0; i < 17; i++) {
-					String msg = transport.readMessage();
-					sb.append(msg);
-					//System.out.println(msg);
-				}
-				return sb.toString();
-			} else {
-				logger.debug("нам что-то не то прислали");
-			}
-		} while (res != ERROR_TIMEOUT);
-		return null;
+		return "Date :Oct-02-2020 16:16:37 <CR><LF>" +
+				"ID_NO:0083-0260055812      <CR><LF>" +
+				"Ward: <CR><LF>" +
+				"Name: <CR><LF>" +
+				"BLD    -    neg          <CR><LF>" +
+				"BIL    -    neg          <CR><LF>" +
+				"URO    +-  norm          <CR><LF>" +
+				"KET    -    neg          <CR><LF>" +
+				"PRO    -    neg          <CR><LF>" +
+				"NIT    -    neg          <CR><LF>" +
+				"GLU    -    neg          <CR><LF>" +
+				"p.H         5.0          <CR><LF>" +
+				"S.G     <=1.005          <CR><LF>" +
+				"LEU    -    neg          <CR><LF>" +
+				"VTC    -    neg          <CR><LF>" +
+				"COL !2.65;BK9            <CR><LF>" +
+				"CLA  <ETB_> '            <CR><LF>";
+
+//
+//		StringBuilder sb = new StringBuilder();
+//		int res;
+//		do {
+//			res = transport.readInt(true);
+//			if (res == ERROR_TIMEOUT) {
+//				logger.trace("ждём данных");
+//			} else if (res == STX) {
+//				logger.debug("начинается пакет данных");
+//				sb.setLength(0);
+//				for (int i = 0; i < 17; i++) {
+//					String msg = transport.readMessage();
+//					sb.append(msg);
+//					//System.out.println(msg);
+//				}
+//				return sb.toString();
+//			} else {
+//				logger.debug("нам что-то не то прислали");
+//			}
+//		} while (res != ERROR_TIMEOUT);
+//		return null;
 	}
 
 	@Override
@@ -65,8 +86,10 @@ public class UriskanProDriver implements IDriver {
 
 			if (msg != null && !msg.isEmpty()) {
 				logger.debug("Получили сообщение: " + msg);
-//				PacketInfo packetInfo = protocol.parseMessage(makeSendable(msg));
-//				dbManager.saveResults(packetInfo, true);
+				PacketInfo packetInfo = protocol.parseMessage(makeSendable(msg));
+				packetInfo.setDeviceCode(deviceCode);
+
+				dbManager.saveResults(packetInfo, false);
 			}
 			Thread.sleep(200);
 		}
@@ -75,12 +98,13 @@ public class UriskanProDriver implements IDriver {
 	@Override
 	public void init(DBManager dbManager, Configuration config) {
 		this.dbManager = dbManager;
-		protocol = new ProtocolASTM();
+		protocol = new ProtocolUriskanPro();
+		deviceCode = config.getParamValue("code");
 
 		switch (config.getParamValue("device.connection.type").toUpperCase().trim()) {
 			case "COM":
 				transport = new Rs232ClientTransport(config.getParamValue("device.connection.port"));
-				transport.init(2000,9600, DataBits.DATABITS_8, Parity.NONE, StopBits.STOPBITS_1, FlowControl.NONE);
+				transport.init(2000, 9600, DataBits.DATABITS_8, Parity.NONE, StopBits.STOPBITS_1, FlowControl.NONE);
 				break;
 
 			default:

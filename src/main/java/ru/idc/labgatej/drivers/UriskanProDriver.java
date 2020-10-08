@@ -35,45 +35,26 @@ public class UriskanProDriver implements IDriver {
 	private String deviceCode;
 
 	private String receiveResults() throws IOException {
-		return "Date :Oct-02-2020 16:16:37 <CR><LF>" +
-				"ID_NO:0083-0260055812      <CR><LF>" +
-				"Ward: <CR><LF>" +
-				"Name: <CR><LF>" +
-				"BLD    -    neg          <CR><LF>" +
-				"BIL    -    neg          <CR><LF>" +
-				"URO    +-  norm          <CR><LF>" +
-				"KET    -    neg          <CR><LF>" +
-				"PRO    -    neg          <CR><LF>" +
-				"NIT    -    neg          <CR><LF>" +
-				"GLU    -    neg          <CR><LF>" +
-				"p.H         5.0          <CR><LF>" +
-				"S.G     <=1.005          <CR><LF>" +
-				"LEU    -    neg          <CR><LF>" +
-				"VTC    -    neg          <CR><LF>" +
-				"COL !2.65;BK9            <CR><LF>" +
-				"CLA  <ETB_> '            <CR><LF>";
-
-//
-//		StringBuilder sb = new StringBuilder();
-//		int res;
-//		do {
-//			res = transport.readInt(true);
-//			if (res == ERROR_TIMEOUT) {
-//				logger.trace("ждём данных");
-//			} else if (res == STX) {
-//				logger.debug("начинается пакет данных");
-//				sb.setLength(0);
-//				for (int i = 0; i < 17; i++) {
-//					String msg = transport.readMessage();
-//					sb.append(msg);
-//					//System.out.println(msg);
-//				}
-//				return sb.toString();
-//			} else {
-//				logger.debug("нам что-то не то прислали");
-//			}
-//		} while (res != ERROR_TIMEOUT);
-//		return null;
+		StringBuilder sb = new StringBuilder();
+		int res;
+		do {
+			res = transport.readInt(true);
+			if (res == ERROR_TIMEOUT) {
+				logger.trace("ждём данных");
+			} else if (res == STX) {
+				logger.debug("начинается пакет данных");
+				sb.setLength(0);
+				for (int i = 0; i < 17; i++) {
+					String msg = transport.readMessage();
+					sb.append(msg);
+					//System.out.println(msg);
+				}
+				return sb.toString();
+			} else {
+				logger.debug("нам что-то не то прислали");
+			}
+		} while (res != ERROR_TIMEOUT);
+		return null;
 	}
 
 	@Override

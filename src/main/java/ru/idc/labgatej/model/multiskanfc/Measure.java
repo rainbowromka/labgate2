@@ -7,27 +7,32 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-@XStreamAlias("Sample")
+import java.util.Date;
+
+@XStreamAlias("Measure")
 @Getter
 @Setter
 @RequiredArgsConstructor
 @AllArgsConstructor
-public class Sample {
+public class Measure {
 	@XStreamAsAttribute
-	private String name;
-
-	@XStreamAsAttribute
-	private String description;
+	private String analyte;
 
 	@XStreamAsAttribute
-	private String barcode;
+	private Date time;
 
-	@XStreamAlias("Concentration")
-	private Concentration concentration;
+	@XStreamAsAttribute
+	@XStreamAlias("mainwavelength")
+	private String mainWaveLength;
 
-	@XStreamAlias("OpticalDencity")
-	private OpticalDencity opticalDencity;
+	@XStreamAsAttribute
+	@XStreamAlias("referencewavelength")
+	private String referenceWaveLength;
 
-	@XStreamAlias("Evaluation")
-	private Evaluation evaluation;
+	@XStreamAsAttribute
+	@XStreamAlias("IsValid")
+	private String isValid;
+
+	@XStreamAlias("Plate")
+	private Plate plate;
 }

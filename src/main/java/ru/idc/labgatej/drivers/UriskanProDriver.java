@@ -6,24 +6,21 @@ import org.openmuc.jrxtx.Parity;
 import org.openmuc.jrxtx.StopBits;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.idc.labgatej.base.Codes;
 import ru.idc.labgatej.base.Configuration;
 import ru.idc.labgatej.base.DBManager;
 import ru.idc.labgatej.base.IDriver;
 import ru.idc.labgatej.base.Protocol;
-import ru.idc.labgatej.base.ProtocolASTM;
 import ru.idc.labgatej.base.ProtocolUriskanPro;
 import ru.idc.labgatej.base.Rs232ClientTransport;
 import ru.idc.labgatej.base.SocketClientTransport;
 import ru.idc.labgatej.base.Transport;
-import ru.idc.labgatej.model.Order;
 import ru.idc.labgatej.model.PacketInfo;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
-import static ru.idc.labgatej.base.Codes.*;
+import static ru.idc.labgatej.base.Codes.STX;
+import static ru.idc.labgatej.base.Codes.makeSendable;
 import static ru.idc.labgatej.base.Consts.ERROR_TIMEOUT;
 
 public class UriskanProDriver implements IDriver {

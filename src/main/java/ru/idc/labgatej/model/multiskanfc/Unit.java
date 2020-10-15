@@ -1,17 +1,19 @@
 package ru.idc.labgatej.model.multiskanfc;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamConverter;
+import com.thoughtworks.xstream.converters.extended.ToAttributedValueConverter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-@XStreamAlias("ResultsSummary")
+@XStreamAlias("Unit")
 @Getter
 @Setter
 @RequiredArgsConstructor
 @AllArgsConstructor
-public class ResultsSummary {
-	@XStreamAlias("Общие")
-	private CommonResult commonResult;
+@XStreamConverter(value= ToAttributedValueConverter.class, strings={"text"})
+public class Unit {
+	private String text;
 }

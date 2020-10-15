@@ -6,16 +6,26 @@ import com.thoughtworks.xstream.security.NoTypePermission;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.idc.labgatej.drivers.common.SharedFolderDriver;
+import ru.idc.labgatej.model.HeaderInfo;
+import ru.idc.labgatej.model.OrderInfo;
 import ru.idc.labgatej.model.PacketInfo;
+import ru.idc.labgatej.model.ResultInfo;
+import ru.idc.labgatej.model.multiskanfc.Evaluation;
+import ru.idc.labgatej.model.multiskanfc.Measure;
+import ru.idc.labgatej.model.multiskanfc.Measures;
+import ru.idc.labgatej.model.multiskanfc.Plate;
+import ru.idc.labgatej.model.multiskanfc.Sample;
 import ru.idc.labgatej.model.multiskanfc.Session;
-import ru.idc.labgatej.model.multiskanfc.Sessions;
+import ru.idc.labgatej.model.multiskanfc.Well;
+import ru.idc.labgatej.model.multiskanfc.Wells;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 public class MultiskanFC extends SharedFolderDriver {
@@ -23,6 +33,8 @@ public class MultiskanFC extends SharedFolderDriver {
 
     @Override
     public List<PacketInfo> parseFile(Path file) throws IOException {
+        List<PacketInfo> packets = new ArrayList<>();
+
         XStream xstream = new XStream();
         xstream.ignoreUnknownElements();
         // 02.07.2020 11:57:33
@@ -33,31 +45,46 @@ public class MultiskanFC extends SharedFolderDriver {
 
         xstream.addPermission(NoTypePermission.NONE);
         xstream.allowTypesByRegExp(new String[] { ".*" });
-        xstream.processAnnotations(Sessions.class);
+        xstream.processAnnotations(Session.class);
         String xml = readFileToString(file);
-        Sessions convertedSessions = (Sessions) xstream.fromXML(xml);
-        System.out.println(convertedSessions);
+        Session session = (Session) xstream.fromXML(xml);
+        Plate plate;
+        String test;
+        Sample sample;
+        String sampleId;
+        PacketInfo packet;
+        ResultInfo res;
 
-//        Sessions obj = new Sessions();
-//        obj.setSession(new Session("aaa", new Date()));
-//
-//        String outputXml = xstream.toXML(obj);
-//        System.out.println(outputXml);
+        for(Measure measure: Optional.ofNullable(session.getMeasures()).map(Measures::getMeasures).orElse(null)) {
+            test = measure.getAnalyte();
+            plate = measure.getPlate();
+            for (Well well: Optional.ofNullable(plate.getWells()).map(Wells::getWells).orElse(null)) {
+                sample = well.getSample();
+                if (sample == null) continue;
 
-//        SAXParserFactory spf = SAXParserFactory.newInstance();
-//        spf.setNamespaceAware(true);
-//        try {
-//            SAXParser saxParser = spf.newSAXParser();
-//
-//            XMLReader xmlReader = saxParser.getXMLReader();
-//            xmlReader.setContentHandler(new SaxXMLParser());
-//
-//            xmlReader.parse(file.getFileName().toAbsolutePath().toString());
-//        } catch (IOException | SAXException | ParserConfigurationException e) {
-//            log.error("Ошибка разбора файла " + file.getFileName(), e);
-//        }
+                sampleId = sample.getBarcode() != null
+                  ? sample.getBarcode().trim()
+                  : sample.getName().trim();
 
-        return null;
+                packet = new PacketInfo();
+                packets.add(packet);
+                packet.setHeader(new HeaderInfo(sampleId, false));
+                packet.setOrder(new OrderInfo(sampleId));
+
+                res = new ResultInfo();
+                packet.addResult(res);
+
+                res.setDevice_name(deviceCode);
+                res.setSample_id(sampleId);
+                res.setTest_completed(measure.getTime());
+                res.setTest_type("SAMPLE");
+                res.setResult(sample.getOpticalDencity().getText().replace(",", "."));
+                res.setTest_code(test);
+                res.setComment(Optional.ofNullable(sample.getEvaluation()).map(Evaluation::getText).orElse(null));
+            }
+        }
+
+        return packets;
     }
 
     private static String readFileToString(Path file) throws IOException {

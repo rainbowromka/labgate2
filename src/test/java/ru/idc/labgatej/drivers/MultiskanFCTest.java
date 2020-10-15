@@ -12,7 +12,7 @@ public class MultiskanFCTest extends TestCase {
 	@Test
 	public void test() {
 		MultiskanFC ms = new MultiskanFC();
-		Path file = Paths.get("src/test/java/ru/idc/labgatej/testData/multiskanFC2.xml");
+		Path file = Paths.get("src/test/java/ru/idc/labgatej/testData/multiskanFC3.xml");
 
 		try {
 			ms.parseFile(file);

@@ -1,0 +1,968 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Session time="05.10.2020 20:06:14">
+  <Test>
+    <Name>С-ПЕПТИД-ИФА-БЕСТ</Name>
+    <Type>Определение концентрации аналита</Type>
+    <CatalogNumber>4001</CatalogNumber>
+    <Series>5512</Series>
+  </Test>
+  <Organization>
+    <Name>Инвитро</Name>
+    <Laboratory>Лаборатория Био</Laboratory>
+    <Assistant>Кузнецов</Assistant>
+  </Organization>
+  <Measures>
+    <Measure analyte="С-пептид" time="05.10.2020 20:06:14" mainwavelength="450nm" referencewavelength="620nm" IsValid="0">
+      <Plate>
+        <Wells>
+          <Well row="A" column="1">
+            <Sample name="Стд0001" description="КЛ(0)">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>0,145</OpticalDencity>
+            </Sample>
+          </Well>
+          <Well row="B" column="1">
+            <Sample name="Стд0002" description="КЛ(100)">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>100,000</Value>
+              </Concentration>
+              <OpticalDencity>0,155</OpticalDencity>
+            </Sample>
+          </Well>
+          <Well row="C" column="1">
+            <Sample name="Стд0003" description="КЛ(250)">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>250,000</Value>
+              </Concentration>
+              <OpticalDencity>2,074</OpticalDencity>
+            </Sample>
+          </Well>
+          <Well row="D" column="1">
+            <Sample name="Стд0004" description="КЛ(1000)">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>1000,000</Value>
+              </Concentration>
+              <OpticalDencity>2,133</OpticalDencity>
+            </Sample>
+          </Well>
+          <Well row="E" column="1">
+            <Sample name="Стд0005" description="КЛ(2000)">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>2000,000</Value>
+              </Concentration>
+              <OpticalDencity>2,364</OpticalDencity>
+            </Sample>
+          </Well>
+          <Well row="F" column="1">
+            <Sample name="Стд0006" description="КЛ(5000)">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>5000,000</Value>
+              </Concentration>
+              <OpticalDencity>2,503</OpticalDencity>
+            </Sample>
+          </Well>
+          <Well row="G" column="1">
+            <Sample name="Стд0007" description="КО">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>242,247</Value>
+              </Concentration>
+              <OpticalDencity>1,250</OpticalDencity>
+            </Sample>
+          </Well>
+          <Well row="H" column="1">
+            <Sample name="Обр0008" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>602,679</Value>
+              </Concentration>
+              <OpticalDencity>1,350</OpticalDencity>
+              <Evaluation>норма</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="A" column="2">
+            <Sample name="Стд0009" description="КЛ(0)">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>0,135</OpticalDencity>
+            </Sample>
+          </Well>
+          <Well row="B" column="2">
+            <Sample name="Стд0010" description="КЛ(100)">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>100,000</Value>
+              </Concentration>
+              <OpticalDencity>0,125</OpticalDencity>
+            </Sample>
+          </Well>
+          <Well row="C" column="2">
+            <Sample name="Стд0011" description="КЛ(250)">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>250,000</Value>
+              </Concentration>
+              <OpticalDencity>0,547</OpticalDencity>
+            </Sample>
+          </Well>
+          <Well row="D" column="2">
+            <Sample name="Стд0012" description="КЛ(1000)">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>1000,000</Value>
+              </Concentration>
+              <OpticalDencity>0,656</OpticalDencity>
+            </Sample>
+          </Well>
+          <Well row="E" column="2">
+            <Sample name="Стд0013" description="КЛ(2000)">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>2000,000</Value>
+              </Concentration>
+              <OpticalDencity>1,236</OpticalDencity>
+            </Sample>
+          </Well>
+          <Well row="F" column="2">
+            <Sample name="Стд0014" description="КЛ(5000)">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>5000,000</Value>
+              </Concentration>
+              <OpticalDencity>1,022</OpticalDencity>
+            </Sample>
+          </Well>
+          <Well row="G" column="2">
+            <Sample name="Стд0015" description="КО">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>123,708</Value>
+              </Concentration>
+              <OpticalDencity>0,325</OpticalDencity>
+            </Sample>
+          </Well>
+          <Well row="H" column="2">
+            <Sample name="Обр0016" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>129,346</Value>
+              </Concentration>
+              <OpticalDencity>0,369</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="A" column="3">
+            <Sample name="Обр0017" barcode="34 1">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>1277,435</Value>
+              </Concentration>
+              <OpticalDencity>1,507</OpticalDencity>
+              <Evaluation>выше</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="B" column="3">
+            <Sample name="Обр0018" barcode="34 2">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>171,508</Value>
+              </Concentration>
+              <OpticalDencity>0,698</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="C" column="3">
+            <Sample name="Обр0019" barcode="34 3">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>237,633</Value>
+              </Concentration>
+              <OpticalDencity>1,214</OpticalDencity>
+              <Evaluation>норма</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="D" column="3">
+            <Sample name="Обр0020" barcode="34 4">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>133,960</Value>
+              </Concentration>
+              <OpticalDencity>0,405</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="E" column="3">
+            <Sample name="Обр0021" barcode="34 5">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>2,052</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="F" column="3">
+            <Sample name="Обр0022" barcode="34 6">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>239,940</Value>
+              </Concentration>
+              <OpticalDencity>1,232</OpticalDencity>
+              <Evaluation>норма</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="G" column="3">
+            <Sample name="Обр0023" barcode="34 7">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>1240,444</Value>
+              </Concentration>
+              <OpticalDencity>1,492</OpticalDencity>
+              <Evaluation>выше</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="H" column="3">
+            <Sample name="Обр0024" barcode="34 8">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>198,163</Value>
+              </Concentration>
+              <OpticalDencity>0,906</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="A" column="4">
+            <Sample name="Обр0025" barcode="34 9">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>133,575</Value>
+              </Concentration>
+              <OpticalDencity>0,402</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="B" column="4">
+            <Sample name="Обр0026" barcode="34 10">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>0,106</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="C" column="4">
+            <Sample name="Обр0027" barcode="34 11">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>113,584</Value>
+              </Concentration>
+              <OpticalDencity>0,246</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="D" column="4">
+            <Sample name="Обр0028" barcode="34 12">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>0,093</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="E" column="4">
+            <Sample name="Обр0029" barcode="34 13">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>143,187</Value>
+              </Concentration>
+              <OpticalDencity>0,477</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="F" column="4">
+            <Sample name="Обр0030" barcode="34 14">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>0,127</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="G" column="4">
+            <Sample name="Обр0031" barcode="34 15">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>123,580</Value>
+              </Concentration>
+              <OpticalDencity>0,324</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="H" column="4">
+            <Sample name="Обр0032" barcode="34 16">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>106,536</Value>
+              </Concentration>
+              <OpticalDencity>0,191</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="A" column="5">
+            <Sample name="Обр0033" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>2,348</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="B" column="5">
+            <Sample name="Обр0034" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>2,017</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="C" column="5">
+            <Sample name="Обр0035" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>3,007</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="D" column="5">
+            <Sample name="Обр0036" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>1748,459</Value>
+              </Concentration>
+              <OpticalDencity>1,698</OpticalDencity>
+              <Evaluation>выше</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="E" column="5">
+            <Sample name="Обр0037" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>2,605</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="F" column="5">
+            <Sample name="Обр0038" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>2,360</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="G" column="5">
+            <Sample name="Обр0039" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>2,188</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="H" column="5">
+            <Sample name="Обр0040" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>2,674</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="A" column="6">
+            <Sample name="Обр0041" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>1536,375</Value>
+              </Concentration>
+              <OpticalDencity>1,612</OpticalDencity>
+              <Evaluation>выше</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="B" column="6">
+            <Sample name="Обр0042" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>246,091</Value>
+              </Concentration>
+              <OpticalDencity>1,280</OpticalDencity>
+              <Evaluation>норма</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="C" column="6">
+            <Sample name="Обр0043" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>2,399</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="D" column="6">
+            <Sample name="Обр0044" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>240,325</Value>
+              </Concentration>
+              <OpticalDencity>1,235</OpticalDencity>
+              <Evaluation>норма</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="E" column="6">
+            <Sample name="Обр0045" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>2,136</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="F" column="6">
+            <Sample name="Обр0046" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>1738,594</Value>
+              </Concentration>
+              <OpticalDencity>1,694</OpticalDencity>
+              <Evaluation>выше</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="G" column="6">
+            <Sample name="Обр0047" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>4480,000</Value>
+              </Concentration>
+              <OpticalDencity>1,769</OpticalDencity>
+              <Evaluation>выше</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="H" column="6">
+            <Sample name="Обр0048" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>2,172</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="A" column="7">
+            <Sample name="Обр0049" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>2,105</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="B" column="7">
+            <Sample name="Обр0050" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>2,205</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="C" column="7">
+            <Sample name="Обр0051" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>2,501</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="D" column="7">
+            <Sample name="Обр0052" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>2,003</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="E" column="7">
+            <Sample name="Обр0053" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>2880,000</Value>
+              </Concentration>
+              <OpticalDencity>1,789</OpticalDencity>
+              <Evaluation>выше</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="F" column="7">
+            <Sample name="Обр0054" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>1674,476</Value>
+              </Concentration>
+              <OpticalDencity>1,668</OpticalDencity>
+              <Evaluation>выше</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="G" column="7">
+            <Sample name="Обр0055" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>2,456</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="H" column="7">
+            <Sample name="Обр0056" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>2,540</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="A" column="8">
+            <Sample name="Обр0057" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>1134,402</Value>
+              </Concentration>
+              <OpticalDencity>1,449</OpticalDencity>
+              <Evaluation>норма</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="B" column="8">
+            <Sample name="Обр0058" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>334,821</Value>
+              </Concentration>
+              <OpticalDencity>1,320</OpticalDencity>
+              <Evaluation>норма</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="C" column="8">
+            <Sample name="Обр0059" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>1011,097</Value>
+              </Concentration>
+              <OpticalDencity>1,399</OpticalDencity>
+              <Evaluation>норма</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="D" column="8">
+            <Sample name="Обр0060" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>852,679</Value>
+              </Concentration>
+              <OpticalDencity>1,378</OpticalDencity>
+              <Evaluation>норма</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="E" column="8">
+            <Sample name="Обр0061" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>316,964</Value>
+              </Concentration>
+              <OpticalDencity>1,318</OpticalDencity>
+              <Evaluation>норма</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="F" column="8">
+            <Sample name="Обр0062" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>170,098</Value>
+              </Concentration>
+              <OpticalDencity>0,687</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="G" column="8">
+            <Sample name="Обр0063" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>2,028</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="H" column="8">
+            <Sample name="Обр0064" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>2,296</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="A" column="9">
+            <Sample name="Обр0065" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>122,939</Value>
+              </Concentration>
+              <OpticalDencity>0,319</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="B" column="9">
+            <Sample name="Обр0066" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>1817,509</Value>
+              </Concentration>
+              <OpticalDencity>1,726</OpticalDencity>
+              <Evaluation>выше</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="C" column="9">
+            <Sample name="Обр0067" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>0,026</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="D" column="9">
+            <Sample name="Обр0068" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>0,014</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="E" column="9">
+            <Sample name="Обр0069" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>1506,782</Value>
+              </Concentration>
+              <OpticalDencity>1,600</OpticalDencity>
+              <Evaluation>выше</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="F" column="9">
+            <Sample name="Обр0070" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>134,857</Value>
+              </Concentration>
+              <OpticalDencity>0,412</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="G" column="9">
+            <Sample name="Обр0071" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>0,007</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="H" column="9">
+            <Sample name="Обр0072" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>1886,560</Value>
+              </Concentration>
+              <OpticalDencity>1,754</OpticalDencity>
+              <Evaluation>выше</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="A" column="10">
+            <Sample name="Обр0073" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>0,111</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="B" column="10">
+            <Sample name="Обр0074" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>216,489</Value>
+              </Concentration>
+              <OpticalDencity>1,049</OpticalDencity>
+              <Evaluation>норма</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="C" column="10">
+            <Sample name="Обр0075" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>0,009</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="D" column="10">
+            <Sample name="Обр0076" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>0,005</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="E" column="10">
+            <Sample name="Обр0077" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>219,821</Value>
+              </Concentration>
+              <OpticalDencity>1,075</OpticalDencity>
+              <Evaluation>норма</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="F" column="10">
+            <Sample name="Обр0078" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>112,302</Value>
+              </Concentration>
+              <OpticalDencity>0,236</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="G" column="10">
+            <Sample name="Обр0079" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>0,007</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="H" column="10">
+            <Sample name="Обр0080" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>1006,165</Value>
+              </Concentration>
+              <OpticalDencity>1,397</OpticalDencity>
+              <Evaluation>норма</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="A" column="11">
+            <Sample name="Обр0081" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>1,886</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="B" column="11">
+            <Sample name="Обр0082" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>154,208</Value>
+              </Concentration>
+              <OpticalDencity>0,563</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="C" column="11">
+            <Sample name="Обр0083" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>1748,459</Value>
+              </Concentration>
+              <OpticalDencity>1,698</OpticalDencity>
+              <Evaluation>выше</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="D" column="11">
+            <Sample name="Обр0084" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>113,584</Value>
+              </Concentration>
+              <OpticalDencity>0,246</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="E" column="11">
+            <Sample name="Обр0085" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>109,611</Value>
+              </Concentration>
+              <OpticalDencity>0,215</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="F" column="11">
+            <Sample name="Обр0086" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>0,045</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="G" column="11">
+            <Sample name="Обр0087" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>0,010</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="H" column="11">
+            <Sample name="Обр0088" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>234,045</Value>
+              </Concentration>
+              <OpticalDencity>1,186</OpticalDencity>
+              <Evaluation>норма</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="A" column="12">
+            <Sample name="Обр0089" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>246,860</Value>
+              </Concentration>
+              <OpticalDencity>1,286</OpticalDencity>
+              <Evaluation>норма</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="B" column="12">
+            <Sample name="Обр0090" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>118,838</Value>
+              </Concentration>
+              <OpticalDencity>0,287</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="C" column="12">
+            <Sample name="Обр0091" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>191,884</Value>
+              </Concentration>
+              <OpticalDencity>0,857</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="D" column="12">
+            <Sample name="Обр0092" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>0,129</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="E" column="12">
+            <Sample name="Обр0093" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>0,068</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="F" column="12">
+            <Sample name="Обр0094" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>0,017</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="G" column="12">
+            <Sample name="Обр0095" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>0,000</Value>
+              </Concentration>
+              <OpticalDencity>0,007</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+          <Well row="H" column="12">
+            <Sample name="Обр0096" barcode="">
+              <Concentration calculatemodel="кус-лин">
+                <Unit>пмоль/л</Unit>
+                <Value>176,762</Value>
+              </Concentration>
+              <OpticalDencity>0,739</OpticalDencity>
+              <Evaluation>ниже</Evaluation>
+            </Sample>
+          </Well>
+        </Wells>
+      </Plate>
+    </Measure>
+  </Measures>
+</Session>

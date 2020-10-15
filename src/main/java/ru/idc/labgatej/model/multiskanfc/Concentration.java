@@ -12,16 +12,15 @@ import lombok.Setter;
 @Setter
 @RequiredArgsConstructor
 @AllArgsConstructor
-public class Result {
+public class Concentration {
 	@XStreamAsAttribute
-	private String name;
+	@XStreamAlias("calculatedmodel")
+	private String calculatedModel;
 
-	@XStreamAsAttribute
-	private String value;
+	@XStreamAlias("Unit")
+	private Unit unit;
 
-	@XStreamAsAttribute
-	private String disabled;
+	@XStreamAlias("Value")
+	private Value value;
 
-	@XStreamAsAttribute
-	private String extrapolated;
 }

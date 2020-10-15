@@ -17,9 +17,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @AllArgsConstructor
 public class Plate {
-	@XStreamAsAttribute
-	private String name;
-
-	@XStreamImplicit
-	private List<Well> wells = new ArrayList<Well>();
+	@XStreamAlias("Wells")
+	private Wells wells;
 }

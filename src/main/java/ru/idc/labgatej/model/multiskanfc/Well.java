@@ -14,7 +14,10 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Well {
 	@XStreamAsAttribute
-	private String address;
+	private String row;
+
+	@XStreamAsAttribute
+	private String column;
 
 	@XStreamAlias("Sample")
 	private Sample sample;

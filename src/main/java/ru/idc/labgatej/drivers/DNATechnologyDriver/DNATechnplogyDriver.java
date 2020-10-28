@@ -6,18 +6,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.idc.labgatej.base.Configuration;
 import ru.idc.labgatej.base.DBManager;
-import ru.idc.labgatej.base.Utils;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.RealTimePcr.RealTimePcrCell;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.RealTimePcr.RealTimePcrCreatePlate;
+import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.RealTimePcr.RealTimePcrData;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.RealTimePcr.RealTimePcrPackage;
+import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.RealTimePcr.RealTimePcrPlate;
+import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.RealTimePcr.RealTimePcrSample;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.RealTimePcr.RealTimePcrTest;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.orders.InquryOrders;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.orders.RootOrders;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.orders.SampleOrder;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.orders.ServiceOrder;
-import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.results.Inquiry;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.results.Result;
-import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.results.Root;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.results.Sample;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.results.Service;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.symphony.fullPlateTrack.BatchTrack;
@@ -40,8 +40,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -58,13 +56,35 @@ import java.util.function.Consumer;
 public class DNATechnplogyDriver
 extends SharedFolderDriver {
 
-    private static final String DNK_TEST_COVID19 = "COV";
     final Logger log = LoggerFactory.getLogger(DNATechnplogyDriver.class);
 
+    private static final String DNK_TEST_COVID19 = "COV";
+
+    private static final String REAL_TIME_PCR = "RealTimePCR";
+    private static final String BIORAD_CFX_95 = "BioRadCFX95";
+
     /**
-     * Путь к результатам от Symphony сформированных вручную сканером штрихкода.
+     * Коды тестов в ЛИС.
      */
-    Path symphonyDirHand;
+    private static final String SARS_EQUAL_TEST_CODE = "SARS_EQUAL";
+    private static final String SARS_BK_TEST_CODE = "SARS_BK";
+    private static final String SARS_GENE_E_TEST_CODE = "SARS_GENE_E";
+    private static final String SARS_GENE_N_TEST_CODE = "SARS_GENE_N";
+    /**
+     * Идентификаторы тестов на приборе.
+     */
+    private static final String SARS_EQUAL
+        = "SARS2,SARS_RNA-IC\\Коронавирусы подобные SARS-CoV";
+    private static final String SARS_BK = "SARS2,SARS_RNA-IC\\ВК";
+    private static final String SARS_GENE_E
+        = "SARS2,SARS_RNA-IC\\Коронавирус SARS-CoV-2, ген E";
+    private static final String SARS_GENE_N
+        = "SARS2,SARS_RNA-IC\\Коронавирус SARS-CoV-2, ген N";
+
+//    /**
+//     * Путь к результатам от Symphony сформированных вручную сканером штрихкода.
+//     */
+//    Path symphonyDirHand;
 
     /**
      * Путь к результатам от Symphony полученных напрямую от прибора.
@@ -92,8 +112,8 @@ extends SharedFolderDriver {
     @Override
     public void init(DBManager dbManager, Configuration config) {
         super.init(dbManager, config);
-        symphonyDirHand = Paths.get(config.getParamValue("simphonyDirHand"));
-        dirSymphonyHandProcessed = symphonyDirHand.resolve("processedFiles");
+//        symphonyDirHand = Paths.get(config.getParamValue("simphonyDirHand"));
+//        dirSymphonyHandProcessed = symphonyDirHand.resolve("processedFiles");
         symphonyDir = Paths.get(config.getParamValue("simphonyDir"));
         dirSymphonyProcessed = symphonyDir.resolve("processedFiles");
         try {
@@ -129,45 +149,180 @@ extends SharedFolderDriver {
         File f = new File(file.toFile().getAbsolutePath());
         JAXBContext jaxbContext;
         try {
-            jaxbContext = JAXBContext.newInstance(Root.class);
+            jaxbContext = JAXBContext.newInstance(RealTimePcrPackage.class);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-            Root root = (Root) jaxbUnmarshaller.unmarshal(f);
+            RealTimePcrPackage root =
+                (RealTimePcrPackage) jaxbUnmarshaller.unmarshal(f);
 
-            for (Inquiry inquiry : root.getInquiries()) {
-                if ((inquiry != null) && inquiry.getSample() != null) {
-                    Sample sample = inquiry.getSample();
+            System.out.println("Good");
 
-                    if (sample != null) {
-                        Date date = null;
-                        try {
-                            date = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss")
-                                    .parse(sample.getSamplingDate());
-                        } catch (ParseException e) {
-                            log.error("Дата не парсится: ", e);
-                        }
+            RealTimePcrData data;
+            RealTimePcrPlate plate;
+            List<RealTimePcrCell> cells;
 
-                        String id = sample.getCode();
-
-                        PacketInfo packet = new PacketInfo();
-
-                        if (id != null) {
-                            packet.setHeader(new HeaderInfo(id, false));
-                            packet.setOrder(new OrderInfo(id.trim()));
-                        }
-
-                        appendResultsToPacket(packet, sample);
-                        packets.add(packet);
-                    }
-                }
+            if ((root == null) || ((data = root.getRealTimePcrData()) == null)
+                || ((plate = data.getRealTimePcrPlates()) == null)
+                || ((cells = plate.getRealTimePcrCells()) == null))
+            {
+                return null;
             }
 
+            for (RealTimePcrCell cell : cells) {
 
-        } catch (JAXBException e) {
+                List<RealTimePcrTest> tests;
+
+                if ((cells == null) || (tests = cell.getRealTimePcrTests()) == null)
+                {
+                    continue;
+                }
+
+                Boolean isSarsEquals = null;
+//                Boolean isSarsBK = null;
+                Boolean isSarsGeneE = null;
+                Boolean isSarsGeneN = null;
+                Date date = new Date();
+
+                for (RealTimePcrTest test: tests)
+                {
+                    String testId = test.getId();
+                    String value = test.getValue();
+                    Boolean rst = null;
+
+                    if (value == null) {
+                        rst = null;
+                    }
+
+                    if ("+".equals(value))
+                    {
+                        rst = true;
+                    }
+
+                    // один тест почему-то определяется по знаку минус.
+                    if ("-".equals(value))
+                    {
+                        rst = false;
+                    }
+
+                    // а остальные по знаку тире.
+                    if ("–".equals(value))
+                    {
+                        rst = false;
+                    }
+
+                    if (rst == null) continue;
+
+                    boolean isRealTimePcr = REAL_TIME_PCR.equals(deviceCode);
+
+                    if (SARS_EQUAL.equals(testId))
+                    {
+                        isSarsEquals = rst;
+                        if (isRealTimePcr) {
+                            packets.add(createPacket(value, date,
+                                cell.getName(), deviceCode,
+                                SARS_EQUAL_TEST_CODE));
+                        }
+                    }
+//                    else if (SARS_BK.equals(testId))
+//                    {
+//                        isSarsBK = rst;
+//                        if (isRealTimePcr) {
+//                            packets.add(createPacket(value, date,
+//                                cell.getName(), deviceCode,
+//                                SARS_BK_TEST_CODE));
+//                        }
+//                    }
+                    else if (SARS_GENE_E.equals(testId))
+                    {
+                        isSarsGeneE = rst;
+                        if (isRealTimePcr) {
+                            packets.add(createPacket(value, date,
+                                cell.getName(), deviceCode,
+                                SARS_GENE_E_TEST_CODE));
+                        }
+                    }
+                    else if (SARS_GENE_N.equals(testId))
+                    {
+                        isSarsGeneN = rst;
+                        if (isRealTimePcr) {
+                            packets.add(createPacket(value, date,
+                                cell.getName(), deviceCode,
+                                SARS_GENE_N_TEST_CODE));
+                        }
+                    }
+                }
+
+                if (BIORAD_CFX_95.equals(deviceCode)) {
+
+                    if ((isSarsEquals == null) || (isSarsGeneE == null)
+                            || (isSarsGeneN == null) /*|| (isSarsBK == null)*/) {
+                        continue;
+                    }
+
+                    String rst = "ОТР.";
+
+                    if (isSarsGeneE && isSarsGeneN) {
+                        rst = "ПОЛ.";
+                    }
+
+                    String id = cell.getName();
+
+                    PacketInfo packet = new PacketInfo();
+
+                    if (id != null) {
+                        packet.setHeader(new HeaderInfo(id, false));
+                        packet.setOrder(new OrderInfo(id.trim()));
+                    }
+
+                    ResultInfo res = new ResultInfo();
+                    packet.addResult(res);
+
+                    res.setDevice_name(deviceCode);
+
+                    res.setTest_completed(date);
+                    res.setTest_type("SAMPLE");
+
+                    res.setResult(rst);
+                    res.setTest_code("339");
+
+                    packets.add(createPacket(rst, date, cell.getName(), deviceCode, "339"));
+                }
+            }
+        } catch (JAXBException e)
+        {
             e.printStackTrace();
         }
 
         return packets;
+    }
 
+    private PacketInfo createPacket(
+        String result,
+        Date completed,
+        String id,
+        String deviceCode,
+        String testCode)
+    {
+        Date date = new Date();
+
+        PacketInfo packet = new PacketInfo();
+
+        if (id != null ) {
+            packet.setHeader(new HeaderInfo(id, false));
+            packet.setOrder(new OrderInfo(id.trim()));
+        }
+
+        ResultInfo res = new ResultInfo();
+        packet.addResult(res);
+
+        res.setDevice_name(deviceCode);
+
+        res.setTest_completed(date);
+        res.setTest_type("SAMPLE");
+
+        res.setResult(result);
+        res.setTest_code(testCode);
+
+        return packet;
     }
 
     private void appendResultsToPacket(
@@ -230,9 +385,14 @@ extends SharedFolderDriver {
         List<BatchTrack> batchTracks = fullPlateTrack.getBatchTrack();
         if (batchTracks == null) return;
 
+        int noCols = 12;
+        int noRows = 6;
+
         RealTimePcrPackage root = new RealTimePcrPackage();
         RealTimePcrCreatePlate plate = new RealTimePcrCreatePlate();
         root.setRealTimePcrCreatePlate(plate);
+        List<RealTimePcrSample> realTimePcrSamples = new ArrayList<>();
+        root.setSamples(realTimePcrSamples);
 
         for (BatchTrack batchTrack: batchTracks)
         {
@@ -246,25 +406,66 @@ extends SharedFolderDriver {
             List<RealTimePcrCell> cells = new ArrayList<>();
             plate.setRealTimePcrCells(cells);
 
+            sampleTracks.sort((o1, o2) -> {
+                if ((o1 == null) || (o2 == null)) {
+                    return 0;
+                }
+
+                String pos1 = o1.getSampleOutputPos();
+                String pos2 = o2.getSampleOutputPos();
+
+                if ((pos1 == null) || (pos2 == null)) {
+                    return 0;
+                }
+
+                String[] posXY1 = pos1.split(":");
+                String[] posXY2 = pos2.split(":");
+
+                if ((posXY1.length != 2) || (posXY2.length != 2)) {
+                    return 0;
+                }
+
+                int result = posXY1[1].compareTo(posXY2[1]);
+
+                if (result == 0) {
+                    return posXY1[0].compareTo(posXY2[0]);
+                }
+
+                return result;
+            });
+
+            int curX = 1;
+            int curY = 1;
             for (SampleTrack sampleTrack: sampleTracks)
             {
-//                if (sampleTrack == null) continue;
-                String[] samplePosition = sampleTrack.getSampleOutputPos()
-                    .split(":");
                 RealTimePcrCell cell = new RealTimePcrCell();
                 cells.add(cell);
 
-                cell.setName(sampleTrack.getSampleCode());
-                cell.setX(samplePosition[1]);
-                cell.setY(Utils.letteToNumnber(samplePosition[0]
-                    .toCharArray()[0]).toString());
+                String barCode = sampleTrack.getSampleCode();
+
+                cell.setName(barCode);
+
+                cell.setX(Integer.toString(curX));
+                cell.setY(Integer.toString(curY));
+
+                if (++curY > noRows) {
+                    curY = 1;
+                    if (++curX > noCols) break;
+                }
 
                 List<RealTimePcrTest> tests = new ArrayList<>();
                 cell.setRealTimePcrTests(tests);
-                tests.add(new RealTimePcrTest("SARS2,SARS_RNA-IC\\Коронавирусы подобные SARS-CoV", null, null));
-                tests.add(new RealTimePcrTest("SARS2,SARS_RNA-IC\\ВК", null, null));
-                tests.add(new RealTimePcrTest("SARS2,SARS_RNA-IC\\Коронавирус SARS-CoV-2, ген E", null, null));
-                tests.add(new RealTimePcrTest("SARS2,SARS_RNA-IC\\Коронавирус SARS-CoV-2, ген N", null, null));
+                tests.add(buildRealTimePcrTest("SARS2,SARS_RNA-IC\\Коронавирусы подобные SARS-CoV"));
+                tests.add(buildRealTimePcrTest("SARS2,SARS_RNA-IC\\ВК"));
+                tests.add(buildRealTimePcrTest("SARS2,SARS_RNA-IC\\Коронавирус SARS-CoV-2, ген E"));
+                tests.add(buildRealTimePcrTest("SARS2,SARS_RNA-IC\\Коронавирус SARS-CoV-2, ген N"));
+
+                RealTimePcrSample realTimePcrSample = new RealTimePcrSample();
+                realTimePcrSample.setName(barCode);
+                realTimePcrSample.setDisplayName(barCode);
+                realTimePcrSample.setPatient("");
+
+                realTimePcrSamples.add(realTimePcrSample);
             }
         }
 
@@ -291,6 +492,13 @@ extends SharedFolderDriver {
         } catch (JAXBException e) {
             e.printStackTrace();
         }
+    }
+
+    private RealTimePcrTest buildRealTimePcrTest(String id)
+    {
+        RealTimePcrTest realTimePcrTest = new RealTimePcrTest();
+        realTimePcrTest.setId(id);
+        return realTimePcrTest;
     }
 
     private FullPlateTrack parseSymphonyFile(

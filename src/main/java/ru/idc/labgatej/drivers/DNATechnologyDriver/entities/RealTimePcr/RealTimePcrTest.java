@@ -13,7 +13,6 @@ import java.util.List;
  * Тест.
  */
 @Data
-@AllArgsConstructor
 @XmlAccessorType(value = XmlAccessType.FIELD)
 public class RealTimePcrTest
 {

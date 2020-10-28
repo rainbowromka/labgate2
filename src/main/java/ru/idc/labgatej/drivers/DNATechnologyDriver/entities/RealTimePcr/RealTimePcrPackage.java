@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.List;
 
 /**
  * Файл задания в программу Real Time PCR для амплификаторов ДНК "Технологии".
@@ -33,4 +34,10 @@ public class RealTimePcrPackage
      */
     @XmlElement(name = "data")
     private RealTimePcrData realTimePcrData;
+
+    /**
+     * Образцы.
+     */
+    @XmlElement(name = "sample")
+    private List<RealTimePcrSample> samples;
 }

@@ -1,7 +1,6 @@
 package ru.idc.labgatej.drivers.DNATechnologyDriver;
 
 import com.fasterxml.uuid.Generators;
-import com.google.common.collect.ImmutableList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.idc.labgatej.base.Configuration;
@@ -13,18 +12,9 @@ import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.RealTimePcr.RealTime
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.RealTimePcr.RealTimePcrPlate;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.RealTimePcr.RealTimePcrSample;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.RealTimePcr.RealTimePcrTest;
-import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.orders.InquryOrders;
-import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.orders.RootOrders;
-import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.orders.SampleOrder;
-import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.orders.ServiceOrder;
-import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.results.Result;
-import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.results.Sample;
-import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.results.Service;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.symphony.fullPlateTrack.BatchTrack;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.symphony.fullPlateTrack.FullPlateTrack;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.symphony.fullPlateTrack.SampleTrack;
-import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.symphony.rack.SymphonyRackOld;
-import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.symphony.rack.SymphonyTestTube;
 import ru.idc.labgatej.drivers.common.SharedFolderDriver;
 import ru.idc.labgatej.model.HeaderInfo;
 import ru.idc.labgatej.model.OrderInfo;
@@ -44,21 +34,17 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Scanner;
-import java.util.UUID;
-import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class DNATechnplogyDriver
 extends SharedFolderDriver {
 
-    final Logger log = LoggerFactory.getLogger(DNATechnplogyDriver.class);
+    private final Logger log = LoggerFactory.getLogger(DNATechnplogyDriver.class);
 
-    private static final String DNK_TEST_COVID19 = "COV";
 
     private static final String REAL_TIME_PCR = "RealTimePCR";
     private static final String BIORAD_CFX_95 = "BioRadCFX95";
@@ -67,7 +53,6 @@ extends SharedFolderDriver {
      * Коды тестов в ЛИС.
      */
     private static final String SARS_EQUAL_TEST_CODE = "SARS_EQUAL";
-    private static final String SARS_BK_TEST_CODE = "SARS_BK";
     private static final String SARS_GENE_E_TEST_CODE = "SARS_GENE_E";
     private static final String SARS_GENE_N_TEST_CODE = "SARS_GENE_N";
     /**
@@ -75,51 +60,34 @@ extends SharedFolderDriver {
      */
     private static final String SARS_EQUAL
         = "SARS2,SARS_RNA-IC\\Коронавирусы подобные SARS-CoV";
-    private static final String SARS_BK = "SARS2,SARS_RNA-IC\\ВК";
     private static final String SARS_GENE_E
         = "SARS2,SARS_RNA-IC\\Коронавирус SARS-CoV-2, ген E";
     private static final String SARS_GENE_N
         = "SARS2,SARS_RNA-IC\\Коронавирус SARS-CoV-2, ген N";
 
-//    /**
-//     * Путь к результатам от Symphony сформированных вручную сканером штрихкода.
-//     */
-//    Path symphonyDirHand;
-
     /**
      * Путь к результатам от Symphony полученных напрямую от прибора.
      */
-    Path symphonyDir;
+    private Path symphonyDir;
 
     /**
      * Путь к папке, куда необходимо помещать задания для ДНК Технологии
      */
-    Path ordersDir;
-
-    /**
-     * Путь к обработанным файлам Symhony, после обработки файлов, обработанных
-     * вручную сканером штрихкода.
-     */
-    Path dirSymphonyHandProcessed;
+    private Path ordersDir;
 
     /**
      * Путь к обработанным файлам Symhony, после обработки файлов, полученных
      * напрямую с прибора.
      */
-    Path dirSymphonyProcessed;
+    private Path dirSymphonyProcessed;
 
 
     @Override
     public void init(DBManager dbManager, Configuration config) {
         super.init(dbManager, config);
-//        symphonyDirHand = Paths.get(config.getParamValue("simphonyDirHand"));
-//        dirSymphonyHandProcessed = symphonyDirHand.resolve("processedFiles");
         symphonyDir = Paths.get(config.getParamValue("simphonyDir"));
         dirSymphonyProcessed = symphonyDir.resolve("processedFiles");
         try {
-            if (!Files.exists(dirSymphonyHandProcessed)) {
-                Files.createDirectory(dirSymphonyHandProcessed);
-            }
             if (!Files.exists(dirSymphonyProcessed)) {
                 Files.createDirectory(dirSymphonyProcessed);
             }
@@ -132,7 +100,7 @@ extends SharedFolderDriver {
 
     protected void scanFiles(
             Path directory,
-            Consumer<Path> consumer)
+            Function<Path, Exception> consumer)
             throws IOException
     {
         // сам драйвер проверяет, есть ли уже выполненые задания амплификатором.
@@ -222,15 +190,6 @@ extends SharedFolderDriver {
                                 SARS_EQUAL_TEST_CODE));
                         }
                     }
-//                    else if (SARS_BK.equals(testId))
-//                    {
-//                        isSarsBK = rst;
-//                        if (isRealTimePcr) {
-//                            packets.add(createPacket(value, date,
-//                                cell.getName(), deviceCode,
-//                                SARS_BK_TEST_CODE));
-//                        }
-//                    }
                     else if (SARS_GENE_E.equals(testId))
                     {
                         isSarsGeneE = rst;
@@ -302,7 +261,7 @@ extends SharedFolderDriver {
         String deviceCode,
         String testCode)
     {
-        Date date = new Date();
+        Date date = completed == null ? new Date() : completed;
 
         PacketInfo packet = new PacketInfo();
 
@@ -325,43 +284,11 @@ extends SharedFolderDriver {
         return packet;
     }
 
-    private void appendResultsToPacket(
-        PacketInfo packet,
-        Sample sample)
-    {
-        Service service = sample.getService();
 
-        if (service != null) {
-            for (Result result : sample.getService().getResults()) {
-                ResultInfo res = new ResultInfo();
-                packet.addResult(res);
-                res.setDevice_name(deviceCode);
-
-                //yyyy-MM-dd'T'hh:mm:ss.S
-                if (result.getDoneTime() != null) {
-                    try {
-                        res.setTest_completed(
-                                new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.S")
-                                        .parse(result.getDoneTime()));
-                    } catch (ParseException e) {
-                        log.error("Дата не читвается: ", e);
-                    }
-                }
-
-                res.setTest_type("SAMPLE");
-                res.setResult(result.getValue());
-
-                if (service.getCode() != null) {
-                    res.setTest_code(service.getCode());
-                }
-            }
-        }
-    }
-
-    private void processSymphonyFile(
+    private Exception processSymphonyFile(
         Path file)
     {
-        FullPlateTrack fullPlateTrack = null;
+        FullPlateTrack fullPlateTrack ;
         try {
             if ((fullPlateTrack = parseSymphonyFile(file)) != null ) {
                 makeDNKTechnologyOrdersFromFullPlateTrack(fullPlateTrack);
@@ -370,8 +297,10 @@ extends SharedFolderDriver {
                     StandardCopyOption.REPLACE_EXISTING);
             System.out.println(file.toAbsolutePath());
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("Ошибка удаления файла", e);
+            return e;
         }
+        return null;
     }
 
     /**
@@ -519,85 +448,6 @@ extends SharedFolderDriver {
         return fullPlateTrack;
     }
 
-    private void processSymphonyHandFile(
-        Path file)
-    {
-        String line;
-        String[] words;
-        SymphonyRackOld rack = new SymphonyRackOld();
-
-        try (
-                Scanner sc = new Scanner(file.toFile(),"UTF-8")
-        ) {
-
-            List<SymphonyTestTube> listTubes = new ArrayList<>();
-            rack.setTestTubes(listTubes);
-
-            while (sc.hasNextLine()) {
-                line = sc.nextLine();
-                words = line.split("[\\t\\s]");
-                if (words.length >= 2) {
-                    listTubes.add(new SymphonyTestTube(words[0], words[1]));
-                }
-            }
-
-            makeDNKTechnologyOrdersFromHand(rack);
-
-            Files.move(file, Paths.get(dirSymphonyHandProcessed.toFile().getPath() + "/" + file.getFileName()),
-                    StandardCopyOption.REPLACE_EXISTING);
-        } catch (FileNotFoundException e) {
-            log.error("Ошибка открытия файла", e);
-        } catch (IOException e) {
-            e.printStackTrace();
-            log.error("Нельзя переместить файл", e);
-        }
-    }
-
-    private void makeDNKTechnologyOrdersFromHand(
-        SymphonyRackOld rack)
-    {
-        RootOrders root = new RootOrders();
-        List<InquryOrders> inquries = new ArrayList<>();
-        root.setInquryOrders(inquries);
-
-        for (SymphonyTestTube tube: rack.getTestTubes()){
-            InquryOrders inqury = new InquryOrders();
-            inquries.add(inqury);
-
-            UUID id = Generators.timeBasedGenerator().generate();
-            inqury.setId(id.toString());
-
-            SampleOrder sample = new SampleOrder();
-            inqury.setSampleOrder(sample);
-            sample.setId(id.toString());
-            sample.setCode(tube.getId());
-            sample.setMatID("21");
-
-            ServiceOrder service = new ServiceOrder();
-            sample.setServiceOrders(ImmutableList.of(service));
-            String serviceId;
-            switch (tube.getTestCode()) {
-                case "222": serviceId = "13";
-                default: serviceId = DNK_TEST_COVID19;
-            }
-            service.setId(serviceId);
-        }
-
-        JAXBContext jaxbContext;
-
-        String filename = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss_SSS")
-            .format(new Date()) + ".xml";
-
-        File file = new File(ordersDir.toString(), filename);
-
-        try (FileOutputStream os = new FileOutputStream(file)){
-            jaxbContext = JAXBContext.newInstance(RootOrders.class);
-            Marshaller marshaller = jaxbContext.createMarshaller();
-            marshaller.marshal(root, new StreamResult(os));
-        } catch (JAXBException | IOException e) {
-            log.error("", e);
-        }
-    }
 }
 
 

@@ -18,7 +18,7 @@ import java.nio.file.StandardCopyOption;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.function.Function;
 
 import static java.nio.file.FileVisitResult.CONTINUE;
 import static java.nio.file.FileVisitResult.SKIP_SUBTREE;
@@ -58,7 +58,7 @@ implements IDriver
 
     protected void scanFiles(
         Path directory,
-        Consumer<Path> consumer)
+        Function<Path, Exception> consumer)
     throws IOException
     {
         Files.walkFileTree(directory, new SimpleFileVisitor<Path>() {
@@ -71,16 +71,17 @@ implements IDriver
                 }
             }
 
-            @SneakyThrows(SQLException.class)
             @Override
-            public FileVisitResult visitFile(Path file,	BasicFileAttributes attr) {
-                try {
-                    processFile(file);
-                } catch (IOException e) {
-                    log.error("Ошибка обработки файла", e);
-                } catch (SQLException e) {
-                    log.error("Ошибка обработки файла", e);
-                    throw e;
+            public FileVisitResult visitFile(
+                Path file,
+                BasicFileAttributes attr)
+            throws IOException
+            {
+                Exception e = consumer.apply(file);
+
+                if (e != null) {
+                    log.error("Ошибка обработки файла!", e);
+                    throw new IOException("Ошибка обработки файла: " + file);
                 }
 
                 return CONTINUE;
@@ -88,17 +89,27 @@ implements IDriver
         });
     }
 
-    private void processFile (
+    private Exception processFile (
         Path file)
-    throws IOException, SQLException
     {
-        List<PacketInfo> packets = parseFile(file);
+        try
+        {
+            List<PacketInfo> packets = parseFile(file);
 
-        dbManager.savePakets(packets, false);
+            dbManager.savePakets(packets, false);
 
-        Files.move(file, Paths.get(dirProcessed.toFile().getPath() + "/" + file.getFileName()),
-            StandardCopyOption.REPLACE_EXISTING);
-        log.debug(file.toAbsolutePath().toString());
+            Files.move(file, Paths.get(dirProcessed.toFile().getPath() + "/" + file.getFileName()),
+                    StandardCopyOption.REPLACE_EXISTING);
+            log.debug(file.toAbsolutePath().toString());
+        } catch (SQLException e) {
+            log.error("Ошибка базы данных", e);
+            return e;
+        } catch (IOException e) {
+            log.error("Ошибка переноса файла", e);
+            return e;
+        }
+
+        return null;
     }
 
     public abstract List<PacketInfo> parseFile(Path file)

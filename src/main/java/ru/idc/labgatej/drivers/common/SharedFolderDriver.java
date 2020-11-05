@@ -8,7 +8,6 @@ import ru.idc.labgatej.base.DBManager;
 import ru.idc.labgatej.base.IDriver;
 import ru.idc.labgatej.model.PacketInfo;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;

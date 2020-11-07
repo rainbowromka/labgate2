@@ -18,6 +18,7 @@ import java.nio.file.StandardCopyOption;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.function.Function;
 
 import static java.nio.file.FileVisitResult.CONTINUE;
 import static java.nio.file.FileVisitResult.SKIP_SUBTREE;
@@ -27,7 +28,7 @@ implements IDriver
 {
     final Logger log = LoggerFactory.getLogger(SharedFolderDriver.class);
 
-    private DBManager dbManager;
+    protected DBManager dbManager;
     private Path dir2scan;
     private Path dirProcessed;
     protected String deviceCode;
@@ -48,34 +49,39 @@ implements IDriver
     }
 
     @Override
-    public void loop() throws IOException, InterruptedException, SQLException {
+    public void loop() throws IOException, InterruptedException {
         while (true) {
-            scanFiles(dir2scan);
+            scanFiles(dir2scan, this::processFile);
             Thread.sleep(30000);
         }
     }
 
-    private void scanFiles(Path dir2scan) throws IOException, SQLException {
-        Files.walkFileTree(dir2scan, new SimpleFileVisitor<Path>() {
+    protected void scanFiles(
+        Path directory,
+        Function<Path, Exception> consumer)
+    throws IOException
+    {
+        Files.walkFileTree(directory, new SimpleFileVisitor<Path>() {
             @Override
             public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
-                if (dir2scan.equals(dir)) {
+                if (directory.equals(dir)) {
                     return CONTINUE;
                 } else {
                     return SKIP_SUBTREE;
                 }
             }
 
-            @SneakyThrows(SQLException.class)
             @Override
-            public FileVisitResult visitFile(Path file,	BasicFileAttributes attr) {
-                try {
-                    processFile(file);
-                } catch (IOException e) {
-                    log.error("Ошибка обработки файла", e);
-                } catch (SQLException e) {
-                    log.error("Ошибка обработки файла", e);
-                    throw e;
+            public FileVisitResult visitFile(
+                Path file,
+                BasicFileAttributes attr)
+            throws IOException
+            {
+                Exception e = consumer.apply(file);
+
+                if (e != null) {
+                    log.error("Ошибка обработки файла!", e);
+                    throw new IOException("Ошибка обработки файла: " + file);
                 }
 
                 return CONTINUE;
@@ -83,19 +89,31 @@ implements IDriver
         });
     }
 
-    private void processFile (Path file) throws IOException, SQLException
+    private Exception processFile (
+        Path file)
     {
-        List<PacketInfo> packets = parseFile(file);
+        try
+        {
+            List<PacketInfo> packets = parseFile(file);
 
-        dbManager.savePakets(packets, false);
+            dbManager.savePakets(packets, false);
 
-        Files.move(file, Paths.get(dirProcessed.toFile().getPath() + "/" + file.getFileName()),
-            StandardCopyOption.REPLACE_EXISTING);
-        log.debug(file.toAbsolutePath().toString());
+            Files.move(file, Paths.get(dirProcessed.toFile().getPath() + "/" + file.getFileName()),
+                    StandardCopyOption.REPLACE_EXISTING);
+            log.debug(file.toAbsolutePath().toString());
+        } catch (SQLException e) {
+            log.error("Ошибка базы данных", e);
+            return e;
+        } catch (IOException e) {
+            log.error("Ошибка переноса файла", e);
+            return e;
+        }
+
+        return null;
     }
 
     public abstract List<PacketInfo> parseFile(Path file)
-      throws IOException;
+    throws IOException;
 
     @Override
     public void close() {

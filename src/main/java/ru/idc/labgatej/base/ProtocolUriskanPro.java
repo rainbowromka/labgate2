@@ -46,10 +46,12 @@ public class ProtocolUriskanPro implements Protocol {
 	public List<ResultInfo> parseResults(String msg) {
 		List<ResultInfo> results = new ArrayList<>();
 		String s;
-		final Pattern pattern = Pattern.compile("^Date :(.*?)\\r\\n" +
+		final Pattern pattern = Pattern.compile(
+			"^Operator :(.*?)\\r\\n" +
+				"Date :(.*?)\\r\\n" +
 				"ID_NO:(.*?)\\r\\n" +
-				"Ward:(.*?)\\r\\n" +
-				"Name:(.*?)\\r\\n"+
+				"Ward :(.*?)\\r\\n" +
+				"Name :(.*?)\\r\\n"+
 				"BLD\\s+[+-]+\\s+(.*?)\\r\\n" +
 				"BIL\\s+[+-]+\\s+(.*?)\\r\\n" +
 				"URO\\s+[+-]+\\s+(.*?)\\r\\n"+
@@ -61,8 +63,7 @@ public class ProtocolUriskanPro implements Protocol {
 				"S.G(.*?)\\r\\n" +
 				"LEU\\s+[+-]+\\s+(.*?)\\r\\n" +
 				"VTC\\s+[+-]+\\s+(.*?)\\r\\n" +
-				"COL(.*?)\\r\\n" +
-				"CLA(.*?)\\r\\n$",
+				"COL(.*?)\\r\\n$",
 			Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
 
 		final Pattern idPattern = Pattern.compile("^(.*?)-(.*?)$", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
@@ -79,7 +80,7 @@ public class ProtocolUriskanPro implements Protocol {
 				logger.error("", e);
 			}
 
-			idMatcher = idPattern.matcher(matcher.group(2).trim());
+			idMatcher = idPattern.matcher(matcher.group(3).trim());
 			String sampleId = null;
 			if (idMatcher.find()) {
 				sampleId = idMatcher.group(2).trim();
@@ -88,15 +89,17 @@ public class ProtocolUriskanPro implements Protocol {
 				}
 			}
 
-			for (int i = 0; i < 12; i++) {
+			for (int i = 0; i < 11; i++) {
 				result = new ResultInfo();
 				result.setTest_completed(date);
-				result.setResult(matcher.group(i + 5).trim());
+				result.setResult(matcher.group(i + 6).trim());
 				result.setTest_code(codes[i]);
 				result.setSample_id(sampleId);
 				result.setTest_type("SAMPLE");
 				results.add(result);
 			}
+		} else {
+			logger.error("Не смогли разобрать сообщение: " + msg);
 		}
 		return results;
 	}

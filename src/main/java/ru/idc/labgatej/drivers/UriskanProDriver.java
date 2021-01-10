@@ -19,9 +19,9 @@ import ru.idc.labgatej.model.PacketInfo;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import static ru.idc.labgatej.base.Codes.STX;
-import static ru.idc.labgatej.base.Codes.makeSendable;
+import static ru.idc.labgatej.base.Codes.*;
 import static ru.idc.labgatej.base.Consts.ERROR_TIMEOUT;
+import static ru.idc.labgatej.base.Consts.WRONG_DATA;
 
 public class UriskanProDriver implements IDriver {
 	private static Logger logger = LoggerFactory.getLogger(UriskanProDriver.class);
@@ -35,7 +35,12 @@ public class UriskanProDriver implements IDriver {
 		StringBuilder sb = new StringBuilder();
 		int res;
 		do {
-			res = transport.readInt(true);
+			try {
+				res = transport.readInt(true);
+			} catch (NumberFormatException e) {
+				res = WRONG_DATA;
+			}
+
 			if (res == ERROR_TIMEOUT) {
 				logger.trace("ждём данных");
 			} else if (res == STX) {
@@ -50,7 +55,7 @@ public class UriskanProDriver implements IDriver {
 			} else {
 				logger.debug("нам что-то не то прислали");
 			}
-		} while (res != ERROR_TIMEOUT);
+		} while (res != ERROR_TIMEOUT && res != ETX);
 		return null;
 	}
 

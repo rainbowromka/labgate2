@@ -1,7 +1,6 @@
 package ru.idc.labgatej.drivers.DNATechnologyDriver.entities.symphony.fullPlateTrack;
 
 import lombok.Data;
-import sun.plugin2.message.Message;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -159,5 +158,5 @@ public class FullPlateTrack
      * Important messages and events during the run.
      */
     @XmlElement(name = "Message")
-    List<Message> message;
+    List<BatchTrackMessage> message;
 }

@@ -2,9 +2,7 @@ package ru.idc.labgatej;
 
 import org.junit.Test;
 import ru.idc.labgatej.base.Codes;
-import ru.idc.labgatej.base.Configuration;
-import ru.idc.labgatej.base.DBManager;
-import ru.idc.labgatej.base.ProtocolASTM;
+import ru.idc.labgatej.base.protocols.ProtocolASTM;
 import ru.idc.labgatej.model.PacketInfo;
 import ru.idc.labgatej.model.ResultInfo;
 

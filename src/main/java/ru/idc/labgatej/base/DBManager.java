@@ -1,7 +1,7 @@
 package ru.idc.labgatej.base;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.mchange.v2.c3p0.ComboPooledDataSource;
+import lombok.extern.slf4j.Slf4j;
 import ru.idc.labgatej.model.HeaderInfo;
 import ru.idc.labgatej.model.Order;
 import ru.idc.labgatej.model.OrderInfo;
@@ -21,39 +21,28 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Slf4j
 public class DBManager {
-	private static Logger logger = LoggerFactory.getLogger(DBManager.class);
 	public Connection dbConnection = null;
 
-	public void init(Configuration config) {
-		//  Database credentials
-		final String db_url = config.getParamValue("db.url");
-		final String user = config.getParamValue("db.user");
-		final String pass = config.getParamValue("db.password");
-
-		logger.trace("Проверяем соединение с PostgreSQL JDBC");
-
-		try {
-			Class.forName("org.postgresql.Driver");
-		} catch (ClassNotFoundException e) {
-			logger.error("Не найден PostgreSQL JDBC Driver", e);
-			return;
-		}
-
-		logger.trace("PostgreSQL JDBC Driver successfully connected");
-		dbConnection = null;
-
-		try {
-			dbConnection = DriverManager.getConnection(db_url, user, pass);
+	public void init(
+		ComboPooledDataSource connectionPool)
+	{
+		try
+		{
+			dbConnection = connectionPool.getConnection();
 		} catch (SQLException e) {
-			logger.error("Не удалось подключиться к БД.", e);
+			log.error("Не удалось подключиться к БД.", e);
 			return;
 		}
 
-		if (dbConnection != null) {
-			logger.info("Успешно подключились к БД");
-		} else {
-			logger.error("Не удалось подключиться к БД.");
+		if (dbConnection != null)
+		{
+			log.info("Успешно подключились к БД");
+		}
+		else
+		{
+			log.error("Не удалось подключиться к БД.");
 		}
 	}
 
@@ -92,7 +81,7 @@ public class DBManager {
 							rs.getDate("birthday"),
 							rs.getLong("scheduled_profile"),
 							rs.getLong("p_scheduled_invest"),
-						  rs.getBoolean("is_aliquot"),
+						    rs.getBoolean("is_aliquot"),
 							rs.getLong("p_route"),
 							rs.getLong("p_scheduled_container"),
 							rs.getBoolean("p_manual_aliquot")
@@ -105,7 +94,68 @@ public class DBManager {
 				statement.close();
 			}
 		} catch (SQLException e) {
-			logger.error("", e);
+			log.error("", e);
+			if ("This connection has been closed.".equals(e.getMessage())) {
+				throw e;
+			}
+		}
+
+		fillAliquots(result);
+
+		return result;
+	}
+
+	public List<Order> getDeviceQueryOrders(
+		String deviceDriverCode
+	)
+	throws SQLException
+	{
+		List<Order> result = new ArrayList<>();
+
+		if (deviceDriverCode == null)
+		{
+			return result;
+		}
+
+		Statement statement = null;
+		try {
+			statement = dbConnection.createStatement();
+			try {
+				ResultSet rs = statement.executeQuery(
+					"SELECT * FROM lis.getDeviceQueryOrders('"
+					+ deviceDriverCode + "') ORDER BY is_aliquot, "
+					+ "device_instance, p_route, test");
+				try {
+					while (rs.next()) {
+						result.add(new Order(
+							rs.getLong("task_id"),
+							rs.getString("sample_id"),
+							rs.getLong("device_instance"),
+							rs.getString("p_device_code"),
+							rs.getDouble("dilution_factor"),
+							rs.getLong("test"),
+							rs.getString("material"),
+							rs.getString("test_code"),
+							rs.getLong("cartnum"),
+							rs.getString("fam"),
+							rs.getString("sex"),
+							rs.getDate("birthday"),
+							rs.getLong("scheduled_profile"),
+							rs.getLong("p_scheduled_invest"),
+						    rs.getBoolean("is_aliquot"),
+							rs.getLong("p_route"),
+							rs.getLong("p_scheduled_container"),
+							rs.getBoolean("p_manual_aliquot")
+							));
+					}
+				} finally {
+					rs.close();
+				}
+			} finally {
+				statement.close();
+			}
+		} catch (SQLException e) {
+			log.error("", e);
 			if ("This connection has been closed.".equals(e.getMessage())) {
 				throw e;
 			}
@@ -150,7 +200,7 @@ public class DBManager {
 	}
 
 	private String doubleToSqlString(Double d) {
-		if (d == null) return "NULL";
+		if (d == null) return null;
 		return String.valueOf(d);
 	}
 
@@ -205,7 +255,7 @@ public class DBManager {
 				st.execute();
 			}
 		} catch (SQLException e) {
-			logger.error("", e);
+			log.error("", e);
 			if ("This connection has been closed.".equals(e.getMessage())) {
 				throw e;
 			}
@@ -244,7 +294,7 @@ public class DBManager {
 				st.execute();
 			}
 		} catch (SQLException e) {
-			logger.error("", e);
+			log.error("", e);
 			if ("This connection has been closed.".equals(e.getMessage())) {
 				throw e;
 			}
@@ -255,7 +305,7 @@ public class DBManager {
 		try (Statement statement = dbConnection.createStatement()) {
 			statement.executeUpdate("UPDATE lis.citm_query SET processed = now() WHERE citm_query_id = " + taskId);
 		} catch (SQLException e) {
-			logger.error("", e);
+			log.error("", e);
 		}
 	}
 
@@ -263,7 +313,7 @@ public class DBManager {
 		try (Statement statement = dbConnection.createStatement()) {
 			statement.executeUpdate("UPDATE lis.citm_query SET error_msg = " + msg + " WHERE citm_query_id = " + taskId);
 		} catch (SQLException e) {
-			logger.error("", e);
+			log.error("", e);
 		}
 	}
 
@@ -283,7 +333,7 @@ public class DBManager {
 				statement.close();
 			}
 		} catch (SQLException e) {
-			logger.error("", e);
+			log.error("", e);
 		}
 		return null;
 	}
@@ -300,7 +350,7 @@ public class DBManager {
 				st.execute();
 			}
 		} catch (SQLException e) {
-			logger.error("", e);
+			log.error("", e);
 		}
 	}
 
@@ -330,8 +380,27 @@ public class DBManager {
             dbConnection.setAutoCommit(true);
         } catch (SQLException e) {
 	        dbConnection.rollback();
-            logger.error("", e);
+            log.error("", e);
             throw e;
         }
     }
+
+	public void markDeviceQueryOrderAsProcessed(long taskId) {
+		try (Statement statement = dbConnection.createStatement()) {
+			statement.executeUpdate("UPDATE lis.device_queries " +
+				"SET processed = now() WHERE device_query_id = " + taskId);
+		} catch (SQLException e) {
+			log.error("", e);
+		}
+	}
+
+	public void markDeviceQueryOrderAsFailed(long taskId, String comment) {
+		try (Statement statement = dbConnection.createStatement()) {
+			statement.executeUpdate("UPDATE lis.device_queries" +
+				" SET error_msg = " + comment + " WHERE device_query_id = "
+				+ taskId);
+		} catch (SQLException e) {
+			log.error("", e);
+		}
+	}
 }

@@ -50,13 +50,14 @@ alter table lis.citm_query drop constraint ref2containers;
 ALTER TABLE lis.citm_query owner to gis;
 
 
-
-
 CREATE OR REPLACE FUNCTION lis.query_container_to_citm() RETURNS trigger AS $$
 BEGIN
     -- Проверить, что указаны имя сотрудника и зарплата
     IF NEW.container_state = 'registered' AND NEW.barcode IS NOT NULL AND position('.' in NEW.barcode) = 0 THEN
         INSERT INTO lis.citm_query(scheduled_container, added) VALUES(NEW.scheduled_container, current_timestamp);
+        IF NEW.resid IN (SELECT ) THEN
+            INSERT INTO lis.device_query(scheduled_container, added) VALUES(NEW.scheduled_container, current_timestamp);
+        END IF;
     END IF;
 
     RETURN NEW;
@@ -70,7 +71,7 @@ CREATE TRIGGER emp_stamp AFTER INSERT OR UPDATE ON lis.scheduled_containers
 
 update lis.scheduled_containers set container_state = 'registered' where scheduled_container = 12778793;
 
-select * from lis.citm_query order by citm_query_id;
+select * from lis.citm_query astmOrder by citm_query_id;
 
 -- тестовый пример
 -- device_instance 51
@@ -102,19 +103,21 @@ CREATE OR REPLACE FUNCTION lis.gettasks4citm(OUT task_id bigint, OUT sample_id c
                                              OUT material character varying, OUT test_code character varying, OUT cartnum bigint,
                                              OUT fam character varying, OUT sex character varying, OUT birthday date,
                                              OUT scheduled_profile bigint, OUT p_scheduled_invest bigint, OUT is_aliquot boolean,
-                                             OUT p_route bigint, OUT p_scheduled_container bigint) returns SETOF record
-    language plpgsql
-as
+                                             OUT p_route bigint, OUT p_scheduled_container bigint, OUT p_manual_aliquot boolean)
+RETURNS SETOF RECORD
+    LANGUAGE plpgsql
+AS
 $$
 DECLARE
     v_barcode VARCHAR;
     v_record2 RECORD;
     v_record  RECORD;
     v_has_results BOOLEAN;
+    v_container_type BIGINT;
 BEGIN
     v_has_results = FALSE;
-    SELECT cq.citm_query_id, sc.barcode
-    INTO task_id, v_barcode
+    SELECT cq.citm_query_id, sc.barcode, sc.container
+    INTO task_id, v_barcode, v_container_type
     FROM lis.citm_query cq
              LEFT JOIN lis.scheduled_containers sc on sc.scheduled_container = cq.scheduled_container
     WHERE processed IS NULL and error_msg IS NULL
@@ -122,47 +125,59 @@ BEGIN
     LIMIT 1;
 
     IF FOUND AND v_barcode IS NOT NULL THEN
-        FOR v_record IN SELECT DISTINCT device_code, barcode, route, sample_container, scheduled_container, scheduled_invest FROM LIS.listContainerRoutes2(v_barcode)
-            LOOP
-                FOR v_record2 IN
-                    SELECT it.sample_id,
-                           it.device_instance,
-                           it.dilution_factor,
-                           it.test,
-                           it.material,
-                           it.test_code,
-                           it.cartnum,
-                           it.fam,
-                           it.sex,
-                           it.birthday,
-                           it.scheduled_profile,
-                           it.scheduled_invest,
-                           t.test_code as citm_test_code
-                    FROM lis.inquiry_tests(v_record.device_code, v_record.barcode) it
-                             JOIN lis.rt_tests t on t.test = it.test
-                    WHERE it.scheduled_invest = v_record.scheduled_invest
-                    LOOP
-                        sample_id = v_record2.sample_id;
-                        device_instance = v_record2.device_instance;
-                        p_device_code = v_record.device_code;
-                        dilution_factor = v_record2.dilution_factor;
-                        test = v_record2.test;
-                        material = v_record2.material;
-                        test_code = v_record2.citm_test_code;
-                        cartnum = v_record2.cartnum;
-                        fam = v_record2.fam;
-                        sex = v_record2.sex;
-                        birthday = v_record2.birthday;
-                        scheduled_profile = v_record2.scheduled_profile;
-                        p_scheduled_invest = v_record2.scheduled_invest;
-                        is_aliquot = v_record.sample_container != 'primary_container';
-                        p_route = v_record.route;
-                        p_scheduled_container= v_record.scheduled_container;
+        BEGIN
+          FOR v_record IN SELECT DISTINCT device_code, barcode, route, sample_container, scheduled_container, scheduled_invest FROM LIS.listContainerRoutes2(v_barcode)
+              LOOP
+                  FOR v_record2 IN
+                      SELECT it.sample_id,
+                             it.device_instance,
+                             it.dilution_factor,
+                             it.test,
+                             it.material,
+                             it.test_code,
+                             it.cartnum,
+                             it.fam,
+                             it.sex,
+                             it.birthday,
+                             it.scheduled_profile,
+                             it.scheduled_invest,
+                             t.test_code as citm_test_code,
+                             p.resid as resid
+                      FROM lis.inquiry_tests_citm(v_record.device_code, v_record.barcode) it
+                               JOIN lis.rt_tests t on t.test = it.test
+                               JOIN lis.scheduled_profiles p on p.scheduled_profile = it.scheduled_profile
+                      WHERE it.scheduled_invest = v_record.scheduled_invest
+                      LOOP
+                          sample_id = v_record2.sample_id;
+                          device_instance = v_record2.device_instance;
+                          p_device_code = v_record.device_code;
+                          dilution_factor = v_record2.dilution_factor;
+                          test = v_record2.test;
+                          material = v_record2.material;
+                          test_code = v_record2.citm_test_code;
+                          cartnum = v_record2.cartnum;
+                          fam = v_record2.fam;
+                          sex = v_record2.sex;
+                          birthday = v_record2.birthday;
+                          scheduled_profile = v_record2.scheduled_profile;
+                          p_scheduled_invest = v_record2.scheduled_invest;
+                          is_aliquot = v_record.sample_container != 'primary_container';
+                          p_route = v_record.route;
+                          p_scheduled_container= v_record.scheduled_container;
 
-                        v_has_results = TRUE;
-                        RETURN NEXT;
-                    END LOOP;
-            END LOOP;
+                          IF (v_record2.resid = '2Ж6044') THEN
+                              p_manual_aliquot = TRUE;
+                          END IF;
+
+                          v_has_results = TRUE;
+                          RETURN NEXT;
+                      END LOOP;
+              END LOOP;
+        EXCEPTION
+            WHEN raise_exception THEN
+                UPDATE lis.citm_query SET error_msg = SQLERRM WHERE citm_query_id = task_id;
+                RETURN;
+        END;
     END IF;
 
     IF v_has_results = FALSE THEN

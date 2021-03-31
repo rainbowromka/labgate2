@@ -1,5 +1,6 @@
 package ru.idc.labgatej.drivers.common;
 
+import com.mchange.v2.c3p0.ComboPooledDataSource;
 import lombok.SneakyThrows;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,11 +35,15 @@ implements IDriver
     protected String deviceCode;
 
     @Override
-    public void init(DBManager dbManager, Configuration config) {
+    public void init(
+        ComboPooledDataSource connectionPool,
+        Configuration config)
+    {
         dir2scan = Paths.get(config.getParamValue("dir2scan"));
         dirProcessed = dir2scan.resolve("processedFiles");
         deviceCode = config.getParamValue("code");
-        this.dbManager = dbManager;
+        this.dbManager = new DBManager();
+        dbManager.init(connectionPool);
         try {
             if (!Files.exists(dirProcessed)) {
                 Files.createDirectory(dirProcessed);

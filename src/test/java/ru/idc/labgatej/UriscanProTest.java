@@ -2,12 +2,9 @@ package ru.idc.labgatej;
 
 import org.junit.Assert;
 import org.junit.Test;
-import ru.idc.labgatej.base.ProtocolUriskanPro;
+import ru.idc.labgatej.base.protocols.ProtocolUriskanPro;
 import ru.idc.labgatej.model.ResultInfo;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import static ru.idc.labgatej.base.Codes.makeSendable;

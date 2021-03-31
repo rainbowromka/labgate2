@@ -1,6 +1,7 @@
 package ru.idc.labgatej.drivers.DNATechnologyDriver;
 
 import com.fasterxml.uuid.Generators;
+import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.idc.labgatej.base.Configuration;
@@ -83,8 +84,8 @@ extends SharedFolderDriver {
 
 
     @Override
-    public void init(DBManager dbManager, Configuration config) {
-        super.init(dbManager, config);
+    public void init(ComboPooledDataSource poolConnections, Configuration config) {
+        super.init(poolConnections, config);
         symphonyDir = Paths.get(config.getParamValue("simphonyDir"));
         dirSymphonyProcessed = symphonyDir.resolve("processedFiles");
         try {

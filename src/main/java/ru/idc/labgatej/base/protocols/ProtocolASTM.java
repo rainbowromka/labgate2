@@ -1,7 +1,8 @@
-package ru.idc.labgatej.base;
+package ru.idc.labgatej.base.protocols;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
+import ru.idc.labgatej.base.Codes;
+import ru.idc.labgatej.base.Utils;
 import ru.idc.labgatej.model.HeaderInfo;
 import ru.idc.labgatej.model.Order;
 import ru.idc.labgatej.model.OrderInfo;
@@ -21,8 +22,8 @@ import java.util.regex.Pattern;
 
 import static ru.idc.labgatej.base.Codes.*;
 
-public class ProtocolASTM implements Protocol {
-	private static Logger logger = LoggerFactory.getLogger(ProtocolASTM.class);
+@Slf4j
+public class ProtocolASTM implements Protocol<List<Order>> {
 	// 240 символов на сообщение в одном фрейме
 
 
@@ -234,7 +235,7 @@ public class ProtocolASTM implements Protocol {
 					try {
 						result.setDilution_factor(Double.valueOf(utiMatcher.group(5)));
 					} catch (NumberFormatException e) {
-						logger.error("", e);
+						log.error("", e);
 					}
 				}
 			}
@@ -246,7 +247,7 @@ public class ProtocolASTM implements Protocol {
 				Date date = new SimpleDateFormat("yyyyMMddHHmmss").parse(s);
 				result.setTest_completed(date);
 			} catch (ParseException e) {
-				logger.error("", e);
+				log.error("", e);
 			}
 		}
 		return Collections.singletonList(result);

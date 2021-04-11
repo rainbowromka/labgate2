@@ -29,7 +29,6 @@ implements ITaskDriver
 {
     protected Transport transport4tasks;
     protected DBManager dbManager4tasks;
-    protected boolean createAliquot;
 
     @Override
     public void init(ComboPooledDataSource connectionPool, Configuration config)
@@ -39,11 +38,6 @@ implements ITaskDriver
         this.dbManager4tasks = new DBManager();
         log.trace("Инициализация второго подключения к БД...");
         dbManager4tasks.init(connectionPool);
-
-        transport4tasks = new SocketClientTransport(config.getParamValue("citm.server"), Integer.parseInt(config.getParamValue("citm.port.task")));
-        transport4tasks.init(2000);
-
-        createAliquot = !"off".equalsIgnoreCase(config.getParamValue("citm.aliquot"));
     }
 
     @Override
@@ -69,9 +63,6 @@ implements ITaskDriver
                         log.debug("Наше сообщение приняли");
                         // нужно помечать задание как обработанное в БД
                         markOrderAsProcessed(taskId);
-                        if (createAliquot) {
-                            registerAliquots(orders);
-                        }
                     } else if (res == Codes.NAK) {
                         log.debug("Наше сообщение не понравилось почему-то");
                         hasErrors = true;
@@ -146,8 +137,11 @@ implements ITaskDriver
 
     @Override
     public void close() {
-        transport4tasks.close();
-        dbManager4tasks.close();
+        if (transport4tasks != null) {
+            transport4tasks.close();
+        }
+
+        super.close();
     }
 
     // для отладки

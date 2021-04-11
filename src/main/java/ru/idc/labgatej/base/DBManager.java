@@ -11,7 +11,6 @@ import ru.idc.labgatej.model.PacketInfo;
 import ru.idc.labgatej.model.ResultInfo;
 
 import java.sql.CallableStatement;
-import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -54,7 +53,7 @@ public class DBManager {
 				System.out.println("Closing connection to PostgreSQL");
 				dbConnection.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				log.error("Ошибка при закрытии соединений с БД", e);
 			}
 		}
 	}
@@ -83,12 +82,12 @@ public class DBManager {
 							rs.getDate("birthday"),
 							rs.getLong("scheduled_profile"),
 							rs.getLong("p_scheduled_invest"),
-						    rs.getBoolean("is_aliquot"),
+							rs.getBoolean("is_aliquot"),
 							rs.getLong("p_route"),
 							rs.getLong("p_scheduled_container"),
 							rs.getBoolean("p_manual_aliquot"),
 							rs.getInt("p_task_type")
-							));
+						));
 					}
 				} finally {
 					rs.close();
@@ -111,7 +110,7 @@ public class DBManager {
 	public List<Order> getDeviceQueryOrders(
 		String deviceDriverCode
 	)
-	throws SQLException
+		throws SQLException
 	{
 		List<Order> result = new ArrayList<>();
 
@@ -126,8 +125,8 @@ public class DBManager {
 			try {
 				ResultSet rs = statement.executeQuery(
 					"SELECT * FROM lis.getDeviceQueryOrders('"
-					+ deviceDriverCode + "') ORDER BY is_aliquot, "
-					+ "device_instance, p_route, test");
+						+ deviceDriverCode + "') ORDER BY is_aliquot, "
+						+ "device_instance, p_route, test");
 				try {
 					while (rs.next()) {
 						result.add(new Order(
@@ -145,11 +144,12 @@ public class DBManager {
 							rs.getDate("birthday"),
 							rs.getLong("scheduled_profile"),
 							rs.getLong("p_scheduled_invest"),
-						    rs.getBoolean("is_aliquot"),
+							rs.getBoolean("is_aliquot"),
 							rs.getLong("p_route"),
 							rs.getLong("p_scheduled_container"),
-							rs.getBoolean("p_manual_aliquot")
-							));
+							rs.getBoolean("p_manual_aliquot"),
+							0
+						));
 					}
 				} finally {
 					rs.close();
@@ -321,7 +321,7 @@ public class DBManager {
 					st.execute();
 				}
 			} catch (SQLException e) {
-				log.error("", e);
+				log.error("Ошибка при сохранении событий", e);
 				if ("This connection has been closed.".equals(e.getMessage())) {
 					throw e;
 				}
@@ -394,24 +394,24 @@ public class DBManager {
 		}
 	}
 
-    public void savePakets(List<PacketInfo> packets, boolean isCitm) throws SQLException
-    {
-	    try {
+	public void savePakets(List<PacketInfo> packets, boolean isCitm) throws SQLException
+	{
+		try {
 
-	        dbConnection.setAutoCommit(false);
+			dbConnection.setAutoCommit(false);
 
-            for (PacketInfo packetInfo: packets) {
-                saveResults(packetInfo, isCitm);
-            }
+			for (PacketInfo packetInfo: packets) {
+				saveResults(packetInfo, isCitm);
+			}
 
-            dbConnection.commit();
-            dbConnection.setAutoCommit(true);
-        } catch (SQLException e) {
-	        dbConnection.rollback();
-            log.error("", e);
-            throw e;
-        }
-    }
+			dbConnection.commit();
+			dbConnection.setAutoCommit(true);
+		} catch (SQLException e) {
+			dbConnection.rollback();
+			log.error("", e);
+			throw e;
+		}
+	}
 
 	public void markDeviceQueryOrderAsProcessed(long taskId) {
 		try (Statement statement = dbConnection.createStatement()) {

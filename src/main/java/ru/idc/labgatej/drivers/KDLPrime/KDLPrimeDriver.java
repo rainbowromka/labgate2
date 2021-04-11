@@ -10,7 +10,6 @@ import ru.idc.labgatej.base.protocols.ProtocolKDLPrimeASTM;
 import ru.idc.labgatej.model.PacketInfo;
 
 import java.io.IOException;
-import java.net.InetAddress;
 import java.net.Socket;
 import java.sql.SQLException;
 

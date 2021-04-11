@@ -3,7 +3,6 @@ package ru.idc.labgatej.drivers.KdlMax;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import lombok.extern.slf4j.Slf4j;
 import ru.idc.labgatej.base.Configuration;
-import ru.idc.labgatej.base.DBManager;
 import ru.idc.labgatej.base.SocketClientTransport;
 import ru.idc.labgatej.base.TaskDualDriver;
 import ru.idc.labgatej.base.protocols.ProtocolKDLMaksASTM;
@@ -28,7 +27,6 @@ import static ru.idc.labgatej.base.Consts.ERROR_TIMEOUT;
 public class KdlMaxDriverAstmDual extends TaskDualDriver<ProtocolKDLMaksASTM>
 {
     private String deviceDriverCode;
-//    private boolean createAliquot;
 
     @Override
     protected List<Order> getOrders() throws SQLException {
@@ -60,9 +58,6 @@ public class KdlMaxDriverAstmDual extends TaskDualDriver<ProtocolKDLMaksASTM>
         Configuration config)
     {
         super.init(connectionPool, config);
-        log.trace("Инициализация второго подключения к БД...");
-        this.dbManager4tasks = new DBManager();
-        dbManager4tasks.init(connectionPool);
 
         this.protocol = new ProtocolKDLMaksASTM();
         this.protocol.setConfig(config);
@@ -75,8 +70,6 @@ public class KdlMaxDriverAstmDual extends TaskDualDriver<ProtocolKDLMaksASTM>
                 Integer.parseInt(config.getParamValue("kdlmax.port.result")));
         this.transport4results.init(10000);
         this.deviceDriverCode = config.getParamValue("code");
-
-        this.createAliquot = false;
     }
 
     //TODO: повтор в коде, возможно сделать отдельно для АСТМ

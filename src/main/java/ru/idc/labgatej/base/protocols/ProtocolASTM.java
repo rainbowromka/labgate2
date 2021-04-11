@@ -3,7 +3,10 @@ package ru.idc.labgatej.base.protocols;
 import lombok.extern.slf4j.Slf4j;
 import ru.idc.labgatej.base.Codes;
 import ru.idc.labgatej.base.Utils;
+import ru.idc.labgatej.model.ArchiveFlag;
+import ru.idc.labgatej.model.ArchiveInfo;
 import ru.idc.labgatej.model.HeaderInfo;
+import ru.idc.labgatej.model.ManufacturerRecord;
 import ru.idc.labgatej.model.Order;
 import ru.idc.labgatej.model.OrderInfo;
 import ru.idc.labgatej.model.PacketInfo;
@@ -38,6 +41,8 @@ public class ProtocolASTM implements Protocol<List<Order>> {
 
 	//<STX>1H|\^&|||ASTM-Host|||||CIT||P||20120219111500<CR>P|1<CR>O|1|923501||^^^CL-S\^^^CREA|||||||A<CR>L|1|F<CR><ETX>80<CR><LF>
 	public String makeOrder(List<Order> orders) {
+		// флаг что это Отказ
+		boolean isAbort = orders.stream().anyMatch(o -> o.getTaskType() == 1);
 		final int maxSize = 6900;
 		int frameIdx = 0;
 		if (orders.isEmpty()) return "";
@@ -60,27 +65,33 @@ public class ProtocolASTM implements Protocol<List<Order>> {
 			}
 			msg.append("^^^").append(order.getTestId()).append(getTestPostfix(order.getMaterial())).append("\\");
 		}
-		msg.append("|||||||A<CR>"); // A - Action Code
+		if (isAbort) {
+			msg.append("|||||||C<CR>"); // C - Action Code = Cancel
+		} else {
+			msg.append("|||||||A<CR>"); // A - Action Code = Add
+		}
 		idx++;
 
 // задания на аликвоты
 		//long devInst = -1;
 		long routeId = -1;
 		// добавляем задания на аликвоты
-		for (Order order : orders) {
-			if (order.getIsAliquot() && !order.isManualAliquot()) {
-				if (order.getRouteId() != routeId) {
-					routeId = order.getRouteId();
-					if (idx != 2) {
-						// закрываем предыдущую O-запись
-						msg.append("|||||||A<CR>");
+		if (!isAbort) {
+			for (Order order : orders) {
+				if (order.getIsAliquot() && !order.isManualAliquot()) {
+					if (order.getRouteId() != routeId) {
+						routeId = order.getRouteId();
+						if (idx != 2) {
+							// закрываем предыдущую O-запись
+							msg.append("|||||||A<CR>");
+						}
+						order.setAliquotBarcode(mainBarcode + "." + (idx - 1));
+						msg.append("O|").append(idx).append("|").append(order.getAliquotBarcode())
+							.append("|").append(mainBarcode).append("|");
+						idx++;
 					}
-					order.setAliquotBarcode(mainBarcode + "." + (idx - 1));
-					msg.append("O|").append(idx).append("|").append(order.getAliquotBarcode())
-						.append("|").append(mainBarcode).append("|");
-					idx++;
+					msg.append("^^^").append(order.getTestId()).append(getTestPostfix(order.getMaterial())).append("\\");
 				}
-				msg.append("^^^").append(order.getTestId()).append(getTestPostfix(order.getMaterial())).append("\\");
 			}
 		}
 		if (routeId != -1) {
@@ -163,6 +174,9 @@ public class ProtocolASTM implements Protocol<List<Order>> {
 					case "R":
 						packetInfo.addResult(parseResults(line));
 						break;
+
+					case "M":
+						packetInfo.addManufacturerRecord(parseManufacturerRecord(line));
 				}
 			}
 		}
@@ -251,5 +265,35 @@ public class ProtocolASTM implements Protocol<List<Order>> {
 			}
 		}
 		return Collections.singletonList(result);
+	}
+
+	public ManufacturerRecord parseManufacturerRecord(String msg) {
+		final Pattern m1Pattern = Pattern.compile("^M\\|\\d+\\|(.*?)\\|(.*?)\\|(.*?)$",
+			Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
+		final Pattern eventTypePattern = Pattern.compile("^(.*?)\\^(.*?)\\^(.*?)\\^(.*?)\\^(.*?)\\^(.*?)\\^(.*?)$",
+			Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
+		final Pattern m2Pattern = Pattern.compile("^M\\|\\d+\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)$",
+			Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
+
+		String s;
+
+		Matcher matcher = m2Pattern.matcher(msg);
+		if (matcher.find() && matcher.group(11) != null && matcher.group(12) != null) {
+			return new ArchiveInfo(matcher.group(11).trim(), Integer.parseInt(matcher.group(12).trim()));
+		} else {
+			matcher = m1Pattern.matcher(msg);
+			if (matcher.find()) {
+				s = matcher.group(2);
+				matcher = eventTypePattern.matcher(s);
+				if (matcher.find()) {
+					s = matcher.group(7);
+					if ("ARCHIV".equals(s)) {
+						return new ArchiveFlag();
+					}
+				}
+			}
+		}
+
+		return null;
 	}
 }

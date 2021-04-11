@@ -29,4 +29,5 @@ public class Order {
 	private String aliquotBarcode;
 	private final Long scheduledContainerId;
 	private final boolean manualAliquot;
+	private final Integer taskType;
 }

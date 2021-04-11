@@ -12,6 +12,8 @@ public class PacketInfo {
 	HeaderInfo header;
 	OrderInfo order;
 	List<ResultInfo> results = new ArrayList<>();
+	// специфичная для каждого производителя информация
+	List<ManufacturerRecord> mRecords = new ArrayList<>();
 
 	public void addResult(ResultInfo res) {
 		results.add(res);
@@ -23,5 +25,9 @@ public class PacketInfo {
 
 	public void setDeviceCode(String code) {
 		results.forEach(r -> r.setDevice_name(code));
+	}
+
+	public void addManufacturerRecord(ManufacturerRecord rec) {
+		mRecords.add(rec);
 	}
 }

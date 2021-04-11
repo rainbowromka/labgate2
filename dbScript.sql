@@ -56,7 +56,7 @@ CREATE OR REPLACE FUNCTION lis.query_container_to_citm() RETURNS trigger AS $$
 BEGIN
     -- Проверить, что указаны имя сотрудника и зарплата
     IF NEW.container_state = 'registered' AND NEW.barcode IS NOT NULL AND position('.' in NEW.barcode) = 0 THEN
-        INSERT INTO lis.citm_query(scheduled_container, added) VALUES(NEW.scheduled_container, current_timestamp);
+        INSERT INTO lis.citm_query(scheduled_container, added, barcode) VALUES(NEW.scheduled_container, current_timestamp, NEW.barcode);
     END IF;
 
     RETURN NEW;
@@ -97,79 +97,121 @@ where si.invest_state = 'scheduled';
 
 --drop FUNCTION lis.getTasks4CITM();
 
-CREATE OR REPLACE FUNCTION lis.gettasks4citm(OUT task_id bigint, OUT sample_id character varying, OUT device_instance bigint,
-                                             OUT p_device_code character varying, OUT dilution_factor real, OUT test bigint,
-                                             OUT material character varying, OUT test_code character varying, OUT cartnum bigint,
-                                             OUT fam character varying, OUT sex character varying, OUT birthday date,
-                                             OUT scheduled_profile bigint, OUT p_scheduled_invest bigint, OUT is_aliquot boolean,
-                                             OUT p_route bigint, OUT p_scheduled_container bigint) returns SETOF record
+create or replace function lis.gettasks4citm(OUT task_id bigint, OUT sample_id character varying, OUT device_instance bigint, OUT p_device_code character varying, OUT dilution_factor real, OUT test bigint, OUT material character varying, OUT test_code character varying, OUT cartnum bigint, OUT fam character varying, OUT sex character varying, OUT birthday date, OUT scheduled_profile bigint, OUT p_scheduled_invest bigint, OUT is_aliquot boolean, OUT p_route bigint, OUT p_scheduled_container bigint, OUT p_manual_aliquot boolean, OUT p_task_type integer) returns SETOF record
     language plpgsql
 as
 $$
 DECLARE
-    v_barcode VARCHAR;
-    v_record2 RECORD;
-    v_record  RECORD;
-    v_has_results BOOLEAN;
+    v_barcode        VARCHAR;
+    v_record2        RECORD;
+    v_record         RECORD;
+    v_has_results    BOOLEAN;
+    v_container_type BIGINT;
+    v_task_type      INT;
+    v_old_barcode    VARCHAR;
 BEGIN
     v_has_results = FALSE;
-    SELECT cq.citm_query_id, sc.barcode
-    INTO task_id, v_barcode
+    SELECT cq.citm_query_id, sc.barcode, sc.container, cq.task_type, cq.barcode
+    INTO task_id, v_barcode, v_container_type, v_task_type, v_old_barcode
     FROM lis.citm_query cq
              LEFT JOIN lis.scheduled_containers sc on sc.scheduled_container = cq.scheduled_container
-    WHERE processed IS NULL and error_msg IS NULL
+    WHERE processed IS NULL
+      and error_msg IS NULL
     ORDER BY citm_query_id
     LIMIT 1;
 
-    IF FOUND AND v_barcode IS NOT NULL THEN
-        FOR v_record IN SELECT DISTINCT device_code, barcode, route, sample_container, scheduled_container, scheduled_invest FROM LIS.listContainerRoutes2(v_barcode)
-            LOOP
-                FOR v_record2 IN
-                    SELECT it.sample_id,
-                           it.device_instance,
-                           it.dilution_factor,
-                           it.test,
-                           it.material,
-                           it.test_code,
-                           it.cartnum,
-                           it.fam,
-                           it.sex,
-                           it.birthday,
-                           it.scheduled_profile,
-                           it.scheduled_invest,
-                           t.test_code as citm_test_code
-                    FROM lis.inquiry_tests(v_record.device_code, v_record.barcode) it
-                             JOIN lis.rt_tests t on t.test = it.test
-                    WHERE it.scheduled_invest = v_record.scheduled_invest
-                    LOOP
-                        sample_id = v_record2.sample_id;
-                        device_instance = v_record2.device_instance;
-                        p_device_code = v_record.device_code;
-                        dilution_factor = v_record2.dilution_factor;
-                        test = v_record2.test;
-                        material = v_record2.material;
-                        test_code = v_record2.citm_test_code;
-                        cartnum = v_record2.cartnum;
-                        fam = v_record2.fam;
-                        sex = v_record2.sex;
-                        birthday = v_record2.birthday;
-                        scheduled_profile = v_record2.scheduled_profile;
-                        p_scheduled_invest = v_record2.scheduled_invest;
-                        is_aliquot = v_record.sample_container != 'primary_container';
-                        p_route = v_record.route;
-                        p_scheduled_container= v_record.scheduled_container;
+    IF FOUND THEN
+        IF (v_task_type = 0) THEN -- добавление задания
+            IF v_barcode IS NOT NULL THEN
+                BEGIN
+                    FOR v_record IN SELECT DISTINCT device_code,
+                                                    barcode,
+                                                    route,
+                                                    sample_container,
+                                                    scheduled_container,
+                                                    scheduled_invest
+                                    FROM LIS.listContainerRoutes2(v_barcode)
+                        LOOP
+                            SELECT (c.contractor_id = 23742) OR (v_container_type NOT IN (1, 2, 3, 4, 20))
+                            INTO p_manual_aliquot
+                            FROM lis.scheduled_containers sc
+                                     JOIN refs.rtusers u ON u.userid = sc.registrar
+                                     JOIN commons.organizational_units ou ON ou.organizational_unit_id = u.depid
+                                     JOIN commons.contractors c ON c.contractor_id = ou.medical_organization_id
+                            WHERE sc.scheduled_container = v_record.scheduled_container;
+                            IF NOT FOUND THEN
+                                p_manual_aliquot = FALSE;
+                            END IF;
 
-                        v_has_results = TRUE;
-                        RETURN NEXT;
-                    END LOOP;
-            END LOOP;
+                            FOR v_record2 IN
+                                SELECT it.sample_id,
+                                       it.device_instance,
+                                       it.dilution_factor,
+                                       it.test,
+                                       it.material,
+                                       it.test_code,
+                                       it.cartnum,
+                                       it.fam,
+                                       it.sex,
+                                       it.birthday,
+                                       it.scheduled_profile,
+                                       it.scheduled_invest,
+                                       t.test_code as citm_test_code,
+                                       p.resid     as resid
+                                FROM lis.inquiry_tests_citm(v_record.device_code, v_record.barcode) it
+                                         JOIN lis.rt_tests t on t.test = it.test
+                                         JOIN lis.scheduled_profiles p on p.scheduled_profile = it.scheduled_profile
+                                WHERE it.scheduled_invest = v_record.scheduled_invest
+                                LOOP
+                                    sample_id = v_record2.sample_id;
+                                    device_instance = v_record2.device_instance;
+                                    p_device_code = v_record.device_code;
+                                    dilution_factor = v_record2.dilution_factor;
+                                    test = v_record2.test;
+                                    material = v_record2.material;
+                                    test_code = v_record2.citm_test_code;
+                                    cartnum = v_record2.cartnum;
+                                    fam = v_record2.fam;
+                                    sex = v_record2.sex;
+                                    birthday = v_record2.birthday;
+                                    scheduled_profile = v_record2.scheduled_profile;
+                                    p_scheduled_invest = v_record2.scheduled_invest;
+                                    is_aliquot = v_record.sample_container != 'primary_container';
+                                    p_route = v_record.route;
+                                    p_scheduled_container = v_record.scheduled_container;
+                                    p_task_type = v_task_type;
+
+                                    IF (v_record2.resid = '2Ж6044') THEN
+                                        p_manual_aliquot = TRUE;
+                                    END IF;
+
+                                    v_has_results = TRUE;
+                                    RETURN NEXT;
+                                END LOOP;
+                        END LOOP;
+                EXCEPTION
+                    WHEN raise_exception THEN
+                        UPDATE lis.citm_query SET error_msg = SQLERRM WHERE citm_query_id = task_id;
+                        RETURN;
+                END;
+            END IF;
+
+            IF v_has_results = FALSE THEN
+                UPDATE lis.citm_query
+                SET error_msg = 'Тесты не найдены'
+                WHERE citm_query_id = task_id;
+            END IF;
+        ELSEIF (v_task_type = 1) THEN -- удаление задания
+            is_aliquot = FALSE;
+            p_manual_aliquot = FALSE;
+            p_task_type = v_task_type;
+            sample_id = v_old_barcode;
+
+            v_has_results = TRUE;
+            RETURN;
+        END IF;
     END IF;
 
-    IF v_has_results = FALSE THEN
-        UPDATE lis.citm_query
-        SET error_msg = 'Тесты не найдены'
-        WHERE citm_query_id = task_id;
-    END IF;
     RETURN;
 END
 $$;
@@ -958,9 +1000,178 @@ ALTER FUNCTION lis.listcontainerroutes2(varchar, OUT bigint, OUT bigint, OUT big
 
 
 
-INSERT INTO lis.raw_results (raw_result, raw_result_state, raw_result_status, result_source, test_type, sample_id, test_code, sample_type, priority, result, result_status, normal_range_flag, unit, sequence_number, carrier, position, test_started, test_completed, dilution_factor, container_type, reagent_serial, reagent_lot, device_error, device_comment, histogram, operator, device_code, device_instance, instance_module, scheduled_test, technique, started_time, completed_time, cause_of_repeat, inner_comment, result_type, value_type, outofrange, er_result, er_unit, comment, reference_range, reference_flag) VALUES (59328754, 'unsupported', 'S', 'analyser', 'SAMPLE', '5654', '74', 'SAMPLE', 'R', '140.800', 'F', 'N', 'mmol/l', null, null, null, null, '2020-05-16 00:00:00.000000', '1.0', null, null, null, null, null, 0, null, 'COBAS_CCEE', 89, null, null, null, null, '2020-05-16 14:50:59.909115', null, null, null, null, null, null, null, null, null, null);
-INSERT INTO lis.raw_results (raw_result, raw_result_state, raw_result_status, result_source, test_type, sample_id, test_code, sample_type, priority, result, result_status, normal_range_flag, unit, sequence_number, carrier, position, test_started, test_completed, dilution_factor, container_type, reagent_serial, reagent_lot, device_error, device_comment, histogram, operator, device_code, device_instance, instance_module, scheduled_test, technique, started_time, completed_time, cause_of_repeat, inner_comment, result_type, value_type, outofrange, er_result, er_unit, comment, reference_range, reference_flag) VALUES (59328753, 'unsupported', 'S', 'analyser', 'SAMPLE', '5654', '108', 'SAMPLE', 'R', '4.620', 'F', 'N', 'mmol/l', null, null, null, null, '2020-05-16 00:00:00.000000', '1.0', null, null, null, null, null, 0, null, 'COBAS_CCEE', 89, null, null, null, null, '2020-05-16 14:50:59.906155', null, null, null, null, null, null, null, null, null, null);
-INSERT INTO lis.raw_results (raw_result, raw_result_state, raw_result_status, result_source, test_type, sample_id, test_code, sample_type, priority, result, result_status, normal_range_flag, unit, sequence_number, carrier, position, test_started, test_completed, dilution_factor, container_type, reagent_serial, reagent_lot, device_error, device_comment, histogram, operator, device_code, device_instance, instance_module, scheduled_test, technique, started_time, completed_time, cause_of_repeat, inner_comment, result_type, value_type, outofrange, er_result, er_unit, comment, reference_range, reference_flag) VALUES (59328752, 'unsupported', 'S', 'analyser', 'SAMPLE', '5654', '40', 'SAMPLE', 'R', '100.200', 'F', 'N', 'mmol/l', null, null, null, null, '2020-05-16 00:00:00.000000', '1.0', null, null, null, null, null, 0, null, 'COBAS_CCEE', 89, null, null, null, null, '2020-05-16 14:50:59.901709', null, null, null, null, null, null, null, null, null, null);
-INSERT INTO lis.raw_results (raw_result, raw_result_state, raw_result_status, result_source, test_type, sample_id, test_code, sample_type, priority, result, result_status, normal_range_flag, unit, sequence_number, carrier, position, test_started, test_completed, dilution_factor, container_type, reagent_serial, reagent_lot, device_error, device_comment, histogram, operator, device_code, device_instance, instance_module, scheduled_test, technique, started_time, completed_time, cause_of_repeat, inner_comment, result_type, value_type, outofrange, er_result, er_unit, comment, reference_range, reference_flag) VALUES (59328751, 'unsupported', 'S', 'analyser', 'SAMPLE', '5653', '44', 'SAMPLE', 'R', '49.000', 'C', 'N', 'umol/l', null, null, null, null, '2020-05-16 00:00:00.000000', '1.0', null, null, null, null, null, 0, null, 'COBAS_CCEE', 89, null, null, null, null, '2020-05-16 14:50:48.754982', null, null, null, null, null, null, null, null, null, null);
-INSERT INTO lis.raw_results (raw_result, raw_result_state, raw_result_status, result_source, test_type, sample_id, test_code, sample_type, priority, result, result_status, normal_range_flag, unit, sequence_number, carrier, position, test_started, test_completed, dilution_factor, container_type, reagent_serial, reagent_lot, device_error, device_comment, histogram, operator, device_code, device_instance, instance_module, scheduled_test, technique, started_time, completed_time, cause_of_repeat, inner_comment, result_type, value_type, outofrange, er_result, er_unit, comment, reference_range, reference_flag) VALUES (59328750, 'unsupported', 'S', 'analyser', 'SAMPLE', '5651', '44', 'SAMPLE', 'R', '49.000', 'C', 'N', 'umol/l', null, null, null, null, '2020-05-16 00:00:00.000000', '1.0', null, null, null, null, null, 0, null, 'COBAS_CCEE', 89, null, null, null, null, '2020-05-16 14:50:40.152351', null, null, null, null, null, null, null, null, null, null);
-INSERT INTO lis.raw_results (raw_result, raw_result_state, raw_result_status, result_source, test_type, sample_id, test_code, sample_type, priority, result, result_status, normal_range_flag, unit, sequence_number, carrier, position, test_started, test_completed, dilution_factor, container_type, reagent_serial, reagent_lot, device_error, device_comment, histogram, operator, device_code, device_instance, instance_module, scheduled_test, technique, started_time, completed_time, cause_of_repeat, inner_comment, result_type, value_type, outofrange, er_result, er_unit, comment, reference_range, reference_flag) VALUES (59328749, 'completed', 'S', 'analyser', 'SAMPLE', '5649', 'CRE', 'SAMPLE', 'R', '49.000', 'F', 'N', 'umol/l', null, null, null, null, '2020-05-16 00:00:00.000000', '1.0', null, null, null, null, null, 0, null, 'COBAS_CCEE', 89, null, null, null, null, '2020-05-16 14:49:46.667494', null, null, null, null, null, null, null, null, null, null);
+CREATE OR REPLACE FUNCTION failurescheduledprofile(p_scheduled_profile bigint, p_cause_of_failure bigint, p_comment_of_failure character varying) returns void
+    security definer
+    language plpgsql
+as
+$$
+DECLARE
+    v_profile_state     VARCHAR(32);
+    v_doctor            VARCHAR(10);
+    v_dname             VARCHAR(50);
+    v_counter           BIGINT;
+    v_resid             VARCHAR;
+    v_resnum            BIGINT;
+    v_scheduled_time    TIMESTAMP;
+    v_comment           VARCHAR(1000);
+    v_cause             VARCHAR(100);
+    v_mis_cause         INTEGER;
+    v_rec               RECORD;
+BEGIN
+
+    IF p_scheduled_profile IS NULL THEN
+        PERFORM ERROR.RAISE_ERROR('invalid_argument', 'scheduled_profile IS NULL');
+    END IF;
+
+    IF p_cause_of_failure IS NULL THEN
+        PERFORM ERROR.RAISE_ERROR('invalid_argument', 'cause IS NULL');
+    END IF;
+
+    /* XXX error: временное решение */
+
+    SELECT id, name INTO v_doctor, v_dname
+    FROM UTILS.GetUserInfo();
+
+    SELECT mis_cause INTO v_mis_cause
+    FROM LIS.cause_of_failures
+    WHERE cause_of_failure = p_cause_of_failure;
+
+    /* XXX error: временное решение */
+    SELECT cause INTO v_cause
+    FROM LIS.cause_of_failures
+    WHERE cause_of_failure = p_cause_of_failure;
+
+    SELECT profile_state, counter, resid, resnum, scheduled_time
+    INTO v_profile_state, v_counter, v_resid, v_resnum, v_scheduled_time
+    FROM LIS.scheduled_profiles
+    WHERE scheduled_profile = p_scheduled_profile;
+
+    FOR v_rec IN
+        SELECT sc.scheduled_container, sc.barcode FROM lis.scheduled_profiles sp
+                                                           JOIN lis.scheduled_invests si ON si.scheduled_profile = sp.scheduled_profile
+                                                           JOIN lis.scheduled_samples ss ON ss.scheduled_sample = si.scheduled_sample
+                                                           JOIN lis.scheduled_containers sc ON sc.scheduled_sample = ss.scheduled_sample
+        WHERE sp.scheduled_profile = p_scheduled_profile
+        LOOP
+            INSERT INTO lis.citm_query(scheduled_container, barcode, added, task_type) VALUES(v_rec.scheduled_container, v_rec.barcode, current_timestamp, 1);
+        END LOOP;
+
+    IF NOT FOUND THEN
+        PERFORM ERROR.RAISE_ERROR('scheduled_profile_notfound',p_scheduled_profile::VARCHAR);
+    ELSEIF v_profile_state NOT IN ('authorized', 'archived') THEN
+        IF v_profile_state = 'failure' THEN
+            SELECT counter INTO v_counter
+            FROM LIS.failured_profiles
+            WHERE scheduled_profile = p_scheduled_profile;
+        END IF;
+
+        /* комментарий в GIS.invest */
+        v_comment = '<P id="failure" xmlns="http://www.w3.org/1999/xhtml" style="background-color: red;"><B>Отказ: ' || COALESCE(v_dname::VARCHAR,'NULL')
+                        || ' ' || TO_CHAR(NOW(), 'DD.MM.YYYY') ||  '</B><BR/>' || TRIM(COALESCE(v_cause::varchar,'NULL'))
+                        || CASE WHEN p_comment_of_failure IS NULL THEN '' ELSE ': ' || TRIM(p_comment_of_failure) END || '</P>';
+
+        PERFORM UTILS.AddInvestComments
+            ( v_counter
+            , v_comment
+            );
+
+        /* удалить запись из GIS.did_doc */
+        IF v_profile_state <> 'failure' THEN
+            PERFORM ARM3.DeleteControl(v_counter, v_resid, COALESCE(v_resnum, 0)::INT4, v_scheduled_time::DATE);
+        END IF;
+
+        PERFORM LIS.addFailuredProfile(v_counter, p_scheduled_profile);
+
+        UPDATE LIS.scheduled_profiles
+        SET counter = NULL,
+            resid = NULL,
+            resnum = NULL,
+            authorized_time = now(),
+            profile_state = 'failure',
+            cause_of_failure = p_cause_of_failure,
+            comment_of_failure = p_comment_of_failure,
+            failure_doctor = v_doctor
+        WHERE scheduled_profile = p_scheduled_profile;
+
+        /* если есть МИС причина и причина ЛИС не равна ожиданию */
+        IF v_mis_cause IS NOT NULL AND p_cause_of_failure <> 10 THEN
+            PERFORM LIS.updateRejectedInvest(v_counter, v_mis_cause, p_comment_of_failure);
+        END IF;
+
+    END IF;
+END;
+$$;
+
+
+CREATE OR REPLACE FUNCTION lis.setContainerInTuberack(p_barcode character varying, p_tuberack character varying, p_position int) returns void
+    security definer
+    language plpgsql
+AS
+$$
+DECLARE
+    v_used                    INT4;
+    v_capacity                INT4;
+    v_position                INT4;
+    v_tuberackid              BIGINT;
+    v_state                   VARCHAR(10);
+    v_storage                 VARCHAR(100);
+    v_scheduled_container     BIGINT;
+BEGIN
+    SELECT id, capacity, state INTO v_tuberackid, v_capacity, v_state
+    FROM LIS.rt_tuberacks
+    WHERE barcode = p_tuberack and NOT COALESCE(deleted,false);
+
+    IF NOT FOUND THEN
+        PERFORM ERROR.RAISE_ERROR('tuberack_notfound', p_tuberack);
+    END IF;
+
+    SELECT scheduled_container INTO v_scheduled_container
+    FROM LIS.scheduled_containers
+    WHERE barcode = p_barcode;
+
+    IF NOT FOUND THEN
+        PERFORM ERROR.RAISE_ERROR('container_notfound', p_barcode);
+    END IF;
+
+    SELECT count(scheduled_container), COALESCE(max(position), 0)
+    INTO v_used, v_position
+    FROM LIS.tuberack_containers
+    WHERE tuberackid = v_tuberackid;
+
+    IF v_capacity=v_used OR v_position=v_capacity THEN
+        PERFORM ERROR.RAISE_ERROR('tuberack_is_full', v_capacity::VARCHAR, p_tuberack);
+    END IF;
+
+    INSERT INTO LIS.tuberack_containers(tuberackid, scheduled_container, position)
+    VALUES (v_tuberackid, v_scheduled_container, p_position);
+
+    PERFORM LOGS.LogEvent('LIS.SAMPLES.SAMPLESORTING.PUTINTUBERACK',
+                          'info', NULL, 'Поместить контейнер в штатив barcode ' || p_tuberack || ' position = ' || p_position,
+                          'LIS.CONTAINER',
+                          v_scheduled_container);
+
+
+    PERFORM LOGS.LogEvent('LIS.TUBERACKS.PUTCONTAINER',
+                          'info', NULL, 'Поместить контейнер ' || p_barcode || 'в штатив' || ' position = ' || p_position,
+                          'LIS.TUBERACK',
+                          v_tuberackid);
+
+    /* штатив в работу из свободного*/
+    IF v_state = 'free' THEN
+        PERFORM LIS.rtUpdateStateTubeRack(v_tuberackid, 'inwork');
+        /* контейнеры в архив */
+    ELSEIF v_state='onstorage' THEN
+
+        SELECT s.name INTO v_storage
+        FROM LIS.storage_tuberacks st
+                 JOIN LIS.rt_storages s ON st.storageid = s.id AND (s.deleted IS NULL OR NOT s.deleted)
+        WHERE st.tuberackid=v_tuberackid;
+
+        IF v_storage IS NOT NULL THEN
+            PERFORM LIS.SetContainerInStorage(v_scheduled_container, v_storage);
+        END IF;
+    END IF;
+END;
+$$;
+
+ALTER FUNCTION lis.setContainerInTuberack(varchar, varchar, int) OWNER TO gis;

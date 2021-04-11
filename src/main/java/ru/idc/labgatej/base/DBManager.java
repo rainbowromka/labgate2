@@ -2,7 +2,9 @@ package ru.idc.labgatej.base;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.idc.labgatej.model.ArchiveInfo;
 import ru.idc.labgatej.model.HeaderInfo;
+import ru.idc.labgatej.model.ManufacturerRecord;
 import ru.idc.labgatej.model.Order;
 import ru.idc.labgatej.model.OrderInfo;
 import ru.idc.labgatej.model.PacketInfo;
@@ -95,7 +97,8 @@ public class DBManager {
 						  rs.getBoolean("is_aliquot"),
 							rs.getLong("p_route"),
 							rs.getLong("p_scheduled_container"),
-							rs.getBoolean("p_manual_aliquot")
+							rs.getBoolean("p_manual_aliquot"),
+							rs.getInt("p_task_type")
 							));
 					}
 				} finally {
@@ -247,6 +250,31 @@ public class DBManager {
 			logger.error("", e);
 			if ("This connection has been closed.".equals(e.getMessage())) {
 				throw e;
+			}
+		}
+	}
+
+	public void saveEvents(PacketInfo packetInfo) throws SQLException {
+		if (packetInfo.getMRecords() == null || packetInfo.getMRecords().isEmpty()) return;
+
+		for (ManufacturerRecord rec : packetInfo.getMRecords()) {
+			// пока только информацию об архивировании пробирки умеем сохранять
+			if (!(rec instanceof ArchiveInfo)) {
+				continue;
+			}
+			try {
+				try (CallableStatement st = dbConnection.prepareCall("{call lis.setContainerInTuberack(?, ?, ?)}")) {
+					st.setString(1, prepareString(packetInfo.getOrder().getBarcode()));
+					st.setString(2, prepareString(((ArchiveInfo) rec).getTuberack()));
+					st.setInt(3, ((ArchiveInfo) rec).getPosition());
+
+					st.execute();
+				}
+			} catch (SQLException e) {
+				logger.error("", e);
+				if ("This connection has been closed.".equals(e.getMessage())) {
+					throw e;
+				}
 			}
 		}
 	}

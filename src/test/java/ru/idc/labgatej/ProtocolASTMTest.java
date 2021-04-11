@@ -1,10 +1,12 @@
 package ru.idc.labgatej;
 
+import org.junit.Assert;
 import org.junit.Test;
 import ru.idc.labgatej.base.Codes;
-import ru.idc.labgatej.base.Configuration;
-import ru.idc.labgatej.base.DBManager;
 import ru.idc.labgatej.base.ProtocolASTM;
+import ru.idc.labgatej.model.ArchiveFlag;
+import ru.idc.labgatej.model.ArchiveInfo;
+import ru.idc.labgatej.model.ManufacturerRecord;
 import ru.idc.labgatej.model.PacketInfo;
 import ru.idc.labgatej.model.ResultInfo;
 
@@ -60,5 +62,17 @@ public class ProtocolASTMTest {
 //		dbManager.saveResults(p, true);
 
 		System.out.print(p.toString());
+	}
+
+	@Test
+	public void testParseEvent() {
+		ProtocolASTM astm = new ProtocolASTM();
+		String msg = "M|1|EQU^RO^^1.0|COBAS_P512^^^cobas p512^LAB1^SAMPLEEVENT^ARCHIV|20210319125019<CR>";
+		ManufacturerRecord r = astm.parseManufacturerRecord(msg);
+		msg = "M|2|SAC^RO^^1.0|||20216800|||1|20210319125019|P||18|74||||{cobas p512} {cobas p512.ARCHIVE_S} {18 (74)}<CR>";
+		ManufacturerRecord r2 = astm.parseManufacturerRecord(msg);
+
+		Assert.assertTrue(r instanceof ArchiveFlag);
+		Assert.assertTrue(r2 instanceof ArchiveInfo && "18".equals(((ArchiveInfo) r2).getTuberack())  && ((ArchiveInfo) r2).getPosition() == 74);
 	}
 }

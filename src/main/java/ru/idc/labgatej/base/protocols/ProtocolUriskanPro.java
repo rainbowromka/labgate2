@@ -1,4 +1,4 @@
-package ru.idc.labgatej.base;
+package ru.idc.labgatej.base.protocols;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +17,7 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ProtocolUriskanPro implements Protocol {
+public class ProtocolUriskanPro implements Protocol<List<Order>> {
 	private static Logger logger = LoggerFactory.getLogger(ProtocolUriskanPro.class);
 
 	public String makeOrder(List<Order> orders) {

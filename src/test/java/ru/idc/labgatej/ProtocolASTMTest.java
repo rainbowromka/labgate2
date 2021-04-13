@@ -3,7 +3,7 @@ package ru.idc.labgatej;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.idc.labgatej.base.Codes;
-import ru.idc.labgatej.base.ProtocolASTM;
+import ru.idc.labgatej.base.protocols.ProtocolASTM;
 import ru.idc.labgatej.model.ArchiveFlag;
 import ru.idc.labgatej.model.ArchiveInfo;
 import ru.idc.labgatej.model.ManufacturerRecord;

@@ -1,5 +1,6 @@
 package ru.idc.labgatej.base;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openmuc.jrxtx.DataBits;
 import org.openmuc.jrxtx.FlowControl;
 import org.openmuc.jrxtx.Parity;
@@ -15,15 +16,19 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.net.SocketException;
 import java.net.SocketTimeoutException;
 
-public class SocketClientTransport implements Transport {
-	private static Logger logger = LoggerFactory.getLogger(SocketClientTransport.class);
+@Slf4j
+public class SocketClientTransport
+implements Transport
+{
 	private int port;
 	private String host;
 	private InputStream in;
 	private Writer out;
 	private Socket socket = null;
+	private String inetAddress = "";
 
 	public SocketClientTransport(String host, int port) {
 		this.host = host;
@@ -37,7 +42,7 @@ public class SocketClientTransport implements Transport {
 	@Override
 	public void init(int timeout) {
 		try {
-			logger.info("Подключаемся к \n\t" +
+			log.info("Подключаемся к \n\t" +
 				"(IP address " + host +
 				", порт " + port + ")");
 			InetAddress ipAddress;
@@ -45,7 +50,10 @@ public class SocketClientTransport implements Transport {
 			socket = new Socket(ipAddress, port);
 			socket.setSoTimeout(timeout);
 			socket.setKeepAlive(true);
-			logger.info("Соединение установлено");
+			log.info("Соединение установлено");
+
+			inetAddress = "["
+				+ socket.getInetAddress() + ":" + socket.getPort() + "] ";
 
 			// Получаем входной и выходной потоки
 			// сокета для обмена сообщениями с сервером
@@ -55,13 +63,38 @@ public class SocketClientTransport implements Transport {
 			in = sin; //new BufferedReader(new InputStreamReader(sin)); //new DataInputStream(sin);
 			out =  new BufferedWriter(new OutputStreamWriter(sout)); //new DataOutputStream(sout);
 		} catch (Exception e) {
-			logger.error("", e);
-			logger.debug("Ждём 60 секунд...");
+			log.error("", e);
+			log.debug("Ждём 60 секунд...");
 			try {
 				Thread.sleep(60000);
 			} catch (InterruptedException interruptedException) {
-				logger.error("", interruptedException);
+				log.error("", interruptedException);
 			}
+		}
+	}
+
+	@Override
+	public void init(
+		Socket socket,
+		int timeout)
+	{
+		try {
+			log.info("Сокет уже подключен.");
+			this.socket = socket;
+			socket.setSoTimeout(timeout);
+			socket.setKeepAlive(true);
+			log.info("Соединение установлено.");
+			inetAddress = "["
+				+ socket.getInetAddress() + ":" + socket.getPort() + "] ";
+
+			InputStream sin = socket.getInputStream();
+			OutputStream sout = socket.getOutputStream();
+
+			in = sin;
+			out = new BufferedWriter(new OutputStreamWriter(sout));
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -72,7 +105,7 @@ public class SocketClientTransport implements Transport {
 				socket.close();
 			}
 		} catch (IOException e) {
-			logger.error("", e);
+			log.error("", e);
 		}
 	}
 
@@ -85,7 +118,7 @@ public class SocketClientTransport implements Transport {
 	public void sendMessage(String msg) throws IOException {
 		out.write(Codes.makeSendable(msg));
 		out.flush();
-		logger.debug(msg);
+		log.debug(inetAddress + msg);
 	}
 
 	@Override
@@ -97,7 +130,8 @@ public class SocketClientTransport implements Transport {
 	public int readInt(boolean ignoreTimeout) throws IOException {
 		try {
 			int result = in.read();
-			logger.debug(Codes.makePrintable("" + (char) Integer.parseInt(Integer.toHexString(result))));
+			log.debug(inetAddress + Codes.makePrintable(
+				"" + (char) Integer.parseInt(Integer.toHexString(result))));
 			return result;
 		} catch (SocketTimeoutException e) {
 			if (!ignoreTimeout) throw e;
@@ -115,7 +149,7 @@ public class SocketClientTransport implements Transport {
 		}
 
 		String msg = Codes.makePrintable(sb.toString());
-		logger.debug(msg);
+		log.debug(inetAddress + msg);
 		return msg;
 	}
 }

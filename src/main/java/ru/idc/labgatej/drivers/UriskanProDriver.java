@@ -1,16 +1,16 @@
 package ru.idc.labgatej.drivers;
 
+import com.mchange.v2.c3p0.ComboPooledDataSource;
+import lombok.extern.slf4j.Slf4j;
 import org.openmuc.jrxtx.DataBits;
 import org.openmuc.jrxtx.FlowControl;
 import org.openmuc.jrxtx.Parity;
 import org.openmuc.jrxtx.StopBits;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import ru.idc.labgatej.base.Configuration;
 import ru.idc.labgatej.base.DBManager;
 import ru.idc.labgatej.base.IDriver;
-import ru.idc.labgatej.base.Protocol;
-import ru.idc.labgatej.base.ProtocolUriskanPro;
+import ru.idc.labgatej.base.protocols.Protocol;
+import ru.idc.labgatej.base.protocols.ProtocolUriskanPro;
 import ru.idc.labgatej.base.Rs232ClientTransport;
 import ru.idc.labgatej.base.SocketClientTransport;
 import ru.idc.labgatej.base.Transport;
@@ -23,9 +23,10 @@ import static ru.idc.labgatej.base.Codes.*;
 import static ru.idc.labgatej.base.Consts.ERROR_TIMEOUT;
 import static ru.idc.labgatej.base.Consts.WRONG_DATA;
 
-public class UriskanProDriver implements IDriver {
-	private static Logger logger = LoggerFactory.getLogger(UriskanProDriver.class);
-
+@Slf4j
+public class UriskanProDriver
+implements IDriver
+{
 	private Transport transport;
 	private DBManager dbManager;
 	private Protocol protocol;
@@ -42,9 +43,9 @@ public class UriskanProDriver implements IDriver {
 			}
 
 			if (res == ERROR_TIMEOUT) {
-				logger.trace("ждём данных");
+				log.trace("ждём данных");
 			} else if (res == STX) {
-				logger.debug("начинается пакет данных");
+				log.debug("начинается пакет данных");
 				sb.setLength(0);
 				for (int i = 0; i < 17; i++) {
 					String msg = transport.readMessage();
@@ -53,7 +54,7 @@ public class UriskanProDriver implements IDriver {
 				}
 				return sb.toString();
 			} else {
-				logger.debug("нам что-то не то прислали");
+				log.debug("нам что-то не то прислали");
 			}
 		} while (res != ERROR_TIMEOUT && res != ETX);
 		return null;
@@ -68,7 +69,7 @@ public class UriskanProDriver implements IDriver {
 			msg = receiveResults();
 
 			if (msg != null && !msg.isEmpty()) {
-				logger.debug("Получили сообщение: " + msg);
+				log.debug("Получили сообщение: " + msg);
 				PacketInfo packetInfo = protocol.parseMessage(makeSendable(msg));
 				packetInfo.setDeviceCode(deviceCode);
 
@@ -79,8 +80,12 @@ public class UriskanProDriver implements IDriver {
 	}
 
 	@Override
-	public void init(DBManager dbManager, Configuration config) {
-		this.dbManager = dbManager;
+	public void init(
+		ComboPooledDataSource connectionPool,
+		Configuration config)
+	{
+		this.dbManager = new DBManager();
+		dbManager.init(connectionPool);
 		protocol = new ProtocolUriskanPro();
 		deviceCode = config.getParamValue("code");
 
@@ -95,15 +100,10 @@ public class UriskanProDriver implements IDriver {
 					Integer.parseInt(config.getParamValue("device.connection.port")));
 				transport.init(10000);
 		}
-
-
-
-
 	}
 
 	@Override
 	public void close() {
 		transport.close();
 	}
-
 }

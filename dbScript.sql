@@ -50,13 +50,14 @@ alter table lis.citm_query drop constraint ref2containers;
 ALTER TABLE lis.citm_query owner to gis;
 
 
-
-
 CREATE OR REPLACE FUNCTION lis.query_container_to_citm() RETURNS trigger AS $$
 BEGIN
     -- Проверить, что указаны имя сотрудника и зарплата
     IF NEW.container_state = 'registered' AND NEW.barcode IS NOT NULL AND position('.' in NEW.barcode) = 0 THEN
         INSERT INTO lis.citm_query(scheduled_container, added, barcode) VALUES(NEW.scheduled_container, current_timestamp, NEW.barcode);
+        IF NEW.resid IN (SELECT ) THEN
+            INSERT INTO lis.device_query(scheduled_container, added) VALUES(NEW.scheduled_container, current_timestamp);
+        END IF;
     END IF;
 
     RETURN NEW;

@@ -207,6 +207,12 @@ public class DBManager {
 		return String.valueOf(d);
 	}
 
+	public void saveResults(List<PacketInfo> packetInfos, boolean isCitm) throws SQLException {
+		for (PacketInfo p : packetInfos) {
+			saveResults(p, isCitm);
+		}
+	}
+
 	public void saveResults(PacketInfo packetInfo, boolean isCitm) throws SQLException {
 		HeaderInfo headerInfo = packetInfo.getHeader();
 		OrderInfo orderInfo = packetInfo.getOrder();
@@ -301,6 +307,12 @@ public class DBManager {
 			if ("This connection has been closed.".equals(e.getMessage())) {
 				throw e;
 			}
+		}
+	}
+
+	public void saveEvents(List<PacketInfo> packetInfos) throws SQLException {
+		for (PacketInfo p : packetInfos) {
+			saveEvents(p);
 		}
 	}
 

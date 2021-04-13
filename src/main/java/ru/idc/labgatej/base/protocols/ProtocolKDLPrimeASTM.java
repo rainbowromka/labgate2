@@ -13,7 +13,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Slf4j
-public class ProtocolKDLPrimeASTM extends ProtocolASTM {
+public class ProtocolKDLPrimeASTM extends ProtocolCITM_ASTM {
 
 	private final String deviceCode;
 

@@ -1,4 +1,4 @@
-package ru.idc.labgatej.drivers.KDLPrime;
+package ru.idc.labgatej.drivers.lazurite;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import lombok.extern.slf4j.Slf4j;
@@ -9,11 +9,9 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.sql.SQLException;
 
-/**
- * Драйвер обработки данных результатов анализа от FRT Manager.
- */
+
 @Slf4j
-public class KdlPrime implements IDriver
+public class Lazurite implements IDriver
 {
 
     /**
@@ -43,10 +41,10 @@ public class KdlPrime implements IDriver
         serverSocket = new ServerSocket(port);
         while (true)
         {
-            log.info("Слушаем порт: ");
+            log.info("Слушаем порт: " + this.port);
             //TODO: надо в отдельном потоке сделать, как вариант, прерывание
             // работы метода accept. Правда надо понять, насколько это надо.
-            new KDLPrimeClientHandler(serverSocket.accept(),
+            new LazuriteClientHandler(serverSocket.accept(),
                 connectionPool, config
             ).start();
         }
@@ -60,7 +58,7 @@ public class KdlPrime implements IDriver
         this.config = config;
         this.connectionPool = connectionPool;
         this.port = Integer.parseInt(
-            config.getParamValue("kdlprime.port.result"));
+            config.getParamValue("device.connection.port"));
     }
 
     @Override

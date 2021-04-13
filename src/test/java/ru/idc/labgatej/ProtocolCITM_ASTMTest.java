@@ -3,7 +3,7 @@ package ru.idc.labgatej;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.idc.labgatej.base.Codes;
-import ru.idc.labgatej.base.protocols.ProtocolASTM;
+import ru.idc.labgatej.base.protocols.ProtocolCITM_ASTM;
 import ru.idc.labgatej.model.ArchiveFlag;
 import ru.idc.labgatej.model.ArchiveInfo;
 import ru.idc.labgatej.model.ManufacturerRecord;
@@ -12,11 +12,11 @@ import ru.idc.labgatej.model.ResultInfo;
 
 import java.util.List;
 
-public class ProtocolASTMTest {
+public class ProtocolCITM_ASTMTest {
 
 	@Test
 	public void testString() {
-		ProtocolASTM astm = new ProtocolASTM();
+		ProtocolCITM_ASTM astm = new ProtocolCITM_ASTM();
 		String t = "R|1|^^^174^1^^^COBAS_8000^^^^^^|< 0.01|ng/ml||N||F||&S&SYSTEM^System||20200527090724|COBAS_8000";
 		List<ResultInfo> r = astm.parseResults(t);
 
@@ -25,7 +25,7 @@ public class ProtocolASTMTest {
 
 	@Test
 	public void testParseMessage() {
-		ProtocolASTM astm = new ProtocolASTM();
+		ProtocolCITM_ASTM astm = new ProtocolCITM_ASTM();
 //		String msg = Codes.makeSendable("1H|\\^&|26973||^^^|||||||P||20200413110453<CR><ETX>E4<CR><LF>" +
 //			"2P|1||PID_1||Surname^Name||19700101|M|||||||||||||||20200413095339||0||||||||00001<CR><ETX>B0<CR><LF>" +
 //			"3O|1|99900001||ALL|R|20200413095339|||||X||||1||||||||||F<CR><ETX>3E<CR><LF>" +
@@ -51,7 +51,7 @@ public class ProtocolASTMTest {
 			"P|1||?||^||||||||||||||||||20200603131406||<CR>" +
 			"O|1|1290178502|1290178502|ALL|?|20200603131406|||||X||||1||||||||||F<CR>" +
 			"R|1|^^^218^1^^^COBAS_8000^^^^^^|375.000|uUI/mL||N||F||&S&SYSTEM^System||2020060416253<ETB_>D1<CR><LF>";
-		PacketInfo p = astm.parseMessage(Codes.makeSendable(msg));
+		List<PacketInfo> p = astm.parseMessage(Codes.makeSendable(msg));
 //
 //		Configuration config;
 //		config = new Configuration();
@@ -66,7 +66,7 @@ public class ProtocolASTMTest {
 
 	@Test
 	public void testParseEvent() {
-		ProtocolASTM astm = new ProtocolASTM();
+		ProtocolCITM_ASTM astm = new ProtocolCITM_ASTM();
 		String msg = "M|1|EQU^RO^^1.0|COBAS_P512^^^cobas p512^LAB1^SAMPLEEVENT^ARCHIV|20210319125019<CR>";
 		ManufacturerRecord r = astm.parseManufacturerRecord(msg);
 		msg = "M|2|SAC^RO^^1.0|||20216800|||1|20210319125019|P||18|74||||{cobas p512} {cobas p512.ARCHIVE_S} {18 (74)}<CR>";

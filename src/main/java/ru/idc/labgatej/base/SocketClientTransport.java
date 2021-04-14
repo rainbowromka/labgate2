@@ -122,6 +122,13 @@ implements Transport
 	}
 
 	@Override
+	public void sendInt(int data) throws IOException {
+		out.write(data);
+		out.flush();
+		log.debug(String.valueOf(data));
+	}
+
+	@Override
 	public int readInt() throws IOException {
 		return readInt(false);
 	}
@@ -135,6 +142,8 @@ implements Transport
 			return result;
 		} catch (SocketTimeoutException e) {
 			if (!ignoreTimeout) throw e;
+		} catch (NumberFormatException e2) {
+			log.error("NumberFormatException", e2);
 		}
 		return -1;
 	}
@@ -151,5 +160,15 @@ implements Transport
 		String msg = Codes.makePrintable(sb.toString());
 		log.debug(inetAddress + msg);
 		return msg;
+	}
+
+	@Override
+	public byte[] readData(int len) throws IOException {
+		byte[] data = new byte[len];
+		int readed = in.read(data, 0, len);
+		if (readed != len) {
+			throw new IOException(String.format("не удалось прочитать все данные! Ожидали %d, прочитали %d", len, readed));
+		}
+		return data;
 	}
 }

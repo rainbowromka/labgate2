@@ -10,7 +10,7 @@ import ru.idc.labgatej.base.SocketClientTransport;
 import ru.idc.labgatej.base.TaskDualDriver;
 import ru.idc.labgatej.base.Configuration;
 import ru.idc.labgatej.base.Transport;
-import ru.idc.labgatej.base.protocols.ProtocolASTM;
+import ru.idc.labgatej.base.protocols.ProtocolCITM_ASTM;
 import ru.idc.labgatej.model.Order;
 import ru.idc.labgatej.model.PacketInfo;
 
@@ -23,7 +23,7 @@ import static ru.idc.labgatej.base.Codes.makeSendable;
 import static ru.idc.labgatej.base.Consts.ERROR_TIMEOUT;
 
 @Slf4j
-public class CitmDriver extends TaskDualDriver<ProtocolASTM>
+public class CitmDriver extends TaskDualDriver<ProtocolCITM_ASTM>
 {
 	private static final Logger eventsLogger = LoggerFactory.getLogger("events");
 
@@ -108,7 +108,7 @@ public class CitmDriver extends TaskDualDriver<ProtocolASTM>
 			transport4events.init(10000);
 		}
 
-		protocol = new ProtocolASTM();
+		protocol = new ProtocolCITM_ASTM();
 	}
 
 	@Override
@@ -259,8 +259,8 @@ public class CitmDriver extends TaskDualDriver<ProtocolASTM>
 
 						if (msg != null && !msg.isEmpty()) {
 							eventsLogger.info(msg);
-							PacketInfo packetInfo = protocol.parseMessage(makeSendable(msg));
-							dbManager4results.saveEvents(packetInfo);
+							List<PacketInfo> packetInfos = protocol.parseMessage(makeSendable(msg));
+							dbManager4results.saveEvents(packetInfos);
 						}
 					} catch (Exception e) {
 						log.error("Ошибка в потоке получения событий", e);
@@ -292,8 +292,8 @@ public class CitmDriver extends TaskDualDriver<ProtocolASTM>
 			msg = can_receive_results ? receiveResults() : null;
 
 			if (msg != null && !msg.isEmpty()) {
-				PacketInfo packetInfo = protocol.parseMessage(makeSendable(msg));
-				dbManager4results.saveResults(packetInfo, true);
+				List<PacketInfo> packetInfos = protocol.parseMessage(makeSendable(msg));
+				dbManager4results.saveResults(packetInfos, true);
 			}
 			Thread.sleep(delayForResults);
 		}

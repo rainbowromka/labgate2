@@ -84,6 +84,13 @@ public class Rs232ClientTransport implements Transport
 	}
 
 	@Override
+	public void sendInt(int data) throws IOException {
+		out.write(data);
+		out.flush();
+		log.debug(String.valueOf(data));
+	}
+
+	@Override
 	public int readInt() throws IOException {
 		return readInt(false);
 	}
@@ -112,6 +119,16 @@ public class Rs232ClientTransport implements Transport
 		String msg = Codes.makePrintable(sb.toString());
 		log.debug(msg);
 		return msg;
+	}
+
+	@Override
+	public byte[] readData(int len) throws IOException {
+		byte[] data = new byte[len];
+		int readed = in.read(data, 0, len);
+		if (readed != len) {
+			throw new IOException(String.format("не удалось прочитать все данные! Ожидали %d, прочитали %d", len, readed));
+		}
+		return data;
 	}
 }
 

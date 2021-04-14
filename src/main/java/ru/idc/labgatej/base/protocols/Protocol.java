@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface Protocol<T> {
 	String makeOrder(T barcodes);
-	PacketInfo parseMessage(String msg);
+	List<PacketInfo> parseMessage(String msg);
 	HeaderInfo parseHeader(String msg);
 	OrderInfo parseOrder(String msg);
 	List<ResultInfo> parseResults(String msg);

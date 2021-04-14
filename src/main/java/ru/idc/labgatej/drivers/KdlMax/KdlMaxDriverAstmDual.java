@@ -44,10 +44,6 @@ public class KdlMaxDriverAstmDual extends TaskDualDriver<ProtocolKDLMaksASTM>
     }
 
     @Override
-    protected void registerAliquots(List<Order> orders) {
-    }
-
-    @Override
     protected void markOrderAsFailed(long taskId, String comment) {
         dbManager4tasks.markDeviceQueryOrderAsFailed(taskId, comment);
     }

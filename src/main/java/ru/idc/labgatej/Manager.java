@@ -16,6 +16,7 @@ import ru.idc.labgatej.drivers.Medonic;
 import ru.idc.labgatej.drivers.MultiskanFC;
 import ru.idc.labgatej.drivers.RealBest;
 import ru.idc.labgatej.drivers.UriskanProDriver;
+import ru.idc.labgatej.drivers.lazurite.Lazurite;
 
 import static org.apache.log4j.Level.INFO;
 
@@ -80,6 +81,7 @@ public class Manager {
 			case "CITM": return new CitmDriver();
 			case "MEDONIC":	return new Medonic();
 			case "MULTISKANFC":	return new MultiskanFC();
+			case "LAZURITE":	return new Lazurite();
 			case "URISKAN": return new UriskanProDriver();
 			case "REALBEST": return new RealBest();
 			case "DNATEACH": return new DNATechnplogyDriver();

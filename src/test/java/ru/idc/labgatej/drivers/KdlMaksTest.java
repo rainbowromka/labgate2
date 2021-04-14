@@ -14,6 +14,7 @@ import ru.idc.labgatej.model.PacketInfo;
 import ru.idc.labgatej.model.ResultInfo;
 
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -70,7 +71,7 @@ public class KdlMaksTest {
     {
         ProtocolKDLMaksASTM protocol = new ProtocolKDLMaksASTM();
 
-        PacketInfo actualPacket = protocol.parseMessage(
+        List<PacketInfo> actualPackets = protocol.parseMessage(
             "H|\\^&||PCR_line|PCR_line|||||PCR_line||P||20160318040923\r" +
             "P|1||||^^||||||||||||||||||||||||||||\r" +
             "O|1|s1||^^^HPVgen||20160318040831|00010101||||||||||||21.11.2015^20160521|||||||||||\r" +
@@ -107,7 +108,7 @@ public class KdlMaksTest {
         expected.addResult(newResult("HPVgen", "2", ""));
         expected.addResult(newResult("HPVgen", "2", ""));
 
-        ReflectionAssert.assertReflectionEquals(expected, actualPacket);
+        ReflectionAssert.assertReflectionEquals(expected, actualPackets.get(0));
     }
 
     private ResultInfo newResult(String testCode, String result, String units)

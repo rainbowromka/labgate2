@@ -1,12 +1,11 @@
-package ru.idc.labgatej.base.protocols;
+package ru.idc.labgatej.drivers.lazurite;
 
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.idc.labgatej.base.Codes;
 import ru.idc.labgatej.base.Utils;
-import ru.idc.labgatej.model.ArchiveFlag;
-import ru.idc.labgatej.model.ArchiveInfo;
+import ru.idc.labgatej.base.protocols.Protocol;
 import ru.idc.labgatej.model.HeaderInfo;
-import ru.idc.labgatej.model.ManufacturerRecord;
 import ru.idc.labgatej.model.Order;
 import ru.idc.labgatej.model.OrderInfo;
 import ru.idc.labgatej.model.PacketInfo;
@@ -25,24 +24,14 @@ import java.util.regex.Pattern;
 
 import static ru.idc.labgatej.base.Codes.*;
 
-@Slf4j
-public class ProtocolASTM implements Protocol<List<Order>> {
+public class ProtocolLazuriteASTM implements Protocol<List<Order>> {
+	private static Logger logger = LoggerFactory.getLogger(ProtocolLazuriteASTM.class);
 	// 240 символов на сообщение в одном фрейме
 
 
-	private String getTestPostfix(String material) {
-		if (material == null) return "";
-		switch (material.toUpperCase()) {
-			case "UR": return "_U";
-
-			default: return "";
-		}
-	}
-
 	//<STX>1H|\^&|||ASTM-Host|||||CIT||P||20120219111500<CR>P|1<CR>O|1|923501||^^^CL-S\^^^CREA|||||||A<CR>L|1|F<CR><ETX>80<CR><LF>
+	@Override
 	public String makeOrder(List<Order> orders) {
-		// флаг что это Отказ
-		boolean isAbort = orders.stream().anyMatch(o -> o.getTaskType() == 1);
 		final int maxSize = 6900;
 		int frameIdx = 0;
 		if (orders.isEmpty()) return "";
@@ -63,35 +52,29 @@ public class ProtocolASTM implements Protocol<List<Order>> {
 			if (order.getIsAliquot() && order.isManualAliquot()) {
 				continue;
 			}
-			msg.append("^^^").append(order.getTestId()).append(getTestPostfix(order.getMaterial())).append("\\");
+//!			msg.append("^^^").append(order.getTestId()).append(getTestPostfix(order.getMaterial())).append("\\");
 		}
-		if (isAbort) {
-			msg.append("|||||||C<CR>"); // C - Action Code = Cancel
-		} else {
-			msg.append("|||||||A<CR>"); // A - Action Code = Add
-		}
+		msg.append("|||||||A<CR>"); // A - Action Code
 		idx++;
 
 // задания на аликвоты
 		//long devInst = -1;
 		long routeId = -1;
 		// добавляем задания на аликвоты
-		if (!isAbort) {
-			for (Order order : orders) {
-				if (order.getIsAliquot() && !order.isManualAliquot()) {
-					if (order.getRouteId() != routeId) {
-						routeId = order.getRouteId();
-						if (idx != 2) {
-							// закрываем предыдущую O-запись
-							msg.append("|||||||A<CR>");
-						}
-						order.setAliquotBarcode(mainBarcode + "." + (idx - 1));
-						msg.append("O|").append(idx).append("|").append(order.getAliquotBarcode())
-							.append("|").append(mainBarcode).append("|");
-						idx++;
+		for (Order order : orders) {
+			if (order.getIsAliquot() && !order.isManualAliquot()) {
+				if (order.getRouteId() != routeId) {
+					routeId = order.getRouteId();
+					if (idx != 2) {
+						// закрываем предыдущую O-запись
+						msg.append("|||||||A<CR>");
 					}
-					msg.append("^^^").append(order.getTestId()).append(getTestPostfix(order.getMaterial())).append("\\");
+					order.setAliquotBarcode(mainBarcode + "." + (idx - 1));
+					msg.append("O|").append(idx).append("|").append(order.getAliquotBarcode())
+						.append("|").append(mainBarcode).append("|");
+					idx++;
 				}
+//!				msg.append("^^^").append(order.getTestId()).append(getTestPostfix(order.getMaterial())).append("\\");
 			}
 		}
 		if (routeId != -1) {
@@ -131,21 +114,15 @@ public class ProtocolASTM implements Protocol<List<Order>> {
 		}
 
 		return makePrintable(String.join("", frames));
-
-		// Action Code
-//		C - Cancel request for the battery or tests named. It is not possible to cancel a test if it has a result and the
-//		check box Host configuration > Host interface > [host] > Parameters > Retain results on sample removal is checked.
-//
-//		A - Add the requested tests or batteries to the existing sample with the patient and sample (specimen) identifiers
-//		and date-time given in this record. If test already exists, cobas IT middleware does nothing.
-//
-//		N - New sample. If a sample with the same sample ID exists, cobas IT middleware deletes the previous tests,
-//		and adds the new tests to the sample.
 	}
 
 	@Override
-	public PacketInfo parseMessage(String msg) {
+	public List<PacketInfo> parseMessage(String msg) {
+		List<PacketInfo> result = new ArrayList<>();
+
 		PacketInfo packetInfo = new PacketInfo();
+		result.add(packetInfo);
+
 		int idx;
 		while (msg.indexOf(""+ ETB_) > 0) {
 			idx = msg.indexOf(""+ ETB_) + 6;
@@ -176,11 +153,17 @@ public class ProtocolASTM implements Protocol<List<Order>> {
 						break;
 
 					case "M":
-						packetInfo.addManufacturerRecord(parseManufacturerRecord(line));
+						parseError(line);
+						break;
 				}
 			}
 		}
-		return packetInfo;
+		return result;
+	}
+
+	//M|1|14|dsx12345678|ribpp|Assay name given by LIS Host is not valid according to local database.
+	private void parseError(String line) {
+		logger.error(line);
 	}
 
 	@Override
@@ -241,18 +224,7 @@ public class ProtocolASTM implements Protocol<List<Order>> {
 			result.setTest_type("SAMPLE");
 			result.setResult_status(matcher.group(7));
 			result.setDevice_name(matcher.group(12));
-			s = matcher.group(1); // group - 2
-			utiMatcher = utiPattern.matcher(s);
-			if (utiMatcher.find()) {
-				result.setTest_code(utiMatcher.group(4));
-				if (!utiMatcher.group(5).isEmpty()) {
-					try {
-						result.setDilution_factor(Double.valueOf(utiMatcher.group(5)));
-					} catch (NumberFormatException e) {
-						log.error("", e);
-					}
-				}
-			}
+			result.setTest_code(matcher.group(3));
 
 			result.setUnits(matcher.group(3));
 			s = matcher.group(11);
@@ -261,39 +233,9 @@ public class ProtocolASTM implements Protocol<List<Order>> {
 				Date date = new SimpleDateFormat("yyyyMMddHHmmss").parse(s);
 				result.setTest_completed(date);
 			} catch (ParseException e) {
-				log.error("", e);
+				logger.error("", e);
 			}
 		}
 		return Collections.singletonList(result);
-	}
-
-	public ManufacturerRecord parseManufacturerRecord(String msg) {
-		final Pattern m1Pattern = Pattern.compile("^M\\|\\d+\\|(.*?)\\|(.*?)\\|(.*?)$",
-			Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
-		final Pattern eventTypePattern = Pattern.compile("^(.*?)\\^(.*?)\\^(.*?)\\^(.*?)\\^(.*?)\\^(.*?)\\^(.*?)$",
-			Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
-		final Pattern m2Pattern = Pattern.compile("^M\\|\\d+\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)\\|(.*?)$",
-			Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
-
-		String s;
-
-		Matcher matcher = m2Pattern.matcher(msg);
-		if (matcher.find() && matcher.group(11) != null && matcher.group(12) != null) {
-			return new ArchiveInfo(matcher.group(11).trim(), Integer.parseInt(matcher.group(12).trim()));
-		} else {
-			matcher = m1Pattern.matcher(msg);
-			if (matcher.find()) {
-				s = matcher.group(2);
-				matcher = eventTypePattern.matcher(s);
-				if (matcher.find()) {
-					s = matcher.group(7);
-					if ("ARCHIV".equals(s)) {
-						return new ArchiveFlag();
-					}
-				}
-			}
-		}
-
-		return null;
 	}
 }

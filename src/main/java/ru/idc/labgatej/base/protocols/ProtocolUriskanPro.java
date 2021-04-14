@@ -25,11 +25,13 @@ public class ProtocolUriskanPro implements Protocol<List<Order>> {
 	}
 
 	@Override
-	public PacketInfo parseMessage(String msg) {
+	public List<PacketInfo> parseMessage(String msg) {
+		List<PacketInfo> result = new ArrayList<>();
 		PacketInfo packetInfo = new PacketInfo();
+		result.add(packetInfo);
 		packetInfo.addResult(parseResults(msg));
 
-		return packetInfo;
+		return result;
 	}
 
 	@Override

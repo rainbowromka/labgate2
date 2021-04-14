@@ -18,6 +18,7 @@ import ru.idc.labgatej.model.PacketInfo;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import static ru.idc.labgatej.base.Codes.*;
 import static ru.idc.labgatej.base.Consts.ERROR_TIMEOUT;
@@ -70,10 +71,10 @@ implements IDriver
 
 			if (msg != null && !msg.isEmpty()) {
 				log.debug("Получили сообщение: " + msg);
-				PacketInfo packetInfo = protocol.parseMessage(makeSendable(msg));
-				packetInfo.setDeviceCode(deviceCode);
+				List<PacketInfo> packetInfos = protocol.parseMessage(makeSendable(msg));
+				packetInfos.forEach(p -> p.setDeviceCode(deviceCode));
 
-				dbManager.saveResults(packetInfo, false);
+				dbManager.saveResults(packetInfos, false);
 			}
 			Thread.sleep(200);
 		}

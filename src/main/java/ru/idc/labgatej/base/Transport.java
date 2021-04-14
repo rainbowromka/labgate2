@@ -14,8 +14,10 @@ public interface Transport {
 	void init(Socket socket,int timeout);
 	void close();
 	void sendMessage(String msg) throws IOException;
+	void sendInt(int data) throws IOException;
 	int readInt() throws IOException;
 	int readInt(boolean ignoreTimeout) throws IOException;
 	String readMessage() throws IOException;
 	boolean isReady();
+	byte[] readData(int len) throws IOException;
 }

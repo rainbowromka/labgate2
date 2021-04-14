@@ -73,9 +73,10 @@ public class ProtocolKDLMaksASTM implements Protocol<Packet>
     }
 
     @Override
-    public PacketInfo parseMessage(String msg) {
-
+    public List<PacketInfo> parseMessage(String msg) {
+        List<PacketInfo> result = new ArrayList<>();
         PacketInfo packetInfo = new PacketInfo();
+        result.add(packetInfo);
 
         try
         {
@@ -124,7 +125,7 @@ public class ProtocolKDLMaksASTM implements Protocol<Packet>
         {
             e.printStackTrace();
         }
-        return packetInfo;
+        return result;
     }
 
     @Override

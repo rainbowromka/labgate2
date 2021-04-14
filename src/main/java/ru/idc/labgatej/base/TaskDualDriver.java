@@ -90,11 +90,11 @@ implements ITaskDriver
         } while (!hasErrors && !msg.isEmpty() && cnt < 5);
     }
 
-    protected abstract void markOrderAsFailed(long taskId, String comment);
+    protected void markOrderAsFailed(long taskId, String comment) {};
 
-    protected abstract void registerAliquots(List<Order> orders);
+    protected void registerAliquots(List<Order> orders) {}
 
-    protected abstract void markOrderAsProcessed(long taskId);
+    protected void markOrderAsProcessed(long taskId) {};
 
     protected abstract String protocolMakeOrder(List<Order> orders);
 
@@ -128,8 +128,8 @@ implements ITaskDriver
             msg = receiveResults();
 
             if (msg != null && !msg.isEmpty()) {
-                PacketInfo packetInfo = protocol.parseMessage(makeSendable(msg));
-                dbManager4results.saveResults(packetInfo, true);
+                List<PacketInfo> packetInfos = protocol.parseMessage(makeSendable(msg));
+                dbManager4results.saveResults(packetInfos, true);
             }
             Thread.sleep(500);
         }

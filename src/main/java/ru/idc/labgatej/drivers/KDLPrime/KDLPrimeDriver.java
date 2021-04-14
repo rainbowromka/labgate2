@@ -12,6 +12,7 @@ import ru.idc.labgatej.model.PacketInfo;
 import java.io.IOException;
 import java.net.Socket;
 import java.sql.SQLException;
+import java.util.List;
 
 import static ru.idc.labgatej.base.Codes.ENQ;
 import static ru.idc.labgatej.base.Codes.EOT;
@@ -51,8 +52,8 @@ public class KDLPrimeDriver extends ResultDriver<ProtocolKDLPrimeASTM>
         msg = receiveResults();
 
         if (msg != null && !msg.isEmpty()) {
-            PacketInfo packetInfo = protocol.parseMessage(makeSendable(msg));
-            dbManager4results.saveResults(packetInfo, false);
+            List<PacketInfo> packetInfos = protocol.parseMessage(makeSendable(msg));
+            dbManager4results.saveResults(packetInfos, false);
         }
         Thread.sleep(500);
 

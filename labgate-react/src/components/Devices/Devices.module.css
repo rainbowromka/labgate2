@@ -1,0 +1,23 @@
+.nav {
+    grid-area: n;
+    background-color: #0f94b6
+}
+
+.item {
+    color: white;
+    font-weight: normal;
+}
+
+.item:hover {
+    color: #FFBA73;
+}
+
+.item a {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+.active {
+    color: #f3cb86;
+    font-weight: bolder;
+}

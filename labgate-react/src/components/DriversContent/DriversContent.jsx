@@ -1,13 +1,11 @@
 import React from "react";
 import s from "./DriversContent.module.css";
-import DriversList from "./DriversList/DriversList";
+import DriversListContainer from "./DriversList/DriversListContainer";
 
-const DriversContent = (props) => {
-  let store = props.store;
-
+const DriversContent = () => {
   return (
       <div className={s.driverContent}>
-        <DriversList store={store}/>
+        <DriversListContainer/>
       </div>
   )
 }

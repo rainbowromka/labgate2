@@ -6,23 +6,17 @@ import DriversContent from "./components/DriversContent/DriversContent";
 import {BrowserRouter, Route} from "react-router-dom";
 import Devices from "./components/Devices/Devices";
 
-function App(props) {
-  let store = props.store;
-
+function App() {
   return (
-    <BrowserRouter>
       <div className="app-wrapper">
         <Header/>
         <Navbar/>
         <div className="driverContent">
-          <Route path='/drivers' render={() =>
-            <DriversContent store={store}/>
-          }/>
+          <Route path='/drivers' render={() => <DriversContent/>}/>
           <Route path='/devices' render={() => <Devices/>}/>
         </div>
         <Footer/>
       </div>
-    </BrowserRouter>
   );
 }
 

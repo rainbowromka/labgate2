@@ -1,16 +1,15 @@
 import React from "react";
 import DriverItem from "./DriverItem/DriverItem";
-import PostDriver from "./PostDriver/PostDriver";
+import PostDriverContainer from "./PostDriver/PostDriverContainer";
 
-const DriversList = (props) => {
-  let store = props.store;
-  let driverState = store.getState().drivers;
+const DriversList = (store) => {
+  let drivers = store.drivers;
 
-  let driverElements = driverState.list.map (item => <DriverItem driver={item}/>);
+  let driverElements = drivers.list.map (item => <DriverItem driver={item}/>);
 
   return (
     <>
-      <PostDriver store={store}/>
+      <PostDriverContainer store={store}/>
       {driverElements}
     </>
   )

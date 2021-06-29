@@ -27,20 +27,30 @@ let initialState =  {
 
 const driversReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_DRIVER:
-      state.list.push(action.driver);
-      return state;
-    case SET_NAME:
+    case ADD_DRIVER: {
+      state.list.push({
+        name: state.name,
+        code: state.code,
+        type: state.type,
+        status: "Остановлен",
+      });
+      return {...state};
+    }
+    case SET_NAME: {
       state.name = action.value;
-      return state;
-    case SET_CODE:
+      return {...state};
+    }
+    case SET_CODE: {
       state.code = action.value;
-      return state;
-    case SET_TYPE:
+      return {...state};
+    }
+    case SET_TYPE: {
       state.type = action.value;
+      return {...state};
+    }
+    default: {
       return state;
-    default:
-      return state;
+    }
   }
 }
 

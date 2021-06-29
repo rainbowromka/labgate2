@@ -42,8 +42,7 @@ let store ={
   },
 };
 
-export const actionCreatorAddDriver = (driver) => ({
-  type: ADD_DRIVER, driver: driver});
+export const actionCreatorAddDriver = () => ({type: ADD_DRIVER});
 
 export const actionCreatorSetName = (name) => ({type: SET_NAME,value: name})
 

@@ -42,12 +42,5 @@ let store ={
   },
 };
 
-export const actionCreatorAddDriver = () => ({type: ADD_DRIVER});
-
-export const actionCreatorSetName = (name) => ({type: SET_NAME,value: name})
-
-export const actionCreatorSetCode = (code) => ({type: SET_CODE,value: code})
-
-export const actionCreatorSetType = (type) => ({type: SET_TYPE,value: type})
 
 export default store;

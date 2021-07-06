@@ -64,6 +64,9 @@ public class DriverEntity
     @Enumerated(EnumType.STRING)
     DriverType type;
 
+    /**
+     * Статус драйвера. Работает/Не работает.
+     */
     @Enumerated(EnumType.STRING)
     DriverStatus status;
 

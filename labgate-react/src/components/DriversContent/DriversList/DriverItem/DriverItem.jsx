@@ -1,8 +1,14 @@
 import React from "react";
 import s from "./DriverItem.module.css";
+import {DRIVER_STATUS_WORK} from "../../../../redux/drivers-reducer";
 
 const DriverItem = (props) => {
   let driver = props.driver;
+
+  let onRunStopDriver = () => {
+    props.runStopDriver(driver.id)
+  }
+
   return (
     <div className="driverItem">
       <span>
@@ -20,14 +26,13 @@ const DriverItem = (props) => {
         </div>
         <div>
           <span>Статус:</span>
-          <span className={s.driverName}>{driver.status}</span>
+          <span className={s.driverName}>{driver.status==DRIVER_STATUS_WORK ? "работает" : "остановлен"}</span>
         </div>
       </span>
       <span>
         <button>delete</button>
         <button>edit</button>
-        <button>run</button>
-        <button>stop</button>
+        <button onClick={onRunStopDriver}>{driver.status===DRIVER_STATUS_WORK ? "stop" : "run"}</button>
       </span>
     </div>
   )

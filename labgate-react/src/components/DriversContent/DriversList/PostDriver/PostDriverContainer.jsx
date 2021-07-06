@@ -1,9 +1,9 @@
+import {connect} from "react-redux";
+import PostDriver from "./PostDriver";
 import {
   actionCreatorAddDriver, actionCreatorSetCode,
   actionCreatorSetName, actionCreatorSetType
-} from "../../../../redux/state";
-import {connect} from "react-redux";
-import PostDriver from "./PostDriver";
+} from "../../../../redux/drivers-reducer";
 
 let mapStateToProps = (state) => ({
   drivers: state.drivers,

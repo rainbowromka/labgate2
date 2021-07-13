@@ -1,41 +1,20 @@
 import React from "react";
 import DriverItem from "./DriverItem/DriverItem";
 import PostDriverContainer from "./PostDriver/PostDriverContainer";
-import {
-  DRIVER_STATUS_STOP,
-  DRIVER_STATUS_WORK
-} from "../../../redux/drivers-reducer";
+import * as axios from 'axios';
 
 const DriversList = (store) => {
   let drivers = store.drivers;
 
   if (drivers.list.length === 0) {
-    store.setDrivers(
-      [{
-        id: 1,
-        name: "KDLPrime3",
-        code: "KDLPrime",
-        type: "SOCKET",
-        status: DRIVER_STATUS_WORK,
-      }, {
-        id: 2,
-        name: "KDLMax2",
-        code: "KDLMax",
-        type: "SOCKET",
-        status: DRIVER_STATUS_STOP,
-      }, {
-        id: 3,
-        name: "CITM1",
-        code: "CITM",
-        type: "TTY",
-        status: DRIVER_STATUS_WORK,
-      }]
-    )
+    axios.get("http://localhost:8080/api/driverEntities").then(response => {      
+      store.setDrivers(response.data._embedded.driverEntities);
+    });
   }
 
 
   let driverElements = drivers.list.map (item => <DriverItem
-    key={item.id}
+    key={item._links.self.href}
     driver={item}
     runStopDriver={store.runStopDriver}
   />);

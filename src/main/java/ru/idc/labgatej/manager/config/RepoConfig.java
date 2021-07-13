@@ -1,4 +1,4 @@
-package ru.idc.labgatej.config;
+package ru.idc.labgatej.manager.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;

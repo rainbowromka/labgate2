@@ -43,22 +43,26 @@ const driversReducer = (state = initialState, action) => {
       state.type = action.value;
       return {...state};
     }
+    //TODO: Тут посмотреть и сделать все через пару ключ-значение.
     case RUN_STOP_DRIVER: {
-      state.list.map((item) => {
+      return {...state, list: state.list.map((item) => {
         if (item.id === action.id) {
-          item.status = item.status === DRIVER_STATUS_WORK
+          return {...item, status: item.status === DRIVER_STATUS_WORK
             ? DRIVER_STATUS_STOP
-            : DRIVER_STATUS_WORK;
+            : DRIVER_STATUS_WORK};
+        } else {
+          return item;
         }
-      })
-      return {...state}
+      })}
+//      return {...state}
     }
     case SET_DRIVERS: {
       let lastId = state.lastId;
       action.list.map(item => {
-        lastId = Math.max(lastId, item.id)
+        lastId = Math.max(lastId, item.id);
+        return item;
       });
-      return {...state, list: [...state.list, ...action.list], lastId}
+      return {...state, list: [...action.list], lastId}
     }
     default: {
       return state;

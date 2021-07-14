@@ -3,7 +3,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/NavBar/Navbar";
 import DriversContent from "./components/DriversContent/DriversContent";
-import {BrowserRouter, Route} from "react-router-dom";
+import {Route} from "react-router-dom";
 import Devices from "./components/Devices/Devices";
 
 function App() {

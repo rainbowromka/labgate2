@@ -26,7 +26,7 @@ const DriverItem = (props) => {
         </div>
         <div>
           <span>Статус:</span>
-          <span className={s.driverName}>{driver.status==DRIVER_STATUS_WORK ? "работает" : "остановлен"}</span>
+          <span className={s.driverName}>{driver.status===DRIVER_STATUS_WORK ? "работает" : "остановлен"}</span>
         </div>
       </span>
       <span>

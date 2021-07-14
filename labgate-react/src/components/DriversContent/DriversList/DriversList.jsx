@@ -3,29 +3,30 @@ import DriverItem from "./DriverItem/DriverItem";
 import PostDriverContainer from "./PostDriver/PostDriverContainer";
 import * as axios from 'axios';
 
-const DriversList = (store) => {
-  let drivers = store.drivers;
+class DriversList extends React.Component {
 
-  if (drivers.list.length === 0) {
-    axios.get("http://localhost:8080/api/driverEntities").then(response => {      
-      store.setDrivers(response.data._embedded.driverEntities);
+  componentDidMount() {
+    axios.get("http://localhost:8080/services/drivers/list").then(response => {
+      this.props.setDrivers(response.data.content);
     });
   }
 
+  render() {
 
-  let driverElements = drivers.list.map (item => <DriverItem
-    key={item._links.self.href}
-    driver={item}
-    runStopDriver={store.runStopDriver}
-  />);
+    let driverElements = this.props.drivers.list.map (
+      item => <DriverItem
+        key={item.id}
+        driver={item}
+        runStopDriver={this.props.runStopDriver}/>
+    );
 
-  return (
-    <>
-      <PostDriverContainer store={store}/>
-      {driverElements}
-    </>
-  )
-
+    return (
+      <>
+        <PostDriverContainer store={this.props}/>
+        {driverElements}
+      </>
+    )
+  }
 }
 
 export default DriversList;

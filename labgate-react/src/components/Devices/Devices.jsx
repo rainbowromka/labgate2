@@ -1,5 +1,5 @@
 import React from "react";
-import s from "./Devices.module.css";
+//import s from "./Devices.module.css";
 
 const Devices = () => {
   return (

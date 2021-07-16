@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import DriversList from "./DriversList";
 import {
-  acRunStopDriver, acSetDrivers
+  acRunStopDriver, acSetCurrentPage, acSetDrivers, acSetIsFetchting
 } from "../../../redux/drivers-reducer";
 
 let mapStateToProps = (state) => ({
@@ -13,8 +13,14 @@ let mapDispatchToProps = (dispatch) => {
     runStopDriver: (id) => {
       dispatch(acRunStopDriver(id))
     },
-    setDrivers: (list) => {
-      dispatch(acSetDrivers(list));
+    setDrivers: (list, page, pageSize, totalElements) => {
+      dispatch(acSetDrivers(list, page, pageSize, totalElements));
+    },
+    setCurrentPage: (page) => {
+      dispatch(acSetCurrentPage(page));
+    },
+    setIsFetching: (isFetching) => {
+      dispatch(acSetIsFetchting(isFetching));
     }
   }
 }

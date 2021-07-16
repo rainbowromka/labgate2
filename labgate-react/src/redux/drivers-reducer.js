@@ -4,7 +4,9 @@ const SET_CODE = "SET_CODE";
 const SET_TYPE = "SET_TYPE";
 const SET_DRIVERS = "SET_DRIVERS";
 const RUN_STOP_DRIVER = "RUN_STOP_DRIVER";
-// const STOP_DRIVER = "STOP_DRIVER";
+const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+const SET_IS_FETCHING = "SET_IS_FETCHING"
+
 
 export const DRIVER_STATUS_WORK = "WORK";
 export const DRIVER_STATUS_STOP = "STOP";
@@ -15,6 +17,10 @@ let initialState =  {
   code: "",
   type: "",
   lastId: 0,
+  page: 0,
+  pageSize: 2,
+  totalElements: 0,
+  isFetching: true,
 }
 
 const driversReducer = (state = initialState, action) => {
@@ -62,7 +68,20 @@ const driversReducer = (state = initialState, action) => {
         lastId = Math.max(lastId, item.id);
         return item;
       });
-      return {...state, list: [...action.list], lastId}
+      return {
+        ...state,
+        list: [...action.list],
+        lastId,
+        page: action.page,
+        pageSize: action.pageSize,
+        totalElements: action.totalElements,
+      }
+    }
+    case SET_CURRENT_PAGE: {
+      return {...state, page: action.page}
+    }
+    case SET_IS_FETCHING: {
+      return {...state, isFetching: action.isFetching}
     }
     default: {
       return state;
@@ -72,14 +91,19 @@ const driversReducer = (state = initialState, action) => {
 
 export const actionCreatorAddDriver = () => ({type: ADD_DRIVER});
 
-export const actionCreatorSetName = (name) => ({type: SET_NAME,value: name})
+export const actionCreatorSetName = (name) => ({type: SET_NAME,value: name});
 
-export const actionCreatorSetCode = (code) => ({type: SET_CODE,value: code})
+export const actionCreatorSetCode = (code) => ({type: SET_CODE,value: code});
 
-export const actionCreatorSetType = (type) => ({type: SET_TYPE,value: type})
+export const actionCreatorSetType = (type) => ({type: SET_TYPE,value: type});
 
-export const acRunStopDriver = (id) => ({type: RUN_STOP_DRIVER, id})
+export const acRunStopDriver = (id) => ({type: RUN_STOP_DRIVER, id});
 
-export const acSetDrivers = (list) => ({type: SET_DRIVERS, list})
+export const acSetDrivers = (list, page, pageSize, totalElements) =>
+  ({type: SET_DRIVERS, list, page, pageSize, totalElements});
+
+export const acSetCurrentPage = (page) => ({type: SET_CURRENT_PAGE, page});
+
+export const acSetIsFetchting = (isFetching) => ({type: SET_IS_FETCHING, isFetching})
 
 export default driversReducer;

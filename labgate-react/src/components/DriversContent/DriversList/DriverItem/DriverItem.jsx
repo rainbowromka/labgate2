@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./DriverItem.module.css";
 import {DRIVER_STATUS_WORK} from "../../../../redux/drivers-reducer";
+import {NavLink} from "react-router-dom";
 
 const DriverItem = (props) => {
   let driver = props.driver;
@@ -13,8 +14,10 @@ const DriverItem = (props) => {
     <div className="driverItem">
       <span>
         <div>
-          <span>Драйвер:</span>
-          <span className={s.driverName}>{driver.name}</span>
+          <NavLink to={'/driver/'+driver.id}>
+            <span>Драйвер:</span>
+            <span className={s.driverName}>{driver.name}</span>
+          </NavLink>
         </div>
         <div>
           <span>Код драйвера:</span>
@@ -31,7 +34,11 @@ const DriverItem = (props) => {
       </span>
       <span>
         <button>delete</button>
-        <button>edit</button>
+        <button>
+          <NavLink to={'/driver'}>
+            edit
+          </NavLink>
+        </button>
         <button onClick={onRunStopDriver}>{driver.status===DRIVER_STATUS_WORK ? "stop" : "run"}</button>
       </span>
     </div>

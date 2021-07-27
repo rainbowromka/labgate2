@@ -89,21 +89,21 @@ const driversReducer = (state = initialState, action) => {
   }
 }
 
-export const actionCreatorAddDriver = () => ({type: ADD_DRIVER});
+export const addDriver = () => ({type: ADD_DRIVER});
 
-export const actionCreatorSetName = (name) => ({type: SET_NAME,value: name});
+export const setDriverName = (name) => ({type: SET_NAME,value: name});
 
-export const actionCreatorSetCode = (code) => ({type: SET_CODE,value: code});
+export const setDriverCode = (code) => ({type: SET_CODE,value: code});
 
-export const actionCreatorSetType = (type) => ({type: SET_TYPE,value: type});
+export const setDriverType = (type) => ({type: SET_TYPE,value: type});
 
-export const acRunStopDriver = (id) => ({type: RUN_STOP_DRIVER, id});
+export const runStopDriver = (id) => ({type: RUN_STOP_DRIVER, id});
 
-export const acSetDrivers = (list, page, pageSize, totalElements) =>
+export const setDrivers = (list, page, pageSize, totalElements) =>
   ({type: SET_DRIVERS, list, page, pageSize, totalElements});
 
-export const acSetCurrentPage = (page) => ({type: SET_CURRENT_PAGE, page});
+export const setCurrentPage = (page) => ({type: SET_CURRENT_PAGE, page});
 
-export const acSetIsFetchting = (isFetching) => ({type: SET_IS_FETCHING, isFetching})
+export const setIsFetching = (isFetching) => ({type: SET_IS_FETCHING, isFetching})
 
 export default driversReducer;

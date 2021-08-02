@@ -18,7 +18,7 @@ let initialState =  {
   type: "",
   lastId: 0,
   page: 0,
-  pageSize: 2,
+  pageSize: 3,
   totalElements: 0,
   isFetching: true,
 }

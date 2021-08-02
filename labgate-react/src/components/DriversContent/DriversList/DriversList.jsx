@@ -2,6 +2,7 @@ import React from "react";
 import DriverItem from "./DriverItem/DriverItem";
 import PostDriverContainer from "./PostDriver/PostDriverContainer";
 import s from "./DriversList.module.css";
+import Grid from "@material-ui/core/Grid";
 
 
 let DriversList = (props) => {
@@ -29,9 +30,13 @@ let DriversList = (props) => {
 
     return (
       <>
-        <div>{pagesList}</div>
-        <PostDriverContainer store={props}/>
-        {driverElements}
+        <Grid container spacing={2}>
+          <div>{pagesList}</div>
+          {/*<PostDriverContainer store={props}/>*/}
+          <Grid item container spacing={2}>
+          {driverElements}
+          </Grid>
+        </Grid>
       </>
     )
 }

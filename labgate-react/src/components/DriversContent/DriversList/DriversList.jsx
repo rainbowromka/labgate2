@@ -33,8 +33,9 @@ let DriversList = (props) => {
         <Grid container spacing={2}>
           <div>{pagesList}</div>
           {/*<PostDriverContainer store={props}/>*/}
-          <Grid item container spacing={2}>
-          {driverElements}
+          <Grid item container spacing={2} alignItems={"center"}>
+            <PostDriverContainer/>
+            {driverElements}
           </Grid>
         </Grid>
       </>

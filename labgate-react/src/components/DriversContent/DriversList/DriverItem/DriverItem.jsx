@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     // background: "#b5d5a7",
     // background: "red",
     padding: theme.spacing(1),
-    minwidth: "180px",
+    minWidth: "180px",
     // flexGrow: 1,
   },
   driverName: {
@@ -51,6 +51,7 @@ const DriverItem = (props) => {
       >
         <Box display="flex" flexDirection="row">
           <Box p={1} flexGrow={1} alignItems="center">
+            {/*<Typography variant="h6" component={NavLink} to={"/driver/" + driver.id} className={classes.driverName}>*/}
             <Typography variant="h6" component={NavLink} to={"/driver/" + driver.id} className={classes.driverName}>
               {driver.name}
             </Typography>
@@ -72,7 +73,7 @@ const DriverItem = (props) => {
           <span>{driver.status===DRIVER_STATUS_WORK ? "работает" : "остановлен"}</span>
         </div>
         <ButtonGroup>
-          <IconButton className={classes.blackButton}><CreateIcon/></IconButton>
+          <IconButton className={classes.blackButton} component={NavLink} to={"/driver/" + driver.id}><CreateIcon/></IconButton>
           <IconButton className={classes.blackButton}><DeleteIcon/></IconButton>
           <IconButton
             className={classes.blackButton}

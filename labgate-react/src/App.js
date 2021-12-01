@@ -63,7 +63,7 @@ function App() {
           <div className={classes.content}>
             <Route path='/drivers' render={() => <DriversContent/>}/>
             <Route path='/devices' render={() => <Devices/>}/>
-            <Route path='/driver' render={() => <DriverContainer/>}/>
+            <Route path='/driver/:driverId' render={() => <DriverContainer/>}/>
           </div>
         </main>
         <Navbar open={open} setOpen={setOpen}/>

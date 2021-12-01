@@ -1,5 +1,4 @@
 import React from "react";
-import s from "./Navbar.module.css";
 import {NavLink} from "react-router-dom";
 import {drawerWidth} from "../Header/Header";
 import {ListItemText, makeStyles, useTheme} from "@material-ui/core";

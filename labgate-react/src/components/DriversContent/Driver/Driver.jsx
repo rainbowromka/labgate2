@@ -1,11 +1,9 @@
 import React from "react";
-import s from "../DriversList/DriverItem/DriverItem.module.css";
 import {NavLink} from "react-router-dom";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import {makeStyles} from "@material-ui/core";
 

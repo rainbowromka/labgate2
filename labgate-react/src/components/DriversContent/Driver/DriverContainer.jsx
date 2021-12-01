@@ -4,13 +4,14 @@ import * as axios from "axios";
 import {connect} from "react-redux";
 import {setDriver, setIsFetching} from "../../../redux/driver-reducer";
 import Preloader from "../../Commons/Preloader/Preloader";
+import {withRouter} from "react-router-dom";
 
 class DriverContainer extends React.Component
 {
-
   componentDidMount() {
     this.props.setIsFetching(true);
-    axios.get(`http://localhost:8080/services/drivers/list/1`).then(response => {
+    let driverId = this.props.match.params.driverId;
+    axios.get(`http://localhost:8080/services/drivers/list/${driverId}`).then(response => {
       this.props.setDriver(response.data)
       this.props.setIsFetching(false)
     });
@@ -29,4 +30,5 @@ const mapStateToProps = (state) => ({
   driver: state.driver,
 })
 
-export default connect(mapStateToProps, {setDriver, setIsFetching})(DriverContainer);
+export default connect(mapStateToProps, {setDriver, setIsFetching})(
+  withRouter(DriverContainer));

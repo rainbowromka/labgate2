@@ -8,7 +8,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,8 +16,6 @@ import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -82,16 +79,26 @@ public class DriverEntity
 //    List<DriverParameter> parameters = new ArrayList<>();
     Map<String, DriverParameter> parameters = new TreeMap<>();
 
+    /**
+     * Добавляем параметр для драйвера.
+     *
+     * @param key
+     *        ключ параметра.
+     * @param driverParameter
+     *        значение параметра.
+     */
     public void addDriverParameter(String key, DriverParameter driverParameter)
     {
-//        parameters.add(driverParameter);
         parameters.put(key, driverParameter);
-//        driverParameter.setDriverEntity(this);
     }
 
+    /**
+     * Удаляем параметр для драйвера.
+     * @param key
+     *        ключ параметра.
+     */
     public void removeDriverParameter(String key/*DriverParameter driverParameter*/)
     {
         parameters.remove(key/*driverParameter*/);
-//        driverParameter.setDriverEntity(null);
     }
 }

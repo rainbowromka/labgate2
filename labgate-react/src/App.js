@@ -11,7 +11,12 @@ import DriverContainer
 import CssBaseline from "@material-ui/core/CssBaseline";
 import {makeStyles} from "@material-ui/core";
 import clsx from "clsx";
+import HeaderContainer from "./components/Header/HeaderContainer";
+import LoginComponent from "./components/Login/LoginContainer";
 
+/**
+ * Основные стили главной формы.
+ */
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -46,6 +51,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+/**
+ * Точка входа в приложение React. Реализация основных CSS шаблонов.
+ * Основная разметка страницы, состоящая из Заголовка, Контента,
+ * Навигационного бара, футера. Основные роуты на элемент контента.
+ *
+ * @returns {JSX.Element}
+ *          основной JSX-элемент страницы.
+ */
 function App() {
   const classes = useStyles()
   const [open, setOpen] = React.useState(false);
@@ -54,7 +67,7 @@ function App() {
     <>
       <CssBaseline/>
       <div className={classes.root}>
-        <Header open={open} setOpen={setOpen}/>
+        <HeaderContainer open={open} setOpen={setOpen}/>
         <main
           className={clsx(classes.main, {
             [classes.mainShift]: false,
@@ -64,6 +77,7 @@ function App() {
             <Route path='/drivers' render={() => <DriversContent/>}/>
             <Route path='/devices' render={() => <Devices/>}/>
             <Route path='/driver/:driverId' render={() => <DriverContainer/>}/>
+            <Route path='/login' render={() => <LoginComponent/>}/>
           </div>
         </main>
         <Navbar open={open} setOpen={setOpen}/>

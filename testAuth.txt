@@ -1,0 +1,6 @@
+Команда для тестирования
+
+curl --header "Content-type: application/json"\
+--request POST \
+--data '{"username": "mod", "email": "mod@mail.ru", "password": "1234", "role": ["mod", "user"]}'\
+http://localhost:8080/api/login

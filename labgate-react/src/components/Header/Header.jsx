@@ -4,11 +4,17 @@ import IconButton from "@material-ui/core/IconButton";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import clsx from "clsx";
+import FingerprintIcon from '@mui/icons-material/Fingerprint';
 import MenuIcon from "@material-ui/icons/Menu";
 import {makeStyles} from "@material-ui/core";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
+import {NavLink} from "react-router-dom";
 
 export const drawerWidth = 240;
 
+/**
+ * Стили заголовка страницы.
+ */
 const useStyles = makeStyles((theme) => ({
   appBar: {
     background: "#06b0b1",
@@ -36,10 +42,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+/**
+ * Функциональная компонента, отображения заголовка страницы.
+ *
+ * @param props
+ *        пропсы, передаваемые в компоненту.
+ * @returns JSX элемент заголовка страницы.
+ */
 const Header = (props) => {
   const classes = useStyles();
   const [open, setOpen] = [props.open, props.setOpen];
 
+  /**
+   * Отображает навигационное меню.
+   */
   let handleDrawerOpen = () => {
     setOpen(true);
   }
@@ -54,15 +70,24 @@ const Header = (props) => {
       <Toolbar>
         <img className={classes.logo} src="content\idc_logo.png"/>
         <Typography variant="h6" noWrap className={classes.title}/>
-        <IconButton
-          color="inherit"
-          arial-label="open drawer"
-          edge="end"
-          onClick={handleDrawerOpen}
-          className={clsx(open && classes.hide)}
-        >
-          <MenuIcon/>
-        </IconButton>
+        <ButtonGroup>
+          <IconButton
+            color="inherit"
+            aria-label="fingerprint"
+            className={clsx(open && classes.hide)}
+            component={NavLink} to='/login'
+          >
+            <FingerprintIcon />
+          </IconButton>
+          <IconButton
+            color="inherit"
+            arial-label="open drawer"
+            onClick={handleDrawerOpen}
+            className={clsx(open && classes.hide)}
+          >
+            <MenuIcon/>
+          </IconButton>
+        </ButtonGroup>
       </Toolbar>
     </AppBar>
   // <div className={s.header}>

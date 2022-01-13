@@ -1,14 +1,31 @@
 import react from "react";
 import {connect} from "react-redux";
-import Login from "./Login";
+import Login, {AuthData} from "./Login";
 import axios from "axios";
-import {setIsFetching, setUserData} from "../../redux/auth-reducer";
+import {
+  AuthState,
+  Principal,
+  setIsFetching,
+  setUserData
+} from "../../redux/auth-reducer";
 import {Redirect, withRouter} from "react-router-dom";
+import {AppStateType} from "../../redux/redux-store";
+
+type StatePropsType = {
+  auth: AuthState
+}
+
+type DispatchPropsType = {
+  setIsFetching: (isFetching: boolean) => void
+  setUserData: (authState: Principal, isAuthorized: boolean) => void
+}
+
+type AllPropsType = DispatchPropsType & StatePropsType
 
 /**
  * Контейнерная компонента формы авторизации.
  */
-class LoginContainer extends react.Component
+class LoginContainer extends react.Component<AllPropsType>
 {
   /**
    * Конутруктор объекта, подготавливем основные методы и объекты контейнерной
@@ -17,7 +34,7 @@ class LoginContainer extends react.Component
    * @param props
    *        пропсы передаваемые в компоненту.
    */
-  constructor(props) {
+  constructor(props: AllPropsType) {
     super(props);
     this.signIn = this.signIn.bind(this);
     this.signUp = this.signUp.bind(this);
@@ -31,7 +48,7 @@ class LoginContainer extends react.Component
    * @param password
    *        пароль.
    */
-  signIn(username, password)
+  signIn(username: string, password: string)
   {
     this.props.setIsFetching(true);
     axios.post(
@@ -58,7 +75,7 @@ class LoginContainer extends react.Component
    * @param callback
    *        callback-метод, вызывается в случае удачной авторизации.
    */
-  signUp(authData, callback)
+  signUp(authData: AuthData, callback: () => void)
   {
     this.props.setIsFetching(true);
     axios.post(
@@ -102,7 +119,7 @@ class LoginContainer extends react.Component
  * @param state
  *        состояние хранилища.
  */
-const mapStateToProps = (stat) => ({
+const mapStateToProps = (stat: AppStateType) => ({
   auth: stat.auth
 })
 
@@ -111,6 +128,6 @@ const mapStateToProps = (stat) => ({
  * хранилища и объектов событий, которые нужно обрабатывать хранилищем
  * состояния.
  */
-export default connect(
+export default connect<StatePropsType, DispatchPropsType, any, AppStateType>(
   mapStateToProps, {setIsFetching, setUserData}
 )(LoginContainer);

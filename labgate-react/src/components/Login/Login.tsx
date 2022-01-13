@@ -1,4 +1,4 @@
-import react from 'react';
+import react, {FC, MouseEventHandler} from 'react';
 
 import {makeStyles} from "@material-ui/core";
 
@@ -16,6 +16,7 @@ import TextField from "@mui/material/TextField";
 import FingerprintIcon from "@mui/icons-material/Fingerprint";
 
 import PasswordInput from "../Commons/PasswordInput/PasswordInput";
+import {AuthState} from "../../redux/auth-reducer";
 
 /**
  * Стили формы авторизации.
@@ -39,6 +40,22 @@ const AUTH_MODE_LOGIN = 'login';
  */
 const AUTH_MODE_SIGNUP = 'signup';
 
+export type AuthData = {
+  authMode: typeof AUTH_MODE_LOGIN | typeof AUTH_MODE_SIGNUP
+  username: string,
+  email: string,
+  password: string,
+  checkPassword: string,
+  showPassword: boolean,
+  signInDisabled: boolean,
+}
+
+type Props = {
+  auth: AuthState
+  signIn: (username: string, password: string) => void
+  signUp: (authData: AuthData, callback: () => void) => void
+}
+
 /**
  * Функциональная компонента отображения формы авторизации/регистрации.
  *
@@ -46,7 +63,7 @@ const AUTH_MODE_SIGNUP = 'signup';
  *        пропсы, передаваемые в компоненту.
  * @returns JSX элемент формы авторизации/регистрации.
  */
-const Login = (props) => {
+const Login: FC<Props> = (props) => {
   const classes = useStyles();
 
   let auth = props.auth;
@@ -59,7 +76,7 @@ const Login = (props) => {
     checkPassword: "",
     showPassword: false,
     signInDisabled: true,
-  });
+  } as AuthData);
 
   /**
    * Обработчик события при смене вкладки в форме авторизации/регистрации.
@@ -69,8 +86,8 @@ const Login = (props) => {
    * @param newValue
    *        выбранная вкладка.
    */
-  const handleLoginChange = (event, newValue) => {
-    let newAuthForm = {
+  const handleLoginChange = (event: react.SyntheticEvent, newValue: typeof AUTH_MODE_LOGIN | typeof AUTH_MODE_SIGNUP) => {
+    let newAuthForm: AuthData = {
       ...authForm,
       authMode: newValue,
       password: "",
@@ -85,7 +102,7 @@ const Login = (props) => {
    * @param e
    *        объект события.
    */
-  const onChangeUsername = (e) => {
+  const onChangeUsername = (e: react.BaseSyntheticEvent) => {
     let newAuthForm = {...authForm, username: e.target.value};
     setAuthForm({...newAuthForm, signInDisabled: updateSignIn(newAuthForm)});
   }
@@ -96,7 +113,7 @@ const Login = (props) => {
    * @param e
    *        объект события.
    */
-  const onChangeEmail = (e) => {
+  const onChangeEmail = (e: react.BaseSyntheticEvent) => {
     let newAuthForm = {...authForm, email: e.target.value};
     setAuthForm({...newAuthForm, signInDisabled: updateSignIn(newAuthForm)});
   }
@@ -107,7 +124,7 @@ const Login = (props) => {
    * @param e
    *        объект события.
    */
-  const onChangePassword = (e) => {
+  const onChangePassword = (e: react.BaseSyntheticEvent) => {
     let newAuthForm = {...authForm, password: e.target.value};
     setAuthForm({...newAuthForm, signInDisabled: updateSignIn(newAuthForm)});
   }
@@ -118,7 +135,7 @@ const Login = (props) => {
    * @param e
    *        объект события.
    */
-  const onChangeCheckPassword = (e) => {
+  const onChangeCheckPassword = (e: react.BaseSyntheticEvent) => {
     let newAuthForm = {...authForm, checkPassword: e.target.value};
     setAuthForm({...newAuthForm, signInDisabled: updateSignIn(newAuthForm)});
   }
@@ -155,7 +172,7 @@ const Login = (props) => {
    * @returns true если форма не прошла валидацию.
    */
   // TODO: Сделать валидацию правильную.
-  const updateSignIn = (newAuthForm) => {
+  const updateSignIn = (newAuthForm: AuthData): boolean => {
     return (
       !newAuthForm.username
       || (newAuthForm.authMode === AUTH_MODE_SIGNUP
@@ -184,7 +201,7 @@ const Login = (props) => {
             <Tab value={AUTH_MODE_SIGNUP} label="Регистрация"/>
           </TabList>
         </Box>
-        <TabPanel value={AUTH_MODE_LOGIN} disabled>
+        <TabPanel value={AUTH_MODE_LOGIN}>
           <TextField
             sx={{m: 1, width: '100%'}}
             fullWidth
@@ -197,7 +214,7 @@ const Login = (props) => {
           />
           <PasswordInput
             label="пароль"
-            value={authForm.password}
+            password={authForm.password}
             onChangePassword={onChangePassword}
             showPassword={authForm.showPassword}
             onClickShowPassword={handleClickShowPassword}
@@ -240,7 +257,7 @@ const Login = (props) => {
           />
           <PasswordInput
             label="пароль"
-            value={authForm.password}
+            password={authForm.password}
             onChangePassword={onChangePassword}
             showPassword={authForm.showPassword}
             onClickShowPassword={handleClickShowPassword}
@@ -248,7 +265,7 @@ const Login = (props) => {
           />
           {!authForm.showPassword && <PasswordInput
             label="подтвердить пароль"
-            value={authForm.checkPassword}
+            password={authForm.checkPassword}
             onChangePassword={onChangeCheckPassword}
             showPassword={authForm.showPassword}
             onClickShowPassword={handleClickShowPassword}

@@ -1,4 +1,4 @@
-import React from 'react';
+import react from 'react';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import store from "./redux/redux-store";

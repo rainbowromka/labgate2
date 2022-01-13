@@ -1,4 +1,4 @@
-import React from "react";
+import react, {FC} from "react";
 import {NavLink} from "react-router-dom";
 import {DRIVER_STATUS_WORK} from "../../../../redux/drivers-reducer";
 import {makeStyles} from "@material-ui/core";
@@ -12,8 +12,11 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import PauseIcon from '@material-ui/icons/Pause';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import ShareIcon from '@material-ui/icons/Share';
+import {DriverItem} from "../../../../redux/driver-reducer";
 
-
+/**
+ * Стили формы авторизации.
+ */
 const useStyles = makeStyles((theme) => ({
   driverItem: {
     // background: "#b5d5a7",
@@ -31,7 +34,20 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const DriverItem = (props) => {
+/**
+ * Пропсы принимаемые функциональной компонентой.
+ */
+type Props = {
+  driver: DriverItem
+  runStopDriver: (id: number) => void
+}
+
+/**
+ * Функциональная компонента отображения элемента драйвера.
+ *
+ * @param props
+ */
+const Driver: FC<Props>  = (props) => {
   const classes = useStyles();
   let driver = props.driver;
 
@@ -87,4 +103,4 @@ const DriverItem = (props) => {
   )
 }
 
-export default DriverItem;
+export default Driver;

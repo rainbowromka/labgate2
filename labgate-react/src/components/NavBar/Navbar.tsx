@@ -1,6 +1,6 @@
-import React from "react";
+import react, {SyntheticEvent} from "react";
 import {NavLink} from "react-router-dom";
-import {drawerWidth} from "../Header/Header";
+import {drawerWidth, OpenPanelType} from "../Header/Header";
 import {ListItemText, makeStyles, useTheme} from "@material-ui/core";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
@@ -56,18 +56,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Navbar = (props) => {
+type AllProps = OpenPanelType & {
+}
+
+const Navbar = (props: AllProps) => {
   const classes = useStyles();
   const theme = useTheme();
 
   const [open, setOpen] = [props.open, props.setOpen];
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
+  const [selectedIndex, setSelectedIndex] = react.useState(1);
 
   const handleDrawerClose = () => {
     setOpen(false);
   }
 
-  const handleListItemClick = (event, index) => {
+  const handleListItemClick = (event: SyntheticEvent, index: number) => {
     setSelectedIndex(index);
     setOpen(false);
   }
@@ -105,11 +108,11 @@ const Navbar = (props) => {
             button
             component={NavLink} to={item.to}
             selected={selected}
-            onClick={(event) => handleListItemClick(event, key)}
+            onClick={(event: SyntheticEvent) => handleListItemClick(event, key)}
             className={selected ? classes.selectedListItem : classes.listItem}
             key={key}
           >
-            <ListItemIcon><InboxIcon className={{color:"inherit"}}/></ListItemIcon>
+            <ListItemIcon><InboxIcon className={"color:'inherit'"}/></ListItemIcon>
             <ListItemText primary={item.title} />
           </ListItem>
         })}

@@ -1,4 +1,4 @@
-import React from "react";
+import react, {BaseSyntheticEvent} from "react";
 import {makeStyles} from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
@@ -10,6 +10,8 @@ import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import TextField from "@material-ui/core/TextField";
 import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
+import {DriversState} from "../../../../redux/drivers-reducer";
+import {DriverItem} from "../../../../redux/driver-reducer";
 
 const useStyles = makeStyles((theme) => ({
   addItem: {
@@ -26,26 +28,35 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const PostDriver = (props) => {
-  const classes = useStyles();
-  let drivers = props.drivers;
 
-  const [open, setOpen] = React.useState(false);
+type Props = {
+  drivers: DriversState
+  addDriver: () => void
+  setDriverName: (name: string) => void
+  setDriverCode: (code: string) => void
+  setDriverType: (type: string) => void
+}
+
+const PostDriver = (props: Props ) => {
+  const classes = useStyles();
+  let drivers: DriversState = props.drivers;
+
+  const [open, setOpen] = react.useState<boolean>(false);
 
   let onAddDriver = () => {
     props.addDriver()
     setOpen(false)
   }
 
-  let onSetDriverName = (e) => {
+  let onSetDriverName = (e: BaseSyntheticEvent) => {
     props.setDriverName(e.target.value);
   }
 
-  let onSetDriverCode = (e) => {
+  let onSetDriverCode = (e: BaseSyntheticEvent) => {
     props.setDriverCode(e.target.value);
   }
 
-  let onSetDriverType = (e) => {
+  let onSetDriverType = (e: BaseSyntheticEvent) => {
     props.setDriverType(e.target.value);
   }
 

@@ -1,6 +1,6 @@
-import React from "react";
+import react from "react";
 
-let Preloader = (props) => {
+let Preloader = () => {
   return <div>загрузка...</div>
 }
 

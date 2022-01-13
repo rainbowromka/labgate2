@@ -1,4 +1,4 @@
-import React from "react";
+import react, {FC} from "react";
 import {NavLink} from "react-router-dom";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
@@ -6,17 +6,33 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import {makeStyles} from "@material-ui/core";
+import {DriverState} from "../../../redux/driver-reducer";
 
+/**
+ * Стили компонента.
+ */
 const useStyles = makeStyles((theme) => ({
   driverName: {
     fontWeight: "bold",
   }
 }));
 
+/**
+ * Пропсы принимаемые функциональной компонентой.
+ */
+type Props = {
+  driver: DriverState
+}
 
-const Driver = (props) => {
+/**
+ * Функциональная компонента выводит данные драйвера.
+ * @param props
+ *        пропсы содержащие данные драйвера.
+ * @constructor
+ */
+const Driver: FC<Props> = (props) => {
   const classes = useStyles();
-  let driver = props.driver;
+  let driver = props.driver.driver;
   let parametrs = [];
 
   for (let key in driver.parameters) {
@@ -45,7 +61,7 @@ const Driver = (props) => {
         <Typography variant="subtitle1">Тип драйвера: {driver.type}</Typography>
       </Grid>
       <Grid item xs={12}>
-        <Typography variant="subtitle1">Состояние: {driver.state}</Typography>
+        <Typography variant="subtitle1">Состояние: {driver.status}</Typography>
       </Grid>
       <Grid item xs={12}>
         <Typography variant="h6">Параметры</Typography>

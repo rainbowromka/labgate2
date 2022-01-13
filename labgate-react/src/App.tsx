@@ -1,4 +1,4 @@
-import React from "react";
+import react from "react";
 import './App.css';
 import Header, {drawerWidth} from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
  */
 function App() {
   const classes = useStyles()
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = react.useState(false);
 
   return (
     <>

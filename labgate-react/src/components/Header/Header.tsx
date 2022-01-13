@@ -1,4 +1,4 @@
-import React from "react";
+import react, {FC} from "react";
 import AppBar from "@material-ui/core/AppBar";
 import IconButton from "@material-ui/core/IconButton";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -42,6 +42,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+export type OpenPanelType = {
+  open: boolean
+  setOpen: (isOpen: boolean) => void
+}
+
 /**
  * Функциональная компонента, отображения заголовка страницы.
  *
@@ -49,9 +54,9 @@ const useStyles = makeStyles((theme) => ({
  *        пропсы, передаваемые в компоненту.
  * @returns JSX элемент заголовка страницы.
  */
-const Header = (props) => {
+const Header: FC<OpenPanelType> = (props: OpenPanelType) => {
   const classes = useStyles();
-  const [open, setOpen] = [props.open, props.setOpen];
+  const [open, setOpen]: [boolean, Function] = [props.open, props.setOpen];
 
   /**
    * Отображает навигационное меню.
@@ -90,10 +95,6 @@ const Header = (props) => {
         </ButtonGroup>
       </Toolbar>
     </AppBar>
-  // <div className={s.header}>
-  //
-  //     <div>menu</div>
-  //   </div>
   )
 }
 

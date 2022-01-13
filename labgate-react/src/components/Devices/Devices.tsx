@@ -1,5 +1,4 @@
-import React from "react";
-//import s from "./Devices.module.css";
+import react from "react";
 
 const Devices = () => {
   return (

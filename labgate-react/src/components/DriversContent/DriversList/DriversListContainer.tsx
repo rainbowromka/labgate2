@@ -1,16 +1,41 @@
-import React from "react";
+import react from "react";
 import {connect} from "react-redux";
 import DriversList from "./DriversList";
 import {
-  runStopDriver, setCurrentPage, setDrivers, setIsFetching
+  DriversState,
+  runStopDriver,
+  setCurrentPage,
+  setDrivers,
+  SetDriversParamAction,
+  setIsFetching
 } from "../../../redux/drivers-reducer";
-import * as axios from "axios";
+import axios from "axios";
 import Preloader from "../../Commons/Preloader/Preloader";
+import {AuthState} from "../../../redux/auth-reducer";
+import {DriverItem} from "../../../redux/driver-reducer";
+import {AppStateType} from "../../../redux/redux-store";
 
+type MapStatePropsType = {
+  drivers: DriversState
+  auth: AuthState
+}
+
+type MapDispatchPropsType = {
+  setIsFetching: (isFetching: boolean) => void
+  setDrivers: (
+      driverItems: DriverItem[],
+      page: number,
+      pageSize: number,
+      totalElements: number) => void
+  setCurrentPage: (currentPage: number) => void
+  runStopDriver: (id: number) => void
+}
+
+type AllPropsType = MapDispatchPropsType & MapStatePropsType;
 /**
  * Контейнерная компонента списка драйверов.
  */
-class DriversListContainer extends React.Component
+class DriversListContainer extends react.Component<AllPropsType>
 {
   /**
    * Вызывается при инициализации компонента, загружает список драйверов.
@@ -20,7 +45,7 @@ class DriversListContainer extends React.Component
     axios.get(`http://localhost:8080/services/drivers/list?page=${this.props.drivers.page}&size=${this.props.drivers.pageSize}`,
       {
         headers: {
-          'Authorization': `${this.props.auth.type} ${this.props.auth.token}`,
+          'Authorization': `${this.props.auth.principal.type} ${this.props.auth.principal.token}`,
           // 'Content-Type': 'application/x-www-form-urlencoded'
         },
       }
@@ -38,13 +63,13 @@ class DriversListContainer extends React.Component
    * @param pageNumber
    *        номер страницы.
    */
-  onSetCurrentPage = (pageNumber) => {
+  onSetCurrentPage = (pageNumber: number) => {
     this.props.setIsFetching(true);
     this.props.setCurrentPage(pageNumber);
     axios.get(`http://localhost:8080/services/drivers/list?page=${pageNumber}&size=${this.props.drivers.pageSize}`,
       {
         headers: {
-          'Authorization': `${this.props.auth.type} ${this.props.auth.token}`,
+          'Authorization': `${this.props.auth.principal.type} ${this.props.auth.principal.token}`,
           // 'Content-Type': 'application/x-www-form-urlencoded'
         },
       }
@@ -63,16 +88,21 @@ class DriversListContainer extends React.Component
   render() {
     return ( this.props.drivers.isFetching
         ? <Preloader/>
-        : <DriversList {...this.props} onSetCurrentPage={this.onSetCurrentPage}/>
+        : <DriversList
+            {...this.props}
+            onSetCurrentPage={this.onSetCurrentPage}
+            runStopDriver={this.props.runStopDriver}/>
     );
   }
 }
 
-let mapStateToProps = (state) => ({
+let mapStateToProps = (state: AppStateType): MapStatePropsType => ({
   drivers: state.drivers,
   auth: state.auth,
 })
 
-export default connect(mapStateToProps,
-  { runStopDriver, setDrivers, setCurrentPage, setIsFetching}
-)(DriversListContainer);
+export default
+  connect<MapStatePropsType, MapDispatchPropsType, any, AppStateType>(
+      mapStateToProps,
+      { runStopDriver, setDrivers, setCurrentPage, setIsFetching})
+  (DriversListContainer);

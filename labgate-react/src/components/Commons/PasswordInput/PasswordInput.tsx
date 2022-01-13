@@ -1,4 +1,4 @@
-import react from "react";
+import react, {FC, MouseEventHandler} from "react";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -8,6 +8,18 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Visibility from "@mui/icons-material/Visibility";
 
 /**
+ * Пропсы передаваемые в функциональную компоненту.
+ */
+type Props = {
+  label: string
+  showPassword: boolean
+  password: string
+  onChangePassword: (event: any) => void
+  onClickShowPassword: () => void
+  disabled: boolean
+}
+
+/**
  * Функциональная компонента реализации поля ввода пароля и переключения
  * отображения/скрытия пароля.
  *
@@ -15,14 +27,14 @@ import Visibility from "@mui/icons-material/Visibility";
  *        передаваемые пропсы.
  * @returns JSX-компонента поля ввода пароля.
  */
-const PasswordInput = (props) =>
+const PasswordInput: FC<Props> = (props) =>
 {
   /**
    * Событие на нажатие на элементе отображения/скрытия пароля.
    * @param event
    *        объект события.
    */
-  const handleMouseDownPassword = (event) => {
+  const handleMouseDownPassword: MouseEventHandler<any> = (event) => {
     event.preventDefault();
   }
 
@@ -36,10 +48,10 @@ const PasswordInput = (props) =>
       endAdornment={
         <InputAdornment position="end">
           <IconButton
-            aria-label="показать/скрыть пароль"
-            onClick={props.onClickShowPassword}
-            onMouseDown={handleMouseDownPassword}
-            edge="end"
+              aria-label="показать/скрыть пароль"
+              onClick={props.onClickShowPassword}
+              onMouseDown={handleMouseDownPassword}
+              edge="end"
           >
             {props.showPassword ? <VisibilityOff/> : <Visibility/>}
           </IconButton>

@@ -1,4 +1,4 @@
-import React from "react";
+import react from "react";
 import DriversListContainer from "./DriversList/DriversListContainer";
 
 const DriversContent = () => {

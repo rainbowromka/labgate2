@@ -1,15 +1,15 @@
-import react, {FC} from "react";
+import {FC} from "react";
 import Driver from "./DriverItem/Driver";
 import PostDriverContainer from "./PostDriver/PostDriverContainer";
 import s from "./DriversList.module.css";
 import Grid from "@material-ui/core/Grid";
-import {DriversState} from "../../../redux/drivers-reducer";
-import {SetDriversParamAction} from "../../../redux/drivers-reducer"
+import {DriversState} from "../../../def/client-types";
+import {observer} from "mobx-react";
 
 type Props = {
     drivers: DriversState
-    runStopDriver: (id: number) => void
     onSetCurrentPage: (page: number) => void
+    runStopDriver: (id: number) => void
 }
 
 let DriversList: FC<Props> = (props) => {
@@ -39,18 +39,18 @@ let DriversList: FC<Props> = (props) => {
     }
 
     return (
-      <>
-        <Grid container spacing={2}>
-          <div>{pagesList}</div>
-          {/*<PostDriverContainer store={props}/>*/}
-          <Grid item container spacing={2} alignItems={"center"}>
-            <PostDriverContainer/>
-            {driverElements}
-          </Grid>
-        </Grid>
-      </>
+        <>
+            <Grid container spacing={2}>
+                <div>{pagesList}</div>
+                {/*<PostDriverContainer store={props}/>*/}
+                <Grid item container spacing={2} alignItems={"center"}>
+                    <PostDriverContainer/>
+                    {driverElements}
+                </Grid>
+            </Grid>
+        </>
     )
 }
 
 
-export default DriversList;
+export default observer(DriversList);

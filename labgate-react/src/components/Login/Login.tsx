@@ -1,11 +1,11 @@
-import react, {FC, MouseEventHandler} from 'react';
+import react, {FC} from 'react';
 
 import {makeStyles} from "@material-ui/core";
 
 import LoadingButton from "@mui/lab/LoadingButton";
 import TabContext from "@mui/lab/TabContext";
-import TabList from    "@mui/lab/TabList";
-import TabPanel from   "@mui/lab/TabPanel";
+import TabList from "@mui/lab/TabList";
+import TabPanel from "@mui/lab/TabPanel";
 
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -16,7 +16,13 @@ import TextField from "@mui/material/TextField";
 import FingerprintIcon from "@mui/icons-material/Fingerprint";
 
 import PasswordInput from "../Commons/PasswordInput/PasswordInput";
-import {AuthState} from "../../redux/auth-reducer";
+import {observer} from "mobx-react";
+import {
+  AUTH_MODE_LOGIN,
+  AUTH_MODE_SIGNUP,
+  AuthData, AuthState
+} from "../../def/client-types";
+import {AppStoreClass} from "../../state";
 
 /**
  * Стили формы авторизации.
@@ -30,28 +36,9 @@ const useStyles = makeStyles((theme)=>({
   }
 }));
 
-/**
- * Вид формы - вход в систему.
- */
-const AUTH_MODE_LOGIN = 'login';
-
-/**
- * Вид формы - регистрация в системе.
- */
-const AUTH_MODE_SIGNUP = 'signup';
-
-export type AuthData = {
-  authMode: typeof AUTH_MODE_LOGIN | typeof AUTH_MODE_SIGNUP
-  username: string,
-  email: string,
-  password: string,
-  checkPassword: string,
-  showPassword: boolean,
-  signInDisabled: boolean,
-}
-
 type Props = {
   auth: AuthState
+  isFetching: boolean
   signIn: (username: string, password: string) => void
   signUp: (authData: AuthData, callback: () => void) => void
 }
@@ -65,8 +52,6 @@ type Props = {
  */
 const Login: FC<Props> = (props) => {
   const classes = useStyles();
-
-  let auth = props.auth;
 
   const [authForm, setAuthForm] = react.useState({
     authMode: AUTH_MODE_LOGIN,
@@ -210,7 +195,7 @@ const Login: FC<Props> = (props) => {
             label="Имя пользователя"
             onChange={onChangeUsername}
             value={authForm.username}
-            disabled={auth.isFetching}
+            disabled={props.isFetching}
           />
           <PasswordInput
             label="пароль"
@@ -218,12 +203,12 @@ const Login: FC<Props> = (props) => {
             onChangePassword={onChangePassword}
             showPassword={authForm.showPassword}
             onClickShowPassword={handleClickShowPassword}
-            disabled={auth.isFetching}
+            disabled={props.isFetching}
           />
           <Box textAlign="center">
             <LoadingButton
               disabled={authForm.signInDisabled}
-              loading={auth.isFetching}
+              loading={props.isFetching}
               loadingPosition="start"
               sx={{m: 1}}
               variant="contained"
@@ -244,7 +229,7 @@ const Login: FC<Props> = (props) => {
             label="Имя пользователя"
             onChange={onChangeUsername}
             value={authForm.username}
-            disabled={auth.isFetching}
+            disabled={props.isFetching}
           />
           <TextField
             sx={{m: 1, width: '100%'}}
@@ -253,7 +238,7 @@ const Login: FC<Props> = (props) => {
             label="e-mail"
             onChange={onChangeEmail}
             value={authForm.email}
-            disabled={auth.isFetching}
+            disabled={props.isFetching}
           />
           <PasswordInput
             label="пароль"
@@ -261,7 +246,7 @@ const Login: FC<Props> = (props) => {
             onChangePassword={onChangePassword}
             showPassword={authForm.showPassword}
             onClickShowPassword={handleClickShowPassword}
-            disabled={auth.isFetching}
+            disabled={props.isFetching}
           />
           {!authForm.showPassword && <PasswordInput
             label="подтвердить пароль"
@@ -269,7 +254,7 @@ const Login: FC<Props> = (props) => {
             onChangePassword={onChangeCheckPassword}
             showPassword={authForm.showPassword}
             onClickShowPassword={handleClickShowPassword}
-            disabled={auth.isFetching}
+            disabled={props.isFetching}
           />}
           <Box textAlign="center">
             <Button
@@ -289,4 +274,4 @@ const Login: FC<Props> = (props) => {
   </Grid>
 }
 
-export default Login;
+export default observer(Login);

@@ -1,19 +1,12 @@
 import react from "react";
-import {connect} from "react-redux";
 import DriversList from "./DriversList";
-import {
-  DriversState,
-  runStopDriver,
-  setCurrentPage,
-  setDrivers,
-  SetDriversParamAction,
-  setIsFetching
-} from "../../../redux/drivers-reducer";
-import axios from "axios";
 import Preloader from "../../Commons/Preloader/Preloader";
-import {AuthState} from "../../../redux/auth-reducer";
-import {DriverItem} from "../../../redux/driver-reducer";
-import {AppStateType} from "../../../redux/redux-store";
+import {
+  DriversApi
+} from "../../../Api";
+import {AuthState, DriverItem, DriversState} from "../../../def/client-types";
+import {APP_STORE} from "../../../state";
+import {observer} from "mobx-react";
 
 type MapStatePropsType = {
   drivers: DriversState
@@ -35,25 +28,19 @@ type AllPropsType = MapDispatchPropsType & MapStatePropsType;
 /**
  * Контейнерная компонента списка драйверов.
  */
+@observer
 class DriversListContainer extends react.Component<AllPropsType>
 {
   /**
    * Вызывается при инициализации компонента, загружает список драйверов.
    */
   componentDidMount() {
-    this.props.setIsFetching(true);
-    axios.get(`http://localhost:8080/services/drivers/list?page=${this.props.drivers.page}&size=${this.props.drivers.pageSize}`,
-      {
-        headers: {
-          'Authorization': `${this.props.auth.principal.type} ${this.props.auth.principal.token}`,
-          // 'Content-Type': 'application/x-www-form-urlencoded'
-        },
-      }
-    ).then(response => {
-      this.props.setDrivers(response.data.content, response.data.number,
+    APP_STORE.setIsFetching(true);
+    DriversApi.getDriversListByPageNumber(APP_STORE.drivers.page).then(response => {
+      APP_STORE.setDrivers(response.data.content, response.data.number,
         response.data.size, response.data.totalElements);
     }).finally(() => {
-      this.props.setIsFetching(false);
+      APP_STORE.setIsFetching(false);
     });
   }
 
@@ -64,21 +51,20 @@ class DriversListContainer extends react.Component<AllPropsType>
    *        номер страницы.
    */
   onSetCurrentPage = (pageNumber: number) => {
-    this.props.setIsFetching(true);
-    this.props.setCurrentPage(pageNumber);
-    axios.get(`http://localhost:8080/services/drivers/list?page=${pageNumber}&size=${this.props.drivers.pageSize}`,
-      {
-        headers: {
-          'Authorization': `${this.props.auth.principal.type} ${this.props.auth.principal.token}`,
-          // 'Content-Type': 'application/x-www-form-urlencoded'
-        },
-      }
-    ).then(response => {
-      this.props.setDrivers(response.data.content, response.data.number,
+    APP_STORE.setIsFetching(true);
+    APP_STORE.setCurrentPage(pageNumber);
+    DriversApi.getDriversListByPageNumber(pageNumber).then(response => {
+      APP_STORE.setDrivers(response.data.content, response.data.number,
         response.data.size, response.data.totalElements);
     }).finally(() => {
-      this.props.setIsFetching(false);
+      APP_STORE.setIsFetching(false);
     });
+  }
+
+  onRunStopDriver = (id: number) => {
+    // DriversApi.runStopDriver(id).then(response => {
+    //   // APP_STORE.runStopDriver(id, response.)
+    // })
   }
 
   /**
@@ -86,23 +72,14 @@ class DriversListContainer extends react.Component<AllPropsType>
    * @returns JSX элемент списка драйверов.
    */
   render() {
-    return ( this.props.drivers.isFetching
+    return (APP_STORE.isFetching
         ? <Preloader/>
         : <DriversList
-            {...this.props}
+            drivers={APP_STORE.drivers}
             onSetCurrentPage={this.onSetCurrentPage}
-            runStopDriver={this.props.runStopDriver}/>
+            runStopDriver={APP_STORE.runStopDriver}/>
     );
   }
 }
 
-let mapStateToProps = (state: AppStateType): MapStatePropsType => ({
-  drivers: state.drivers,
-  auth: state.auth,
-})
-
-export default
-  connect<MapStatePropsType, MapDispatchPropsType, any, AppStateType>(
-      mapStateToProps,
-      { runStopDriver, setDrivers, setCurrentPage, setIsFetching})
-  (DriversListContainer);
+export default DriversListContainer;

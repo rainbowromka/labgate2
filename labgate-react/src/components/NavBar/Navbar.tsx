@@ -12,6 +12,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import Typography from "@material-ui/core/Typography";
+import {observer} from "mobx-react";
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
@@ -121,4 +122,4 @@ const Navbar = (props: AllProps) => {
   )
 }
 
-export default Navbar;
+export default observer(Navbar);

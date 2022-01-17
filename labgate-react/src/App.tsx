@@ -1,9 +1,8 @@
 import react from "react";
 import './App.css';
-import Header, {drawerWidth} from "./components/Header/Header";
+import {drawerWidth} from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/NavBar/Navbar";
-import DriversContent from "./components/DriversContent/DriversContent";
 import {Route} from "react-router-dom";
 import Devices from "./components/Devices/Devices";
 import DriverContainer
@@ -13,6 +12,10 @@ import {makeStyles} from "@material-ui/core";
 import clsx from "clsx";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginComponent from "./components/Login/LoginContainer";
+import DriversListContainer
+  from "./components/DriversContent/DriversList/DriversListContainer";
+import {APP_STORE, AppStoreClass} from "./state";
+import NavbarContainer from "./components/NavBar/NavbarContainer";
 
 /**
  * Основные стили главной формы.
@@ -61,26 +64,25 @@ const useStyles = makeStyles((theme) => ({
  */
 function App() {
   const classes = useStyles()
-  const [open, setOpen] = react.useState(false);
 
   return (
     <>
       <CssBaseline/>
       <div className={classes.root}>
-        <HeaderContainer open={open} setOpen={setOpen}/>
+        <HeaderContainer/>
         <main
           className={clsx(classes.main, {
             [classes.mainShift]: false,
           })}>
           <div className={classes.drawerHeader} />
           <div className={classes.content}>
-            <Route path='/drivers' render={() => <DriversContent/>}/>
-            <Route path='/devices' render={() => <Devices/>}/>
-            <Route path='/driver/:driverId' render={() => <DriverContainer/>}/>
-            <Route path='/login' render={() => <LoginComponent/>}/>
+            <Route path='/drivers' component={DriversListContainer}/>
+            <Route path='/devices' component={Devices}/>
+            <Route path='/driver/:driverId' component={DriverContainer}/>
+            <Route path='/login' component={LoginComponent}/>
           </div>
         </main>
-        <Navbar open={open} setOpen={setOpen}/>
+        <NavbarContainer/>
       </div>
       <Footer/>
     </>

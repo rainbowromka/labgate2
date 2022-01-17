@@ -1,4 +1,4 @@
-import react, {FC} from "react";
+import {FC} from "react";
 import {NavLink} from "react-router-dom";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
@@ -6,7 +6,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import {makeStyles} from "@material-ui/core";
-import {DriverState} from "../../../redux/driver-reducer";
+import {DriverItem} from "../../../def/client-types";
 
 /**
  * Стили компонента.
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
  * Пропсы принимаемые функциональной компонентой.
  */
 type Props = {
-  driver: DriverState
+  driver: DriverItem
 }
 
 /**
@@ -32,7 +32,7 @@ type Props = {
  */
 const Driver: FC<Props> = (props) => {
   const classes = useStyles();
-  let driver = props.driver.driver;
+  let driver = props.driver;
   let parametrs = [];
 
   for (let key in driver.parameters) {

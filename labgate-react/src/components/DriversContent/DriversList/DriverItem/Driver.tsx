@@ -1,6 +1,5 @@
-import react, {FC} from "react";
+import {FC} from "react";
 import {NavLink} from "react-router-dom";
-import {DRIVER_STATUS_WORK} from "../../../../redux/drivers-reducer";
 import {makeStyles} from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
@@ -12,7 +11,8 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import PauseIcon from '@material-ui/icons/Pause';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import ShareIcon from '@material-ui/icons/Share';
-import {DriverItem} from "../../../../redux/driver-reducer";
+import {DRIVER_STATUS_WORK, DriverItem} from "../../../../def/client-types";
+import {observer} from "mobx-react";
 
 /**
  * Стили формы авторизации.
@@ -55,7 +55,7 @@ const Driver: FC<Props>  = (props) => {
     props.runStopDriver(driver.id)
   }
 
-  let isWork = driver.status===DRIVER_STATUS_WORK
+  let isWork = driver.status === DRIVER_STATUS_WORK
   let bc = isWork ? "#b5d5a7" : "#e89898";
   let bgc = isWork ? "#30af3c" : "#ce2a27";
 
@@ -103,4 +103,4 @@ const Driver: FC<Props>  = (props) => {
   )
 }
 
-export default Driver;
+export default observer(Driver);

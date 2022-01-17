@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.idc.labgatej.manager.model.DriverEntity;
+import ru.idc.labgatej.manager.model.DriverStatus;
 import ru.idc.labgatej.manager.repo.DriverEntityRepository;
 
 import java.util.Optional;
@@ -52,5 +53,11 @@ public class DriversController
     @GetMapping("/list/{id}")
     public Optional<DriverEntity> findById(@PathVariable Long id) {
         return driverEntityRepository.findById(id);
+    }
+
+    @GetMapping("runStopDriver/{id}")
+    public DriverStatus runStopDriver(@PathVariable Long id)
+    {
+
     }
 }

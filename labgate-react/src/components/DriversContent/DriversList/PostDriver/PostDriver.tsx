@@ -10,8 +10,8 @@ import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import TextField from "@material-ui/core/TextField";
 import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
-import {DriversState} from "../../../../redux/drivers-reducer";
-import {DriverItem} from "../../../../redux/driver-reducer";
+import {DriversState} from "../../../../def/client-types";
+import {observer} from "mobx-react";
 
 const useStyles = makeStyles((theme) => ({
   addItem: {
@@ -131,4 +131,4 @@ const PostDriver = (props: Props ) => {
   </Grid>
 }
 
-export default PostDriver;
+export default observer(PostDriver);

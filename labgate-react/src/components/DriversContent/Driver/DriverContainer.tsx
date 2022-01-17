@@ -1,50 +1,28 @@
 import react from "react";
 import Driver from "./Driver";
-import axios from "axios";
-import {connect} from "react-redux";
-import {
-  DriverItem,
-  DriverState, setDriver,
-  setIsFetching
-} from "../../../redux/driver-reducer";
 import Preloader from "../../Commons/Preloader/Preloader";
 import {withRouter} from "react-router-dom";
-import {AuthState} from "../../../redux/auth-reducer";
-import {AppStateType} from "../../../redux/redux-store";
+import {DriverItem} from "../../../def/client-types";
 import {RouteComponentProps} from "react-router/ts4.0";
+import {observer} from 'mobx-react';
+import {DriversApi} from "../../../Api";
+import {APP_STORE} from "../../../state";
 
-
-type MapStatePropsType = {
-  auth: AuthState
-  driver: DriverState
-}
-
-type MapDispatchPropsType = {
-  setIsFetching: (isFetching: boolean) => void
-  setDriver: (driver: DriverItem) => void
-}
-
-type AllPropsType = MapDispatchPropsType & MapStatePropsType & RouteComponentProps<any>
+type AllPropsType = RouteComponentProps<any>
 
 /**
  * Контейнерная компонента драйвера.
  */
+@observer
 class DriverContainer extends react.Component<AllPropsType>
 {
   /**
    * Вызывается при инициализации компонента, загружает информацию о драйвере.
    */
   componentDidMount() {
-    this.props.setIsFetching(true);
+    APP_STORE.setIsFetching(true);
     let driverId = this.props.match.params.driverId;
-    axios.get(`http://localhost:8080/services/drivers/list/${driverId}`,
-      {
-        headers: {
-          'Authorization': `${this.props.auth.principal.type} ${this.props.auth.principal.token}`,
-          // 'Content-Type': 'application/x-www-form-urlencoded'
-        },
-      }
-    ).then(response => {
+    DriversApi.getDriversById(driverId).then(response => {
       let item = response.data;
       let newItem: DriverItem = {
         id: item.id,
@@ -59,9 +37,9 @@ class DriverContainer extends react.Component<AllPropsType>
       for (let key in item.parameters) {
         parameters.push(item.parameters[key]);
       }
-      this.props.setDriver(newItem)
+      APP_STORE.setDriver(newItem)
     }).finally(() => {
-      this.props.setIsFetching(false)
+      APP_STORE.setIsFetching(false)
     });
   }
 
@@ -71,30 +49,11 @@ class DriverContainer extends react.Component<AllPropsType>
    */
   render() {
     return (
-      this.props.driver.isFetching
+        APP_STORE.isFetching
         ? <Preloader/>
-        : <Driver {...this.props}/>
+        : <Driver driver={APP_STORE.driver}/>
     );
   }
 }
 
-/**
- * Хранилища состояний, которые необходимо передать в пропсах контейнера.
- *
- * @param state
- *        состояние хранилища.
- */
-const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
-  driver: state.driver,
-  auth: state.auth
-})
-
-/**
- * Оборачиваем JSX контейнер Redux компонентой для передачи необходимых данных
- * хранилища и объектов событий, которые нужно обрабатывать хранилищем
- * состояния.
- */
-export default
-  connect<MapStatePropsType, MapDispatchPropsType, any, AppStateType> (
-      mapStateToProps,{setDriver, setIsFetching})
-  (withRouter(DriverContainer));
+export default withRouter(DriverContainer);

@@ -1,31 +1,16 @@
 import react from "react";
-import {connect} from "react-redux";
-import Login, {AuthData} from "./Login";
-import axios from "axios";
-import {
-  AuthState,
-  Principal,
-  setIsFetching,
-  setUserData
-} from "../../redux/auth-reducer";
-import {Redirect, withRouter} from "react-router-dom";
-import {AppStateType} from "../../redux/redux-store";
-
-type StatePropsType = {
-  auth: AuthState
-}
-
-type DispatchPropsType = {
-  setIsFetching: (isFetching: boolean) => void
-  setUserData: (authState: Principal, isAuthorized: boolean) => void
-}
-
-type AllPropsType = DispatchPropsType & StatePropsType
+import Login from "./Login";
+import {Redirect} from "react-router-dom";
+import {observer} from "mobx-react";
+import {ApiSiginIn, ApiSignUp} from "../../Api";
+import {AuthData} from "../../def/client-types";
+import {APP_STORE, IAppStoreProps} from "../../state";
 
 /**
  * Контейнерная компонента формы авторизации.
  */
-class LoginContainer extends react.Component<AllPropsType>
+@observer
+class LoginContainer extends react.Component<IAppStoreProps>
 {
   /**
    * Конутруктор объекта, подготавливем основные методы и объекты контейнерной
@@ -34,7 +19,7 @@ class LoginContainer extends react.Component<AllPropsType>
    * @param props
    *        пропсы передаваемые в компоненту.
    */
-  constructor(props: AllPropsType) {
+  constructor(props: any) {
     super(props);
     this.signIn = this.signIn.bind(this);
     this.signUp = this.signUp.bind(this);
@@ -50,20 +35,14 @@ class LoginContainer extends react.Component<AllPropsType>
    */
   signIn(username: string, password: string)
   {
-    this.props.setIsFetching(true);
-    axios.post(
-      "http://localhost:8080/api/auth/signin",
-      {username: username, password: password},
-      {
-        // withCredentials: true
-      }
-    ).then(response => {
+    APP_STORE.setIsFetching(true);
+    ApiSiginIn(username, password).then(response => {
       if (response && response.data) {
-        this.props.setUserData(response.data, true);
+        APP_STORE.setUserData(response.data, true);
       }
     }
     ).finally(() => {
-      this.props.setIsFetching(false)
+      APP_STORE.setIsFetching(false)
     });
   }
 
@@ -77,23 +56,14 @@ class LoginContainer extends react.Component<AllPropsType>
    */
   signUp(authData: AuthData, callback: () => void)
   {
-    this.props.setIsFetching(true);
-    axios.post(
-      "http://localhost:8080/api/auth/signup",
-      {
-        username: authData.username,
-        email: authData.email,
-        password: authData.password,
-        role: ["mod", "user"],
-      },
-      {}
-    ).then(response => {
+    APP_STORE.setIsFetching(true);
+    ApiSignUp(authData).then(response => {
       if (response && response.data && callback) {
         callback();
         // this.props.setUserData(response.data, true)
       }
     }).finally(() => {
-      this.props.setIsFetching(false);
+      APP_STORE.setIsFetching(false);
     })
   }
 
@@ -104,30 +74,15 @@ class LoginContainer extends react.Component<AllPropsType>
    * @returns JSX элемент формы авторизации/регистрации пользователя.
    */
   render() {
-    return this.props.auth.isAuthorized
+    return APP_STORE.auth.isAuthorized
       ? <Redirect to="/drivers"/>
-      : <Login signIn={this.signIn}
-               signUp={this.signUp}
-               {...this.props}/>
+      : <Login
+            auth={APP_STORE.auth}
+            isFetching={APP_STORE.isFetching}
+            signIn={this.signIn}
+            signUp={this.signUp}/>
   }
 
 }
 
-/**
- * Хранилища состояний, которые необходимо передать в пропсах контейнера.
- *
- * @param state
- *        состояние хранилища.
- */
-const mapStateToProps = (stat: AppStateType) => ({
-  auth: stat.auth
-})
-
-/**
- * Оборачиваем JSX контейнер Redux компонентой для передачи необходимых данных
- * хранилища и объектов событий, которые нужно обрабатывать хранилищем
- * состояния.
- */
-export default connect<StatePropsType, DispatchPropsType, any, AppStateType>(
-  mapStateToProps, {setIsFetching, setUserData}
-)(LoginContainer);
+export default LoginContainer;

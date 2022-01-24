@@ -4,6 +4,9 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import ru.idc.labgatej.base.Configuration;
+import ru.idc.labgatej.base.DriverContext;
+import ru.idc.labgatej.base.DriverSocketContext;
+import ru.idc.labgatej.base.IConfiguration;
 
 import java.net.Socket;
 
@@ -14,9 +17,8 @@ import java.net.Socket;
 public class LazuriteClientHandler extends Thread
 {
     private final String inetAddress;
-    private Configuration config;
-    private ComboPooledDataSource connectionPool;
-    private Socket socket;
+
+    DriverSocketContext driverSocketContext;
 
     /**
      * Создание обработчика входящего соединения с прибором.
@@ -29,14 +31,11 @@ public class LazuriteClientHandler extends Thread
      *        Конфигурация программы.
      */
     public LazuriteClientHandler(
-            Socket socket,
-            ComboPooledDataSource connectionPool,
-            Configuration config)
+        DriverContext driverContext,
+        Socket socket)
     {
-        this.connectionPool = connectionPool;
-        this.socket = socket;
-        this.config = config;
         this.inetAddress = socket.getInetAddress() + ":" + socket.getPort();
+        this.driverSocketContext = new DriverSocketContext(driverContext, socket);
     }
 
     /**
@@ -47,7 +46,7 @@ public class LazuriteClientHandler extends Thread
     {
         log.info("[{}] Обрабатываем входящее соединение: ", inetAddress);
         LazuriteDriver driver = new LazuriteDriver();
-        driver.init(connectionPool, config, socket);
+        driver.init(driverSocketContext);
         driver.loop();
     }
 }

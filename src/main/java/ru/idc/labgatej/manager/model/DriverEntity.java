@@ -3,6 +3,7 @@ package ru.idc.labgatej.manager.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.idc.labgatej.base.IConfiguration;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Сущность экземпляра драйвера.
+ * Сущность конфигурации экземпляра драйвера.
  */
 @Entity
 @Table(name = "entity", schema = "driver")
@@ -34,9 +35,10 @@ import java.util.TreeMap;
     sequenceName = "driver_entity_sequence"
 )
 public class DriverEntity
+implements IConfiguration
 {
     /**
-     * Идентификатор экземпляра драйвера.
+     * Идентификатор конфигурации экземпляра драйвера.
      */
     @Id
     @GeneratedValue(
@@ -100,5 +102,17 @@ public class DriverEntity
     public void removeDriverParameter(String key/*DriverParameter driverParameter*/)
     {
         parameters.remove(key/*driverParameter*/);
+    }
+
+    @Override
+    public String getParamValue(String param) {
+        DriverParameter parameter = parameters.get(param);
+
+        return parameter == null ? null : parameter.getValue();
+    }
+
+    @Override
+    public String getDriverName() {
+        return getCode();
     }
 }

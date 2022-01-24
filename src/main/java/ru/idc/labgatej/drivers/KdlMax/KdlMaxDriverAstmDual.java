@@ -3,6 +3,8 @@ package ru.idc.labgatej.drivers.KdlMax;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import lombok.extern.slf4j.Slf4j;
 import ru.idc.labgatej.base.Configuration;
+import ru.idc.labgatej.base.DriverContext;
+import ru.idc.labgatej.base.IConfiguration;
 import ru.idc.labgatej.base.SocketClientTransport;
 import ru.idc.labgatej.base.TaskDualDriver;
 import ru.idc.labgatej.base.protocols.ProtocolKDLMaksASTM;
@@ -50,10 +52,12 @@ public class KdlMaxDriverAstmDual extends TaskDualDriver<ProtocolKDLMaksASTM>
 
     @Override
     public void init(
-        ComboPooledDataSource connectionPool,
-        Configuration config)
+        DriverContext driverContext
+    )
     {
-        super.init(connectionPool, config);
+        super.init(driverContext);
+
+        IConfiguration config = driverContext.getConfig();
 
         this.protocol = new ProtocolKDLMaksASTM();
         this.protocol.setConfig(config);
@@ -125,5 +129,9 @@ public class KdlMaxDriverAstmDual extends TaskDualDriver<ProtocolKDLMaksASTM>
         packet.setMessageTerminator(new MessageTerminator(1L,"N"));
 
         return packet;
+    }
+
+    @Override
+    public void stop() {
     }
 }

@@ -62,9 +62,9 @@ class DriversListContainer extends react.Component<AllPropsType>
   }
 
   onRunStopDriver = (id: number) => {
-    // DriversApi.runStopDriver(id).then(response => {
-    //   // APP_STORE.runStopDriver(id, response.)
-    // })
+    DriversApi.runStopDriver(id).then(response => {
+      APP_STORE.runStopDriver(id, response.data)
+    })
   }
 
   /**
@@ -77,7 +77,7 @@ class DriversListContainer extends react.Component<AllPropsType>
         : <DriversList
             drivers={APP_STORE.drivers}
             onSetCurrentPage={this.onSetCurrentPage}
-            runStopDriver={APP_STORE.runStopDriver}/>
+            runStopDriver={this.onRunStopDriver}/>
     );
   }
 }

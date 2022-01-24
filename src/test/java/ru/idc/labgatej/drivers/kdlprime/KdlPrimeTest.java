@@ -14,15 +14,18 @@ import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import ru.idc.labgatej.Manager;
+import ru.idc.labgatej.base.AppPooledDataSource;
 import ru.idc.labgatej.base.Codes;
 import ru.idc.labgatej.base.Configuration;
 import ru.idc.labgatej.base.DBManager;
+import ru.idc.labgatej.base.DriverContext;
 import ru.idc.labgatej.base.protocols.ProtocolKDLPrimeASTM;
 import ru.idc.labgatej.drivers.KDLPrime.KDLPrimeDriver;
 import ru.idc.labgatej.drivers.KDLPrime.KdlPrime;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({Manager.class, DBManager.class, KDLPrimeDriver.class, Codes.class, ProtocolKDLPrimeASTM.class})
@@ -55,7 +58,7 @@ public class KdlPrimeTest
         // 1. Поднимаем сервер.
         KdlPrime server = new KdlPrime();
 //        server.init(cpds, config);
-        server.init(null, config);
+        server.init(new DriverContext(null, config, new AtomicBoolean(true)));
         new Thread(() -> {
             try
             {

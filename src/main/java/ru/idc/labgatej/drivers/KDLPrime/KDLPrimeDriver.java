@@ -4,6 +4,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 import lombok.extern.slf4j.Slf4j;
 import ru.idc.labgatej.base.Configuration;
 import ru.idc.labgatej.base.DBManager;
+import ru.idc.labgatej.base.IConfiguration;
 import ru.idc.labgatej.base.ResultDriver;
 import ru.idc.labgatej.base.SocketClientTransport;
 import ru.idc.labgatej.base.protocols.ProtocolKDLPrimeASTM;
@@ -32,7 +33,7 @@ public class KDLPrimeDriver extends ResultDriver<ProtocolKDLPrimeASTM>
      */
     private String inetAddress;
 
-    public void init(ComboPooledDataSource connectionPool, Configuration config, Socket socket)
+    public void init(ComboPooledDataSource connectionPool, IConfiguration config, Socket socket)
     {
         this.dbManager4results = new DBManager();
         dbManager4results.init(connectionPool);
@@ -84,5 +85,10 @@ public class KDLPrimeDriver extends ResultDriver<ProtocolKDLPrimeASTM>
             }
         } while (res != ERROR_TIMEOUT);
         return null;
+    }
+
+    @Override
+    public void stop()
+    {
     }
 }

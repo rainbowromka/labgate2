@@ -1,24 +1,16 @@
 package ru.idc.labgatej.drivers.lazurite;
 
 import com.google.common.primitives.Bytes;
-import com.mchange.v2.c3p0.ComboPooledDataSource;
 import lombok.extern.slf4j.Slf4j;
-import org.openmuc.jrxtx.DataBits;
-import org.openmuc.jrxtx.FlowControl;
-import org.openmuc.jrxtx.Parity;
-import org.openmuc.jrxtx.StopBits;
-import ru.idc.labgatej.base.Configuration;
-import ru.idc.labgatej.base.Rs232ClientTransport;
+import ru.idc.labgatej.base.DriverSocketContext;
 import ru.idc.labgatej.base.SocketClientTransport;
 import ru.idc.labgatej.base.TaskDualDriver;
-import ru.idc.labgatej.base.Transport;
 import ru.idc.labgatej.base.protocols.Protocol;
 import ru.idc.labgatej.base.protocols.ProtocolCITM_ASTM;
 import ru.idc.labgatej.model.Order;
 import ru.idc.labgatej.model.PacketInfo;
 
 import java.io.IOException;
-import java.net.Socket;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,7 +20,9 @@ import static ru.idc.labgatej.base.Codes.*;
 import static ru.idc.labgatej.base.Consts.ERROR_TIMEOUT;
 
 @Slf4j
-public class LazuriteDriver extends TaskDualDriver<ProtocolCITM_ASTM> {
+public class LazuriteDriver
+extends TaskDualDriver<ProtocolCITM_ASTM>
+{
 
 	private Protocol protocol;
 	private String deviceCode;
@@ -134,7 +128,7 @@ public class LazuriteDriver extends TaskDualDriver<ProtocolCITM_ASTM> {
 		if (!transport4results.isReady()) return;
 
 		String msg = null;
-		while (true) {
+		while (running.get()) {
 			msg = receiveResults();
 
 			if (msg != null && !msg.isEmpty()) {
@@ -148,16 +142,14 @@ public class LazuriteDriver extends TaskDualDriver<ProtocolCITM_ASTM> {
 		}
 	}
 
-	public void init(ComboPooledDataSource connectionPool, Configuration config, Socket socket) {
-		super.init(connectionPool, config);
+	public void init(DriverSocketContext driverContext) {
+		super.init(driverContext);
 
 		transport4results = new SocketClientTransport(null, 0);
-		transport4results.init(socket, 10000);
+		transport4results.init(driverContext.getSocket(), 10000);
 
 		protocol = new ProtocolLazuriteASTM();
-		deviceCode = config.getParamValue("code");
-
-
+		deviceCode = driverContext.getConfig().getParamValue("code");
 
 //		switch (config.getParamValue("device.connection.type").toUpperCase().trim()) {
 //			case "COM":
@@ -174,4 +166,8 @@ public class LazuriteDriver extends TaskDualDriver<ProtocolCITM_ASTM> {
 //		}
 	}
 
+	@Override
+	public void stop()
+	{
+	}
 }

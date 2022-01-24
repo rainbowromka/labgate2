@@ -1,14 +1,14 @@
 package ru.idc.labgatej.drivers;
 
-import com.mchange.v2.c3p0.ComboPooledDataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.idc.labgatej.base.Codes;
 import ru.idc.labgatej.base.DBManager;
+import ru.idc.labgatej.base.DriverContext;
+import ru.idc.labgatej.base.IConfiguration;
 import ru.idc.labgatej.base.SocketClientTransport;
 import ru.idc.labgatej.base.TaskDualDriver;
-import ru.idc.labgatej.base.Configuration;
 import ru.idc.labgatej.base.Transport;
 import ru.idc.labgatej.base.protocols.ProtocolCITM_ASTM;
 import ru.idc.labgatej.model.Order;
@@ -23,7 +23,8 @@ import static ru.idc.labgatej.base.Codes.makeSendable;
 import static ru.idc.labgatej.base.Consts.ERROR_TIMEOUT;
 
 @Slf4j
-public class CitmDriver extends TaskDualDriver<ProtocolCITM_ASTM>
+public class CitmDriver
+extends TaskDualDriver<ProtocolCITM_ASTM>
 {
 	private static final Logger eventsLogger = LoggerFactory.getLogger("events");
 
@@ -67,12 +68,14 @@ public class CitmDriver extends TaskDualDriver<ProtocolCITM_ASTM>
 	}
 
 	@Override
-	public void init(ComboPooledDataSource poolConnections, Configuration config) {
-		super.init(poolConnections, config);
+	public void init(DriverContext driverContext) {
+		super.init(driverContext);
 
 		this.dbManager4events = new DBManager();
 		log.trace("Инициализация третьего подключения к БД...");
-		dbManager4events.init(poolConnections);
+		dbManager4events.init(driverContext.getConnectionPool());
+
+		IConfiguration config = driverContext.getConfig();
 
 		String s = config.getParamValue("citm.delay.tasks");
 		delayForTasks = s != null
@@ -234,7 +237,7 @@ public class CitmDriver extends TaskDualDriver<ProtocolCITM_ASTM>
 
 		Runnable task = () -> {
 			try {
-				while (!Thread.currentThread().isInterrupted()) {
+				while (!Thread.currentThread().isInterrupted() && running.get()) {
 					sendTasks();
 					Thread.sleep(delayForTasks);
 				}
@@ -253,7 +256,7 @@ public class CitmDriver extends TaskDualDriver<ProtocolCITM_ASTM>
 		Runnable events = () -> {
 			try {
 				String msg = null;
-				while (!Thread.currentThread().isInterrupted()) {
+				while (!Thread.currentThread().isInterrupted() && running.get()) {
 					try {
 						msg = receiveEvents();
 
@@ -280,7 +283,7 @@ public class CitmDriver extends TaskDualDriver<ProtocolCITM_ASTM>
 		}
 
 		String msg = null;
-		while (true) {
+		while (running.get()) {
 			if (can_send_tasks && !tasksThread.isAlive()) {
 				throw new IOException();
 			}
@@ -326,4 +329,8 @@ public class CitmDriver extends TaskDualDriver<ProtocolCITM_ASTM>
 			"<ETX>7D<CR><LF>";
 	}
 
+	@Override
+	public void stop()
+	{
+	}
 }

@@ -2,9 +2,9 @@ import react from "react";
 import Login from "./Login";
 import {Redirect} from "react-router-dom";
 import {observer} from "mobx-react";
-import {ApiSiginIn, ApiSignUp} from "../../Api";
 import {AuthData} from "../../def/client-types";
 import {APP_STORE, IAppStoreProps} from "../../state";
+import {AuthApi} from "../../Api";
 
 /**
  * Контейнерная компонента формы авторизации.
@@ -36,7 +36,7 @@ class LoginContainer extends react.Component<IAppStoreProps>
   signIn(username: string, password: string)
   {
     APP_STORE.setIsFetching(true);
-    ApiSiginIn(username, password).then(response => {
+    AuthApi.ApiSiginIn(username, password).then(response => {
       if (response && response.data) {
         APP_STORE.setUserData(response.data, true);
       }
@@ -57,7 +57,7 @@ class LoginContainer extends react.Component<IAppStoreProps>
   signUp(authData: AuthData, callback: () => void)
   {
     APP_STORE.setIsFetching(true);
-    ApiSignUp(authData).then(response => {
+    AuthApi.ApiSignUp(authData).then(response => {
       if (response && response.data && callback) {
         callback();
         // this.props.setUserData(response.data, true)

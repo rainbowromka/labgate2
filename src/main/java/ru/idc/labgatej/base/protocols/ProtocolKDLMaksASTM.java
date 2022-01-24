@@ -3,6 +3,7 @@ package ru.idc.labgatej.base.protocols;
 import lombok.Setter;
 import ru.idc.labgatej.base.Codes;
 import ru.idc.labgatej.base.Configuration;
+import ru.idc.labgatej.base.IConfiguration;
 import ru.idc.labgatej.base.Utils;
 import ru.idc.labgatej.model.HeaderInfo;
 import ru.idc.labgatej.model.KdlMax.Packet;
@@ -25,7 +26,7 @@ import static ru.idc.labgatej.base.Codes.makePrintable;
 @Setter
 public class ProtocolKDLMaksASTM implements Protocol<Packet>
 {
-    Configuration config;
+    IConfiguration config;
 
     @Override
     public String makeOrder(Packet packet) {

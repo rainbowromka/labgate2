@@ -9,6 +9,7 @@ import ru.idc.labgatej.model.PacketInfo;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import static ru.idc.labgatej.base.Codes.ENQ;
 import static ru.idc.labgatej.base.Codes.EOT;
@@ -30,14 +31,21 @@ implements ITaskDriver
     protected Transport transport4tasks;
     protected DBManager dbManager4tasks;
 
+    /**
+     * Признак того что драйвер работает. Перевод в false его останавливает.
+     */
+    protected AtomicBoolean running;
+
     @Override
-    public void init(ComboPooledDataSource connectionPool, Configuration config)
+    public void init(DriverContext driverContext)
     {
-        super.init(connectionPool, config);
+        super.init(driverContext);
+
+        running = driverContext.getRunning();
 
         this.dbManager4tasks = new DBManager();
         log.trace("Инициализация второго подключения к БД...");
-        dbManager4tasks.init(connectionPool);
+        dbManager4tasks.init(driverContext.getConnectionPool());
     }
 
     @Override
@@ -87,7 +95,7 @@ implements ITaskDriver
                 }
                 cnt++;
             }
-        } while (!hasErrors && !msg.isEmpty() && cnt < 5);
+        } while (!hasErrors && !msg.isEmpty() && cnt < 5 && running.get());
     }
 
     protected void markOrderAsFailed(long taskId, String comment) {};
@@ -107,7 +115,7 @@ implements ITaskDriver
 
         Runnable task = () -> {
             try {
-                while (! Thread.currentThread().isInterrupted()) {
+                while (! Thread.currentThread().isInterrupted() && running.get()) {
                     sendTasks();
                 }
             } catch (Exception e) {
@@ -120,7 +128,7 @@ implements ITaskDriver
         thread.start();
 
         String msg = null;
-        while (true) {
+        while (running.get()) {
             if (!thread.isAlive()) {
                 throw new IOException();
             }

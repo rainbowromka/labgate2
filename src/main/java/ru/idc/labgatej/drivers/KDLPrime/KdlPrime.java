@@ -2,12 +2,14 @@ package ru.idc.labgatej.drivers.KDLPrime;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import lombok.extern.slf4j.Slf4j;
-import ru.idc.labgatej.base.Configuration;
+import ru.idc.labgatej.base.DriverContext;
+import ru.idc.labgatej.base.IConfiguration;
 import ru.idc.labgatej.base.IDriver;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.sql.SQLException;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Драйвер обработки данных результатов анализа от FRT Manager.
@@ -15,11 +17,10 @@ import java.sql.SQLException;
 @Slf4j
 public class KdlPrime implements IDriver
 {
-
     /**
      * Конфигурация, мало ли что понадобится.
      */
-    Configuration config;
+    IConfiguration config;
 
     /**
      * Объект сервера.
@@ -36,12 +37,17 @@ public class KdlPrime implements IDriver
      */
     private ComboPooledDataSource connectionPool;
 
+    /**
+     * Признак того что драйвер работает. Перевод в false его останавливает.
+     */
+    AtomicBoolean running;
+
     @Override
     public void loop()
     throws IOException, InterruptedException, SQLException
     {
         serverSocket = new ServerSocket(port);
-        while (true)
+        while (running.get())
         {
             log.info("Слушаем порт: ");
             //TODO: надо в отдельном потоке сделать, как вариант, прерывание
@@ -54,13 +60,13 @@ public class KdlPrime implements IDriver
 
     @Override
     public void init(
-        ComboPooledDataSource connectionPool,
-        Configuration config)
+        DriverContext driverContext)
     {
-        this.config = config;
-        this.connectionPool = connectionPool;
+        this.config = driverContext.getConfig();
+        this.connectionPool = driverContext.getConnectionPool();
         this.port = Integer.parseInt(
             config.getParamValue("kdlprime.port.result"));
+        this.running = driverContext.getRunning();
     }
 
     @Override
@@ -72,6 +78,16 @@ public class KdlPrime implements IDriver
         catch (IOException e)
         {
             log.error("Ошибка при закрытии серверного сокета", e);
+        }
+    }
+
+    @Override
+    public void stop()
+    {
+        try {
+            serverSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

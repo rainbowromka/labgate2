@@ -4,56 +4,110 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.log4j.Level;
 import org.apache.log4j.spi.RootLogger;
-import ru.idc.labgatej.drivers.CitmDriver;
+import ru.idc.labgatej.base.AppPooledDataSource;
+import ru.idc.labgatej.base.DriverContext;
+import ru.idc.labgatej.base.IConfiguration;
 import ru.idc.labgatej.base.Configuration;
 import ru.idc.labgatej.base.DBManager;
 import ru.idc.labgatej.base.IDriver;
-import ru.idc.labgatej.drivers.DNATechnologyDriver.DNATechnplogyDriver;
-import ru.idc.labgatej.drivers.CsvImporter;
-import ru.idc.labgatej.drivers.KDLPrime.KdlPrime;
-import ru.idc.labgatej.drivers.KdlMax.KdlMaxDriverAstmDual;
-import ru.idc.labgatej.drivers.Medonic;
-import ru.idc.labgatej.drivers.MultiskanFC;
-import ru.idc.labgatej.drivers.RealBest;
-import ru.idc.labgatej.drivers.UriskanProDriver;
-import ru.idc.labgatej.drivers.lazurite.Lazurite;
+import ru.idc.labgatej.drivers.DriverFactory;
+
+import java.beans.PropertyVetoException;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.apache.log4j.Level.INFO;
 
+/**
+ * Менеджер драйвера. Создает экземпляр драйвера, конфигурирует его, запускает и
+ * управляет потоком. Менеджер может работать как самостоятельное Java
+ * приложение, так и под управлением Spring Boot.
+ */
 @Slf4j
 public class Manager {
 
-	private static ComboPooledDataSource cpds = new ComboPooledDataSource();
+	/**
+	 * Пул доступа к базе данных.
+	 */
+	private ComboPooledDataSource cpds;
 
-	public static void main(String[] args) throws InterruptedException {
-		runManager(args);
+	/**
+	 * Конфигурация экземпляра драйвера.
+	 */
+	private IConfiguration config;
+
+	/**
+	 * Признак того что приложение должно работать. При переведении этого
+	 * свойства в false, драйвер остановится после выполнения текущих операций.
+	 */
+	private AtomicBoolean running;
+
+	/**
+	 * Экземпляр драйвера, который необходимо запустить.
+	 */
+	private IDriver driver = null;
+
+	/**
+	 * Точка входа в Java-приложение. Драйвер будет работать как обычное
+	 * приложение.
+	 *
+	 * @param args
+	 *        командная строка.
+	 * @throws InterruptedException
+	 *         генерируемое исключение.
+	 * @throws PropertyVetoException
+	 *         генерируемое исключение.
+	 */
+	public static void main(
+		String[] args)
+	throws InterruptedException, PropertyVetoException
+	{
+		Configuration config = new Configuration();
+		AppPooledDataSource appPooledDataSource
+			= new AppPooledDataSource(config);
+
+		log.trace("Инициализация пула подключения к БД...");
+		new Manager(config, appPooledDataSource.getCpds()).runManager();
+
 	}
 
-	public static void runManager(String[] arg)
+	/**
+	 * Создает объект менеджера экземпляра драйвера.
+	 * @param config
+	 *        конфигурация экземпляра драйвера.
+	 * @param cpds
+	 *        пул доступа к базе данных.
+	 */
+	public Manager(IConfiguration config, ComboPooledDataSource cpds) {
+		this.config = config;
+		this.cpds = cpds;
+		running = new AtomicBoolean(true);
+	}
+
+	/**
+	 * Получает объект драйвера, конфигурирует его и запускает его. Этот метод
+	 * должен запускаться в отдельном потоке под управлением Spring Boot.
+	 *
+	 * @throws InterruptedException
+	 *         генерируемое исключение.
+	 */
+	public void runManager()
 	throws InterruptedException
 	{
 		log.trace("Запуск приложения");
-		Configuration config;
-		IDriver driver = null;
-		while (true) {
+
+		while (running.get()) {
 			log.trace("Чтение конфигурации");
-			config = new Configuration();
 			try {
 				RootLogger.getRootLogger().setLevel(Level.toLevel(config.getParamValue("log.level"), INFO));
 
 				DBManager dbManager = new DBManager();
 				try {
-					log.trace("Инициализация пула подключения к БД...");
-					cpds.setDriverClass("org.postgresql.Driver");
-					cpds.setJdbcUrl(config.getParamValue("db.url"));
-					cpds.setUser(config.getParamValue("db.user"));
-					cpds.setPassword(config.getParamValue("db.password"));
 					//TODO: Дополнительно настроить пул соединений.
 					dbManager.init(cpds);
 
-					driver = getDriverByName(config.getParamValue("driver"));
+					driver = DriverFactory.getDriverByName(config.getDriverName());
 					if (driver != null) {
-						driver.init(cpds, config);
+						driver.init(new DriverContext(cpds, config, running));
 						driver.loop();
 					} else {
 						log.error("Недопустимое имя драйвера: " + config.getParamValue("driver"));
@@ -76,19 +130,18 @@ public class Manager {
 		}
 	}
 
-	private static IDriver getDriverByName(String name) {
-		switch (name.toUpperCase().trim()) {
-			case "CITM": return new CitmDriver();
-			case "MEDONIC":	return new Medonic();
-			case "MULTISKANFC":	return new MultiskanFC();
-			case "LAZURITE":	return new Lazurite();
-			case "URISKAN": return new UriskanProDriver();
-			case "REALBEST": return new RealBest();
-			case "DNATEACH": return new DNATechnplogyDriver();
-			case "CSVIMPORTER": return new CsvImporter();
-			case "KDLMAX": return new KdlMaxDriverAstmDual();
-			case "KDLPrime": return new KdlPrime();
-			default: return null;
+	/**
+	 * Останавливает драйвер из другого потока. Используется под управлением
+	 * Spring Boot. В случае с обычным Java приложением. Посылается команда,
+	 * прерывания работы приложения.
+	 */
+	public void stop()
+	{
+		running.set(false);
+
+		if (driver != null)
+		{
+			driver.stop();
 		}
 	}
 }

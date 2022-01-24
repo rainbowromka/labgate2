@@ -1,9 +1,9 @@
 import react from "react";
-import Header, {OpenPanelType} from "./Header";
 import {Principal} from "../../def/client-types";
 import {observer} from "mobx-react";
-import {GetUserInfo} from "../../Api";
 import {APP_STORE} from "../../state";
+import {AuthApi} from "../../Api";
+import Header from "./Header";
 
 /**
  * Контейнерная компонента заголовка страницы.
@@ -20,7 +20,7 @@ class HeaderContainer extends react.Component{
             APP_STORE.setIsFetching(true);
             let principal: Principal = APP_STORE.auth.principal;
 
-            GetUserInfo(principal.token).then(response => {
+            AuthApi.GetUserInfo(principal.token).then(response => {
                 if (response && response.data && response.data.principal) {
                     let respPrincipal: any = response.data.principal
                     APP_STORE.setUserData({

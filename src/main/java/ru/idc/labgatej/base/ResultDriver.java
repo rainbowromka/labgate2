@@ -9,7 +9,8 @@ import java.io.IOException;
 /**
  * Базовая реализация драйвера, принимающего данные с прибора и отправляющего
  * данные на сервер.
- * TODO: по идее бы разделить функционал приема данных и отправки. Но по мере надобности.
+ * TODO: по идее бы разделить функционал приема данных и отправки. Но по мере
+ * надобности.
  *
  * @param <T> протокол прибора.
  */
@@ -22,9 +23,9 @@ implements IDriver
     protected T protocol;
 
     @Override
-    public void init(ComboPooledDataSource connectionPool, Configuration config) {
+    public void init(DriverContext driverContext) {
         this.dbManager4results = new DBManager();
-        dbManager4results.init(connectionPool);
+        dbManager4results.init(driverContext.getConnectionPool());
     }
 
     protected abstract String receiveResults() throws IOException;

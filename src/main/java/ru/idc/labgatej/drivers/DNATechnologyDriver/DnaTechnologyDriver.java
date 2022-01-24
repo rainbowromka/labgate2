@@ -1,11 +1,10 @@
 package ru.idc.labgatej.drivers.DNATechnologyDriver;
 
 import com.fasterxml.uuid.Generators;
-import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.idc.labgatej.base.Configuration;
-import ru.idc.labgatej.base.DBManager;
+import ru.idc.labgatej.base.DriverContext;
+import ru.idc.labgatej.base.IConfiguration;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.RealTimePcr.RealTimePcrCell;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.RealTimePcr.RealTimePcrCreatePlate;
 import ru.idc.labgatej.drivers.DNATechnologyDriver.entities.RealTimePcr.RealTimePcrData;
@@ -41,10 +40,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.function.Function;
 
-public class DNATechnplogyDriver
+public class DnaTechnologyDriver
 extends SharedFolderDriver {
 
-    private final Logger log = LoggerFactory.getLogger(DNATechnplogyDriver.class);
+    private final Logger log = LoggerFactory.getLogger(DnaTechnologyDriver.class);
 
 
     private static final String REAL_TIME_PCR = "RealTimePCR";
@@ -84,8 +83,11 @@ extends SharedFolderDriver {
 
 
     @Override
-    public void init(ComboPooledDataSource poolConnections, Configuration config) {
-        super.init(poolConnections, config);
+    public void init(DriverContext driverContext) {
+        super.init(driverContext);
+
+        IConfiguration config = driverContext.getConfig();
+
         symphonyDir = Paths.get(config.getParamValue("simphonyDir"));
         dirSymphonyProcessed = symphonyDir.resolve("processedFiles");
         try {

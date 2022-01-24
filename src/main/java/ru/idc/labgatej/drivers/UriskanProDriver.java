@@ -1,13 +1,13 @@
 package ru.idc.labgatej.drivers;
 
-import com.mchange.v2.c3p0.ComboPooledDataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.openmuc.jrxtx.DataBits;
 import org.openmuc.jrxtx.FlowControl;
 import org.openmuc.jrxtx.Parity;
 import org.openmuc.jrxtx.StopBits;
-import ru.idc.labgatej.base.Configuration;
 import ru.idc.labgatej.base.DBManager;
+import ru.idc.labgatej.base.DriverContext;
+import ru.idc.labgatej.base.IConfiguration;
 import ru.idc.labgatej.base.IDriver;
 import ru.idc.labgatej.base.protocols.Protocol;
 import ru.idc.labgatej.base.protocols.ProtocolUriskanPro;
@@ -19,6 +19,7 @@ import ru.idc.labgatej.model.PacketInfo;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import static ru.idc.labgatej.base.Codes.*;
 import static ru.idc.labgatej.base.Consts.ERROR_TIMEOUT;
@@ -32,6 +33,11 @@ implements IDriver
 	private DBManager dbManager;
 	private Protocol protocol;
 	private String deviceCode;
+
+	/**
+	 * Признак того что драйвер работает. Перевод в false его останавливает.
+	 */
+	AtomicBoolean running;
 
 	private String receiveResults() throws IOException {
 		StringBuilder sb = new StringBuilder();
@@ -66,7 +72,7 @@ implements IDriver
 		if (!transport.isReady()) return;
 
 		String msg = null;
-		while (true) {
+		while (running.get()) {
 			msg = receiveResults();
 
 			if (msg != null && !msg.isEmpty()) {
@@ -82,13 +88,14 @@ implements IDriver
 
 	@Override
 	public void init(
-		ComboPooledDataSource connectionPool,
-		Configuration config)
+		DriverContext driverContext)
 	{
+		IConfiguration config = driverContext.getConfig();
 		this.dbManager = new DBManager();
-		dbManager.init(connectionPool);
+		dbManager.init(driverContext.getConnectionPool());
 		protocol = new ProtocolUriskanPro();
 		deviceCode = config.getParamValue("code");
+		running = driverContext.getRunning();
 
 		switch (config.getParamValue("device.connection.type").toUpperCase().trim()) {
 			case "COM":
@@ -106,5 +113,10 @@ implements IDriver
 	@Override
 	public void close() {
 		transport.close();
+	}
+
+	@Override
+	public void stop()
+	{
 	}
 }

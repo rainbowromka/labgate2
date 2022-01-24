@@ -134,13 +134,11 @@ export class AppStoreClass {
     }
 
     runStopDriver(
-        id: number)
+        id: number, driverStatus: string)
     {
         this.drivers.list.forEach((item) => {
             if (item.id === id) {
-                item.status = item.status === DRIVER_STATUS_WORK
-                    ? DRIVER_STATUS_STOP
-                    : DRIVER_STATUS_WORK;
+                item.status = driverStatus;
             }
         })
     }

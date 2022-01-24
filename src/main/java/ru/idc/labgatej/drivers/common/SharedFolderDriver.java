@@ -1,11 +1,11 @@
 package ru.idc.labgatej.drivers.common;
 
-import com.mchange.v2.c3p0.ComboPooledDataSource;
-import lombok.SneakyThrows;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.idc.labgatej.base.Configuration;
+
 import ru.idc.labgatej.base.DBManager;
+import ru.idc.labgatej.base.DriverContext;
+import ru.idc.labgatej.base.IConfiguration;
 import ru.idc.labgatej.base.IDriver;
 import ru.idc.labgatej.model.PacketInfo;
 
@@ -19,6 +19,7 @@ import java.nio.file.StandardCopyOption;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Function;
 
 import static java.nio.file.FileVisitResult.CONTINUE;
@@ -34,16 +35,23 @@ implements IDriver
     private Path dirProcessed;
     protected String deviceCode;
 
+    /**
+     * Признак того что драйвер работает. Перевод в false его останавливает.
+     */
+    AtomicBoolean running;
+
     @Override
     public void init(
-        ComboPooledDataSource connectionPool,
-        Configuration config)
+        DriverContext driverContext)
     {
+        running = driverContext.getRunning();
+        IConfiguration config = driverContext.getConfig();
+
         dir2scan = Paths.get(config.getParamValue("dir2scan"));
         dirProcessed = dir2scan.resolve("processedFiles");
         deviceCode = config.getParamValue("code");
         this.dbManager = new DBManager();
-        dbManager.init(connectionPool);
+        dbManager.init(driverContext.getConnectionPool());
         try {
             if (!Files.exists(dirProcessed)) {
                 Files.createDirectory(dirProcessed);
@@ -55,7 +63,7 @@ implements IDriver
 
     @Override
     public void loop() throws IOException, InterruptedException {
-        while (true) {
+        while (running.get()) {
             scanFiles(dir2scan, this::processFile);
             Thread.sleep(30000);
         }
@@ -122,6 +130,10 @@ implements IDriver
 
     @Override
     public void close() {
+    }
 
+    @Override
+    public void stop()
+    {
     }
 }

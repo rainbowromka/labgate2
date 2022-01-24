@@ -4,6 +4,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import ru.idc.labgatej.base.Configuration;
+import ru.idc.labgatej.base.IConfiguration;
 
 import java.net.InetAddress;
 import java.net.Socket;
@@ -15,7 +16,7 @@ import java.net.Socket;
 public class KDLPrimeClientHandler extends Thread
 {
     private final String inetAddress;
-    private Configuration config;
+    private IConfiguration config;
     private ComboPooledDataSource connectionPool;
     private Socket socket;
 
@@ -32,7 +33,7 @@ public class KDLPrimeClientHandler extends Thread
     public KDLPrimeClientHandler(
             Socket socket,
             ComboPooledDataSource connectionPool,
-            Configuration config)
+            IConfiguration config)
     {
         this.connectionPool = connectionPool;
         this.socket = socket;

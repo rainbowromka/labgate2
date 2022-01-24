@@ -9,39 +9,51 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.idc.labgatej.manager.model.DriverEntity;
 import ru.idc.labgatej.manager.model.DriverStatus;
 import ru.idc.labgatej.manager.repo.DriverEntityRepository;
+import ru.idc.labgatej.manager.services.RunningDriverManager;
 
 import java.util.Optional;
 
 /**
+ * Веб-сервис конфигураций экземпляров драйверов.
+ *
  * @author Roman Perminov
- * Контроллер веб-сервиса предоставляющего список драйверов в json-формате.
  */
 @RestController
 @RequestMapping("/services/drivers")
 public class DriversController
 {
     /**
-     * Репозиторий списка драйверов.
+     * Репозиторий списка конфигураций экземпляров драйверов.
      */
     final DriverEntityRepository driverEntityRepository;
 
     /**
-     * Создание контроллера веб-сервиса предоставляющего список драйверов
-     * в json-формате.
+     * Менеджер запущенных драйверов.
+     */
+    final RunningDriverManager runningDriverManager;
+
+    /**
+     * Создает веб-сервис  конфигураций экземпляров драйверов.
+     *
      * @param driverEntityRepository
      *        репозиторий списка драйверов.
+     * @param runningDriverManager
+     *        менеджер запущенных драйверов.
      */
-    public DriversController(DriverEntityRepository driverEntityRepository)
+    public DriversController(
+        DriverEntityRepository driverEntityRepository,
+        RunningDriverManager runningDriverManager)
     {
         this.driverEntityRepository = driverEntityRepository;
+        this.runningDriverManager = runningDriverManager;
     }
 
     /**
-     * Получаем список драйверов.
+     * Получает список конфигураций экземпляров драйверов.
      *
      * @param pageable
-     *        Параметры страницы, которую нужно отобразить.
-     * @return список драйверов.
+     *        Параметры получаемой страницы.
+     * @return список конфигураций экземпляров драйверов.
      *
      */
     @GetMapping("list")
@@ -50,14 +62,28 @@ public class DriversController
         return driverEntityRepository.findAll(pageable);
     }
 
+    /**
+     * Находит конфигурацию экземпляра драйвера.
+     *
+     * @param id
+     *        id конфигурации экземпляра драйвера.
+     * @return контейнер содержащий конфигурацию экземпляра драйвера.
+     */
     @GetMapping("/list/{id}")
     public Optional<DriverEntity> findById(@PathVariable Long id) {
         return driverEntityRepository.findById(id);
     }
 
+    /**
+     * Запускает/останавливает экземпляр драйвера.
+     *
+     * @param id
+     *        id конфигурации экземпляра драйвера.
+     * @return статус по окончанию работы драйвера.
+     */
     @GetMapping("runStopDriver/{id}")
     public DriverStatus runStopDriver(@PathVariable Long id)
     {
-
+        return runningDriverManager.runStopDriver(id);
     }
 }

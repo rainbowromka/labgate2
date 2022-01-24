@@ -8,41 +8,58 @@ import ru.idc.labgatej.manager.model.DriverParameter;
 import ru.idc.labgatej.manager.model.DriverStatus;
 import ru.idc.labgatej.manager.model.DriverType;
 import ru.idc.labgatej.manager.services.DriverEntityService;
-import ru.idc.labgatej.manager.services.DriverParameterService;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
+/**
+ * Класс, загружающий в базу данных предварительные данные.
+ */
 @Component
 public class DataBaseLoader
 implements CommandLineRunner
 {
+    /**
+     * Отключаемая опция - выключает добавление тестовых данных.
+     */
     private static final boolean isAddValues = true;
 
+    /**
+     * Сервис доступа к конфигурации экземпляров драйверов.
+     */
     private final DriverEntityService driverEntityService;
-    private final DriverParameterService driverParameterService;
 
+    /**
+     * Создает класс, загружающий тестовые данные в базу данных.
+     *
+     * @param driverEntityService
+     *        сервис доступа к конфигурации экземпляров драйверов.
+     */
     @Autowired
     public DataBaseLoader(
-        DriverEntityService driverEntityService,
-        DriverParameterService driverParameterService)
+        DriverEntityService driverEntityService)
     {
         this.driverEntityService = driverEntityService;
-        this.driverParameterService = driverParameterService;
     }
 
+    /**
+     * Загружаем тестовые данные в базу.
+     *
+     * @param args
+     *        аргументы командной строки, во время запуска.
+     */
     @Override
     public void run(
         String... args)
-    throws Exception
     {
         if (!isAddValues) return;
 
         List<DriverEntity> driverEntities = new ArrayList<>();
         TreeMap<String, DriverParameter> parameters = new TreeMap<>();
-        parameters.put("result.host", makeParameter("result.host", "localhost"));
-        parameters.put("result.port", makeParameter("result.port", "2000"));
+        parameters.put("kdlprime.port.result", makeParameter("kdlprime.port.result", "2002"));
+//        parameters.put("result.port", makeParameter("result.port", "2000"));
+
 
         driverEntities.add(makeDriverEntity("KDLPrime3", "KDLPrime",
             DriverType.SOCKET,  DriverStatus.STOP, parameters));
@@ -64,7 +81,27 @@ implements CommandLineRunner
         driverEntityService.saveAll(driverEntities);
     }
 
-    public static DriverEntity makeDriverEntity(String name, String code, DriverType type, DriverStatus status, TreeMap<String, DriverParameter> parameters)
+    /**
+     * Создаем объект конфигурации экземпляра драйвера.
+     *
+     * @param name
+     *        имя драйвера.
+     * @param code
+     *        код драйвера.
+     * @param type
+     *        тип драйвера.
+     * @param status
+     *        статус драйвера.
+     * @param parameters
+     *        параметры конфигурации драйвера.
+     * @return объект конфигурации драйвера.
+     */
+    public static DriverEntity makeDriverEntity(
+        String name,
+        String code,
+        DriverType type,
+        DriverStatus status,
+        TreeMap<String, DriverParameter> parameters)
     {
         DriverEntity driverEntity;
         driverEntity = new DriverEntity();
@@ -81,7 +118,19 @@ implements CommandLineRunner
         return driverEntity;
     }
 
-    public static DriverParameter makeParameter(String name, String value) {
+    /**
+     * Создаем параметр для конфигурации экземпляра драйвера.
+     *
+     * @param name
+     *        имя параметра.
+     * @param value
+     *        значение параметра.
+     * @return параметр для конфигурации экземпляра драйвера.
+     */
+    public static DriverParameter makeParameter(
+        String name,
+        String value)
+    {
         DriverParameter parameter = new DriverParameter();
         parameter.setName(name);
         parameter.setValue(value);

@@ -50,12 +50,14 @@ public class RunningDriverManager
      *        сервис справочных данных Драйвера.
      * @param dbPoolService
      *        сервис доступа к пулу базы данных KRYPTON.
+     * @param processDriverService
+     *        сервис асинхронного запуска драйвера.
      */
     @Autowired
     public RunningDriverManager(
-        DriverEntityService driverEntityService,
-        DbPoolService dbPoolService,
-        ProcessDriverService processDriverService)
+            DriverEntityService driverEntityService,
+            DbPoolService dbPoolService,
+            ProcessDriverService processDriverService)
     {
         this.driverEntityService = driverEntityService;
         this.dbPoolService = dbPoolService;
@@ -93,7 +95,8 @@ public class RunningDriverManager
             if (optionalDriverEntity.isPresent()) {
                 DriverEntity driverEntity = optionalDriverEntity.get();
 
-                manager = new Manager(driverEntity, dbPoolService.getCpds());
+                manager = new Manager(driverEntity, dbPoolService.getCpds(),
+                    driverEntityService);
 
                 runningListDrivers.add(new RunningDriver(manager, driverEntity));
 

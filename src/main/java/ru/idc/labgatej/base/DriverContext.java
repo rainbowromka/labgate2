@@ -4,7 +4,6 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import java.net.Socket;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -19,12 +18,12 @@ public class DriverContext
      * Пул соединений с базой данных, он уже должен быть инициирован и настроен
      * для работы.
      */
-    ComboPooledDataSource connectionPool;
+    private ComboPooledDataSource connectionPool;
 
     /**
      * Конфигурация драйвера.
      */
-    IConfiguration config;
+    private IConfiguration config;
 
     /**
      * Признак того, что драйвер работает. Для его остановки достаточно
@@ -32,7 +31,12 @@ public class DriverContext
      * атомарной операции (например запись в базу данных результатов
      * исследований).
      */
-    AtomicBoolean running;
+    private AtomicBoolean running;
+
+    /**
+     * Сервис передачи данных клиенту.
+     */
+    private ISendClientMessages sendClientMessages;
 
     public DriverContext() {
     }

@@ -11,7 +11,6 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import {NavLink} from "react-router-dom";
 
 export const drawerWidth = 240;
-
 /**
  * Стили заголовка страницы.
  */

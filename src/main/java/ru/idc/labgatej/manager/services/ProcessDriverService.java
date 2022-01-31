@@ -22,9 +22,12 @@ public class ProcessDriverService
     public void runDriver(
         Manager manager)
     {
-        try {
+        try
+        {
             manager.runManager();
-        } catch (InterruptedException e) {
+        }
+        catch (InterruptedException e)
+        {
             e.printStackTrace();
         }
     }

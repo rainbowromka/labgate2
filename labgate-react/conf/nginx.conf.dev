@@ -1,0 +1,39 @@
+  server {
+    listen 80;
+
+    # Хост, добавленный как alias в /etc/hosts
+    server_name localhost;
+    #add_header Access-Control-Allow-Origin *;
+    #add_header Access-Control-Allow-Headers *;
+
+    # Правила для проксирования запросов на krypton
+#    location ~ /krypton/(?<section>.*) {
+#    proxy_set_header Host $host;
+#    proxy_set_header X-Real-IP $remote_addr;
+#    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    # rewrite ^/api/(.*)$ /$1 break;
+#    proxy_pass http://itnode8.dc-local:8080;  #  указать нужный хост для krypton
+#    }
+
+    # Правила для проксирования запросов в контейнер с клиентом.
+    # В качестве хоста можно указать имя сервиса из docker-compose.yml или имя контейнера.
+
+    location /labgate {
+      resolver 127.0.0.11 valid=60s;
+      set $upstream_labgate_react_dev 192.168.17.210;
+      proxy_pass http://$upstream_labgate_react_dev:3002;
+      
+      proxy_http_version 1.1;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection 'upgrade';
+      proxy_set_header Host $host;
+    }
+  
+    location ~ /api/(?<section>.*) {
+      proxy_set_header Host $host;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      set $upstream_labgate_server 192.168.17.210;
+      proxy_pass http://$upstream_labgate_server:8080;
+    }
+  }

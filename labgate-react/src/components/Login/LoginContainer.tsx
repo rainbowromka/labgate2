@@ -2,9 +2,10 @@ import react from "react";
 import Login from "./Login";
 import {Redirect} from "react-router-dom";
 import {observer} from "mobx-react";
-import {AuthData} from "../../def/client-types";
+import {AuthData, Principal} from "../../def/client-types";
 import {APP_STORE, IAppStoreProps} from "../../state";
 import {AuthApi} from "../../Api";
+import Cookies from "universal-cookie";
 
 /**
  * Контейнерная компонента формы авторизации.
@@ -38,7 +39,9 @@ class LoginContainer extends react.Component<IAppStoreProps>
     APP_STORE.setIsFetching(true);
     AuthApi.ApiSiginIn(username, password).then(response => {
       if (response && response.data) {
-        APP_STORE.setUserData(response.data, true);
+        console.log(response)
+        let principal = response.data as Principal;
+        APP_STORE.setUserData(principal, true);
       }
     }
     ).finally(() => {

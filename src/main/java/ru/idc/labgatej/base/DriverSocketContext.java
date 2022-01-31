@@ -24,7 +24,7 @@ extends DriverContext
     Socket socket;
 
     public DriverSocketContext(DriverContext driverContext, Socket socket) {
-        super(driverContext.getConnectionPool(), driverContext.getConfig(), driverContext.getRunning());
+        super(driverContext.getConnectionPool(), driverContext.getConfig(), driverContext.getRunning(), null);
         this.socket = socket;
     }
 }

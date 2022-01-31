@@ -2,7 +2,6 @@ import react from "react";
 import './App.css';
 import {drawerWidth} from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import Navbar from "./components/NavBar/Navbar";
 import {Route} from "react-router-dom";
 import Devices from "./components/Devices/Devices";
 import DriverContainer
@@ -14,7 +13,6 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginComponent from "./components/Login/LoginContainer";
 import DriversListContainer
   from "./components/DriversContent/DriversList/DriversListContainer";
-import {APP_STORE, AppStoreClass} from "./state";
 import NavbarContainer from "./components/NavBar/NavbarContainer";
 
 /**

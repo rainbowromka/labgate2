@@ -1,0 +1,5 @@
+FROM node:14.18.1-alpine as copy
+WORKDIR /app
+ENV PATH /node_modules/.bin:$PATH
+COPY package.json ./
+RUN yarn start

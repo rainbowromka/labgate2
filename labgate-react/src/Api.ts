@@ -2,16 +2,19 @@ import axios from "axios";
 import {AuthData} from "./def/client-types";
 import {APP_STORE} from "./state";
 
-const baseUrl = "http://localhost:8080";
-const servicesUrls = baseUrl + "/services";
-const apiDriversUrl = servicesUrls + "/drivers";
-const apiAuth = baseUrl + "/api/auth";
+axios.defaults.withCredentials = true;
+
+const baseUrl = "http://localhost:3002";
+const apiUrl = baseUrl + "/api";
+const apiDriversUrl = apiUrl + "/drivers";
+const apiAuth = apiUrl + "/auth";
 
 /**
  * Базовый экземпляр доступа к Rest API сервиса драйверов.
  */
 const driversApiInstance = axios.create({
     baseURL: apiDriversUrl,
+    withCredentials: true,
 })
 
 /**
@@ -19,6 +22,7 @@ const driversApiInstance = axios.create({
  */
 const authApiInstance = axios.create({
     baseURL: apiAuth,
+    withCredentials: true
 })
 
 /**

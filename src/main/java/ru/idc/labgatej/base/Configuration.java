@@ -44,4 +44,9 @@ implements IConfiguration
 	{
 		return params.getProperty("driver");
 	}
+
+	@Override
+	public Long getDriverId() {
+		return null;
+	}
 }

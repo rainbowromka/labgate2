@@ -6,9 +6,11 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.sonatype.aether.util.graph.PreorderNodeListGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -83,6 +85,12 @@ public class AuthController
         List<String> roles = userDetails.getAuthorities().stream()
             .map(item -> item.getAuthority())
             .collect(Collectors.toList());
+
+        Cookie cookie = new Cookie("Token", jwt);
+        cookie.setMaxAge(7 * 24 * 60 * 60);
+        cookie.setSecure(false);
+
+        response.addCookie(cookie);
 
         return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getId(),
             userDetails.getUsername(), userDetails.getEmail(), roles));

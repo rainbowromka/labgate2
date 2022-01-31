@@ -19,7 +19,7 @@ import java.util.Optional;
  * @author Roman Perminov
  */
 @RestController
-@RequestMapping("/services/drivers")
+@RequestMapping("/api/drivers")
 public class DriversController
 {
     /**

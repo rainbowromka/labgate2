@@ -7,6 +7,8 @@ import {
 import {AuthState, DriverItem, DriversState} from "../../../def/client-types";
 import {APP_STORE} from "../../../state";
 import {observer} from "mobx-react";
+import {registerEntryPoints} from "../../../entryPoints";
+import {IFrame} from "@stomp/stompjs";
 
 type MapStatePropsType = {
   drivers: DriversState
@@ -31,6 +33,11 @@ type AllPropsType = MapDispatchPropsType & MapStatePropsType;
 @observer
 class DriversListContainer extends react.Component<AllPropsType>
 {
+  constructor(props: AllPropsType) {
+    super(props);
+    this.onRunStopDriverEntryPoint = this.onRunStopDriverEntryPoint.bind(this);
+  }
+
   /**
    * Вызывается при инициализации компонента, загружает список драйверов.
    */
@@ -42,6 +49,10 @@ class DriversListContainer extends react.Component<AllPropsType>
     }).finally(() => {
       APP_STORE.setIsFetching(false);
     });
+
+    registerEntryPoints([
+      {route: "/driver", callback: this.onRunStopDriverEntryPoint}
+    ]);
   }
 
   /**
@@ -59,6 +70,10 @@ class DriversListContainer extends react.Component<AllPropsType>
     }).finally(() => {
       APP_STORE.setIsFetching(false);
     });
+  }
+
+  onRunStopDriverEntryPoint = (messages: IFrame) => {
+    console.log(messages.body);
   }
 
   onRunStopDriver = (id: number) => {

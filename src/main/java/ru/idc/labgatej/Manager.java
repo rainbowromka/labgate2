@@ -10,6 +10,7 @@ import ru.idc.labgatej.base.IConfiguration;
 import ru.idc.labgatej.base.Configuration;
 import ru.idc.labgatej.base.DBManager;
 import ru.idc.labgatej.base.IDriver;
+import ru.idc.labgatej.base.ISendClientMessages;
 import ru.idc.labgatej.drivers.DriverFactory;
 
 import java.beans.PropertyVetoException;
@@ -47,6 +48,11 @@ public class Manager {
 	private IDriver driver = null;
 
 	/**
+	 * Передача сообщений клиентскому приложению.
+	 */
+	private ISendClientMessages sendClientMessages;
+
+	/**
 	 * Точка входа в Java-приложение. Драйвер будет работать как обычное
 	 * приложение.
 	 *
@@ -66,7 +72,7 @@ public class Manager {
 			= new AppPooledDataSource(config);
 
 		log.trace("Инициализация пула подключения к БД...");
-		new Manager(config, appPooledDataSource.getCpds()).runManager();
+		new Manager(config, appPooledDataSource.getCpds(), null).runManager();
 
 	}
 
@@ -76,11 +82,19 @@ public class Manager {
 	 *        конфигурация экземпляра драйвера.
 	 * @param cpds
 	 *        пул доступа к базе данных.
+	 * @param sendClientMessages
+	 *        отправка сообщений клиентскому приложению.
 	 */
-	public Manager(IConfiguration config, ComboPooledDataSource cpds) {
+	public Manager(
+		IConfiguration config,
+		ComboPooledDataSource cpds,
+		ISendClientMessages sendClientMessages
+	)
+	{
 		this.config = config;
 		this.cpds = cpds;
 		running = new AtomicBoolean(true);
+		this.sendClientMessages = sendClientMessages;
 	}
 
 	/**
@@ -107,7 +121,7 @@ public class Manager {
 
 					driver = DriverFactory.getDriverByName(config.getDriverName());
 					if (driver != null) {
-						driver.init(new DriverContext(cpds, config, running));
+						driver.init(new DriverContext(cpds, config, running, sendClientMessages));
 						driver.loop();
 					} else {
 						log.error("Недопустимое имя драйвера: " + config.getParamValue("driver"));

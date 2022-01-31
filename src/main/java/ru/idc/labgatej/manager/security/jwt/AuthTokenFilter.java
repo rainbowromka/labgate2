@@ -1,9 +1,12 @@
 package ru.idc.labgatej.manager.security.jwt;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Optional;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,7 +21,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import ru.idc.labgatej.manager.security.services.UserDetailsServiceImpl;
-
 
 /**
  * Выполняет однократное выполнение каждого запроса к нашему API. Он
@@ -98,6 +100,16 @@ extends OncePerRequestFilter
         HttpServletRequest request)
     {
         String headerAuth = request.getHeader("Authorization");
+        if (!StringUtils.hasText(headerAuth) && request.getCookies() != null)
+        {
+            Optional<Cookie> cookie =
+                Arrays.stream(request.getCookies())
+                    .filter(c -> c.getName().equals("Token")).findFirst();
+            if (cookie.isPresent()) {
+                headerAuth = cookie.get().getValue();
+                return headerAuth;
+            }
+        }
 
         if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer"))
         {
@@ -111,8 +123,6 @@ extends OncePerRequestFilter
                 return "";
             }
         }
-
-//        request.getCookies()[1].getName();
 
         return null;
     }

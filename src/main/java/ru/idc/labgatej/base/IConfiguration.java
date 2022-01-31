@@ -21,4 +21,11 @@ public interface IConfiguration
      * @return имя драйвера.
      */
     String getDriverName();
+
+    /**
+     * Получает значение ID драйвера.
+     *
+     * @return ID драйвера.
+     */
+    Long getDriverId();
 }

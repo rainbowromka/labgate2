@@ -3,14 +3,18 @@ package ru.idc.labgatej.manager.preloaders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import ru.idc.labgatej.manager.controllers.AuthController;
 import ru.idc.labgatej.manager.model.DriverEntity;
 import ru.idc.labgatej.manager.model.DriverParameter;
 import ru.idc.labgatej.manager.model.DriverStatus;
 import ru.idc.labgatej.manager.model.DriverType;
+import ru.idc.labgatej.manager.payload.request.SignupRequest;
 import ru.idc.labgatej.manager.services.DriverEntityService;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.TreeMap;
 
 /**
@@ -31,16 +35,25 @@ implements CommandLineRunner
     private final DriverEntityService driverEntityService;
 
     /**
+     * Сервис авторизации пользователя.
+     */
+    private final AuthController authController;
+
+    /**
      * Создает класс, загружающий тестовые данные в базу данных.
      *
      * @param driverEntityService
      *        сервис доступа к конфигурации экземпляров драйверов.
+     * @param authController
+     *        сервис авторизации пользователя.
      */
     @Autowired
     public DataBaseLoader(
-        DriverEntityService driverEntityService)
+        DriverEntityService driverEntityService,
+        AuthController authController)
     {
         this.driverEntityService = driverEntityService;
+        this.authController = authController;
     }
 
     /**
@@ -79,6 +92,18 @@ implements CommandLineRunner
                 DriverType.SOCKET, DriverStatus.STOP, parameters));
 
         driverEntityService.saveAll(driverEntities);
+
+        SignupRequest signupRequest = new SignupRequest();
+        signupRequest.setUsername("admin");
+        signupRequest.setEmail("admin@admin.admin");
+        signupRequest.setPassword("123456");
+        Set<String> roles = new HashSet<>();
+        roles.add("mod");
+        roles.add("user");
+        roles.add("admin");
+        signupRequest.setRole(roles);
+
+        authController.registerUser(signupRequest);
     }
 
     /**

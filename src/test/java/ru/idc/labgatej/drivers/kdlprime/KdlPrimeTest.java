@@ -58,7 +58,7 @@ public class KdlPrimeTest
         // 1. Поднимаем сервер.
         KdlPrime server = new KdlPrime();
 //        server.init(cpds, config);
-        server.init(new DriverContext(null, config, new AtomicBoolean(true)));
+        server.init(new DriverContext(null, config, new AtomicBoolean(true), null));
         new Thread(() -> {
             try
             {

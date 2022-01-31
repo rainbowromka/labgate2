@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import ru.idc.labgatej.base.DriverContext;
 import ru.idc.labgatej.base.IConfiguration;
 import ru.idc.labgatej.base.IDriver;
+import ru.idc.labgatej.base.ISendClientMessages;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -42,19 +43,33 @@ public class KdlPrime implements IDriver
      */
     AtomicBoolean running;
 
+    /**
+     * Сервис отправки сообщений клиенту.
+     */
+    private ISendClientMessages sendClientMessages;
+
     @Override
     public void loop()
     throws IOException, InterruptedException, SQLException
     {
         serverSocket = new ServerSocket(port);
-        while (running.get())
+        if (sendClientMessages != null)
+            sendClientMessages.sendDriverIsRunning(config);
+        try
         {
-            log.info("Слушаем порт: ");
-            //TODO: надо в отдельном потоке сделать, как вариант, прерывание
-            // работы метода accept. Правда надо понять, насколько это надо.
-            new KDLPrimeClientHandler(serverSocket.accept(),
-                connectionPool, config
-            ).start();
+            while (running.get()) {
+                log.info("Слушаем порт: ");
+                //TODO: надо в отдельном потоке сделать, как вариант, прерывание
+                // работы метода accept. Правда надо понять, насколько это надо.
+                new KDLPrimeClientHandler(serverSocket.accept(),
+                        connectionPool, config
+                ).start();
+            }
+        }
+        finally
+        {
+            if (sendClientMessages != null)
+                sendClientMessages.sendDriverIsStopped(config);
         }
     }
 
@@ -67,6 +82,7 @@ public class KdlPrime implements IDriver
         this.port = Integer.parseInt(
             config.getParamValue("kdlprime.port.result"));
         this.running = driverContext.getRunning();
+        this.sendClientMessages = driverContext.getSendClientMessages();
     }
 
     @Override

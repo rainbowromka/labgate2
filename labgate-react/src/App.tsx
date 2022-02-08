@@ -1,4 +1,3 @@
-import react from "react";
 import './App.css';
 import {drawerWidth} from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -14,6 +13,8 @@ import LoginComponent from "./components/Login/LoginContainer";
 import DriversListContainer
   from "./components/DriversContent/DriversList/DriversListContainer";
 import NavbarContainer from "./components/NavBar/NavbarContainer";
+import {Provider} from "mobx-react";
+import {AppStoreClass} from "./state";
 
 /**
  * Основные стили главной формы.
@@ -62,27 +63,30 @@ const useStyles = makeStyles((theme) => ({
  */
 function App() {
   const classes = useStyles()
+  const store = new AppStoreClass();
 
   return (
     <>
-      <CssBaseline/>
-      <div className={classes.root}>
-        <HeaderContainer/>
-        <main
-          className={clsx(classes.main, {
-            [classes.mainShift]: false,
-          })}>
-          <div className={classes.drawerHeader} />
-          <div className={classes.content}>
-            <Route path='/drivers' component={DriversListContainer}/>
-            <Route path='/devices' component={Devices}/>
-            <Route path='/driver/:driverId' component={DriverContainer}/>
-            <Route path='/login' component={LoginComponent}/>
-          </div>
-        </main>
-        <NavbarContainer/>
-      </div>
-      <Footer/>
+      <Provider driversStore={store}>
+        <CssBaseline/>
+        <div className={classes.root}>
+          <HeaderContainer/>
+          <main
+              className={clsx(classes.main, {
+                [classes.mainShift]: false,
+              })}>
+            <div className={classes.drawerHeader} />
+            <div className={classes.content}>
+              <Route path='/drivers' component={DriversListContainer}/>
+              <Route path='/devices' component={Devices}/>
+              <Route path='/driver/:driverId' component={DriverContainer}/>
+              <Route path='/login' component={LoginComponent}/>
+            </div>
+          </main>
+          <NavbarContainer/>
+        </div>
+        <Footer/>
+      </Provider>
     </>
   );
 }

@@ -1,12 +1,9 @@
 package ru.idc.labgatej.manager.security.jwt;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Optional;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,7 +14,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
-import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import ru.idc.labgatej.manager.security.services.UserDetailsServiceImpl;
@@ -65,7 +61,7 @@ extends OncePerRequestFilter
     throws ServletException, IOException
     {
         try {
-            String jwt = parseJwt(request);
+            String jwt = jwtUtils.parseJwt(request);
             if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
                 String username = jwtUtils.getUserNameFromJwtToken(jwt);
 
@@ -87,43 +83,5 @@ extends OncePerRequestFilter
         }
 
         filterChain.doFilter(request, response);
-    }
-
-    /**
-     * Парсит запрос.
-     *
-     * @param request
-     *        запрос.
-     * @return заголовок Authorization.
-     */
-    private String parseJwt(
-        HttpServletRequest request)
-    {
-        String headerAuth = request.getHeader("Authorization");
-        if (!StringUtils.hasText(headerAuth) && request.getCookies() != null)
-        {
-            Optional<Cookie> cookie =
-                Arrays.stream(request.getCookies())
-                    .filter(c -> c.getName().equals("Token")).findFirst();
-            if (cookie.isPresent()) {
-                headerAuth = cookie.get().getValue();
-                return headerAuth;
-            }
-        }
-
-        if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer"))
-        {
-            if (headerAuth.length() > 7)
-            {
-                // Вообще можно по умолчанию забирать от начала до конца строки,
-                // если не будет работать, то тогда раскомментировать ниже.
-                //return headerAuth.substring(7, headerAuth.length());
-                return headerAuth.substring(7);
-            } else {
-                return "";
-            }
-        }
-
-        return null;
     }
 }

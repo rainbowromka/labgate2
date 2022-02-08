@@ -6,11 +6,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 import ru.idc.labgatej.base.IConfiguration;
 import ru.idc.labgatej.base.ISendClientMessages;
 import ru.idc.labgatej.manager.config.WebSocketConfiguration;
 import ru.idc.labgatej.manager.model.DriverEntity;
+import ru.idc.labgatej.base.DriverStatus;
 import ru.idc.labgatej.manager.repo.DriverEntityRepository;
 
 import java.util.List;
@@ -110,12 +110,14 @@ implements ISendClientMessages
     @Override
     public void sendDriverIsRunning(IConfiguration config)
     {
-        websocket.convertAndSend(WebSocketConfiguration.MESSAGE_PREFIX + "/runStopDriver", config);
+        config.setStatus(DriverStatus.WORK);
+        websocket.convertAndSend(WebSocketConfiguration.MESSAGE_PREFIX + "/onChangeStatus", config);
     }
 
     @Override
     public void sendDriverIsStopped(IConfiguration config)
     {
-        websocket.convertAndSend(WebSocketConfiguration.MESSAGE_PREFIX + "/runStopDriver", config);
+        config.setStatus(DriverStatus.STOP);
+        websocket.convertAndSend(WebSocketConfiguration.MESSAGE_PREFIX + "/onChangeStatus", config);
     }
 }

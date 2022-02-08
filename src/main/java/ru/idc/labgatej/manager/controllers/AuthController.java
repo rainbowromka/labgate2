@@ -1,17 +1,15 @@
 package ru.idc.labgatej.manager.controllers;
 
-import java.security.Principal;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
-import org.sonatype.aether.util.graph.PreorderNodeListGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -30,8 +28,8 @@ import ru.idc.labgatej.manager.model.Role;
 import ru.idc.labgatej.manager.model.User;
 import ru.idc.labgatej.manager.payload.request.LoginRequest;
 import ru.idc.labgatej.manager.payload.request.SignupRequest;
-import ru.idc.labgatej.manager.payload.response.JwtResponse;
 import ru.idc.labgatej.manager.payload.response.MessageResponse;
+import ru.idc.labgatej.manager.payload.response.UserInfoResponse;
 import ru.idc.labgatej.manager.repo.RoleRepository;
 import ru.idc.labgatej.manager.repo.UserRepository;
 import ru.idc.labgatej.manager.security.jwt.JwtUtils;
@@ -71,29 +69,30 @@ public class AuthController
      */
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(
-            @Valid @RequestBody LoginRequest loginRequest, HttpServletResponse response)
+        @Valid @RequestBody LoginRequest loginRequest)
     {
         Authentication authentication = authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(loginRequest.getUsername(),
                 loginRequest.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        String jwt = jwtUtils.generateJwtToken(authentication);
+        //String jwt = jwtUtils.generateJwtToken(authentication);
 
         UserDetailsImpl userDetails =
             (UserDetailsImpl) authentication.getPrincipal();
+        ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(userDetails);
+
         List<String> roles = userDetails.getAuthorities().stream()
             .map(item -> item.getAuthority())
             .collect(Collectors.toList());
 
-        Cookie cookie = new Cookie("Token", jwt);
-        cookie.setMaxAge(7 * 24 * 60 * 60);
-        cookie.setSecure(false);
-
-        response.addCookie(cookie);
-
-        return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getId(),
-            userDetails.getUsername(), userDetails.getEmail(), roles));
+        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE,
+            jwtCookie.toString()
+        ).body(new UserInfoResponse(userDetails.getId(),
+            userDetails.getUsername(),
+            userDetails.getEmail(),
+            roles
+        ));
     }
 
     /**
@@ -107,7 +106,7 @@ public class AuthController
     public ResponseEntity<?> registerUser(
         @Valid @RequestBody SignupRequest signUpRequest)
     {
-        if (userRepository.existsByUsername((signUpRequest.getUsername())))
+        if (userRepository.existsByUsername(signUpRequest.getUsername()))
         {
             return ResponseEntity
                 .badRequest()
@@ -146,13 +145,13 @@ public class AuthController
                 case "mod":
                     Role modRole = roleRepository.findByName(ERole.ROLE_MODERATOR)
                         .orElseThrow(() -> new RuntimeException(
-                            "Error: Role is not found"));
+                            "Error: Role is not found."));
                     roles.add(modRole);
                     break;
                 default:
                     Role userRole = roleRepository.findByName(ERole.ROLE_USER)
                         .orElseThrow(() -> new RuntimeException(
-                            "Error: Role is not found"));
+                            "Error: Role is not found."));
                     roles.add(userRole);
                 }
             });
@@ -167,13 +166,23 @@ public class AuthController
 
     /**
      * Получить информацию о пользователе.
-     * @param principal
+     *
      * @return
      */
     @GetMapping("/info")
-    public ResponseEntity<?> userInfo(
-        Principal principal)
+    public ResponseEntity<?> userInfo()
     {
+        Object principal = SecurityContextHolder.getContext()
+            .getAuthentication().getPrincipal();
         return ResponseEntity.ok().body(principal);
+    }
+
+    @PostMapping("/signout")
+    public ResponseEntity<?> logoutUser()
+    {
+        ResponseCookie cookie = jwtUtils.getCleanJwtCookie();
+        return ResponseEntity.ok()
+            .header(HttpHeaders.SET_COOKIE, cookie.toString())
+            .body(new MessageResponse("You've been signed out!"));
     }
 }

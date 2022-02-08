@@ -1,41 +1,54 @@
 import react from "react";
-import {Principal} from "../../def/client-types";
-import {observer} from "mobx-react";
-import {APP_STORE} from "../../state";
+import {inject, observer} from "mobx-react";
 import {AuthApi} from "../../Api";
 import Header from "./Header";
+import {AppStoreClass} from "../../state";
+import Cookies from 'universal-cookie';
+
+interface InjectedProps {
+    driversStore: AppStoreClass
+}
 
 /**
  * Контейнерная компонента заголовка страницы.
  */
+@inject('driversStore')
 @observer
-class HeaderContainer extends react.Component{
+class HeaderContainer extends react.Component {
+    get injected() {
+        return this.props as InjectedProps
+    }
 
     /**
      * Вызывается когда компонента была создана и первый раз пытается
      * отобразиться. Загружает данные об авторизированном пользователе.
      */
     componentDidMount() {
-        if (APP_STORE.auth.isAuthorized) {
-            APP_STORE.setIsFetching(true);
-            let principal: Principal = APP_STORE.auth.principal;
-
-            AuthApi.GetUserInfo(principal.token).then(response => {
-                if (response && response.data && response.data.principal) {
-                    let respPrincipal: any = response.data.principal
-                    APP_STORE.setUserData({
-                            token: respPrincipal.token,
-                            type: respPrincipal.type,
-                            id: respPrincipal.id,
-                            username: respPrincipal.username,
-                            email: respPrincipal.email,
-                            roles: respPrincipal.roles
-                        }, true
-                    );
-                }
-                APP_STORE.setIsFetching(false);
-            });
+        let cookies = new Cookies();
+        let token = cookies.get("Token");
+        const {driversStore} = this.injected;
+        if (token) {
+            console.log("Token: " + token)
+        } else {
+            console.log("Not Authorized");
         }
+        AuthApi.GetUserInfo().then(response => {
+            if (response && response.data)
+            {
+                let respPrincipal: any = response.data
+                driversStore.setUserData({
+                        // token: respPrincipal.token,
+                        // type: respPrincipal.type,
+                        id: respPrincipal.id,
+                        username: respPrincipal.username,
+                        email: respPrincipal.email,
+                        roles: respPrincipal.roles
+                    }, Boolean(token)
+                );
+            }
+        }).finally(() => {
+            driversStore.setIsFetching(false);
+        });
     }
 
   /**
@@ -43,9 +56,12 @@ class HeaderContainer extends react.Component{
    * @returns JSX элемент отображения заголовка.
    */
   render() {
-    return <Header
-        open={APP_STORE.openLeftPanel}
-        setOpen={APP_STORE.setOpenLeftPanel}/>
+      const {driversStore} = this.injected
+
+      return <Header
+          authState={driversStore.authState}
+          open={driversStore.openLeftPanel}
+          setOpen={driversStore.setOpenLeftPanel}/>
   }
 }
 

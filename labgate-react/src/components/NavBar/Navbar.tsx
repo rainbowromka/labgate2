@@ -1,6 +1,6 @@
 import react, {SyntheticEvent} from "react";
 import {NavLink} from "react-router-dom";
-import {drawerWidth, OpenPanelType} from "../Header/Header";
+import {drawerWidth} from "../Header/Header";
 import {ListItemText, makeStyles, useTheme} from "@material-ui/core";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
@@ -13,6 +13,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import Typography from "@material-ui/core/Typography";
 import {observer} from "mobx-react";
+import {OpenPanelType} from "../../def/client-types";
 
 const useStyles = makeStyles((theme) => ({
   drawer: {

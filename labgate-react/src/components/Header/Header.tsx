@@ -9,6 +9,8 @@ import MenuIcon from "@material-ui/icons/Menu";
 import {makeStyles} from "@material-ui/core";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import {NavLink} from "react-router-dom";
+import {observer} from "mobx-react";
+import {AuthState, OpenPanelType, Principal} from "../../def/client-types";
 
 export const drawerWidth = 240;
 /**
@@ -41,10 +43,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export type OpenPanelType = {
-  open: boolean
-  setOpen: (isOpen: boolean) => void
-}
+export type HeaderPanelProps = OpenPanelType & {authState: AuthState};
 
 /**
  * Функциональная компонента, отображения заголовка страницы.
@@ -53,9 +52,11 @@ export type OpenPanelType = {
  *        пропсы, передаваемые в компоненту.
  * @returns JSX элемент заголовка страницы.
  */
-const Header: FC<OpenPanelType> = (props: OpenPanelType) => {
+const Header: FC<HeaderPanelProps> = (props: HeaderPanelProps ) => {
   const classes = useStyles();
   const [open, setOpen]: [boolean, Function] = [props.open, props.setOpen];
+
+  let userName = props?.authState?.principal?.username ?? "";
 
   /**
    * Отображает навигационное меню.
@@ -74,6 +75,7 @@ const Header: FC<OpenPanelType> = (props: OpenPanelType) => {
       <Toolbar>
         <img className={classes.logo} src="content\idc_logo.png"/>
         <Typography variant="h6" noWrap className={classes.title}/>
+        <Typography variant="h6">{userName}</Typography>
         <ButtonGroup>
           <IconButton
             color="inherit"
@@ -97,4 +99,4 @@ const Header: FC<OpenPanelType> = (props: OpenPanelType) => {
   )
 }
 
-export default Header;
+export default observer(Header);

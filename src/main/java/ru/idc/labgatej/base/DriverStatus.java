@@ -1,4 +1,4 @@
-package ru.idc.labgatej.manager.model;
+package ru.idc.labgatej.base;
 
 /**
  * Статус драйвера. При запуске сервера, необходимо проверить, работает ли
@@ -12,6 +12,14 @@ public enum DriverStatus
      * Работает.
      */
     WORK,
+    /**
+     * Драйвер запускается.
+     */
+    STARTING,
+    /**
+     * Драйвер останавливается.
+     */
+    STOPPING,
     /**
      * Остановлен.
      */

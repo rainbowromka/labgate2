@@ -7,11 +7,13 @@ import ru.idc.labgatej.Manager;
 import ru.idc.labgatej.manager.common.DbPoolService;
 import ru.idc.labgatej.manager.common.RunningDriver;
 import ru.idc.labgatej.manager.model.DriverEntity;
-import ru.idc.labgatej.manager.model.DriverStatus;
+import ru.idc.labgatej.base.DriverStatus;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.TreeMap;
 
 /**
  * Менеджера списка работающих драйверов.
@@ -25,7 +27,7 @@ public class RunningDriverManager
     /**
      * Список запущенных драйверов.
      */
-    private final List<RunningDriver> runningListDrivers = new ArrayList<>();
+    private final Map<Long, RunningDriver> runningListDrivers = new TreeMap<>();
 
     /**
      * Запускаемый асинхронный процесс.
@@ -74,18 +76,14 @@ public class RunningDriverManager
     public DriverStatus runStopDriver(
         Long id)
     {
-        Optional<RunningDriver> driver = runningListDrivers.stream()
-            .filter(a -> a.getDriverEntity().getId().equals(id))
-            .findFirst();
+        RunningDriver driver = runningListDrivers.get(id);
         // Драйвер запущен, стопаем его.
-        if (driver.isPresent()) {
-            Manager runninDriver = driver.get().getDriverManager();
+        if (driver != null) {
+            Manager runninDriver = driver.getDriverManager();
+            driver.setStatus(DriverStatus.STOPPING);
             runninDriver.stop();
-            DriverEntity driverEntity = driver.get().getDriverEntity();
-            driverEntity.setStatus(DriverStatus.STOP);
-            driverEntityService.save(driverEntity);
-            runningListDrivers.remove(driver.get());
-            return DriverStatus.STOP;
+            runningListDrivers.remove(id);
+            return DriverStatus.STOPPING;
         // Драйвер не запущен, запускаем его.
         } else {
             Optional<DriverEntity> optionalDriverEntity
@@ -98,15 +96,36 @@ public class RunningDriverManager
                 manager = new Manager(driverEntity, dbPoolService.getCpds(),
                     driverEntityService);
 
-                runningListDrivers.add(new RunningDriver(manager, driverEntity));
+                runningListDrivers.put(driverEntity.getDriverId(),
+                    new RunningDriver(manager, driverEntity));
 
                 processDriverService.runDriver(manager);
 
-                driverEntity.setStatus(DriverStatus.WORK);
-                driverEntityService.save(driverEntity);
-                return DriverStatus.WORK;
+                driverEntity.setStatus(DriverStatus.STARTING);
+//                driverEntityService.save(driverEntity);
+                return DriverStatus.STARTING;
             }
             else return DriverStatus.STOP;
+        }
+    }
+
+    /**
+     * Возвращает статус драйвера. Находит по
+     * @param driverEntity
+     * @return
+     */
+    public DriverStatus getDriverStatus(DriverEntity driverEntity)
+    {
+        RunningDriver runningDriver =
+            runningListDrivers.get(driverEntity.getDriverId());
+
+        if (runningDriver != null)
+        {
+            return runningDriver.getStatus();
+        }
+        else
+        {
+            return DriverStatus.STOP;
         }
     }
 }

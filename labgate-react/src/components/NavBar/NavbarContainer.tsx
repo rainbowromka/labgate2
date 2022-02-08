@@ -1,22 +1,31 @@
 import react from "react";
-import {observer} from "mobx-react";
-import {APP_STORE} from "../../state";
+import {inject, observer} from "mobx-react";
 import Navbar from "./Navbar";
+import {AppStoreClass} from "../../state";
+
+interface InjectedProps {
+  driversStore: AppStoreClass
+}
 
 /**
  * Контейнерная компонента заголовка страницы.
  */
+@inject('driversStore')
 @observer
 class NavbarContainer extends react.Component{
+  get injected() {
+    return this.props as InjectedProps
+  }
 
   /**
    * Вовращает JSX элемент отображения заголовка.
    * @returns JSX элемент отображения заголовка.
    */
   render() {
+    const {driversStore} = this.injected;
     return <Navbar
-        open={APP_STORE.openLeftPanel}
-        setOpen={APP_STORE.setOpenLeftPanel}/>
+        open={driversStore.openLeftPanel}
+        setOpen={driversStore.setOpenLeftPanel}/>
   }
 }
 

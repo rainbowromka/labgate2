@@ -1,7 +1,5 @@
 package ru.idc.labgatej.manager.repo;
 
-import com.google.common.collect.ImmutableList;
-import org.apache.commons.collections.list.TreeList;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +12,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.junit4.SpringRunner;
 import ru.idc.labgatej.manager.model.DriverEntity;
 import ru.idc.labgatej.manager.model.DriverParameter;
-import ru.idc.labgatej.manager.model.DriverStatus;
+import ru.idc.labgatej.base.DriverStatus;
 import ru.idc.labgatej.manager.model.DriverType;
 
-import java.util.List;
 import java.util.TreeMap;
 
 import static org.assertj.core.api.Assertions.*;

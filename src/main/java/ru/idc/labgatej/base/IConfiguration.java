@@ -28,4 +28,12 @@ public interface IConfiguration
      * @return ID драйвера.
      */
     Long getDriverId();
+
+    /**
+     * Устанавливает статус драйвера.
+     * @param status
+     *        статус драйвера.
+     */
+    void setStatus(
+        DriverStatus status);
 }

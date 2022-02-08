@@ -109,6 +109,8 @@ public class Manager {
 	{
 		log.trace("Запуск приложения");
 
+		DriverContext driverContext = new DriverContext(cpds, config, running, sendClientMessages);
+
 		while (running.get()) {
 			log.trace("Чтение конфигурации");
 			try {
@@ -121,7 +123,7 @@ public class Manager {
 
 					driver = DriverFactory.getDriverByName(config.getDriverName());
 					if (driver != null) {
-						driver.init(new DriverContext(cpds, config, running, sendClientMessages));
+						driver.init(driverContext);
 						driver.loop();
 					} else {
 						log.error("Недопустимое имя драйвера: " + config.getParamValue("driver"));
@@ -142,6 +144,7 @@ public class Manager {
 				Thread.sleep(60000);
 			}
 		}
+		driverContext.getSendClientMessages().sendDriverIsStopped(config);
 	}
 
 	/**

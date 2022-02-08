@@ -1,6 +1,5 @@
 import axios from "axios";
 import {AuthData} from "./def/client-types";
-import {APP_STORE} from "./state";
 
 axios.defaults.withCredentials = true;
 
@@ -37,9 +36,9 @@ export const DriversApi = {
     getDriversById(driverId: any) {
         return driversApiInstance.get("/list/" + driverId,
             {
-                headers: {
-                    'Authorization': `${APP_STORE.auth.principal.type} ${APP_STORE.auth.principal.token}`,
-                },
+                // headers: {
+                //     'Authorization': `${APP_STORE.auth.principal.type} ${APP_STORE.auth.principal.token}`,
+                // },
             })
     },
 
@@ -49,12 +48,9 @@ export const DriversApi = {
      * @param pageNumber
      *        номер страницы в списке.
      */
-    getDriversListByPageNumber(pageNumber: number) {
-        return driversApiInstance.get(`/list?page=${pageNumber}&size=${APP_STORE.drivers.pageSize}`,
+    getDriversListByPageNumber(pageNumber: number, pageSize: number) {
+        return driversApiInstance.get(`/list?page=${pageNumber}&size=${pageSize}`,
             {
-                headers: {
-                    'Authorization': `${APP_STORE.auth.principal.type} ${APP_STORE.auth.principal.token}`,
-                },
             }
         )
     },
@@ -67,9 +63,9 @@ export const DriversApi = {
     runStopDriver(id: number) {
         return driversApiInstance.get('/runStopDriver/' + id,
             {
-                headers: {
-                    'Authorization': `${APP_STORE.auth.principal.type} ${APP_STORE.auth.principal.token}`
-                }
+                // headers: {
+                //     'Authorization': `${APP_STORE.auth.principal.type} ${APP_STORE.auth.principal.token}`
+                // }
             }
         )
     }
@@ -85,15 +81,10 @@ export const AuthApi = {
      * @param token
      *        токен пользователя.
      */
-    GetUserInfo(token: string | null) {
-        return axios.get(apiAuth + "/info",
-            {
-                headers: {
-                    Authorization: "Bearer " + token
-                }
-            }
-        )
+    GetUserInfo() {
+        return authApiInstance.get("/info",{})
     },
+
     /**
      * Авторизоваться в системе.
      *
@@ -104,10 +95,7 @@ export const AuthApi = {
      */
     ApiSiginIn(username: string, password: string) {
         return authApiInstance.post("/signin",
-            {username: username, password: password},
-            {
-                // withCredentials: true
-            }
+            {username: username, password: password},{}
         )
     },
     /**

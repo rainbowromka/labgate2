@@ -4,23 +4,36 @@ import Preloader from "../../Commons/Preloader/Preloader";
 import {withRouter} from "react-router-dom";
 import {DriverItem} from "../../../def/client-types";
 import {RouteComponentProps} from "react-router/ts4.0";
-import {observer} from 'mobx-react';
+import {inject, observer} from 'mobx-react';
 import {DriversApi} from "../../../Api";
-import {APP_STORE} from "../../../state";
+import {AppStoreClass} from "../../../state";
 
 type AllPropsType = RouteComponentProps<any>
+
+interface InjectedProps extends AllPropsType{
+  driversStore: AppStoreClass
+}
+
+
 
 /**
  * Контейнерная компонента драйвера.
  */
+@inject('driversStore')
 @observer
 class DriverContainer extends react.Component<AllPropsType>
 {
+  get injected() {
+    return this.props as InjectedProps
+  }
+
   /**
    * Вызывается при инициализации компонента, загружает информацию о драйвере.
    */
   componentDidMount() {
-    APP_STORE.setIsFetching(true);
+    const {driversStore} = this.injected;
+
+    driversStore.setIsFetching(true);
     let driverId = this.props.match.params.driverId;
     DriversApi.getDriversById(driverId).then(response => {
       let item = response.data;
@@ -37,9 +50,9 @@ class DriverContainer extends react.Component<AllPropsType>
       for (let key in item.parameters) {
         parameters.push(item.parameters[key]);
       }
-      APP_STORE.setDriver(newItem)
+      driversStore.setDriverItem(newItem)
     }).finally(() => {
-      APP_STORE.setIsFetching(false)
+      driversStore.setIsFetching(false)
     });
   }
 
@@ -48,10 +61,12 @@ class DriverContainer extends react.Component<AllPropsType>
    * @returns JSX элемент драйвера.
    */
   render() {
+    const {driversStore} = this.injected;
+
     return (
-        APP_STORE.isFetching
+        driversStore.isFetching
         ? <Preloader/>
-        : <Driver driver={APP_STORE.driver}/>
+        : <Driver driver={driversStore.driver}/>
     );
   }
 }

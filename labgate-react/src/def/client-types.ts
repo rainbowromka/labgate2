@@ -9,11 +9,21 @@ export const DRIVER_STATUS_WORK = "WORK";
 export const DRIVER_STATUS_STOP = "STOP";
 
 /**
+ * Константа - статус, драйвер запускается.
+ */
+export const DRIVER_STATUS_STARTING = "STARTING";
+
+/**
+ * Константа - статус, драйвер останавливается.
+ */
+export const DRIVER_STATUS_STOPPING = "STOPPING";
+
+/**
  * Прнципал - информация о пользователе.
  */
 export type Principal = {
-    token: string | null,
-    type: string | null,
+    // token: string | null,
+    // type: string | null,
     id: number | null,
     username: string | null,
     email: string | null,
@@ -25,7 +35,7 @@ export type Principal = {
  */
 export type AuthState = {
     principal: Principal,
-    isAuthorized: boolean | null,
+    isAuthorized: boolean,
 }
 
 /**
@@ -80,3 +90,7 @@ export type AuthData = {
     signInDisabled: boolean,
 }
 
+export type OpenPanelType = {
+    open: boolean
+    setOpen: (isOpen: boolean) => void
+}

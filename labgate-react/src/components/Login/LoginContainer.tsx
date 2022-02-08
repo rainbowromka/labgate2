@@ -1,18 +1,27 @@
 import react from "react";
 import Login from "./Login";
 import {Redirect} from "react-router-dom";
-import {observer} from "mobx-react";
+import {inject, observer} from "mobx-react";
 import {AuthData, Principal} from "../../def/client-types";
-import {APP_STORE, IAppStoreProps} from "../../state";
 import {AuthApi} from "../../Api";
 import Cookies from "universal-cookie";
+import {AppStoreClass} from "../../state";
+
+interface InjectedProps {
+  driversStore: AppStoreClass
+}
 
 /**
  * Контейнерная компонента формы авторизации.
  */
+@inject('driversStore')
 @observer
-class LoginContainer extends react.Component<IAppStoreProps>
+class LoginContainer extends react.Component
 {
+  get injected() {
+    return this.props as InjectedProps
+  }
+
   /**
    * Конутруктор объекта, подготавливем основные методы и объекты контейнерной
    * компоненты.
@@ -26,6 +35,25 @@ class LoginContainer extends react.Component<IAppStoreProps>
     this.signUp = this.signUp.bind(this);
   }
 
+  // componentDidMount()
+  // {
+  //   APP_STORE.setIsFetching(false);
+  //   AuthApi.GetUserInfo().then( response => {
+  //     if (response && response.data && response.data.principal) {
+  //       let respPrincipal: any = response.data.principal
+  //       APP_STORE.setUserData({
+  //             id: respPrincipal.id,
+  //             username: respPrincipal.username,
+  //             email: respPrincipal.email,
+  //             roles: respPrincipal.roles
+  //           }, true
+  //       );
+  //     }
+  //   }).finally(() => {
+  //     APP_STORE.setIsFetching(false);
+  //   })
+  // }
+
   /**
    * Авторизация пользователя на сервере путем отправки REST-запроса.
    *
@@ -36,16 +64,17 @@ class LoginContainer extends react.Component<IAppStoreProps>
    */
   signIn(username: string, password: string)
   {
-    APP_STORE.setIsFetching(true);
+    const {driversStore} = this.injected;
+    driversStore.setIsFetching(true);
     AuthApi.ApiSiginIn(username, password).then(response => {
       if (response && response.data) {
         console.log(response)
         let principal = response.data as Principal;
-        APP_STORE.setUserData(principal, true);
+        driversStore.setUserData(principal, true);
       }
     }
     ).finally(() => {
-      APP_STORE.setIsFetching(false)
+      driversStore.setIsFetching(false)
     });
   }
 
@@ -59,14 +88,15 @@ class LoginContainer extends react.Component<IAppStoreProps>
    */
   signUp(authData: AuthData, callback: () => void)
   {
-    APP_STORE.setIsFetching(true);
+    const {driversStore} = this.injected;
+    driversStore.setIsFetching(true);
     AuthApi.ApiSignUp(authData).then(response => {
       if (response && response.data && callback) {
         callback();
         // this.props.setUserData(response.data, true)
       }
     }).finally(() => {
-      APP_STORE.setIsFetching(false);
+      driversStore.setIsFetching(false);
     })
   }
 
@@ -77,15 +107,15 @@ class LoginContainer extends react.Component<IAppStoreProps>
    * @returns JSX элемент формы авторизации/регистрации пользователя.
    */
   render() {
-    return APP_STORE.auth.isAuthorized
+    const {driversStore} = this.injected;
+    return driversStore.authState.isAuthorized
       ? <Redirect to="/drivers"/>
       : <Login
-            auth={APP_STORE.auth}
-            isFetching={APP_STORE.isFetching}
+            authState={driversStore.authState}
+            isFetching={driversStore.isFetching}
             signIn={this.signIn}
             signUp={this.signUp}/>
   }
-
 }
 
 export default LoginContainer;

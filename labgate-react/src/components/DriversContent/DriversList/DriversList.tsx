@@ -9,7 +9,9 @@ import {observer} from "mobx-react";
 type Props = {
     drivers: DriversState
     onSetCurrentPage: (page: number) => void
-    runStopDriver: (id: number) => void
+    runDriver: (id: number) => void
+    stopDriver: (id: number) => void
+    refreshDriver: (id: number) => void
 }
 
 let DriversList: FC<Props> = (props) => {
@@ -20,7 +22,10 @@ let DriversList: FC<Props> = (props) => {
       item => <Driver
         key={item.id}
         driver={item}
-        runStopDriver={props.runStopDriver}/>
+        runDriver={props.runDriver}
+        stopDriver={props.stopDriver}
+        refreshDriver={props.refreshDriver}
+      />
     );
 
     let pagesCount = Math.ceil(driversState.totalElements /

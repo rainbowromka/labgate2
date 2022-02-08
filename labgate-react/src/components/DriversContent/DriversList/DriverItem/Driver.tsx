@@ -11,8 +11,15 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import PauseIcon from '@material-ui/icons/Pause';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import ShareIcon from '@material-ui/icons/Share';
-import {DRIVER_STATUS_WORK, DriverItem} from "../../../../def/client-types";
+import {
+  DRIVER_STATUS_STARTING, DRIVER_STATUS_STOP, DRIVER_STATUS_STOPPING,
+  DRIVER_STATUS_WORK,
+  DriverItem
+} from "../../../../def/client-types";
 import {observer} from "mobx-react";
+import {CircularProgress} from "@mui/material";
+import RefreshIcon from '@mui/icons-material/Refresh';
+import StopIcon from '@mui/icons-material/Stop';
 
 /**
  * Стили формы авторизации.
@@ -39,7 +46,9 @@ const useStyles = makeStyles((theme) => ({
  */
 type Props = {
   driver: DriverItem
-  runStopDriver: (id: number) => void
+  runDriver: (id: number) => void
+  stopDriver: (id: number) => void
+  refreshDriver: (id: number) => void
 }
 
 /**
@@ -49,15 +58,64 @@ type Props = {
  */
 const Driver: FC<Props>  = (props) => {
   const classes = useStyles();
-  let driver = props.driver;
+  let driver: DriverItem = props.driver;
 
   let onRunStopDriver = () => {
-    props.runStopDriver(driver.id)
+    switch (driver.status) {
+      case DRIVER_STATUS_WORK:
+        props.stopDriver(driver.id)
+        break
+      case DRIVER_STATUS_STOP:
+        props.runDriver(driver.id)
+        break
+      default:
+        break
+    }
   }
 
-  let isWork = driver.status === DRIVER_STATUS_WORK
-  let bc = isWork ? "#b5d5a7" : "#e89898";
-  let bgc = isWork ? "#30af3c" : "#ce2a27";
+  let runStopDriverButton: JSX.Element = <></>;
+  switch (driver.status) {
+    case DRIVER_STATUS_WORK:
+      runStopDriverButton = <PauseIcon/>;
+      break
+    case DRIVER_STATUS_STOP:
+      runStopDriverButton = <PlayArrowIcon/>;
+      break
+    case DRIVER_STATUS_STARTING:
+    case DRIVER_STATUS_STOPPING:
+    default:
+      runStopDriverButton = <CircularProgress
+          size={20}
+          sx={{color: (theme) => ("#000000")}}/>
+  }
+
+  let bc: string;
+  let bgc: string;
+
+  let driverStatusText: string;
+  switch (driver.status){
+    case DRIVER_STATUS_WORK:
+      driverStatusText = "работает"
+      bc = "#b5d5a7"
+      bgc = "#30af3c"
+      break
+    case DRIVER_STATUS_STARTING:
+    case DRIVER_STATUS_STOPPING:
+      driverStatusText = "запускается"
+      bc = "#cbb089"
+      bgc = "#c7821e"
+      break
+    case DRIVER_STATUS_STOP:
+      driverStatusText = "остановлен"
+      bc = "#e89898";
+      bgc = "#ce2a27";
+      break
+    default:
+      driverStatusText = "-"
+      bc = "#e89898";
+      bgc = "#ce2a27";
+  }
+
 
   return (
     <Grid item xs={12} lg={2} md={3} sm={6}>
@@ -86,7 +144,10 @@ const Driver: FC<Props>  = (props) => {
         </div>
         <div>
           <span>Статус:</span>
-          <span>{driver.status===DRIVER_STATUS_WORK ? "работает" : "остановлен"}</span>
+          <span>{driverStatusText}</span>
+          <IconButton onClick={() => {props.refreshDriver(driver.id)}}>
+            <RefreshIcon />
+          </IconButton>
         </div>
         <ButtonGroup>
           <IconButton className={classes.blackButton} component={NavLink} to={"/driver/" + driver.id}><CreateIcon/></IconButton>
@@ -95,8 +156,9 @@ const Driver: FC<Props>  = (props) => {
             className={classes.blackButton}
             onClick={onRunStopDriver}
           >
-            {driver.status===DRIVER_STATUS_WORK ? <PauseIcon/> : <PlayArrowIcon/>}
+            {runStopDriverButton}
           </IconButton>
+          <IconButton className={classes.blackButton}><StopIcon/></IconButton>
         </ButtonGroup>
       </Box>
     </Grid>

@@ -49,4 +49,10 @@ implements IConfiguration
 	public Long getDriverId() {
 		return null;
 	}
+
+	@Override
+	public void setStatus(
+		DriverStatus status)
+	{
+	}
 }

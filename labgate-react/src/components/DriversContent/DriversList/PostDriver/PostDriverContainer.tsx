@@ -1,25 +1,33 @@
 import react from "react";
 import PostDriver from "./PostDriver";
-import {observer} from "mobx-react";
-import {APP_STORE} from "../../../../state";
+import {inject, observer} from "mobx-react";
+import {AppStoreClass} from "../../../../state";
 
+interface InjectedProps {
+    driversStore: AppStoreClass
+}
+
+@inject("driversStore")
 @observer
 class PostDriverContainer extends react.Component
 {
+    get injected() {
+        return this.props as InjectedProps
+    }
 
     componentDidMount()
     {
     }
 
-
     render() {
+        const {driversStore} = this.injected;
         return (
             <PostDriver
-                drivers={APP_STORE.drivers}
-                addDriver={APP_STORE.addDriver}
-                setDriverName={APP_STORE.setDriverName}
-                setDriverCode={APP_STORE.setDriverCode}
-                setDriverType={APP_STORE.setDriverType}
+                drivers={driversStore.drivers}
+                addDriver={driversStore.addDriver}
+                setDriverName={driversStore.setDriverName}
+                setDriverCode={driversStore.setDriverCode}
+                setDriverType={driversStore.setDriverType}
             />
         );
     }

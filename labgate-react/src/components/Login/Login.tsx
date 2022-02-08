@@ -20,9 +20,8 @@ import {observer} from "mobx-react";
 import {
   AUTH_MODE_LOGIN,
   AUTH_MODE_SIGNUP,
-  AuthData, AuthState
+  AuthData, AuthState, Principal
 } from "../../def/client-types";
-import {AppStoreClass} from "../../state";
 
 /**
  * Стили формы авторизации.
@@ -37,7 +36,7 @@ const useStyles = makeStyles((theme)=>({
 }));
 
 type Props = {
-  auth: AuthState
+  authState: AuthState
   isFetching: boolean
   signIn: (username: string, password: string) => void
   signUp: (authData: AuthData, callback: () => void) => void

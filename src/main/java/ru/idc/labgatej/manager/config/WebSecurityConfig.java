@@ -7,6 +7,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -14,9 +15,18 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.web.util.matcher.NegatedRequestMatcher;
+import org.springframework.security.web.util.matcher.OrRequestMatcher;
+import org.springframework.security.web.util.matcher.RequestMatcher;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import ru.idc.labgatej.manager.security.jwt.AuthEntryPointJwt;
 import ru.idc.labgatej.manager.security.jwt.AuthTokenFilter;
 import ru.idc.labgatej.manager.security.services.UserDetailsServiceImpl;
+
+import java.util.Collections;
 
 /**
  * Реализация безопасности. Предоставляет конфигурации HttpSecurity для
@@ -32,6 +42,9 @@ import ru.idc.labgatej.manager.security.services.UserDetailsServiceImpl;
 )
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 {
+//    private static final RequestMatcher PUBLIC_URLS = new OrRequestMatcher(
+//        new AntPathRequestMatcher("/api/driverentrypoint/*"));
+
     @Autowired
     UserDetailsServiceImpl userDetailsService;
 
@@ -109,8 +122,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and().authorizeRequests().antMatchers("/api/auth/**").permitAll()
             .antMatchers("/api/test/**").permitAll()
-            .antMatchers("/api/driverentrypoint").permitAll()
-            .antMatchers("/api/driverentrypoint/**").permitAll()
+//            .antMatchers("/api/driverentrypoint").permitAll()
+//            .antMatchers("/api/driverentrypoint/*").permitAll()
             .anyRequest().authenticated();
 
         http.addFilterBefore(authenticationJwtTokenFilter(),

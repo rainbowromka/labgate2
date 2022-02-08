@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.idc.labgatej.manager.model.DriverEntity;
-import ru.idc.labgatej.manager.model.DriverStatus;
+import ru.idc.labgatej.base.DriverStatus;
 import ru.idc.labgatej.manager.repo.DriverEntityRepository;
 import ru.idc.labgatej.manager.services.RunningDriverManager;
 
@@ -59,7 +59,12 @@ public class DriversController
     @GetMapping("list")
     public Page<DriverEntity> list(Pageable pageable)
     {
-        return driverEntityRepository.findAll(pageable);
+        Page<DriverEntity> driversList = driverEntityRepository.findAll(pageable);
+        driversList.forEach(driverEntity -> {
+            driverEntity.setStatus(
+                runningDriverManager.getDriverStatus(driverEntity));
+        });
+        return driversList;
     }
 
     /**
@@ -70,8 +75,17 @@ public class DriversController
      * @return контейнер содержащий конфигурацию экземпляра драйвера.
      */
     @GetMapping("/list/{id}")
-    public Optional<DriverEntity> findById(@PathVariable Long id) {
-        return driverEntityRepository.findById(id);
+    public Optional<DriverEntity> findById(@PathVariable Long id)
+    {
+        Optional<DriverEntity> driverEntity = driverEntityRepository.findById(id);
+
+        if (driverEntity.isPresent()) {
+            driverEntity.get().setStatus(
+                runningDriverManager.getDriverStatus(driverEntity.get()));
+
+        }
+
+        return driverEntity;
     }
 
     /**

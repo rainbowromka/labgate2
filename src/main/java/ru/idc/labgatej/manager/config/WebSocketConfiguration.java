@@ -4,6 +4,8 @@ import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
+import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
+import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
 /**
@@ -13,7 +15,7 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 @Component
 @EnableWebSocketMessageBroker
 public class WebSocketConfiguration
-implements WebSocketMessageBrokerConfigurer
+implements WebSocketMessageBrokerConfigurer, WebSocketConfigurer
 {
     /**
      * Префикс, который добавляется к маршруту каждого сообщения.
@@ -33,8 +35,10 @@ implements WebSocketMessageBrokerConfigurer
         StompEndpointRegistry registry)
     {
         registry.addEndpoint("/driverentrypoint")
-//            .setAllowedOriginPatterns("*")
+//            .setAllowedOrigins("*")
             .withSockJS();
+//            .setWebSocketEnabled(false)
+//            .setSessionCookieNeeded(false);
     }
 
     /**
@@ -50,5 +54,12 @@ implements WebSocketMessageBrokerConfigurer
     {
         registry.enableSimpleBroker(MESSAGE_PREFIX);
         registry.setApplicationDestinationPrefixes("/app");
+    }
+
+    @Override
+    public void registerWebSocketHandlers(
+        WebSocketHandlerRegistry webSocketHandlerRegistry)
+    {
+
     }
 }

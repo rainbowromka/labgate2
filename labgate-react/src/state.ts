@@ -1,4 +1,8 @@
-import {DRIVER_STATUS_STOP, DRIVER_STATUS_WORK} from "./def/client-types";
+import {
+    DRIVER_STATUS_STARTING,
+    DRIVER_STATUS_STOP,
+    DRIVER_STATUS_WORK
+} from "./def/client-types";
 import {action, makeObservable, observable} from "mobx";
 import {
     AuthState,
@@ -25,17 +29,16 @@ export class AppStoreClass {
     };
 
     @observable
-    auth: AuthState = {
+    authState: AuthState = {
         principal: {
-            token: "",
-            type: "Bearer",
             id: null,
             username: "",
             email: "",
             roles: [],
-        } as Principal,
+        },
         isAuthorized: false,
     }
+
 
     @observable
     drivers: DriversState = {
@@ -55,28 +58,33 @@ export class AppStoreClass {
 
     constructor() {
         makeObservable(this);
-        this.runStopDriver = this.runStopDriver.bind(this);
+        this.setStatus = this.setStatus.bind(this);
         this.setOpenLeftPanel = this.setOpenLeftPanel.bind(this);
     }
 
-    setDriver(
+    @action
+    setDriverItem(
         driver: DriverItem)
     {
         this.driver = driver;
     }
 
+    @action
     setIsFetching(
         isFetching: boolean)
     {
         this.isFetching = isFetching;
     }
 
+    @action
     setUserData(
         principal: Principal,
         authorized: boolean)
     {
-        this.auth.principal = principal;
-        this.auth.isAuthorized = authorized;
+        this.authState = {
+            principal: principal,
+            isAuthorized: authorized
+        }
     }
 
     @action
@@ -101,19 +109,22 @@ export class AppStoreClass {
         this.drivers.name = name;
     }
 
+    @action
     setDriverCode(
         code: string)
     {
         this.drivers.code = code;
     }
 
+    @action
     setDriverType(
         type: string)
     {
         this.drivers.type = type;
     }
 
-    setDrivers(
+    @action
+    setDriversList(
         list: DriverItem[],
         page: number,
         pageSize: number,
@@ -133,21 +144,38 @@ export class AppStoreClass {
         this.drivers.page = page;
     }
 
-    runStopDriver(
-        id: number, driverStatus: string)
+    @action
+    setStatus(
+        id: number,
+        status: string)
     {
         this.drivers.list.forEach((item) => {
             if (item.id === id) {
-                item.status = driverStatus;
+                item.status = status;
             }
         })
     }
 
+    @action
     setOpenLeftPanel(
         open: boolean)
     {
         this.openLeftPanel = open;
     }
+
+    @action
+    updateDriverItem(driverItem: DriverItem)
+    {
+        let list = this.drivers.list.map(value => {
+            if (value.id === driverItem.id) {
+                return driverItem
+            }
+            return value;
+        });
+        this.drivers = {...this.drivers, list: list};
+    }
 }
 
-export const APP_STORE = new AppStoreClass();
+// const APP_STORE = new AppStoreClass()
+//
+// export default APP_STORE;

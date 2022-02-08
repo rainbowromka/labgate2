@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import ru.idc.labgatej.manager.controllers.AuthController;
 import ru.idc.labgatej.manager.model.DriverEntity;
 import ru.idc.labgatej.manager.model.DriverParameter;
-import ru.idc.labgatej.manager.model.DriverStatus;
+import ru.idc.labgatej.base.DriverStatus;
 import ru.idc.labgatej.manager.model.DriverType;
 import ru.idc.labgatej.manager.payload.request.SignupRequest;
 import ru.idc.labgatej.manager.services.DriverEntityService;

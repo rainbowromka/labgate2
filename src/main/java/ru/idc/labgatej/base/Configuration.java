@@ -55,4 +55,14 @@ implements IConfiguration
 		DriverStatus status)
 	{
 	}
+
+	@Override
+	public String getDriverInstanceName()
+	{
+		// Т.к. данная имплементация конфигурации драйвера используется в
+		// Embedded приложениях то тут можно возвращать любое значение, главное
+		// что бы это не нарушало принцип логгирования. В иных случаях нужно
+		// вовзвращать экземпляр драйвера.
+		return "embedded";
+	}
 }

@@ -12,15 +12,21 @@ import {
 } from "../../../def/client-types";
 import {AppStoreClass} from "../../../state";
 import {inject, observer} from "mobx-react";
-import EP_CONNECTION from "../../../entryPoints";
 import {IFrame} from "@stomp/stompjs";
+import {registerEntryPoints} from "../../../entryPoints";
 
+/**
+ * Передаваемые пропсы в контейнер.
+ */
 type MapStatePropsType = {
   drivers: DriversState
   principal: Principal
-}
-
-type MapDispatchPropsType = {
+// }
+//
+// /**
+//  * Передаваемые пропсы в контейнер.
+//  */
+// type MapDispatchPropsType = {
   setIsFetching: (isFetching: boolean) => void
   setDrivers: (
       driverItems: DriverItem[],
@@ -32,7 +38,7 @@ type MapDispatchPropsType = {
   stopDriver: (id: number) => void
 }
 
-type AllPropsType = MapDispatchPropsType & MapStatePropsType;
+type AllPropsType = /**MapDispatchPropsType & **/MapStatePropsType;
 
 interface InjectedProps extends AllPropsType {
   driversStore: AppStoreClass
@@ -71,7 +77,7 @@ class DriversListContainer extends react.Component<AllPropsType>
       driversStore.setIsFetching(false);
     });
 
-    EP_CONNECTION.registerEntryPoints(
+    registerEntryPoints(
       [{
         route: "/driver/onChangeStatus",
         callback: this.onRunStopDriverEntryPoint
@@ -98,6 +104,14 @@ class DriversListContainer extends react.Component<AllPropsType>
     });
   }
 
+  /**
+   * Точка входа STOMP соединения, срабатывает, если на сервере произошло
+   * изменение статуса работы драйвера.
+   *
+   * @param messages
+   *        сообщение сервера с экземпляром запущенного драйвера с измененным
+   *        статусом.
+   */
   onRunStopDriverEntryPoint = (messages: IFrame) => {
     const {driversStore} = this.injected;
     console.log("onChangeStatusEntryPoint: ")
@@ -108,16 +122,16 @@ class DriversListContainer extends react.Component<AllPropsType>
     {
       driversStore.updateDriverItem(driverItem);
     }
-    // {
-    // "id":1,
-    // "name":"KDLPrime3",
-    // "code":"KDLPrime",
-    // "type":"SOCKET",
-    // "status":"STOP",
-    // "parameters":{
-    // "kdlprime.port.result":{"id":1,"name":"kdlprime.port.result","value":"2002"}},"driverName":"KDLPrime","driverId":1}
   }
 
+  /**
+   * Отправляем команду серверу об остановке или запуске экземпляра драйвера.
+   *
+   * @param id
+   *        id - драйвера.
+   * @param status
+   *        новый статус, в который необходимо перевести экземпляр драйвера.
+   */
   onRunStopDriver = (id: number, status: string) => {
     const {driversStore} = this.injected;
     driversStore.setStatus(id, status);
@@ -131,6 +145,12 @@ class DriversListContainer extends react.Component<AllPropsType>
     });
   }
 
+  /**
+   * Запрашиваем информацию об экземпляре драйвера на сервере.
+   *
+   * @param id
+   *        id - экземпляра драйвера.
+   */
   onRefreshDriver = (id: number) => {
     const {driversStore} = this.injected;
     DriversApi.getDriversById(id).then(response => {

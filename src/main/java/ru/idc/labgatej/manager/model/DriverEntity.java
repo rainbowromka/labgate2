@@ -127,4 +127,9 @@ implements IConfiguration
     public Long getDriverId() {
         return getId();
     }
+
+    @Override
+    public String getDriverInstanceName() {
+        return getName();
+    }
 }

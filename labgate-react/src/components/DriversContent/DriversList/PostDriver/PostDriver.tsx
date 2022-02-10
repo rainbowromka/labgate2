@@ -28,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-
 type Props = {
   drivers: DriversState
   addDriver: () => void
@@ -71,7 +70,7 @@ const PostDriver = (props: Props ) => {
     setOpen(false)
   }
 
-  return <Grid item xs={12} lg={2} md={3} sm={6}>
+  return <Grid item xs={12} lg={3} md={4} sm={6}>
     <Box
       className={classes.addItem}
       p={1}

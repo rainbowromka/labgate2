@@ -2,8 +2,9 @@ package ru.idc.labgatej;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.log4j.Level;
-import org.apache.log4j.spi.RootLogger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.ThreadContext;
+import org.apache.logging.log4j.core.config.Configurator;
 import ru.idc.labgatej.base.AppPooledDataSource;
 import ru.idc.labgatej.base.DriverContext;
 import ru.idc.labgatej.base.IConfiguration;
@@ -15,8 +16,6 @@ import ru.idc.labgatej.drivers.DriverFactory;
 
 import java.beans.PropertyVetoException;
 import java.util.concurrent.atomic.AtomicBoolean;
-
-import static org.apache.log4j.Level.INFO;
 
 /**
  * Менеджер драйвера. Создает экземпляр драйвера, конфигурирует его, запускает и
@@ -107,14 +106,18 @@ public class Manager {
 	public void runManager()
 	throws InterruptedException
 	{
-		log.trace("Запуск приложения");
+		String driverInstanceName = config.getDriverInstanceName();
+
+		ThreadContext.put("driverName", driverInstanceName);
+		log.trace("Запуск приложения: " + driverInstanceName);
 
 		DriverContext driverContext = new DriverContext(cpds, config, running, sendClientMessages);
 
 		while (running.get()) {
 			log.trace("Чтение конфигурации");
 			try {
-				RootLogger.getRootLogger().setLevel(Level.toLevel(config.getParamValue("log.level"), INFO));
+				Configurator.setRootLevel(Level.toLevel(
+						config.getParamValue("log.level"),Level.INFO));
 
 				DBManager dbManager = new DBManager();
 				try {
@@ -124,6 +127,7 @@ public class Manager {
 					driver = DriverFactory.getDriverByName(config.getDriverName());
 					if (driver != null) {
 						driver.init(driverContext);
+						sendDriverIsRun();
 						driver.loop();
 					} else {
 						log.error("Недопустимое имя драйвера: " + config.getParamValue("driver"));
@@ -132,19 +136,52 @@ public class Manager {
 					dbManager.close();
 				}
 			} catch (Exception e) {
-				if (driver != null) {
-					try {
-						driver.close();
-					} catch (Exception e2) {
-						log.error("Ошибка при завершении работы драйвера", e2);
+				if (running.get()) {
+					sendDriverIsRestart();
+					if (driver != null) {
+						try {
+							driver.close();
+						} catch (Exception e2) {
+							log.error(
+								"Ошибка при завершении работы драйвера", e2);
+						}
 					}
+					log.error("", e);
+					log.debug("Ждём 60 секунд перед перезапуском...");
+					Thread.sleep(60000);
 				}
-				log.error("", e);
-				log.debug("Ждём 60 секунд перед перезапуском...");
-				Thread.sleep(60000);
 			}
 		}
-		driverContext.getSendClientMessages().sendDriverIsStopped(config);
+		sendDriverIsStopped();
+
+		log.trace("Драйвер остановлен: " + driverInstanceName);
+		ThreadContext.remove(driverInstanceName);
+	}
+
+	/**
+	 * Отправляем статус сообщения, что драйвер перезапускается.
+	 */
+	private void sendDriverIsRestart()
+	{
+		if (sendClientMessages != null)
+			sendClientMessages.sendDriverIsRestart(config);
+	}
+
+	/**
+	 * Отправляем статус сообщения, что драйвер остановлен.
+	 */
+	private void sendDriverIsStopped() {
+		if (sendClientMessages != null)
+			sendClientMessages.sendDriverIsStopped(config);
+	}
+
+	/**
+	 * Отправляем статус сообщения, что драйвер запущен.
+	 */
+	private void sendDriverIsRun()
+	{
+		if (sendClientMessages != null)
+			sendClientMessages.sendDriverIsRun(config);
 	}
 
 	/**

@@ -13,7 +13,8 @@ public interface ISendClientMessages
      * @param config
      *        конфигурация экземпляра драйвера.
      */
-    void sendDriverIsRunning(IConfiguration config);
+    void sendDriverIsRun(
+        IConfiguration config);
 
     /**
      * Отправляем клиенту информацию о том, что драйвер остановлен. Признаком
@@ -23,5 +24,16 @@ public interface ISendClientMessages
      * @param config
      *        конфигурация экземпляра драйвера.
      */
-    void sendDriverIsStopped(IConfiguration config);
+    void sendDriverIsStopped(
+        IConfiguration config);
+
+    /**
+     * Отправляем клиенту информацию о том, что драйвер перезапускается.
+     * Признаки того, что драйвер перезапускается.
+     *
+     * @param config
+     *        конфигурация экземпляра драйвера.
+     */
+    void sendDriverIsRestart(
+        IConfiguration config);
 }

@@ -16,9 +16,9 @@ public interface IConfiguration
     String getParamValue(String param);
 
     /**
-     * Получает имя драйвера.
+     * Получает код драйвера.
      *
-     * @return имя драйвера.
+     * @return код драйвера.
      */
     String getDriverName();
 
@@ -36,4 +36,11 @@ public interface IConfiguration
      */
     void setStatus(
         DriverStatus status);
+
+    /**
+     * Получает имя экземпляра драйвера.
+     *
+     * @return имя экземпляра драйвера.
+     */
+    String getDriverInstanceName();
 }

@@ -61,7 +61,8 @@ implements ISendClientMessages
      * @return список сохраненных конфигураций экземпляров драйверов.
      */
     @Transactional(rollbackFor = Exception.class)
-    public List<DriverEntity> saveAll(List<DriverEntity> driverEntities)
+    public List<DriverEntity> saveAll(
+        List<DriverEntity> driverEntities)
     {
         log.info("Saving {}", driverEntities);
         return driverEntityRepository.saveAll(driverEntities);
@@ -76,7 +77,8 @@ implements ISendClientMessages
      * @return список конфигураций экземпляров драйверов с постраничной
      * разбивкой.
      */
-    public Page<DriverEntity> getAllDriverEntitiesPaged(Pageable pageable)
+    public Page<DriverEntity> getAllDriverEntitiesPaged(
+        Pageable pageable)
     {
         return driverEntityRepository.findAll(pageable);
     }
@@ -108,16 +110,26 @@ implements ISendClientMessages
     }
 
     @Override
-    public void sendDriverIsRunning(IConfiguration config)
+    public void sendDriverIsRun(
+        IConfiguration config)
     {
         config.setStatus(DriverStatus.WORK);
         websocket.convertAndSend(WebSocketConfiguration.MESSAGE_PREFIX + "/onChangeStatus", config);
     }
 
     @Override
-    public void sendDriverIsStopped(IConfiguration config)
+    public void sendDriverIsStopped(
+        IConfiguration config)
     {
         config.setStatus(DriverStatus.STOP);
         websocket.convertAndSend(WebSocketConfiguration.MESSAGE_PREFIX + "/onChangeStatus", config);
+    }
+
+    @Override
+    public void sendDriverIsRestart(
+        IConfiguration config)
+    {
+        config.setStatus(DriverStatus.RESTART);
+        websocket.convertAndSend(WebSocketConfiguration.MESSAGE_PREFIX + "onChangeStatus", config);
     }
 }

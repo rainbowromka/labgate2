@@ -1,0 +1,27 @@
+# Поднимаем в docker контейнера базу данных Postgresql для работы приложения.
+version: "3.9"
+services:
+  postgres:
+    container_name: postgres_container
+    image: postgres:9.5
+    environment:
+      POSTGRES_DB: "labgate"
+      POSTGRES_USER: "labgate"
+      POSTGRES_PASSWORD: "1"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - ./dockerData:/var/lib/postgresql/data
+    ports:
+      - "5543:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U labgate -d labgate"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 4G

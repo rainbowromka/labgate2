@@ -19,6 +19,11 @@ export const DRIVER_STATUS_STARTING = "STARTING";
 export const DRIVER_STATUS_STOPPING = "STOPPING";
 
 /**
+ * Константа - статус, драйвер перезагружается.
+ */
+export const DRIVER_STATUS_RESTART = "RESTART";
+
+/**
  * Прнципал - информация о пользователе.
  */
 export type Principal = {
@@ -58,6 +63,9 @@ export type Parameter = {
     value: string | null
 }
 
+/**
+ * Состояние списка драйверов.
+ */
 export type DriversState = {
     list: Array<DriverItem>
     name: string | null
@@ -69,7 +77,6 @@ export type DriversState = {
     totalElements: number
 };
 
-
 /**
  * Вид формы - вход в систему.
  */
@@ -80,6 +87,9 @@ export const AUTH_MODE_LOGIN = 'login';
  */
 export const AUTH_MODE_SIGNUP = 'signup';
 
+/**
+ * Данные авторизации.
+ */
 export type AuthData = {
     authMode: typeof AUTH_MODE_LOGIN | typeof AUTH_MODE_SIGNUP
     username: string,
@@ -90,6 +100,9 @@ export type AuthData = {
     signInDisabled: boolean,
 }
 
+/**
+ * Состояние изменяющее включение/выключение панели меню справа.
+ */
 export type OpenPanelType = {
     open: boolean
     setOpen: (isOpen: boolean) => void

@@ -53,8 +53,6 @@ public class KdlPrime implements IDriver
     throws IOException, InterruptedException, SQLException
     {
         serverSocket = new ServerSocket(port);
-        if (sendClientMessages != null)
-            sendClientMessages.sendDriverIsRunning(config);
         try
         {
             while (running.get()) {
@@ -68,8 +66,8 @@ public class KdlPrime implements IDriver
         }
         finally
         {
-            if (sendClientMessages != null)
-                sendClientMessages.sendDriverIsStopped(config);
+//            if (sendClientMessages != null)
+//                sendClientMessages.sendDriverIsStopped(config);
         }
     }
 

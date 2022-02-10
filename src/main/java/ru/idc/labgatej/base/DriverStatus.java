@@ -21,6 +21,10 @@ public enum DriverStatus
      */
     STOPPING,
     /**
+     * Драйвер перезапускается.
+     */
+    RESTART,
+    /**
      * Остановлен.
      */
     STOP

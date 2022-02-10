@@ -1,0 +1,23 @@
+Configuration:
+  status: info
+
+  appenders:
+    Console:
+      name: LogToConsole
+      PatternLayout:
+#        Pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%-15t] %c{1} - %msg%n"
+        Pattern: ${LOG_PATTERN}
+#        Pattern: "%style{%d{yyyy-MM-dd HH:mm:ss.SSS}}{black} %highlight{%5level }[%style{%15t}{bright,blue}] %style{%C{1.}}{bright,yellow}: %msg%n%throwable"
+
+  Loggers:
+    logger:
+      - name: ru.idc.labgatej
+        level: info
+        additivity: false
+        AppenderRef:
+          - ref: LogToConsole
+
+    Root:
+      level: info
+      AppenderRef:
+        ref: LogToConsole

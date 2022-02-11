@@ -56,7 +56,7 @@ public class KdlPrime implements IDriver
         try
         {
             while (running.get()) {
-                log.info("Слушаем порт: ");
+                log.info("Слушаем порт: " + this.port);
                 //TODO: надо в отдельном потоке сделать, как вариант, прерывание
                 // работы метода accept. Правда надо понять, насколько это надо.
                 new KDLPrimeClientHandler(serverSocket.accept(),

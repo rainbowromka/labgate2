@@ -17,23 +17,35 @@
                     </RollingFile>
                 </Route>
                 <Route key="$${ctx:driverName}">
-                        <RollingFile name="Rolling-default" fileName="log/default.log"
-                                     filePattern="./log/${date:yyyy-MM}/default-%d{yyyy-MM-dd}-%i.log.gz">
-                            <PatternLayout>
-                                <pattern>%d %p %c{1.} [%t] %m%n</pattern>
-                            </PatternLayout>
-                            <Policies>
-                                <TimeBasedTriggeringPolicy interval="6" modulate="true" />
-                                <SizeBasedTriggeringPolicy size="10 MB" />
-                            </Policies>
-                        </RollingFile>
+<!--                    <DbLogAppender name="DbLogAppender"/>-->
+                    <RollingFile name="Rolling-default" fileName="log/default.log"
+                                 filePattern="./log/${date:yyyy-MM}/default-%d{yyyy-MM-dd}-%i.log.gz">
+                        <PatternLayout>
+                            <pattern>%d %p %c{1.} [%t] %m%n</pattern>
+                        </PatternLayout>
+                        <Policies>
+                            <TimeBasedTriggeringPolicy interval="6" modulate="true" />
+                            <SizeBasedTriggeringPolicy size="10 MB" />
+                        </Policies>
+                    </RollingFile>
                 </Route>
             </Routes>
         </Routing>
+<!--        <DbLogAppender name="DbLogAppender" driverContext="${ctx:driverName}"/>-->
         <Console name="LogToConsole" target="SYSTEM_OUT">
             <PatternLayout pattern="%clr{%d{yyyy-MM-dd HH:mm:ss.SSS}}{faint} %clr{%5p} %clr{%pid}{magenta} %clr{---}{faint} %clr{[%15.15t]}{faint} %clr{%-40.40c{1.}}{cyan} %clr{:}{faint} %m%n%xwEx"/>
 
         </Console>
+<!--        <JDBC name="databaseAppender" tableName="error_log">-->
+<!--            <ConnectionFactory class="ru.idc.labgatej.manager.repo.LogConnectionFactory"-->
+<!--                               method="getDatabaseConnection" />-->
+<!--            <Column name="EVENT_DATE" isEventTimestamp="true" />-->
+<!--            <Column name="LEVEL" pattern="%level" />-->
+<!--            <Column name="LOGGER" pattern="%logger" />-->
+<!--            <Column name="MESSAGE" pattern="%message" />-->
+<!--            <Column name="THROWABLE" pattern="%ex{full}" />-->
+<!--        </JDBC>-->
+        <JPA name="jpaLogAppender" entityClassName="ru.idc.labgatej.manager.model."/>
         <File name="LogToFile" fileName="log/app.log">
             <PatternLayout>
                 <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
@@ -44,6 +56,8 @@
         <Logger name="ru.idc" level="trace" additivity="false">
             <AppenderRef ref="DriversLogging"/>
             <AppenderRef ref="LogToConsole"/>
+<!--            <AppenderRef ref="DbLogAppender"/>-->
+            <AppenderRef ref="databaseAppender"/>
         </Logger>
         <Logger name="org.springframework.boot" level="info" additivity="false">
             <AppenderRef ref="LogToConsole"/>

@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import {makeStyles} from "@material-ui/core";
 import {DriverItem} from "../../../def/client-types";
-import {LazyLog} from "react-lazylog";
+import {observer} from "mobx-react";
 
 /**
  * Стили компонента.
@@ -55,30 +55,30 @@ const Driver: FC<Props> = (props) => {
           </Box>
         </Box>
       </Grid>
-      <Grid item container xs={6}>
-        <Grid item xs={12}>
-          <Typography variant="subtitle1">Код драйвера: {driver.code}</Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <Typography variant="subtitle1">Тип драйвера: {driver.type}</Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <Typography variant="subtitle1">Состояние: {driver.status}</Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <Typography variant="h6">Параметры</Typography>
-        </Grid>
-        <Grid item xs={12}>
-          {parametrs}
+      <Grid item xs={6}>
+        <Grid container>
+          <Grid item xs={12}>
+            <Typography variant="subtitle1">Код драйвера: {driver.code}</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="subtitle1">Тип драйвера: {driver.type}</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="subtitle1">Состояние: {driver.status}</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="h6">Параметры</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            {parametrs}
+          </Grid>
         </Grid>
       </Grid>
       <Grid item xs={6}>
-        <LazyLog>
-
-        </LazyLog>
+        console
       </Grid>
     </Grid>
   </div>
 }
 
-export default Driver;
+export default observer(Driver);

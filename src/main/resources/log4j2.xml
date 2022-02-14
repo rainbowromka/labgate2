@@ -36,16 +36,7 @@
             <PatternLayout pattern="%clr{%d{yyyy-MM-dd HH:mm:ss.SSS}}{faint} %clr{%5p} %clr{%pid}{magenta} %clr{---}{faint} %clr{[%15.15t]}{faint} %clr{%-40.40c{1.}}{cyan} %clr{:}{faint} %m%n%xwEx"/>
 
         </Console>
-<!--        <JDBC name="databaseAppender" tableName="error_log">-->
-<!--            <ConnectionFactory class="ru.idc.labgatej.manager.repo.LogConnectionFactory"-->
-<!--                               method="getDatabaseConnection" />-->
-<!--            <Column name="EVENT_DATE" isEventTimestamp="true" />-->
-<!--            <Column name="LEVEL" pattern="%level" />-->
-<!--            <Column name="LOGGER" pattern="%logger" />-->
-<!--            <Column name="MESSAGE" pattern="%message" />-->
-<!--            <Column name="THROWABLE" pattern="%ex{full}" />-->
-<!--        </JDBC>-->
-        <JPA name="jpaLogAppender" entityClassName="ru.idc.labgatej.manager.model."/>
+        <JPA name="jpaLogAppender" entityClassName="ru.idc.labgatej.manager.model.LogEntity"/>
         <File name="LogToFile" fileName="log/app.log">
             <PatternLayout>
                 <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>

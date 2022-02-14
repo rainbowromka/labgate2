@@ -123,3 +123,36 @@ CREATE TABLE driver.user_roles (
 INSERT INTO driver.roles(name) VALUES('ROLE_USER');
 INSERT INTO driver.roles(name) VALUES('ROLE_MODERATOR');
 INSERT INTO driver.roles(name) VALUES('ROLE_ADMIN');
+
+/**
+ * Журнал логгирования.
+ */
+CREATE SEQUENCE driver.driver_manager_log_sequence START WITH 1;
+CREATE TABLE driver.drivers_manager_log (
+    /**
+     * ID объекта.
+     */
+    id BIGINT PRIMARY KEY,
+
+    /**
+     * Дата записи.
+     */
+    log_date TIMESTAMP,
+
+    /**
+     * Номер строки в разрезе конкретного драйвера.
+     */
+--     number_string BIGINT,
+
+    /**
+     * Экземпляр драйвера.
+     */
+     driver_instance_id BIGINT,
+
+    /**
+     * Сообщение логгера.
+     */
+    message TEXT
+);
+
+CREATE INDEX driver_manager_log_driver_time_idx ON driver.drivers_manager_log(driver_instance_id, log_date);
